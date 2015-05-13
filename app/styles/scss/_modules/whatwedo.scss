@@ -1,0 +1,147 @@
+#whatwedo{
+
+	.sections{
+		section{
+			&.head{
+				.head-container{
+					.head-theme{
+						.headings{
+							&.theme{
+								.ring{
+									&:before{
+										background-image: url(../assets/images/svg/Banner-WhatWeDo-JourneyCurve-L1.svg);
+									}
+								}
+							}
+							h3{
+								color: $darker-blue;
+							}
+						}
+					}
+				}
+			}
+			&.hero-whatwedo{
+ 				background-size: cover;
+				position: relative;
+				padding: 0px 9% 0px 9%;
+				@include transition((opacity 0.3s ease-out));
+				opacity: 0.95;
+				z-index: 1;
+				height: 450px;
+				overflow: hidden;
+				background:$lighter-grey;
+
+
+				&:hover{
+					opacity: 1;
+				}
+				&.active{
+					opacity: 1;
+					height: 100%;
+					h2.play{
+						opacity: 0;
+					}
+					a.video-content{
+						z-index: -1;
+						background: rgba(0,0,0,0);
+					}
+				}
+ 
+				a.video-content{
+					position: absolute;
+					top: 0;
+					height: 450px;
+					width: 82%;
+					padding: 0;
+					opacity: 0.90;
+					@include transition((all 0.3s ease-out));
+					z-index: 1;
+					background: rgba(0,0,0,0.4);
+
+					@include breakpoint(phonePortrait) {
+						width: 100%;
+					}
+					
+				}
+  
+				h2{
+					position: absolute;
+					top: 30%;
+					span{
+						@include breakpoint(phonePortrait) {
+							text-indent: -99em;
+							display:block;
+						}
+					}
+				}
+
+				@include breakpoint(phonePortrait) {
+					padding: 0;
+					height: 200px;
+						h2{
+							top:10%;
+						}
+				}
+			}
+			&.copy-content{
+				&:before{
+					background-image: url(../assets/images/svg/WhatWeDo-Body-JourneyCurve.svg);
+					 
+				}
+
+				.copy{ 
+					&:nth-child(even){
+						background:$lighter-grey;
+					}
+					h2{
+						color: $darker-blue;
+					}
+				}
+			}
+			&.hero-industrysectors{
+				background: url(../assets/images/hero-industrysectors.jpg) no-repeat 0 0 ;
+				background-size: cover;
+				position: relative;
+				padding: 92px 0;
+				@include transition((background 0.3s ease-out));
+				opacity: 1;
+				min-height: 559px;
+				@include breakpoint(phonePortrait) {
+					display: none;
+				}
+
+					h2{
+						display: block;
+						text-align: center;
+						padding:0px 0 12px 0;
+					}
+					p{
+						display: block;
+						text-align: center;
+						padding:0 0 12px 0;
+					}
+					.icons{
+						width: 100%;
+						display: table;
+						padding: 60px 0 0 0;
+						h2.animated{
+							padding: 0 0%;
+							padding-top: 110px;
+							width: 14.28571428571429%;
+							font-size: 17px;
+							display: table-cell;
+						}
+					}	 
+			}
+		}
+
+
+
+
+
+
+	}
+
+
+
+}

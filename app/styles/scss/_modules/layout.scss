@@ -1,0 +1,148 @@
+// .sixcol{
+//   display:inline-block;
+//   position:relative;
+//   max-width: 1140px;
+//   width: 100%;
+
+//   h2{
+//     text-align:left;
+//     width:100%;
+//     float: left;
+//   }
+//   .items{
+//     width:100%;
+//     display:inline-block;
+//     @include sixmovie;
+     
+//       .item{
+//         width: percentage(160px / 1140px);
+//         & + .item{
+//           margin-left:3.15789%;
+//         }
+//         &:nth-child(6n+7){
+//           margin-left:0;
+//         }
+//           @include breakpoint(tabletPortrait) {
+//             width: percentage(160px / 768px);
+//           }
+//        }
+   
+
+//       &.disney-rent{
+//         .item{
+//           & + .item{
+//             margin-left: 2.8%;
+//           }
+//           &:nth-child(6n+7){
+//             margin-left:0;
+//           }
+//         }
+//       }
+//     }
+
+//     .load-more{
+//       width: 100%;
+//       display:table;
+//       .button{
+//         display: block;
+//       }
+//     }
+//     @include breakpoint(tabletPortrait) {
+//       max-width: 800px;
+//        .items{
+//         .item{
+//           width: percentage(160px / 768px);
+//            & + .item{
+//             margin-left:5.458%;
+//           }
+//           &:nth-child(4n+5){
+//             margin-left:0;
+//           }
+//         }
+//        }
+//     }
+//     @include breakpoint(phonePortrait) {
+//        .items{
+//         .item{
+//           width: percentage(96px / 320px);
+//            & + .item{
+//             margin-left:4.9%;
+//           }
+//           &:nth-child(3n+4){
+//             margin-left:0;
+//           }
+//           &:nth-child(6n+7){
+//              margin-left:0%;
+//           }
+//         }
+//        }
+//     }
+//   }
+ 
+//   //HORIZONTAL SLIDER 
+//   .grid-container{
+//     display:inline-block;
+//     position:relative;
+//     max-width: 1140px;
+//     width: 100%;
+//     height:300px;
+    
+//     .bx-wrapper{
+//       height: auto;
+//       margin: 0 auto;
+//       height: 100%;
+//       position:relative;
+//     }
+//     .bx-viewport{
+//       max-height:300px;
+//       position: relative;
+//       margin: 0 auto;
+//       padding: 0;
+//       *zoom: 1;
+//       max-width: 1140px;
+//       @include breakpoint(tabletPortrait) {
+//         max-width: 800px;
+//       }
+//     }
+ 
+  
+//     .items{
+//       width: 100%;
+//       height: 100%;
+//       display:inline-block;
+//       @include sixmovie;
+  
+//       .item{
+//         max-height:300px;
+//         margin-right: 36px;
+//         margin-bottom: 80px;
+//         @include breakpoint(tabletPortrait) {
+//           margin-right: 22px;
+//         }
+//       }     
+//     }
+//     .bx-controls-direction{
+//       width: 100%;
+//       display: block;
+//       position:absolute;
+//       top:0%;
+//       @include PrevNextSlider; 
+//     }
+//   }
+ 
+ 
+
+ 
+.wrap-section{
+  @include transition(opacity 0.3s ease);
+  position:absolute;
+  top:0;
+  display:block;
+  max-width: 1600px;
+
+  .controls{
+    @include arrowLeftRight; 
+  }
+}
+ 
+ 

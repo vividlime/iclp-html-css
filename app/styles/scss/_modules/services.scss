@@ -1,0 +1,269 @@
+#services{
+
+	.sections{
+		section{
+			&.head{
+				.head-container{
+					.head-theme{
+
+						.headings{
+				 
+								&.theme{
+									.ring{
+										&:before{
+											background-image: url(../assets/images/svg/Banner-Services-JourneyCurve-L1.svg);
+										}
+									}
+									h3{
+										color: $orange;
+									}
+								}
+
+								&.imagery{
+									background: $orange;
+									.ring{
+										&:before{
+											background-image: url(../assets/images/svg/Banner-Services-JourneyCurve-L2.svg);
+										}
+									}
+									.titles{
+										h1,h2,h3,blockquote{
+											color: $orange;
+										}
+										h2{
+											text-transform: inherit
+										}
+									}
+								}
+					 
+							.angle{
+								&:before{
+									@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+								} 
+							}
+							
+						}
+					}
+				}
+			}
+		 
+			&.copy-content{
+				&:before{
+ 					@include breakpoint(phonePortrait) {
+						display: none;
+					}
+				}
+				.copy{
+					&:first-child{
+						padding-top:178px;
+						@include breakpoint(phonePortrait) {
+							padding-top: 128px;
+						}
+					}
+					&:nth-child(odd){
+						background:$lighter-grey;
+					}
+					h2{
+						color: $orange;
+					}
+				}
+
+			}
+			&.head,
+			&.hero-sevices{
+				position: relative;
+				padding: 0px 0 1px 0;
+				z-index: 1;
+				.nav-icons{
+					position: relative;
+					top: 0;
+					width: 100%;
+					z-index: 3;
+					.icons{
+						width: 100%;
+						display: table;
+						padding: 0px 0 0 0;
+						a.icon-wrap{
+							position: relative;
+							display: table-cell;
+							width: 20%;
+							padding: 0 10px;
+							@include transition((all 0.5s ease-out));
+							border-left: 1px solid $white;
+							@include transform(translateZ(0px));
+							font-family: $font-ICLPRegular;
+							font-weight:400;
+							&:after{
+						    content:'';
+						    position:absolute;
+						    left:0;
+						    top:0;
+						    width:100%;
+						    height:100%;
+						    background: $orange;
+						    background-size:cover;
+						    opacity:1;
+						    @include transition((all 0.35s ease-out));
+						    z-index: -1;
+							}
+							&:hover:after{
+							  opacity:0;
+							  background: rgba(0,0,0,0.40);
+							} 
+							&:first-child{
+								border-left: 0px solid $white;
+							}
+							h2.animated{
+								padding-top: 314px;
+
+								span{
+									text-align: center;
+									width: 100%;
+									position: absolute;
+									top:110px;
+									left:0;
+									&:after{
+								    content:'';
+								    position:absolute;
+								    left:20%;
+								    top:52px;
+								    width:60%;
+								    height: 1px;
+								    background:$white;
+									}
+								}
+
+								&.customerengagement{
+									span{
+										top: 100px;
+										&:after{
+											top: 62px;
+										}
+									}
+								}
+							}
+							p{
+								display: block;
+								text-align: center;
+								padding:0px 1% 48px 1%;
+								position: absolute;
+								top: 200px;
+								height: 80px;
+								overflow: hidden;
+								text-overflow: ellipsis;
+							}
+							span.view{
+								border: 1px solid $white;
+								@include border-radius(3px);
+								padding: 10px 40px;
+								margin:20px auto;
+								text-align: center;
+								position: absolute;
+								bottom: 0;
+								left: 50%;
+								margin-left: -63px;
+
+							}
+							&:focus .circle[data-anim~=bigger],
+							&:hover .circle[data-anim~=bigger]{
+						    opacity: 0.75;
+						  }
+						  &:focus .circle[data-anim~=bigger]:before,
+						  &:hover .circle[data-anim~=bigger]:before{
+						    @include transform (rotate(180deg));
+						  }
+						  &:focus .circle[data-anim~=smaller],
+						  &:hover .circle[data-anim~=smaller]{
+						    opacity: 1;
+						  }
+						  &:focus .circle[data-anim~=smaller]:before,
+						  &:hover .circle[data-anim~=smaller]:before{
+						    @include transform (rotate(180deg));
+						  }
+						  &.active{
+
+
+								.circle[data-anim~=bigger],
+								.circle[data-anim~=bigger]{
+							    opacity: 0.75;
+							  }
+							  .circle[data-anim~=bigger]:before,
+							  .circle[data-anim~=bigger]:before{
+							    @include transform (rotate(180deg));
+							  }
+							  .circle[data-anim~=smaller],
+							  .circle[data-anim~=smaller]{
+							    opacity: 1;
+							  }
+							  .circle[data-anim~=smaller]:before,
+							  .circle[data-anim~=smaller]:before{
+							    @include transform (rotate(180deg));
+							  }
+							  &:after{
+								  opacity:1;
+								  @include breakpoint(phonePortrait) {
+									  background:#904d0e;
+									}
+								}
+						  }
+						  &:hover{
+						  }
+						  &:focus,&:hover{
+								background-image: none;
+							}
+							&:focus:after,&:hover:after{
+							  opacity:1;
+							  background:#904d0e;
+							} 
+						}
+					}
+					@include breakpoint(tabletPortrait) {
+						.icons{
+							display: inline-block;
+							a.icon-wrap{
+								padding: 0px 0;
+								background-image: none;
+								width: 100%;
+								display: inline-block;
+								border:0;
+								border-top:1px solid $white;
+								height: auto;
+								&:focus,&:hover{
+									background-image: none;
+								}
+								&:focus:after,&:hover:after{
+								  opacity:1;
+								  background:#904d0e;
+								} 
+								h2.animated{
+									padding:22px 0;
+									span{
+										top:0!important;
+										left:0px;
+										text-align: left;
+										padding-left: 60px;
+										font-size: 18px;
+									} 
+
+									.wrapper-circle{
+										display: none;
+
+									}
+								}
+								p,span.view{
+									display: none;
+								}
+							}
+						}
+					}
+				}
+			}
+			&.head{
+				.icons a.icon-wrap h2.animated{
+					margin-top: 20px;
+					padding:110px 0 20px 0;
+				}
+			}
+		}
+	}
+}

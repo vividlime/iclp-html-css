@@ -1,0 +1,516 @@
+.masthead{
+  position:relative;
+  max-width: 1140px;
+  margin:24px auto;
+
+  .wrap{
+    position:relative;
+    max-width: 1140px;
+    width: 100%;
+    display: inline-block;
+    margin:0 auto 0px;
+    padding: 37px 0 0;
+    @include breakpoint(desktop){
+      padding: 37px 10px 0 10px;
+    }
+    @include breakpoint(tabletPortrait){
+      padding: 37px 0px 0 0px;
+    }
+    @include breakpoint(phonePortrait){
+      padding: 37px 0px 0 0px;
+    }
+
+
+ 
+    .inner{
+      hgroup{
+        float: left;
+        @include breakpoint(phonePortrait){
+          width: 100%;
+        }
+        h2.main-heading{
+          margin: 0;
+          padding-top: 12px;
+
+          @include breakpoint(phonePortrait){
+            text-align: center;
+            float: none;
+            display: block;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+ul.dropdown{
+  float:right;
+  position:relative;
+  padding:0 20px 0 0;
+  display:block;
+
+   
+  li.subnavigation{
+    position:relative;
+    display:block;
+    float:left;
+    a.dropdown-text{
+      font-size: 18px;
+      float:left;
+      position:relative;
+      @include border-radius(0.1em);
+      color:$link;
+      width: 100%;
+      cursor: pointer;
+      @include roundcorners(2px 2px 0px 0px);
+      padding:8px 34px 8px 12px;
+      @include transition(all .3s ease);
+      //background:$background-dropdown;
+      span{
+        @include transition(all .3s ease);
+        &.hidden{
+          position:absolute;
+          left:12px;
+          top: 7px;
+          opacity: 0;
+          z-index: -1;
+        }
+      }
+      
+      &:after{
+        opacity:1;
+        @include transition(opacity .3s ease);
+        content:"";
+        position:absolute;
+        @include transform(translateZ(0px));
+        @include sprite-background(-46px, -0px);
+        width:13px;
+        height:10px;
+        right:12px;
+        top:13px;
+      }
+      &:before{
+        opacity:0;
+        @include transition(opacity .3s ease);
+        content:"";
+        position:absolute;
+        @include transform(translateZ(0px));
+        @include sprite-background(-61px, -0px);
+        width:13px;
+        height:10px;
+        right:12px;
+        top:13px;
+      }
+    }
+
+    &.change{
+      .dropdown-text{
+        span{
+          &:first-child{
+            opacity: 0;
+          }
+        }
+        .hidden{
+          opacity: 1;
+          z-index: 3;
+        }
+      }
+    }
+
+
+    ul.dropdown-content{
+      @include roundcorners(0px 0px 2px 2px);
+      background:$background-dropdown;
+      @include transition(all .5s ease);
+      position: absolute;
+      display:block;
+      top: 20px;
+      padding:0px 0  14px 0;
+      margin:0 auto;
+      opacity: 0;
+      visibility:hidden;
+      line-height: 32px;
+      z-index:2;
+      width:100%;
+      float: left;
+
+      li{
+        font-size:18px;
+        padding:0px 12px 0px 12px;
+        float:left;
+        display:block;
+        width:100%;
+        a{
+          float:left;
+          outline: 0;
+          width:100%;
+          padding:0px 0px;
+          padding:0 0px 0 0px;
+          font-size: 18px;
+          white-space: nowrap;
+          &.selected{
+            color:$active-link;
+          }
+        }
+        & + li{
+          padding-top:6px;
+        }
+      }
+    }
+    &:focus,
+    &:hover{
+      a.dropdown-text{
+        padding:8px 34px 8px 12px;
+        color:$active-link;
+        background:$background-dropdown;
+        z-index: 4;
+        &:after{
+          opacity: 0
+        }
+        &:before{
+          opacity: 1;
+        }
+      }
+      ul{
+        top:32px;
+        opacity:1;
+        visibility:visible;
+        z-index: 4;
+        padding:10px 0 14px;
+      }
+    }
+  }
+}
+
+ul.select-options{
+  padding:8px 0 0 0;
+  
+  @include breakpoint(phonePortrait){
+    width: 100%;
+    margin: auto;
+  }
+  
+  li{
+    float: left;
+    display: inline;
+    padding:7px 16px 0 0;
+    width: 48.5%;
+
+    
+    a{
+      font-size: 18px;
+      color: $primary-button;
+      &.selected{
+        color:$active-link;
+      }
+      &:hover{
+        color:$active-link;
+      }
+    }
+    @include breakpoint(phonePortrait){
+      padding: 7px 7px 0 0;
+    }
+  }
+  li.subnavigation{
+    padding:0 0 0 0;
+    width:160px;
+
+
+    a.dropdown-text{
+      background:$background-dropdown;
+      color: $primary-button;
+      font-size: 16px;
+      &:after{
+        @include sprite-background(-46px, -14px);
+        width: 12px;
+        height: 8px;
+      }
+      &:before{
+        @include sprite-background(-46px, -24px);
+        width: 12px;
+        height: 8px;
+      }
+    }
+
+    &:hover{
+      a.dropdown-text{
+        background:$background-dropdown;
+      }
+      ul{
+        z-index:4;
+        background:$background-dropdown;
+      }
+    }
+
+    @include breakpoint(phonePortrait){
+       width: 48.5%;
+    }
+
+    &.inline{
+      width: auto;
+      .show{
+        display: none;
+      }
+      ul.dropdown-content{
+        margin: 0;
+        background:none;
+        padding:0px 0 0 0;
+        position:relative;
+        float: left;
+        opacity: 1;
+        visibility: visible;
+        top: 0;
+        li{
+          background:none;
+          width: auto;
+          float: left;
+          display: inline;
+          padding:0px 16px 0 0;
+          a{
+            background:none;
+            font-size: 18px;
+            color: $primary-button;
+
+            &.selected,
+            &:hover{
+              color: $active-link;
+            }
+          }
+        }
+  
+      }
+
+
+ 
+      &.change{
+        .dropdown-text{
+          span{
+            &:first-child{
+              opacity: 0;
+            }
+          }
+          .hidden{
+            opacity: 1;
+            z-index: 3;
+          }
+        }
+      }
+      @include breakpoint(phonePortrait){
+        width: 48.5%;
+        margin-right: 10px;
+        .show{
+          display: block;
+          opacity: 1;
+        }
+
+        ul.dropdown-content{
+          top: 20px;
+          position: absolute;
+          background: #132544;
+          visibility: hidden;
+          opacity: 0;
+          padding: 0px 0 14px 0;
+          margin: 0 auto;
+          li{
+            padding: 0px 12px 0px 12px;
+            float: left;
+            display: block;
+            width: 100%;
+          }
+        }
+        &:focus,
+        &:hover{
+          ul{
+            top:32px;
+            opacity:1;
+            visibility:visible;
+            z-index: 4;
+            padding:10px 0 14px;
+          }
+        }
+      }
+
+
+    }
+
+
+
+
+
+
+
+
+  }
+}
+
+#sidebar{
+  .login-container{
+    float:left;
+    display: inline-block;
+    padding:0px 0px 0px 0;
+    display:none;
+
+    ul.dropdown{
+      float:right;
+      position:relative;
+      padding:0 20px 0 0;
+      display:block;
+
+      li.subnavigation{
+        position:relative;
+        display:block;
+        float:left;
+        a.dropdown-text{
+          font-size: 18px;
+          float:left;
+          position:relative;
+          @include border-radius(0.1em);
+          color:$link;
+          width: 100%;
+          cursor: pointer;
+          @include roundcorners(2px 2px 0px 0px);
+          padding:6px 34px 6px 12px;
+          @include transition(background .3s ease);
+
+          &:after{
+            opacity:1;
+            @include transition(opacity .3s ease);
+            content:"";
+            position:absolute;
+            @include transform(translateZ(0px));
+            @include sprite-background(-46px, -0px);
+            width:13px;
+            height:10px;
+            right:12px;
+            top: 6px;
+            transform: translateY(4px);
+          }
+          &:before{
+            opacity:0;
+            @include transition(opacity .3s ease);
+            content:"";
+            position:absolute;
+            @include transform(translateZ(0px));
+            @include sprite-background(-61px, -0px);
+            width:13px;
+            height:10px;
+            right:12px;
+            top: 6px;
+            transform: translateY(4px);
+          }
+        }  
+
+
+        ul.dropdown-content{
+          @include roundcorners(0);
+          background:none;
+          @include transition(all .35s ease);
+          position: relative;
+          display:block;
+          top: 0px;
+          padding:0px 0  14px 0;
+          margin:10px auto 0 auto;
+          opacity: 0;
+          visibility:hidden;
+          line-height: 32px;
+          z-index:2;
+          width:100%;
+          float: left;
+          max-height: 0;
+          height: 0%;
+
+          li{
+            font-size:18px;
+            padding:0px 8px 0px 8px;
+            float:left;
+            display:block;
+            a{
+              float:left;
+              outline: 0;
+              width:100%;
+              padding:0px 0px;
+              padding:0 12px;
+              font-size: 18px;
+              white-space: nowrap;
+              &.selected{
+                color:$active-link;
+              }
+            }
+            & + li{
+              padding-top:6px;
+            }
+          }
+        }
+        &:focus,
+        &:hover{
+          a.dropdown-text{
+            color:$active-link;
+            background:none;
+            &:after{
+              opacity: 0
+            }
+            &:before{
+              opacity: 1;
+            }
+          }
+          ul{
+            max-height: 100%;
+            height: 100%;
+            top:0px;
+            margin:20px auto 10px auto;
+            opacity:1;
+            visibility:visible;
+            z-index: 4;
+          }
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @include breakpoint(tabletPortrait) {
+      display:block;
+    }
+    &:focus ~ .menu,
+    &:hover ~ .menu{
+      margin-top: 0px;
+    }
+  }
+}
+
+#my-library{
+  nav.nav{
+    padding-top: 18px;
+    clear: both;
+    float: left;
+
+    @include breakpoint(phonePortrait){
+      width:100%;
+
+      ul.dropdown{
+        display: table;
+        margin: auto;
+        float: none;
+      }
+    }
+  }
+}
+
+#help{
+  
+}

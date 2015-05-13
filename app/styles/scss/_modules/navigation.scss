@@ -1,0 +1,224 @@
+body{
+.navigation-wrap{
+  position:fixed;
+  height: 100%;
+  z-index: 6;
+  visibility: hidden;
+  width: 320px;
+  top:0;
+  left:0;
+  @include transition((all 0.3s));
+
+
+  span.overlay{
+    position:fixed;
+    height: 0%;
+    width:0%;
+    z-index: 0;
+    &:after{
+      content: attr(menu-overlay);
+      position:absolute;
+      top:0;
+      bottom:0;
+      left: 0;
+      right:0;
+      width: 100%;
+      height: 100%;
+      //background: rgba(6,16,35,0);
+      @include transition((all 0.2s ease-out));
+      z-index: -1;
+      cursor: pointer;
+      @include breakpoint(extraWideDesktopMenuOpen) {
+        display: none;
+      }
+    }
+  }
+
+  .container-navigation{
+    position: absolute;
+    @include transform (translate3d(-320px, 0, 0));
+    top:0;
+    bottom:0;
+    width: 100%;
+    height:100%;
+    display: inline-block;
+    @include transition((all 0.3s ease-out));
+  
+    .navigation{
+      width:100%;
+      height: 100%;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      background-color:$blue;
+      box-shadow:-10px 0px 20px rgba(3, 4, 4, 0.22) inset;
+      overflow: hidden;
+      
+      .menu{
+        position:relative;
+        float: left;
+        height: 100%;
+        width: 100%;
+        @include transition(all .5s ease);
+        overflow: auto;
+
+        .close-menu{
+          background: $dark-blue;
+          width: 100%;
+          padding: 22px 60px 24px 0;
+          float: left;
+          text-align: right;
+          color:rgba(255,255,255,0.70);
+          position: relative;
+          text-transform: uppercase;
+          font-size: 15px;
+          @include transition((all 0.3s ease-out));
+          font-family:$font-ICLPblack;
+        }
+        
+         ul{
+          position: relative; 
+          display: inline-block;
+          width: 100%;
+          padding: 0;           
+          li{
+            float:left;
+            width: 100%;
+            display: block;
+            a{
+              padding: 22px 0px 22px 77px;
+              position:relative;
+              font-family:$font-ICLPblack;
+              display: inline;
+              float:left;
+              width: 100%;
+              font-size:18px;
+              color:$link;
+              white-space: nowrap;
+              @include transition(all 0.30s ease-out);
+              text-transform: uppercase;
+              &:hover{
+                background: $orange
+              }
+              &:before{
+                @include iconsFonts;
+                font-size: 1.4em;
+                top: 30%;
+                left:25px;
+                position:absolute;
+                content: "";
+                @include transition((all 0.3s ease-out));
+                color:$white;
+              }
+              &.home{
+                &:before{
+                 content: "\e069";                                                      
+                }
+              }
+              &.whatwedo{
+                &:before{
+                  content: "\e08a";
+                }
+              }
+              &.clients{
+                &:before{
+                  content: "\e001";
+                }
+              }
+              &.services{
+                &:before{
+                  content: "\e026";
+                }
+              }
+
+              &.resources{
+                &:before{
+                  content: "\e06a";
+                }
+              }
+              &.aboutus{
+                &:before{
+                  content: "\e08b";
+                }
+              }
+              &.careers{
+                &:before{
+                  content: "\e042";
+                }
+              }
+              &.contactus{
+                
+                &:before{
+                  @include transform (rotate(-90deg));
+                  content: "\e048";
+                }
+              }
+
+
+
+
+
+
+            }
+             
+          }
+          &:first-child{
+            padding:12px 0 6px;
+          }
+          &:last-child{
+            border-bottom:0;
+          }
+          &.submenu{
+          li{
+            a{
+              padding: 13px 0px 13px 96px;
+              position:relative;
+              font-family:$font-ICLPRegular;
+              display: inliiine;
+              float:left;
+              width: 100%;
+              font-size:15px;
+              color:$link;
+              white-space: nowrap;
+              @include transition(all 0.30s ease-out);
+              text-transform: capitalize;
+              &:before{
+                content:"";
+                position: absolute;
+                top: calc(50% - (6px));
+                left: 76px;
+                background: url(../assets/images/submenu.png) no-repeat 0 0;
+                width: 12px;
+                height: 12px;
+                }
+                &:hover{
+                  background: $light-blue;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  } 
+     
+}
+
+   &.open-sidebar{
+    width: 100%;
+    .navigation-wrap{
+      visibility: visible;
+      span.overlay{
+        width: 100%;
+        height: 100%;
+        &:after{
+         background: rgba(6,16,35,0);
+        }
+      }
+      .container-navigation{
+        @include transform (translate3d(0px, 0, 0));
+      }
+    }
+
+  }
+}

@@ -1,0 +1,145 @@
+footer.footer{
+	width: 100%;
+	margin: 0px auto;
+	clear:both;
+	position: relative;
+	background:$grey;
+	z-index: 1;
+	
+	 
+	.footer-content{
+		position: relative;
+
+		nav{
+			margin: 0 auto;
+			display: block;
+
+	    &.sitemap{
+	    	width: 63%;
+	    	padding-bottom: 60px;
+	    	left: 12%;
+				position: relative;
+				margin: 0;
+				@include breakpoint(tabletPortrait) {
+					left: 5%;
+				}
+
+				@include breakpoint(phonePortrait) {
+	  			display: none;
+	  		}
+	    	ul{
+	    		display: block;
+	    		li{
+	    			width: 32%;
+						display: inline-block;
+	    			position: relative;
+	    			a{
+	    				display: inline-block;
+	    				padding-bottom: 6px;
+	    			}
+	    		}
+	    	}
+	    }
+	  	&.sitehelp{
+	  		display: table;
+	  		padding-bottom: 20px;
+	  		@include breakpoint(phonePortrait) {
+	  			display: block;
+	  		}
+	  		ul{
+	  			margin: 0 auto;
+					display: table-cell;
+					
+					li{
+						float: left;
+
+						a{
+							display:block;
+							font-size: 13px;
+						}
+						& + li{
+							padding-left: 20px;
+							margin-left: 20px;
+							border-left: 1px solid $white;
+						}
+					}
+					@include breakpoint(phonePortrait) {
+		  			display: block;
+		  			width:100%;
+		  			li{
+		  				float: none;
+		  				text-align: center;
+		  				display: block;
+		  				& + li{
+		  					border: 0;
+		  					margin: 0;
+		  					padding: 0;
+		  				}
+		  				a{
+		  					font-size: 16px;
+								padding-bottom: 12px;
+		  					text-align: center;
+		  				}
+		  			}
+		  		}
+	  		}
+	  	}
+	  	&.socials{
+	  		position: absolute;
+	  		top:0;
+	  		right:12%;
+	  		@include breakpoint(phonePortrait) {
+	  			top: 174px;
+	  			right: 47%;
+	  		}
+	  		h3{
+					color: $white;
+					padding:0 0 20px 0;
+					@include breakpoint(phonePortrait) {
+		  			display: none;
+		  		}
+				}
+				ul{
+					width: 100%;
+					float: left;
+				}
+	  	}
+
+		  ul{
+		  	display: block;
+				margin:auto;
+			}
+
+			li{
+				display: block;
+
+				a{
+					color:$white;
+					font-size: 16px;
+					text-transform: uppercase;
+					opacity: 1;
+					@include transform (translateZ(0));
+					&:hover{
+						opacity: 0.85;
+					}
+				} 
+			} 
+		}
+		p{
+			width: 100%;
+			clear: both;
+			padding:0px 0 20px 0;
+			text-align: center;
+			color:$white;
+			font-size: 12px;
+			@include breakpoint(phonePortrait) {
+  			display: none;
+  		}
+		}
+	}
+		
+}
+
+body, .sitemap{
+	position: relative;
+}

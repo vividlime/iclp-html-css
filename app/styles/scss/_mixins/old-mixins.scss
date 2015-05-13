@@ -1,0 +1,639 @@
+@mixin unselectable() {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -o-user-select: none;
+   user-select: none;
+}
+@mixin box-sizing($box-model: $default-box-sizing) {
+  $box-model: unquote($box-model);
+  @include prefixed-properties(css3-boxsizing, $box-sizing-support-threshold, (box-sizing: $box-model));
+}
+@mixin roundcorners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -o-border-radius: $radius;
+}
+@mixin gradient($from, $to) {
+    background: $to;
+    background: -moz-linear-gradient(top, $from 0%, $to 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop(100%,$to));
+    background: -webkit-linear-gradient(top, $from 0%,$to 100%);
+    background: -o-linear-gradient(top, $from 0%,$to 100%);
+    background: -ms-linear-gradient(top, $from 0%,$to 100%);
+    background: linear-gradient(to bottom, $from 0%,$to 100%);
+}
+@mixin sprite-background($x, $y) {
+  background-image: url('../assets/images/sprites.png');
+  background-position: $x $y;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+@mixin spinner-background($x, $y) {
+  background-image: url('../assets/images/spinner.png');
+  background-position: $x $y;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+ 
+@mixin main-background {
+  @include background-image(radial-gradient(top, ellipse cover, #0d2f6b 0%, #000 75%));
+}
+
+@mixin iconsFonts{
+    font-family: 'Simple-Line-Icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+@mixin circle{
+  
+  .wrapper-circle{
+    width: 73px; 
+    height: 73px;
+    position: absolute;
+    left:50%;
+    margin-left: -37px;
+    top:0px;
+    
+    &:focus .circle[data-anim~=bigger],
+    &:hover .circle[data-anim~=bigger]{
+      opacity: 0.75;
+    }
+    &:focus .circle[data-anim~=bigger]:before,
+    &:hover .circle[data-anim~=bigger]:before{
+      @include transform (rotate(180deg));
+    }
+    &:focus .circle[data-anim~=smaller],
+    &:hover .circle[data-anim~=smaller]{
+      opacity: 1;
+    }
+    &:focus .circle[data-anim~=smaller]:before,
+    &:hover .circle[data-anim~=smaller]:before{
+      @include transform (rotate(180deg));
+    }
+
+    @include breakpoint(phonePortrait) {
+      @include transform (scale(0.7));
+      .circle[data-anim~=bigger],
+      .circle[data-anim~=bigger]{
+        opacity: 0.75;
+      }
+      .circle[data-anim~=bigger]:before,
+      .circle[data-anim~=bigger]:before{
+        @include transform (rotate(180deg));
+      }
+      .circle[data-anim~=smaller],
+      .circle[data-anim~=smaller]{
+        opacity: 1;
+      }
+      .circle[data-anim~=smaller]:before,
+      .circle[data-anim~=smaller]:before{
+        @include transform (rotate(180deg));
+      }
+    }
+  }
+
+ .circle {
+    &[data-anim~=bigger]{
+      @include transition(all 0.3s linear);
+      @include transform (rotate(-90deg));
+      top: 73px;
+      left: 0px;
+      position: absolute;
+      &:before{
+        top: 0;
+        left: 0;
+        content:'';
+        width: 73px;
+        height: 73px;
+        border: 2px solid $white;
+        border-radius: 50px;
+        position: absolute;
+        clip: rect(0px, 39px, 100px, 0px);
+        @include transition(all 0.3s linear);
+        @include transform(translateZ(0px));
+      }
+      &:after{
+        top: 0;
+        left: 0;
+        content:'';
+        width: 73px;
+        height: 73px;
+        border: 2px solid $white;
+        border-radius: 50px;
+        position: absolute;
+        clip: rect(0px, 39px, 100px, 0px);
+        @include transform(translateZ(0px));
+      } 
+    }
+    &[data-anim~=smaller]{
+      @include transition(all 0.3s linear);
+      top: 6px;
+      left: 6px;
+      position: absolute;
+
+      &:before{
+        top: 0;
+        left: 0;
+        content:'';
+        width: 61px;
+        height: 61px;
+        border: 4px solid $white;
+        border-radius: 50px;
+        position: absolute;
+        clip: rect(0px, 31px, 100px, 0px);
+        @include transition(all 0.3s linear);
+        @include transform(translateZ(0px));
+      }
+      &:after{
+        top: 0;
+        left: 0;
+        content:'';
+        width: 61px;
+        height: 61px;
+        border: 4px solid $white;
+        border-radius: 50px;
+        position: absolute;
+        clip: rect(0px, 31px, 100px, 0px);
+        @include transform(translateZ(0px));
+      } 
+    }
+  } 
+  // .wrapper-circle[data-anim~=wrapper] {
+  //   clip: rect(auto, auto, auto, auto);
+  // } 
+}
+
+@mixin hotspot{
+  .hotspot{
+    @include transition(all 0.3s ease-out);
+    @include transform(translateZ(0px));
+    position:absolute;
+    cursor:pointer;
+    width: 30px;
+    height: 30px;
+
+    &:hover{
+      @include transform(translate( 0% , 0% ) scale( 1.5 ));
+    }
+
+    &:after,
+    &:before{
+      position:absolute;
+      content:"";
+    }
+    &:before{
+      width:26px;
+      height:26px;
+      border:2px solid $white;
+      @include border-radius(9em);
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+    &:after{
+      @include border-radius(9em);
+      background: rgba(255,255,255,0.50);
+      width:14px;
+      height:14px;
+      top: 6px;
+      bottom: 0;
+      right: 0;
+      left: 6px;
+    }
+  }
+}
+
+@mixin breakpoint($point) {
+ 
+  @if $point == phonePortrait {
+    @media // iPhone (portrait and landscape)
+    handheld,
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (max-width: #{$bp-iphone-max})
+                  and (min-width: #{$bp-iphone-min}){
+      @content;
+
+    }
+  } @else if $point == phoneLandscape {
+    @media (max-width: 480px) {
+      @content;
+    }
+  } @else if $point == tabletPortrait {
+    @media (max-width: 800px) {
+      @content;
+    }
+  } @else if $point == tabletLandscape {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $point == tentwentyfour {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $point == desktop {
+    @media (max-width: 1170px) {
+      @content;
+    }
+  }  @else if $point == wideDesktop {
+    @media (min-width: 1300px) {
+      @content;
+    }
+  } 
+   @else if $point == extraWideDesktopMenuOpen {
+    @media (min-width: 1600px) {
+      @content;
+    }
+  }
+}
+  
+@mixin ellipsis() {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: $ellipsis-font-size*$ellipsis-line-height*$ellipsis-lines-to-show; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: $ellipsis-font-size;
+  line-height: $ellipsis-line-height;
+  -webkit-line-clamp: $ellipsis-lines-to-show;
+  -moz-line-clamp: $ellipsis-lines-to-show;
+  @include box-orient (vertical);
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  line-clamp: 2;
+}
+  
+@mixin scrolltotop(){
+  padding: 18px 7%;
+  @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+  background: $orange;
+  position: relative;
+  z-index:1;
+  width: 100%;
+  @include transition(opacity 0.3s ease-out);
+  font-family:$font-ICLPRegular;
+  text-transform: uppercase;
+  margin: 20px 0 100px 0;
+  display: inline-block;
+
+  &:hover{
+    color:$white;
+  }
+  &:after{
+    content:"";
+    position:absolute;
+    background: url(../assets/images/arrow.png) no-repeat 0 center ;
+    right:10%;
+    top:9px;
+    width: 11px;
+    height:35px;
+    @include transform(translateZ(0px) rotate(-90deg));
+    @include transition(opacity 0.3s ease-out);
+  }
+ 
+  &:focus:after,
+  &:hover:after{
+    opacity: 0.85;
+  }
+  @include breakpoint(phonePortrait) {
+    margin-bottom: 50px;
+  }
+}
+  
+@mixin banner(){
+
+  .item{
+    display: table-cell;
+    position:relative;
+    width: 50.133333%;
+    vertical-align: bottom;
+
+    @include breakpoint(phonePortrait) {
+      display: inline-block;
+      width: 100%;
+    }
+    > a{
+      color:$link;
+      display: block;
+      figure{
+        overflow: hidden;
+        max-height: 560px;
+        position:relative;
+
+        @include breakpoint(tabletPortrait) {
+          height: 346px;
+        }
+        @include breakpoint(phonePortrait) {
+          height: auto;
+        }
+ 
+        > span.image {
+          position:relative;
+          padding-top:82%;
+          display: block;
+          overflow: hidden;
+          &:before{
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top:0;
+            left:0;
+            background: rgba(0,0,0,0);
+            @include transition(all 0.35s ease-out);
+            @include transform(translateZ(0px));
+            z-index: 1;
+            @include breakpoint(tabletPortrait) {
+              background: rgba(0,0,0,0.4);
+            }
+          }
+           
+          @include breakpoint(tabletPortrait) {
+            padding-top:100%;
+          }
+          @include breakpoint(phonePortrait) {
+            padding-top:90%;
+          }
+
+          img{
+            width:100%;
+            position:absolute;
+            top:0;
+            left:0;
+            display: block;
+            height: auto;
+            line-height: 0;
+          }
+        } 
+        figcaption{
+          position: absolute;
+          top: 0%;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+
+          @include breakpoint(phonePortrait) {
+          }
+
+          h2{
+            text-transform: uppercase;
+            color: $white;
+            width:100%;
+            text-align: center;
+            padding: 30% 0 12px 0;
+            display: block;
+            font-size: 26px;
+            @include breakpoint(tabletPortrait) {
+              font-size: 22px;
+            }
+            @include breakpoint(phonePortrait) {
+              padding: 15% 0 12px 0;
+            }
+          }
+          p{
+            width:50%;
+            text-align: center;
+            display: block;
+            position: relative;
+            padding-top: 12px;
+            margin:auto;
+            font-family: $font-ICLPRegular;
+            font-weight:300;
+            @include breakpoint(tabletPortrait) {
+              width: 100%;
+              padding: 12px 20px 0 20px;
+              font-size: 15px;
+            }
+
+            &:before{
+              content:'';
+              position:absolute;
+              left:10%;
+              top:0px;
+              width:80%;
+              height: 1px;
+              background:$white;
+              @include breakpoint(tabletPortrait) {
+                width:70%;
+                left:15%;
+              }
+            }
+          }
+
+          span.findoutmore{
+            border: 1px solid $white;
+            @include border-radius(3px);
+            padding: 10px 40px;
+            margin:20px auto;
+            text-align: center;
+            display: table;
+            color: $white;
+            text-transform: uppercase;
+            font-family: $font-ICLPblack;
+            font-weight:900;
+            @include transition (all 0.3s ease-out);
+
+            &:hover{
+              background: rgba(0,0,0,0.2);
+            }
+
+            @include breakpoint(tabletPortrait) {
+              font-size: 14px;
+            } 
+          } 
+        }
+
+
+      }
+      &:focus figure span:before,
+      &:hover figure span:before{
+        background: rgba(0,0,0,0.4);
+      }
+      &:hover figcaption span.findoutmore{
+        background: rgba(0,0,0,0.2);
+      }
+    }
+    &:first-child{
+      @include breakpoint(phonePortrait) {
+        a figure figcaption h2{
+          padding: 15% 0 12px 0;
+        }
+      }
+    }
+  }
+}
+ 
+@mixin input(){
+  display: block;
+  border:0px;
+  vertical-align: middle;
+  line-height: 1.42857;
+  padding: 0px 10px 0 10px;
+  @include transition (all 0.3s ease-out);
+  text-align: left;
+  color:$white;
+  
+  &[type="email"],
+  &[type="number"],
+  &[type="tel"],
+  &[type="search"],
+  &[type="text"]{
+    font-weight: normal;
+    background-image: none;
+    font-family: $font-family;
+    font-size:18px;
+    background-color:rgba(255,255,255,0.02);
+    width: 100%;
+    height:46px;
+    color:$white;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+  }
+ 
+    &.focus,
+    &:hover,
+    &:focus{
+      background:rgba(255,255,255,0.04);
+      color:$white;
+
+    }
+}
+ 
+@mixin search-box(){
+ position:relative;
+ float:left;
+ z-index:1;
+ label{
+    position:absolute;
+    right:10px;
+    top:6px;
+    @include sprite-background(0, 0);
+    display: block;
+    text-indent:-9999em;
+    width:  18px;
+    height: 18px;
+    @include breakpoint(phonePortrait) {
+      top:0;
+    }
+  }
+  input{
+    @include input;
+    padding: 0px 30px 0 10px;
+  }
+}
+
+@mixin pin() {
+  input[type=checkbox] {  
+    display: none;  
+  }
+
+  input[type=checkbox] + label.selected,
+  input[type=checkbox]:checked + label.selected{
+    &:before{
+      position:absolute;
+      content: "";
+      left:4px;
+      top:25px;
+      @include sprite-background(-190px, 0px);
+      width: 21px;
+      height: 21px;
+      z-index: 2;
+    }
+    &:after{
+      position:absolute;
+      content: "";
+      left: 0;
+      top:21px;
+      background:$white;
+      width: 21px;
+      height: 21px;
+      @include roundcorners (6em);
+    }
+  }
+
+  input[type=checkbox] + label {  
+    &:before{
+      position:absolute;
+      content: "";
+      background:none;
+      left:4px;
+      top:24px;
+    }
+    &:after{
+      @include transition (all 0.3s ease-out);
+      position:absolute;
+      content: "";
+      left:0px;
+      top:21px;
+      background:none;
+      border:2px solid $white;
+      width: 21px;
+      height: 21px;
+      @include roundcorners (6em);
+    }
+  } 
+ 
+} 
+  
+
+@mixin fadein(){
+  opacity:0;
+   -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+   filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  @include animation(fadeIn ease-in 1) ;
+  @include animation-fill-mode(forwards);
+  @include animation-duration(1s);
+  @include animation-delay(1.2s);
+}
+
+@-webkit-keyframes fadeIn {
+from {
+    opacity:0;
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+  }
+to {
+    opacity:1;
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+  }  
+}
+@-moz-keyframes fadeIn { 
+from {
+    opacity:0;
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+  }
+to {
+    opacity:1;
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+  } 
+}
+@-ms-keyframes fadeIn { 
+from {
+    opacity:0;
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+  }
+to {
+    opacity:1;
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+  } 
+}
+@keyframes fadeIn { 
+from {
+    opacity:0;
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+  }
+to {
+    opacity:1;
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+  } 
+}
+
+

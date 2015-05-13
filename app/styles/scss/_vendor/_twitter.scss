@@ -1,0 +1,24 @@
+// Twitter
+
+.follow-button{color:' + $follow_button_link_color + ' !important;}
+.timeline-header{background:' + $header_background + '; border-radius:' + $border_radius + ' ' + $border_radius + ' 0px 0px;}
+.timeline-header h1 a{color:' + $header_text_color + ' !important;}
+.ic-mask{display:none;}
+ol.h-feed li .footer,.hashtag.customisable,span.tco-display{display:none;}
+ol.h-feed{width:100%;display:table;margin:auto;padding:50px 0;}
+li.h-entry.tweet{display:table-cell; position:relative;width:40%; padding:30px 60px 10px 60px;margin:0!important;color:#616365}
+@media (max-width: 320px) {li.h-entry.tweet{width:40%; padding:30px 20px 10px 20px;}
+
+
+
+li.h-entry.tweet .header{display:none;}
+li.h-entry.tweet:hover{color:#45a9c6;}
+.tweet .e-entry-title{text-align:center;display:block;}
+p.e-entry-title{ margin:0;}
+.u-photo{display:none!important;}
+li.h-entry.tweet img.twitter-logo{position:absolute;top:-13px;left: 42%;}
+.p-name{display:none;}
+.customisable-border{border-color:' + $border_color + ' !important;}
+span.p-nickname, .u-url, .expand{display:none;}
+.load-more, .no-more-pane {background-color:' + $load_more_background + ' !important; color:' + $load_more_text_color + '!important;}
+.retweet-credit{color:' + $subtext_color + ' !important;}

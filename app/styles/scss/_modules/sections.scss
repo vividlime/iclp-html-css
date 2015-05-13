@@ -1,0 +1,458 @@
+.sections{
+	> section{
+		clear:both;
+		width: 100%;
+		&.angle{
+			position: relative;
+			margin-bottom: -112px;
+			padding-bottom: 112px;
+			background: $white;
+ 
+		 	&:after{
+				content: '';
+				position: absolute;
+				width: 100%;
+				height:126px;
+				bottom:10%;
+				left:0;
+				@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+				@include transition(opacity 0.3s ease-out);
+				background: $white;
+				z-index: 1;
+
+				@include breakpoint(phonePortrait) {
+					height: 30px;
+					bottom: 23%;
+				}
+			}	
+		}
+ 
+		&.head{
+			.head-container{
+				.head-theme{
+					.headings{
+						position: relative;
+						height: 100%;
+						width: 100%;
+						padding: 0;
+						>h1{
+							max-width: 570px;
+							position: relative;
+							overflow: hidden;
+							z-index: 4;
+							text-align: center;
+							margin:auto;
+							padding: 6% 0% 0% 0%;
+
+							@include breakpoint(tabletPortrait) {
+								 font-size:36px;
+								 padding: 10% 0% 24% 0%;
+							}
+							@include breakpoint(phonePortrait) {
+								font-size:30px;
+								padding: 10% 0% 42% 0%;
+							}
+						}
+						>h2{
+							max-width: 460px;
+							text-align: center;
+							margin: auto;
+							position: relative;
+							z-index: 4;
+							padding: 0% 0% 14% 0%;
+							@include breakpoint(tabletPortrait) {
+								display: none;
+							}
+						}
+
+						>h3{
+							font-family: $font-ICLPlight;
+							font-weight:300;
+							font-size: 26px;
+							text-align: center;
+							display: block;
+							margin: auto;
+							position: relative;
+							z-index: 4;
+							padding: 30px 16% 45px 16%;
+							background: $white;
+							@include breakpoint(tabletPortrait) {
+								padding: 0% 20px 12% 20px;
+							} 
+							@include breakpoint(phonePortrait) {
+								font-size:24px;
+								line-height: 1.2em;
+							}
+						}
+ 
+						&.theme{
+							overflow: hidden;
+							.ring{
+								position: absolute;
+								top: 0;
+								height: 100%;
+								width: 100%;
+								@include breakpoint(tabletPortrait) {
+									height: 79%;
+								}
+								@include breakpoint(phonePortrait) {
+									height: 60%;
+								}
+								&:before{
+									content: "";
+									position: absolute;
+									top:0;
+									left:0;
+									width: 100%;
+									height: 100%;
+									z-index: 2;
+									background-size: cover;
+									background-repeat: no-repeat;
+									background-position: center 0;
+									background-size: 100%;
+									@include breakpoint(phonePortrait) {
+										background-position: center top;
+										@include transform (rotate(180deg));
+										background-size: 172%;
+									}						 
+								}
+							}
+						}
+						&.imagery{
+							padding: 230px 0% 0% 0%;
+							@include breakpoint(phonePortrait) {
+								padding: 150px 0% 0% 0%;
+							}
+							.ring{
+								position: absolute;
+								top: 0;
+								height: 400px;
+								width: 1170px;
+								@include breakpoint(phonePortrait) {
+									height: 90px;
+								}
+								&:before{
+									content: "";
+									position: absolute;
+									top:0;
+									left:0%;
+									width: 100%;
+									height: 100%;
+									z-index: 1;
+									background-size: cover;
+									background-size: 100%;
+									background-position:center 100%;
+									background-repeat:  no-repeat;
+
+									@include breakpoint(tabletPortrait) {
+											background-position:center 100%;
+										}
+										@include breakpoint(phonePortrait) {
+											background-position: 0px 52%;
+											background-size: 42%;
+										}
+								}
+							}
+							.titles{
+								position: relative;
+								margin-top: 10px;
+								padding: 0px 16% 0px 16%;
+								background: $white;
+								display: block;
+								position: relative;
+								z-index: 4;
+								@include breakpoint(tabletPortrait) {
+									margin-top: -10px;
+									padding: 0px 20px -10px 20px;
+								}
+
+								&:before{
+										content: '';
+										position: absolute;
+										width: 100%;
+										height:280px;
+										top:-76px;
+										left:0;
+										@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+										background: $white;
+										@include transition(all 0.9s ease-out);
+										opacity: 1;
+								}
+								&:after{
+									content: '';
+									position: absolute;
+									width: 100%;
+									height:280px;
+									bottom:-76px;
+									left:0;
+									@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+									background: $white;
+									@include transition(all 0.9s ease-out);
+									opacity: 1;
+								}
+								h1{
+									position: relative;
+									display: block;
+									text-align: center;
+									z-index: 1;
+									padding-bottom: 10px;
+									&.client{
+										margin:0px auto;
+										padding:0;
+										text-align: center;
+										display: table; //important as keeps the width of the image 50%
+										position: relative;
+										z-index: 5;
+										img{
+											margin:0 auto;
+											display: block;
+											width: 50%;
+											height: auto;
+										}
+									}
+								}
+								h2{
+									font-size: 24px;
+									position: relative;
+									font-family: $font-ICLPlight;
+									font-weight:300;
+									text-align: center;
+									display: block;
+									z-index: 1;
+									text-transform: inherit;
+									@include breakpoint(phonePortrait) {
+										line-height: 1.2em;
+									}
+								}
+								h3{
+									font-style: italic;
+									font-family: $font-ICLPblack;
+									font-weight:900;
+									background: $white;
+									font-size: 18px;
+									text-align: center;
+									display: block;
+									position: relative;
+									z-index: 1;
+									padding: 50px 0 12px 0;
+									&:before{
+										top: 25px;
+										left:0;
+										width: 100%;
+										content: "";
+										position: absolute;
+										height: 1px;
+									}
+								}
+								blockquote{
+									text-align: center;
+									display: block;
+									position: relative;
+									z-index: 1;
+									font-size: 17px;
+									padding: 12px 0;
+								}
+
+							}
+						}
+
+						  
+						> img{
+								position: absolute;
+								top:0;
+								left:0;
+								width: 100%;
+								height: auto;
+								z-index: 2;
+								@include breakpoint(phonePortrait) {
+									display: none;
+								}
+						}
+ 
+						.angle{
+							position: relative;
+							background: $white;
+							padding: 0px 0%;
+							&:before{
+								content: '';
+								position: absolute;
+								width: 100%;
+								height:186px;
+								top:-76px;
+								left:0;
+								@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+								background: $white;
+								z-index: 4;
+								@include transition(all 0.9s ease-out);
+								opacity: 1;
+							}
+ 
+							.breadcrumb{
+								top: -107px;
+								z-index: 5;
+							}
+						}
+						
+					}
+				}
+			}
+		}
+
+		//services //clients //whatwedo
+		&.copy-content{ 
+				&:before{
+					@include breakpoint(tabletPortrait) {
+						display: none;
+					}
+					@include breakpoint(phonePortrait) {
+						display: none;
+					}
+				}
+				&.imagery{
+					&:before{
+						background-image: none!important;
+					}
+				}
+				.copy{
+					padding: 100px 0px 100px 9%;
+
+					@include breakpoint(tabletPortrait) {
+						padding: 50px 0px 50px 9%; 
+					}
+					 
+					&:nth-child(odd){
+						overflow: hidden;
+						position: relative;
+					}
+					position: relative;
+					overflow: hidden;
+
+					img{
+						position:absolute;
+						z-index: 1;
+						left: 50%;
+						margin-left: 162px;
+						width: 50%;
+						height: auto;
+						bottom:0;
+
+
+						@include breakpoint(tabletPortrait) {
+							display: none;
+						}
+					}
+					&.result{	
+					 &:before{
+						content: "";
+						position: absolute;
+						top:0;
+						left:0%;
+						width: 100%;
+						height: 100%;
+						z-index: 1;
+						background-size: cover;
+						background: url(../assets/images/svg/Clients-Section-Results-JourneyCurve.svg) 50% 0% no-repeat;
+						background-size: 100%;
+						@include breakpoint(tabletPortrait) {
+							display: none;
+						}
+
+					 }
+					}
+					h2{
+						font-family:$font-ICLPblack;
+						position: relative;
+						z-index: 1;
+						color:$red;
+						padding-right: 50%;
+						padding-bottom: 18px;
+						@include breakpoint(tabletPortrait) {
+							padding: 12px 0 12px 0;
+		        }
+					}
+					ul{
+						li{
+							display: block;
+							position: relative;
+							z-index: 1;
+							line-height: 1.5em;
+							font-size: 17px;
+							color:$grey;
+							padding-right: 50%;
+							padding-bottom: 6px;
+							padding-left: 30px;
+							@include breakpoint(tabletPortrait) {
+								padding: 0 0 6px 20px;
+								font-size: 18px;
+							}
+							&:before{
+								position: absolute;
+								content: ".";
+								font-size: 40px;
+								top:-12px;
+								left:0;
+								@include border-radius(10%);
+								color: $grey;
+							}
+						}
+					}
+					p{
+						position: relative;
+						z-index: 1;
+						color:$grey;
+						max-width: 650px;
+						line-height: 1.7em;
+						margin-right: 35%;
+						font-weight: 300;
+
+						& + p{
+							padding-top: 18px;
+						}
+
+
+
+
+						@include breakpoint(wideDesktop) {
+							max-width: 700px;
+		        }
+						 
+
+						@include breakpoint(tabletPortrait) {
+							padding-right: 4%;
+							margin-right: 0%;
+							font-size: 18px;
+		        }
+					}
+					@include breakpoint(phonePortrait) {
+						background-image: none;
+						padding: 20px;
+	        }
+				}
+			}
+
+
+
+		&.angle-top-end{
+			position: relative;
+			margin-top: 16px;
+		}
+  
+
+		&.contact-container{
+			padding-bottom: 80px;
+		}
+		&.angle-top-end{
+			padding-top: 90px;
+			margin-top: 26px;
+		}
+	}
+	&#contact-form{
+		top: 63px;
+		@include breakpoint(phonePortrait) {
+      top:48px;
+    }
+	}
+}
+
+
+
