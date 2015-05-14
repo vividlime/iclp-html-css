@@ -5,76 +5,58 @@
 			&.head{
 				.head-container{
 					.head-theme{
+						@include BlueCircle;
 						.headings{
-							&.theme{
-								.ring{
+ 
+							h1{
+								&.imagery{
+ 									&:after{
+										background:  url(../assets/images/hero-imagery-whatwedo.png) 0 center no-repeat;
+									}
 									&:before{
-										background-image: url(../assets/images/svg/Banner-WhatWeDo-JourneyCurve-L1.svg);
+										background: url(../assets/images/svg/small-ring-red.svg) 50% 50% no-repeat;
+										background-size: 79%;
 									}
 								}
 							}
+							.angle{
+								h2{
+									&:before{
+										content: "\e076";
+									}
+								} 
+							}
 							h3{
-								color: $darker-blue;
+								color: $grey;
 							}
 						}
 					}
+					
 				}
 			}
 			&.hero-whatwedo{
- 				background-size: cover;
+				background: url(../assets/images/hero-whatwedo.jpg) no-repeat 0 0 ;
+				background-size: cover;
 				position: relative;
-				padding: 0px 9% 0px 9%;
+				padding: 19.2% 0;
 				@include transition((opacity 0.3s ease-out));
 				opacity: 0.95;
 				z-index: 1;
-				height: 450px;
-				overflow: hidden;
-				background:$lighter-grey;
-
-
 				&:hover{
 					opacity: 1;
 				}
-				&.active{
-					opacity: 1;
-					height: 100%;
-					h2.play{
-						opacity: 0;
-					}
-					a.video-content{
-						z-index: -1;
-						background: rgba(0,0,0,0);
-					}
-				}
  
-				a.video-content{
+				a.pane-content{
 					position: absolute;
 					top: 0;
-					height: 450px;
-					width: 82%;
+					height: 100%;
+					width: 100%;
 					padding: 0;
-					opacity: 0.90;
-					@include transition((all 0.3s ease-out));
-					z-index: 1;
-					background: rgba(0,0,0,0.4);
-
-					@include breakpoint(phonePortrait) {
-						width: 100%;
-					}
-					
 				}
-  
 				h2{
 					position: absolute;
 					top: 30%;
-					span{
-						@include breakpoint(phonePortrait) {
-							text-indent: -99em;
-							display:block;
-						}
-					}
 				}
-
 				@include breakpoint(phonePortrait) {
 					padding: 0;
 					height: 200px;
@@ -85,17 +67,48 @@
 			}
 			&.copy-content{
 				&:before{
-					background-image: url(../assets/images/svg/WhatWeDo-Body-JourneyCurve.svg);
-					 
+					background-image: url(../assets/images/svg/large-ring.svg);
+					@include breakpoint(phonePortrait) {
+						left: -140px;
+						top: -40px;
+						width: 210%;
+					}
 				}
 
-				.copy{ 
-					&:nth-child(even){
+				.copy{
+					padding: 38px 0px 38px 110px; 
+					&:nth-child(odd){
 						background:$lighter-grey;
-					}
+					} 
+
 					h2{
-						color: $darker-blue;
+						font-family: $font-ICLPblack;
+						color:$darker-blue;
+						padding-right: 50%;
+						padding-bottom: 18px;
+						padding-top: 40px;
+						@include breakpoint(phonePortrait) {
+							padding-right: 0%;
+							font-family: $font-ICLPblack;
+		        }
 					}
+					p{
+						line-height: 1.7em;
+						font-size: 17px;
+						color:$grey;
+						padding-right: 50%;
+						padding-bottom: 40px;
+						font-family: $font-ICLPlight;
+						@include breakpoint(phonePortrait) {
+							padding-right: 0%;
+							font-size: 16px;
+		        }
+					}
+					@include breakpoint(phonePortrait) {
+						background-image: none;
+						padding: 20px;
+
+	        }
 				}
 			}
 			&.hero-industrysectors{
@@ -116,6 +129,7 @@
 						padding:0px 0 12px 0;
 					}
 					p{
+						font-size: 17px;
 						display: block;
 						text-align: center;
 						padding:0 0 12px 0;

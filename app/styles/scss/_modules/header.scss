@@ -1,5 +1,4 @@
 body{
-
   header.header{
   	width: 100%;
   	margin: 0 auto;
@@ -7,11 +6,13 @@ body{
     top: 0;
     right: 0;
   	z-index:10;
-    @include transition((all 0.3s ease-out));
-     
+    @include transition((width 0.3s ease-out));
+    @include breakpoint(phonePortrait) {
+      
+    }
     
      #sidebar-toggle{ 
-      left:0;
+      left: 0;
       width: 40px;
       top:0;
       position:absolute;
@@ -20,11 +21,10 @@ body{
       display:block;
       @include transition((all 0.3s ease-out));
       @include transform (translateX(20px) translateY(20px) translateZ(0px) rotate(0deg));
-        
-        @include breakpoint(tabletPortrait) {
-          width: 30px;
-          @include transform (translateX(12px) translateY(12px) translateZ(0px) rotate(0deg));
-        }
+      @include breakpoint(tabletPortrait) {
+        width: 30px;
+        @include transform (translateX(12px) translateY(12px) translateZ(0px) rotate(0deg));
+      }
  
         > div{
           padding:0px;
@@ -55,7 +55,9 @@ body{
          .browse{
           opacity: 1;
          }
-        }     
+        }
+   
+        
     }
     
   	.outer{
@@ -77,47 +79,34 @@ body{
   			.logo-container{
   				display:block;
   				position: relative;
-  				width:126px;
+  				width:116px;
   				margin:0px auto 0 auto;
 
-          
+          @include breakpoint(tabletPortrait) {
+            padding-top: 8px;
+          }
  
   				h1{
   					display:block;
-            position: relative;
-            height: 51px;
-            width: 126px;
-            padding-top: 6px;
-            @include breakpoint(tabletPortrait) {
-              padding: 0;
-            }
   					a{
   						margin:auto;
   						display:block;
-  						width:100%;
-              position: absolute;
-              top:0;
-              left:0;
-              height: 100%;
-              z-index: 4;
-              
-                @include breakpoint(tabletPortrait) {
-                  
-                  padding-top: 0px;
-                }
-              }
-						embed{
-              height: 51px;
-              width: 126px;
+  						width: 116px;
               @include breakpoint(tabletPortrait) {
-                @include transform (scale(0.9));
+                width: 100px;
               }
-						}
+
+  						img{
+  							width:100%;
+                height: auto;
+  						}
+  					}
   				}
   			}
         .cta{
           position: absolute;
           right:20px;
+          //top:calc(50% / 2 - 0px);
           top:3px;
           @include breakpoint(tabletPortrait) {
             right:12px;
@@ -126,7 +115,7 @@ body{
             display: inline-block;
             padding: 0 16px;
             @include breakpoint(tabletPortrait) {
-              padding: 0 10px;
+              padding: 0 4px;
             }
             &:first-child{
               padding-left: 0;
@@ -160,7 +149,7 @@ body{
                 }
               }
               &:hover:before{
-                color:$grey;
+                color:$grey
               }
               &.selected{
                 &:after{
@@ -172,18 +161,13 @@ body{
                   height: 53px;
                   width: 40px;
                   left: -6px;
-                  
                 }
                 &:before{
                   color:$white;
                 }
-
                 &:hover:before{
-                  color:$white;
-                  @include breakpoint(phonePortrait) {
-                    color:$grey;
-                  }
-                } 
+                  color:$white
+                }
               }
 
 
@@ -193,23 +177,6 @@ body{
                 &:before{
                   @include transform (rotate(-90deg));
                   content: "\e048";
-                }
-                &.selected{
-                  &:after{
-                    @include breakpoint(phonePortrait) {
-                      display: none;
-                    }
-                  }
-                  &:before{
-                    @include breakpoint(phonePortrait) {
-                      color:$grey;
-                    }
-                  }
-                  &:hover:before{
-                  @include breakpoint(phonePortrait) {
-                      color:$grey;
-                    }
-                  }
                 }
               }
               &.Languages{
@@ -261,9 +228,6 @@ body{
     display: block;
     opacity: 1;
     top: 64px;
-    @include breakpoint(tabletPortrait) {
-      top: 50px;
-    }
   }
 
   .header-close{
@@ -283,7 +247,7 @@ body{
     }
     &:after{
       right: 20px;
-      font-size: 21px;
+      font-size: 1.5em;
     }
   }
 
@@ -292,13 +256,11 @@ body{
       h2{
         margin-top:0;
         font-size: 22px;
-        padding:0 0 18px 0;
+        padding:0 0 6px 0;
         text-align: left;
-        &:after,
         &:before{
           display: none;
         }
-
         .wrapper-circle{
           display: none;
         }
@@ -309,9 +271,6 @@ body{
         text-align: left;
         padding-bottom: 12px;
         position: relative;
-        @include breakpoint(tabletPortrait) {
-          width: 100%;
-        }
       }
 
       form.form{
@@ -329,7 +288,7 @@ body{
             }
             fieldset{
               width: 100%;
-              >div{
+              div{
                 width: 100%;
                 border-bottom: 1px solid #fff;
                 margin-bottom: 10px;
@@ -339,40 +298,16 @@ body{
                 label{
                   position: absolute;
                   top: 7px;
+                  &.search{
+                    right: 30px;
+                  }
                 }
                 input{
                   font-size: 16px;
                   height: 32px;
-                  &.search{
-                    cursor: pointer;
-                    width:24px;
-                    height: 22px;
-                    font-size: 0;
-                    position: absolute;
-                    top: 3px;
-                    right: 3px;
-                    background: none;
-                    -webkit-appearance: button;
-                    @include transition((all 0.3s ease-out));
-                    color:$dark-grey;
-                    background-image: url(../assets/images/search.png);
-                    background-position: 0 0;
-                    background-repeat: no-repeat;
-                    opacity: 0.90;
-                    &:hover{
-                      opacity: 1;
-                    }
-                  }
                 }
                 textarea{
                   height: 80px;
-                }
-                select{
-                  width: 89%;
-                  height:32px;
-                }
-                &.country{
-                  height:32px;
                 }
                 &.buttons{
                   border-bottom:0;
@@ -384,28 +319,9 @@ body{
                 }
                 &.checkboxes{
                   border: 0;
-                  margin: 0px 0 12px 0;
-                  padding:0px;
-                  display: inline-block;
+                  margin-bottom: 0px;
                   label{
-                    font-size: 12px;
-                    position: relative;
-                    top:0;
-                    left:0;
-                    padding: 2px 0 2px 0;
-                    float: left;
-                    color:$white;
-                    display: inline-block;
-                    line-height: 1.1em;
-                    &:before{
-                      display: none;
-                    }
-                    input[type=checkbox]{
-                      float: left;
-                      height: auto;
-                      margin: 4px 10px 23px 0;
-                      padding: 0;
-                    }
+                    font-size: 14px;
                   }
                 }
               }
@@ -435,21 +351,14 @@ body{
     header.header{
       width:calc(100% - (320px));
       @include breakpoint(tabletPortrait) {
-        @include transform (translate3d(320px, 0, 0));
+
+        @include transform (translateX(320px));
         width: 100%;
       }
 
       #sidebar-toggle{
-        @include transform (translateX(10px) translateY(13px) translateZ(0px) rotate(-90deg));
+        @include transform (translateX(10px) translateY(20px) translateZ(0px) rotate(-90deg));
       }
     }
   }
 }
-
-
-body header.header .Contact-div.open {
-  @include breakpoint(phonePortrait) {
-    display: none;
-  }
-}
- 

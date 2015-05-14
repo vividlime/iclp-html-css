@@ -1,14 +1,10 @@
 body{
-.navigation-wrap{
-  position:fixed;
-  height: 100%;
-  z-index: 6;
-  visibility: hidden;
-  width: 320px;
-  top:0;
-  left:0;
-  @include transition((all 0.3s));
 
+.navigation-wrap{
+  z-index: 9;
+  position:fixed;
+  width: 0;
+  height: 100%;
 
   span.overlay{
     position:fixed;
@@ -36,31 +32,29 @@ body{
 
   .container-navigation{
     position: absolute;
-    @include transform (translate3d(-320px, 0, 0));
+    transform: translate3d(-320px,0,0);
     top:0;
     bottom:0;
-    width: 100%;
+    width: 320px;
     height:100%;
     display: inline-block;
     @include transition((all 0.3s ease-out));
-  
+     
     .navigation{
       width:100%;
       height: 100%;
       display: inline-block;
       position: absolute;
-      top: 0;
+      bottom: 0;
       background-color:$blue;
       box-shadow:-10px 0px 20px rgba(3, 4, 4, 0.22) inset;
-      overflow: hidden;
+
       
       .menu{
+        overflow: hidden; 
         position:relative;
         float: left;
-        height: 100%;
-        width: 100%;
         @include transition(all .5s ease);
-        overflow: auto;
 
         .close-menu{
           background: $dark-blue;
@@ -73,14 +67,15 @@ body{
           text-transform: uppercase;
           font-size: 15px;
           @include transition((all 0.3s ease-out));
-          font-family:$font-ICLPblack;
         }
         
          ul{
           position: relative; 
           display: inline-block;
           width: 100%;
-          padding: 0;           
+          padding: 0;
+ 
+            
           li{
             float:left;
             width: 100%;
@@ -88,7 +83,7 @@ body{
             a{
               padding: 22px 0px 22px 77px;
               position:relative;
-              font-family:$font-ICLPblack;
+              font-family:$font-ICLPRegular;
               display: inline;
               float:left;
               width: 100%;
@@ -117,7 +112,7 @@ body{
               }
               &.whatwedo{
                 &:before{
-                  content: "\e08a";
+                  content: "\e076";
                 }
               }
               &.clients{
@@ -204,10 +199,10 @@ body{
      
 }
 
-   &.open-sidebar{
-    width: 100%;
-    .navigation-wrap{
-      visibility: visible;
+ &.open-sidebar{
+      width: 100%;
+
+      
       span.overlay{
         width: 100%;
         height: 100%;
@@ -216,9 +211,9 @@ body{
         }
       }
       .container-navigation{
-        @include transform (translate3d(0px, 0, 0));
-      }
-    }
+        transform: translate3d(0,0,0);
+         
+     }
 
+    }
   }
-}

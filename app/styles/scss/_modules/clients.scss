@@ -5,38 +5,124 @@
 				.head-container{
 					.head-theme{
 						.headings{
-							
-							&.theme{
-								padding: 0 0 21px 0;
-								.ring{
+							h1{
+								position: relative;
+								&.imagery{
+									&:after{
+										background-image:url(../assets/images/hero-imagery-clients.jpg);
+									}
 									&:before{
-										background-image: url(../assets/images/svg/Banner-Clients-JourneyCurve-L1.svg);
+										display: none;
+									}
+								}
+								&:before{
+									content: "";
+									position: absolute;
+									top:0;
+									left:5%;
+									width: 90%;
+									height: 100%;
+									z-index: 1;
+									@include transform (translateX(0px) translateY(0px) translateZ(0px) rotate(0deg));
+									background-size: cover;
+									background: url(../assets/images/svg/small-ring-red.svg) 50% 50% no-repeat;
+									background-size: 79%;
+
+									@include breakpoint(phonePortrait) {
+										width:100%;
+										left:0;
+										background-size: 150%!important;
 									}
 								}
 							}
-							&.imagery{
-								background: $red;
-								.ring{
-									&:before{
-										background-image: url(../assets/images/svg/Banner-Clients-JourneyCurve-L2.svg);
-									}
-								}
-								.titles{
-									h1,h2,h3,blockquote{
-										color: $red;
-									}
-									h3{
-										&:before{
-											background: $red;
-										}
-									}
-								}
-							}					 
 							.angle{
 								&:before{
 									z-index: 2;
-								} 
-							} 
+								}
+								h2{
+									&:before{
+										content: "\e001";
+									}
+								}
+							}
+							h3{
+								color: $grey;
+								&.client{
+									padding: 10px 20% 10px 20%;
+
+								}
+								span{
+									font-style: italic;
+									color: $red;
+									z-index: 4;
+									position: relative;
+									display: block;
+									text-align: center;
+								}
+								&:before{
+									content: '';
+									position: absolute;
+									width: 100%;
+									height:280px;
+									top:-76px;
+									left:0;
+									@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+									background: $white;
+									@include transition(all 0.9s ease-out);
+									opacity: 1;
+								}
+								&:after{
+									content: '';
+									position: absolute;
+									width: 100%;
+									height:280px;
+									bottom:-76px;
+									left:0;
+									@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+									background: $white;
+									@include transition(all 0.9s ease-out);
+									opacity: 1;
+								}
+							}
+							span{
+								&.client{
+									margin-top: 15px;
+									padding: 10px 0% 10px 0%;
+									text-align: center;
+									display: block;
+									position: relative;
+									z-index: 5;
+								}
+						 
+								&.harrods{
+									img{}
+									//background: url(../assets/images/harrods.png) center 0 no-repeat;
+								}
+								&.img{
+									img{}
+									//background: url(../assets/images/img.png) center 0 no-repeat;
+								}
+								&.dhl{
+									img{}
+									//background: url(../assets/images/dhl.png) center 0 no-repeat;
+								}
+								&.saudiarabian{
+									img{}
+									//background: url(../assets/images/saudiarabian.png) center 0 no-repeat;
+								}
+								&.asiamiles{
+									img{}
+									//background: url(../assets/images/asiamiles.png) center 0 no-repeat;
+								}
+								&.manchesterutd{
+									img{}
+									//background: url(../assets/images/manchesterutd.png) center 0 no-repeat;
+								}
+								&.ghadiscovery{
+									img{}
+									//background: url(../assets/images/ghadiscovery.png) center 0 no-repeat;
+								}
+							}
 						}
 					}
 				}
@@ -45,7 +131,7 @@
  				position: relative;
 				padding: 0;
 				overflow: hidden;
-				margin-top: -92px;
+				margin-top: -50px;
 				z-index: 2;
 		
 				.wrapper{
@@ -54,7 +140,7 @@
 
 					&:first-child{
 						border-top: 1px solid $red;
-						margin-top: -8px;
+						margin-top: -2px;
 					}
 					&:last-child{
 						border-bottom: 0px solid $red;
@@ -94,6 +180,7 @@
 							}
 							a{
 								position: absolute;
+								overflow: hidden;
 								width: 100%;
 								height:100%;
 								border: 1px solid $red;
@@ -194,20 +281,20 @@
 										}
 
 									}
-									// &:hover{
-									// 	img{
-									// 		@include transform(translateY(-40px));
-									// 	}
-									// }
+									&:hover{
+										img{
+											@include transform(translateY(-40px));
+										}
+									}
  								}	
 								&.ghadiscovery{
 									border-bottom: 0;
 									figure{
 										img{
-											left:calc(50% - 196px /2);
-											top:calc(50% - 24px /2);
+											left:calc(50% - 148px /2);
+											top:calc(50% - 107px /2);
 											@include breakpoint(phonePortrait) {
-												@include transform(scale(0.8) translateX(51px) translateY(0));
+												@include transform(scale(0.8) translateX(17px) translateY(0));
 											}
 										}
 									}
@@ -217,10 +304,10 @@
 									border-bottom: 0;
 									figure{
 										img{
-											left:calc(50% - 204px /2);
-											top:calc(50% - 58px /2);
+											left:calc(50% - 94px /2);
+											top:calc(50% - 81px /2);
 											@include breakpoint(phonePortrait) {
-												@include transform(scale(0.8) translateX(47px) translateY(0));
+												@include transform(scale(0.8) translateX(17px) translateY(0));
 											}
 										}
 									}
@@ -241,8 +328,6 @@
 										position: absolute;
 										color:$grey;
 										bottom:0;
-										font-family: $font-ICLPRegular;
-font-weight:400;
 										&:before{
 									    content:'';
 									    position:absolute;
@@ -265,29 +350,17 @@ font-weight:400;
 							}
 						}
 					}
-
-					//wrapper:first-child
 					
 					&:first-child{
 						.colleft{
-							.wrap{
-								a{
-									height: $bigrow;
-								}
-							}
+							min-height: $bigrow;
 						}
 						.colright{
 							.row{
-								height: $bigrow / 2;
-								.wrap{
-									a{
-										height: $bigrow / 2;
-									}
-								}
+								min-height: $bigrow / 2;
 							}
 						}
 					}
-					//wrapper:last-child
 					&:last-child{
 						>div{
 							
@@ -329,30 +402,27 @@ font-weight:400;
 			}
 			&.copy-content{
 				&:before{
-					background: url(../assets/images/svg/Clients-Noimages-Body-JourneyCurve.svg) no-repeat 0 0;
-					 
-					background-repeat: no-repeat;
+					background-image: url(../assets/images/svg/large-ring-red.svg);
 					@include breakpoint(phonePortrait) {
 						left: -140px;
 						top: -40px;
 						width: 210%;
 					}
 				}
-				 
-				.copy{
-					width: 100%;
-					float: left;
-					min-height: 400px;
-
-					@include breakpoint(tabletPortrait) {
-						min-height: inherit;
+				&.imagery{
+					&:before{
+						background-image: none;
 					}
- 
+				}
+				.copy{
+					padding: 38px 0px 38px 110px;
 					&:first-child{
-						padding-top: 190px;
+						padding-top: 140px;
 					}
 					&:nth-child(odd){
 						background:$lighter-blue;
+						overflow: hidden;
+						position: relative;
 						&:after{
 							width: 100%;
 							height: 100%;
@@ -365,14 +435,105 @@ font-weight:400;
 					}
 					position: relative;
 					overflow: hidden;
-					 
-					 
-			 
-			   
+					img{
+						position:absolute;
+						z-index: 1;
+					}
+					&.introduction{
+						img{
+							right: 0;
+							bottom: 0;
+						}
+					}
+					&.challenge{
+						img{
+							right: 0;
+							bottom: 0;
+						}
+					}
+					&.insights{
+						img{
+							right: 0;
+							bottom: 0;
+						}
+					}
+					&.deliverables{
+						img{
+							right: 0;
+							bottom: 0;
+						}
+					}
+					&.result{
+						 &:before{
+							content: "";
+							position: absolute;
+							top:0;
+							left:5%;
+							width: 90%;
+							height: 100%;
+							z-index: 1;
+							@include transform (translateX(0px) translateY(0px) translateZ(0px) rotate(0deg));
+							background-size: cover;
+							background: url(../assets/images/svg/small-ring-red.svg) 50% 100% no-repeat;
+							background-size: 100%;
+							@include transform(rotate(180deg));
+						}
+					}
+					h2{
+						font-family:$font-ICLPblack;
+						position: relative;
+						z-index: 1;
+						color:$red;
+						padding-right: 50%;
+						padding-bottom: 18px;
+						padding-top: 40px;
+						@include breakpoint(phonePortrait) {
+							padding-right: 0%;
+		        }
+					}
+					ul{
+						line-height: 1.3em;
+						li{
+							line-height: 1.3em;
+							display: block;
+							position: relative;
+							z-index: 1;
+							line-height: 1.7em;
+							font-size: 17px;
+							color:$grey;
+							padding-right: 50%;
+							padding-bottom: 6px;
+							padding-left: 30px;
+							&:before{
+								position: absolute;
+								content: ".";
+								font-size: 40px;
+								top:-12px;
+								left:0;
+								@include border-radius(10%);
+								color: $grey;
+							}
+						}
+					}
+					p{
+						position: relative;
+						z-index: 1;
+						line-height: 1.7em;
+						font-size: 17px;
+						color:$grey;
+						padding-right: 50%;
+						padding-bottom: 40px;
+						@include breakpoint(phonePortrait) {
+							padding-right: 0%;
+							font-size: 16px;
+		        }
+					}
+					@include breakpoint(phonePortrait) {
+						background-image: none;
+						padding: 20px;
+	        }
 				}
 			}
-
-
 			&.hero-industrysectors{
 				background: url(../assets/images/hero-industrysectors.jpg) no-repeat 0 0 ;
 				background-size: cover;
@@ -388,6 +549,7 @@ font-weight:400;
 						padding:0px 0 12px 0;
 					}
 					p{
+						font-size: 17px;
 						display: block;
 						text-align: center;
 						padding:0 0 12px 0;

@@ -96,9 +96,6 @@
     position: absolute;
   }
   @include breakpoint(tabletPortrait) {
-    //top: calc(28% - (84px));
-  }
-  @include breakpoint(phonePortrait) {
     display: none;
   }
 }
@@ -124,42 +121,40 @@
 .carousel-control:hover,
 .carousel-control:focus {
   outline: 0;
-  // opacity: 0.9;
-  // filter: alpha(opacity=90);
+  opacity: 0.9;
+  filter: alpha(opacity=90);
 }
-@include breakpoint(tabletPortrait) {
-  .people {
-    position: absolute;
-    bottom: 10px;
-    left: 50%!important;
-    z-index: 3;
-    width: 60%!important;
-    margin-left: -15%!important;
-    padding-left: 0;
-    list-style: none;
-    text-align: center;
-  }
-  .people li {
-    display: inline-block;
-    width: 14px!important;
-    height: 14px!important;
-    margin: 3px!important;
-    text-indent: -999px;
-     
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #fff \9;
-    background-color: rgba(255, 255, 255, 0.30);
-  }
-  .people li.active {
-    margin: 0;
-    background-color: rgba(255, 255, 255, 1);
-  }
-
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 3;
+  width: 60%;
+  margin-left: -30%;
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
 }
-
-
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000 \9;
+  background-color: rgba(0, 0, 0, 0);
+}
+.carousel-indicators .active {
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+}
 .carousel-caption {
+
  
   text-align: center;
 }

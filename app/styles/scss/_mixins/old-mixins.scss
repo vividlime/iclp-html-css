@@ -36,7 +36,7 @@
   overflow: hidden;
   background-repeat: no-repeat;
 }
- 
+
 @mixin main-background {
   @include background-image(radial-gradient(top, ellipse cover, #0d2f6b 0%, #000 75%));
 }
@@ -53,15 +53,16 @@
 }
 
 @mixin circle{
-  
+
   .wrapper-circle{
-    width: 73px; 
+    width: 73px;
     height: 73px;
     position: absolute;
     left:50%;
     margin-left: -37px;
     top:0px;
-    
+    clip: rect(0px, 100px, 100px, 50px);
+
     &:focus .circle[data-anim~=bigger],
     &:hover .circle[data-anim~=bigger]{
       opacity: 0.75;
@@ -81,28 +82,14 @@
 
     @include breakpoint(phonePortrait) {
       @include transform (scale(0.7));
-      .circle[data-anim~=bigger],
-      .circle[data-anim~=bigger]{
-        opacity: 0.75;
-      }
-      .circle[data-anim~=bigger]:before,
-      .circle[data-anim~=bigger]:before{
-        @include transform (rotate(180deg));
-      }
-      .circle[data-anim~=smaller],
-      .circle[data-anim~=smaller]{
-        opacity: 1;
-      }
-      .circle[data-anim~=smaller]:before,
-      .circle[data-anim~=smaller]:before{
-        @include transform (rotate(180deg));
-      }
     }
   }
 
  .circle {
     &[data-anim~=bigger]{
       @include transition(all 0.3s linear);
+      opacity: 0.50;
+      @include transform(translateZ(0px));
       @include transform (rotate(-90deg));
       top: 73px;
       left: 0px;
@@ -116,9 +103,8 @@
         border: 2px solid $white;
         border-radius: 50px;
         position: absolute;
-        clip: rect(0px, 39px, 100px, 0px);
+        clip: rect(0px, 50px, 100px, 0px);
         @include transition(all 0.3s linear);
-        @include transform(translateZ(0px));
       }
       &:after{
         top: 0;
@@ -129,12 +115,13 @@
         border: 2px solid $white;
         border-radius: 50px;
         position: absolute;
-        clip: rect(0px, 39px, 100px, 0px);
-        @include transform(translateZ(0px));
-      } 
+        clip: rect(0px, 50px, 100px, 0px);
+      }
     }
     &[data-anim~=smaller]{
       @include transition(all 0.3s linear);
+      opacity: 0.75;
+      @include transform(translateZ(0px));
       top: 6px;
       left: 6px;
       position: absolute;
@@ -145,12 +132,11 @@
         content:'';
         width: 61px;
         height: 61px;
-        border: 4px solid $white;
+        border: 5px solid $white;
         border-radius: 50px;
         position: absolute;
-        clip: rect(0px, 31px, 100px, 0px);
+        clip: rect(0px, 50px, 100px, 0px);
         @include transition(all 0.3s linear);
-        @include transform(translateZ(0px));
       }
       &:after{
         top: 0;
@@ -158,17 +144,96 @@
         content:'';
         width: 61px;
         height: 61px;
-        border: 4px solid $white;
+        border: 5px solid $white;
         border-radius: 50px;
         position: absolute;
-        clip: rect(0px, 31px, 100px, 0px);
-        @include transform(translateZ(0px));
-      } 
+        clip: rect(0px, 50px, 100px, 0px);
+      }
     }
-  } 
-  // .wrapper-circle[data-anim~=wrapper] {
-  //   clip: rect(auto, auto, auto, auto);
-  // } 
+  }
+  .wrapper-circle[data-anim~=wrapper] {
+    clip: rect(auto, auto, auto, auto);
+  }
+}
+
+@mixin RedCircle{
+  h2{
+    width: 114px;
+    height: 114px;
+    position: absolute;
+    left:50%;
+    margin-left: -57px;
+    bottom:0px;
+    background: $red;
+    border-radius: 50%;
+    border: 3px solid $white;
+   .fullcircle {
+      opacity: 1;
+      @include transition(opacity 0.3s linear);
+      @include transform(translateZ(0px));
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 93px;
+      height: 93px;
+      ////border: 5px solid $white;
+      border-radius: 50%;
+    }
+  }
+}
+
+@mixin BlueCircle{
+
+  h2{
+    width: 114px;
+    height: 114px;
+    position: absolute;
+    left:50%;
+    margin-left: -57px;
+    bottom:0px;
+    background: $dark-blue;
+    border-radius: 50%;
+    border: 3px solid $white;
+   .fullcircle {
+      opacity: 1;
+      @include transition(opacity 0.3s linear);
+      @include transform(translateZ(0px));
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 93px;
+      height: 93px;
+      //border: 5px solid $white;
+      border-radius: 50%;
+    }
+  }
+}
+
+@mixin OrangeCircle{
+
+  h2{
+    width: 114px;
+    height: 114px;
+    position: absolute;
+    left:50%;
+    margin-left: -57px;
+    bottom:0px;
+    background: $orange;
+    border-radius: 50%;
+    border: 3px solid $white;
+   .fullcircle {
+      opacity: 1;
+      @include transition(opacity 0.3s linear);
+      @include transform(translateZ(0px));
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 93px;
+      height: 93px;
+      //border: 5px solid $white;
+      border-radius: 50%;
+    }
+  }
 }
 
 @mixin hotspot{
@@ -177,8 +242,8 @@
     @include transform(translateZ(0px));
     position:absolute;
     cursor:pointer;
-    width: 30px;
-    height: 30px;
+    width: 37px;
+    height: 37px;
 
     &:hover{
       @include transform(translate( 0% , 0% ) scale( 1.5 ));
@@ -190,8 +255,8 @@
       content:"";
     }
     &:before{
-      width:26px;
-      height:26px;
+      width:33px;
+      height:33px;
       border:2px solid $white;
       @include border-radius(9em);
       top: 0;
@@ -202,8 +267,8 @@
     &:after{
       @include border-radius(9em);
       background: rgba(255,255,255,0.50);
-      width:14px;
-      height:14px;
+      width:21px;
+      height:21px;
       top: 6px;
       bottom: 0;
       right: 0;
@@ -213,7 +278,7 @@
 }
 
 @mixin breakpoint($point) {
- 
+
   @if $point == phonePortrait {
     @media // iPhone (portrait and landscape)
     handheld,
@@ -235,10 +300,6 @@
     @media (max-width: 1024px) {
       @content;
     }
-  } @else if $point == tentwentyfour {
-    @media (min-width: 1024px) {
-      @content;
-    }
   } @else if $point == desktop {
     @media (max-width: 1170px) {
       @content;
@@ -247,14 +308,14 @@
     @media (min-width: 1300px) {
       @content;
     }
-  } 
+  }
    @else if $point == extraWideDesktopMenuOpen {
     @media (min-width: 1600px) {
       @content;
     }
   }
 }
-  
+
 @mixin ellipsis() {
   display: block; /* Fallback for non-webkit */
   display: -webkit-box;
@@ -271,7 +332,273 @@
   -moz-line-clamp: 2;
   line-clamp: 2;
 }
-  
+
+@mixin PrevNext(){
+  .prev {
+    top: 100px;
+    margin-left: -572px;
+    left:50%;
+    opacity: 1;
+    z-index: 6;
+    cursor:pointer;
+    @include transition(all .5s ease);
+    background: rgba(0,0,0,0.3);
+    position:absolute;
+
+    @include roundcorners(4px);
+    padding:16px 20px 16px 40px;
+    color:$link;
+    &:before{
+      @include transition(all .5s ease);
+      content:"";
+      position:absolute;
+      left: 16px;
+      top: 13px;
+      @include transform(rotate(0deg));
+      width:13px;
+      height:21px;
+      @include sprite-background(-155px, 0px);
+    }
+    &:focus,
+    &:hover{
+      background: rgba(0,0,0,0.60);
+    }
+  }
+
+  .bx-prev {
+    top:40%;
+    //opacity: 0;
+    @include transition(all .5s ease);
+    text-indent: -999em;
+    background: rgba(0,0,0,0.0);
+    width:61px;
+    height:61px;
+    position:absolute;
+    left: 50%;
+    margin-left:-570px;
+    @include roundcorners(6em);
+    &:before{
+      @include transition(all .5s ease);
+      content:"";
+      position:absolute;
+      left:16px;
+      top: 14px;
+      @include transform(rotate(-180deg));
+      width:22px;
+      height:34px;
+      @include sprite-background(-87px, 0px);
+    }
+    &:focus,
+    &:hover{
+      background: rgba(0,0,0,0.40);
+    }
+  }
+  .bx-next {
+    top:40%;
+    //opacity: 0;
+    @include transition(all .5s ease);
+    text-indent: -999em;
+    position:absolute;
+    right: 50%;
+    margin-right:-570px;
+    background: rgba(255,255,255,0.0);
+    width:61px;
+    height:61px;
+    @include roundcorners(6em);
+
+    &:after{
+      @include transition(all .5s ease);
+      content:"";
+      position:absolute;
+      right:18px;
+      top: 14px;
+      @include transform(rotate(0deg));
+      width: 20px;
+      height: 32px;
+      @include sprite-background(-87px, 0px);
+    }
+
+    &:focus,
+    &:hover{
+      background: rgba(0,0,0,0.40);
+    }
+  }
+  @include breakpoint(desktop) {
+    .bx-prev{
+      top: 25%;
+      left: 0;
+    }
+    .bx-next{
+      top: 25%;
+      right: 0;
+    }
+  }
+  &:focus .bx-next,
+  &:hover .bx-next,
+  &:focus .bx-prev,
+  &:hover .bx-prev{
+    opacity:1;
+  }
+}
+
+@mixin PrevNextSlider(){
+  .bx-prev {
+    top:0;
+    opacity: 1;
+    @include transition(all .35s ease);
+    text-indent: -999em;
+    position:absolute;
+    left:-30px;
+    width: 24px;
+    height: 240px;
+    @include breakpoint(tabletPortrait) {
+      left:-6px;
+    }
+    &:before{
+      opacity:1;
+      @include transition(opacity .35s ease);
+      content:"";
+      position:absolute;
+      left: 0;
+      top: 44%;
+      @include transform(rotate(-180deg));
+      width: 10px;
+      height: 17px;
+      @include sprite-background(-120px, 0px);
+    }
+    &:after{
+      opacity:0;
+      @include transition(opacity .35s ease);
+      content:"";
+      position:absolute;
+      left: 0;
+      top: 44%;
+      @include transform(rotate(-180deg));
+      width: 10px;
+      height: 17px;
+      @include sprite-background(-132px, 0px);
+    }
+    &:hover:after{
+      opacity:1;
+      @include sprite-background(-132px, 0px);
+    }
+    &:hover:before{
+      opacity:0;
+      @include sprite-background(-120px, 0px);
+    }
+    &.disabled{
+      display:none;
+    }
+  }
+
+  .bx-next {
+    top:0;
+    opacity: 1;
+    @include transition(all .35s ease);
+    text-indent: -999em;
+    position:absolute;
+    right:-30px;
+    width: 24px;
+    height: 240px;
+    @include breakpoint(tabletPortrait) {
+      right:-6px;
+    }
+    &:after{
+      opacity: 1;
+      @include transition(opacity .35s ease);
+      content:"";
+      position:absolute;
+      right:0;
+      top: 44%;
+      @include transform(rotate(0deg));
+      width: 10px;
+      height: 17px;
+      @include sprite-background(-120px, 0px);
+    }
+    &:before{
+      opacity: 0;
+      @include transition(opacity .35s ease);
+      content:"";
+      position:absolute;
+      right:0;
+      top: 44%;
+      @include transform(rotate(0deg));
+      width: 10px;
+      height: 17px;
+      @include sprite-background(-132px, 0px);
+    }
+    &:hover:after{
+      opacity: 0;
+      @include sprite-background(-120px, 0px);
+    }
+    &:hover:before{
+      opacity: 1;
+      @include sprite-background(-132px, 0px);
+    }
+    &.disabled{
+      display:none;
+    }
+  }
+  &:focus .bx-next,
+  &:hover .bx-next,
+  &:focus .bx-prev,
+  &:hover .bx-prev{
+    opacity:1;
+  }
+}
+
+@mixin button-play{
+  position:relative;
+  padding:7px 0 7px 27px;
+  font-size:16px;
+  color: $white;
+  margin-top: 12px;
+  display: inline-block;
+  cursor:pointer;
+  @include transition(color 0.3s ease-out);
+
+  &:before{
+    @include transform(translateZ(0px));
+    @include transition(opacity 0.3s ease-out);
+    opacity: 1;
+    content:"";
+    position:absolute;
+    @include sprite-background( 0px, -38px );
+    content:"";
+    width: 19px;
+    height: 19px;
+    left:0;
+    top:5px;
+   }
+   &:after{
+    @include transform(translateZ(0px));
+    @include transition(opacity 0.3s ease-out);
+    opacity: 0;
+    content:"";
+    position:absolute;
+    @include sprite-background( -21px, -38px );
+    content:"";
+    width: 19px;
+    height: 19px;
+    left:0;
+    top:5px;
+   }
+
+   &:hover{
+    color:$active-link;
+   }
+   &:hover:before{
+    opacity:0;
+  }
+   &:hover:after{
+    opacity:1
+  }
+
+   @include breakpoint(phonePortrait) {
+    font-size: 14px;
+  }
+}
+
 @mixin scrolltotop(){
   padding: 18px 7%;
   @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
@@ -280,13 +607,12 @@
   z-index:1;
   width: 100%;
   @include transition(opacity 0.3s ease-out);
-  font-family:$font-ICLPRegular;
+  font-family: $font-ICLPblack;
   text-transform: uppercase;
-  margin: 20px 0 100px 0;
+  margin-bottom: 100px;
   display: inline-block;
 
   &:hover{
-    color:$white;
   }
   &:after{
     content:"";
@@ -299,7 +625,7 @@
     @include transform(translateZ(0px) rotate(-90deg));
     @include transition(opacity 0.3s ease-out);
   }
- 
+
   &:focus:after,
   &:hover:after{
     opacity: 0.85;
@@ -308,7 +634,7 @@
     margin-bottom: 50px;
   }
 }
-  
+
 @mixin banner(){
 
   .item{
@@ -324,45 +650,19 @@
     > a{
       color:$link;
       display: block;
+      background: $grey;
       figure{
         overflow: hidden;
-        max-height: 560px;
+        max-height: 500px;
         position:relative;
-
-        @include breakpoint(tabletPortrait) {
-          height: 346px;
-        }
-        @include breakpoint(phonePortrait) {
-          height: auto;
-        }
- 
         > span.image {
           position:relative;
           padding-top:82%;
           display: block;
           overflow: hidden;
-          &:before{
-            content: "";
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            top:0;
-            left:0;
-            background: rgba(0,0,0,0);
-            @include transition(all 0.35s ease-out);
-            @include transform(translateZ(0px));
-            z-index: 1;
-            @include breakpoint(tabletPortrait) {
-              background: rgba(0,0,0,0.4);
-            }
-          }
-           
-          @include breakpoint(tabletPortrait) {
-            padding-top:100%;
-          }
-          @include breakpoint(phonePortrait) {
-            padding-top:90%;
-          }
+          opacity:1;
+          @include transition(opacity 0.35s ease-out);
+          @include transform(translateZ(0px));
 
           img{
             width:100%;
@@ -373,16 +673,15 @@
             height: auto;
             line-height: 0;
           }
-        } 
+        }
         figcaption{
           position: absolute;
           top: 0%;
           width: 100%;
           height: 100%;
-          z-index: 1;
 
           @include breakpoint(phonePortrait) {
-          }
+           }
 
           h2{
             text-transform: uppercase;
@@ -391,28 +690,19 @@
             text-align: center;
             padding: 30% 0 12px 0;
             display: block;
-            font-size: 26px;
-            @include breakpoint(tabletPortrait) {
-              font-size: 22px;
-            }
-            @include breakpoint(phonePortrait) {
-              padding: 15% 0 12px 0;
-            }
           }
           p{
             width:50%;
             text-align: center;
             display: block;
+            color: $white;
             position: relative;
             padding-top: 12px;
             margin:auto;
-            font-family: $font-ICLPRegular;
-            font-weight:300;
-            @include breakpoint(tabletPortrait) {
-              width: 100%;
-              padding: 12px 20px 0 20px;
-              font-size: 15px;
-            }
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 55px;
+            font-size: 16px;
 
             &:before{
               content:'';
@@ -422,10 +712,6 @@
               width:80%;
               height: 1px;
               background:$white;
-              @include breakpoint(tabletPortrait) {
-                width:70%;
-                left:15%;
-              }
             }
           }
 
@@ -436,42 +722,148 @@
             margin:20px auto;
             text-align: center;
             display: table;
-            color: $white;
-            text-transform: uppercase;
-            font-family: $font-ICLPblack;
-            font-weight:900;
-            @include transition (all 0.3s ease-out);
 
-            &:hover{
-              background: rgba(0,0,0,0.2);
-            }
+          }
 
-            @include breakpoint(tabletPortrait) {
-              font-size: 14px;
-            } 
-          } 
         }
 
 
       }
-      &:focus figure span:before,
-      &:hover figure span:before{
-        background: rgba(0,0,0,0.4);
-      }
-      &:hover figcaption span.findoutmore{
-        background: rgba(0,0,0,0.2);
-      }
-    }
-    &:first-child{
-      @include breakpoint(phonePortrait) {
-        a figure figcaption h2{
-          padding: 15% 0 12px 0;
+      &:focus figure span,
+      &:hover figure span{
+        opacity:0.75;
+
+        img{
+           //@include filter(blur(3px));
         }
       }
     }
   }
 }
- 
+
+@mixin arrowLeftRight(){
+  div {
+    margin:0;
+    @include appearance(none);
+    background-color: rgba(120,182,250,0.20);
+    position: relative;
+    margin:0px;
+    cursor: pointer;
+    @include transform(translate3d(0,0,0));
+    position: absolute;
+    color:#fff;
+    text-transform:capitalize;
+    font-size:20px;
+    padding: 16px 0;
+    @include transition(max-width 0.35s ease);
+    max-width:48px;
+    overflow: hidden;
+
+    &:after,
+    &:before{
+      content:"";
+      position: absolute;
+      top: 48%;
+      width: $isize;
+      height: $thickness;
+      border-radius: $thickness / 2;
+      background: $link;
+      @include transition(all 0.35s ease);
+    }
+    &:focus:after,
+    &:hover:after,
+    &:focus:before,
+    &:hover:before{
+      background: $active-link;
+    }
+
+    h3{
+      opacity:0;
+      @include transition(all 0.35s ease);
+      background-color: rgba(120,182,250,0.0);
+      color:$link;
+      font-size:20px;
+      text-transform:capitalize;
+      padding: 9px 0;
+      &:focus,
+      &:hover{
+        color: $active-link;
+      }
+    }
+    &.navigate-left {
+      left:0%;
+      direction:ltr;
+      padding-right: 18px;
+      padding-left: 28px;
+
+
+      &:after {
+        @include transform(translate( 0, 6px ) rotate( $angle ));
+      }
+      &:before {
+        @include transform(translate( 0, -6px ) rotate( -$angle ));
+      }
+
+      &:after,
+      &:before{
+        left:12px;
+      }
+      h3{
+        padding-left:16px;
+      }
+      &:focus,
+      &:hover{
+        max-width: 300px;
+        h3{
+          opacity:1;
+
+        }
+      }
+    }
+    &.navigate-right {
+      right: 0%;
+      direction:rtl;
+      padding-right:28px;
+      padding-left:18px;
+      &:after {
+        @include transform(translate( 0, 6px ) rotate( -$angle ));
+      }
+      &:before {
+        @include transform(translate( 0, -6px ) rotate( $angle ));
+      }
+
+      &:after,
+      &:before{
+        right:12px;
+      }
+
+      h3{
+        padding-right:16px;
+      }
+      &:focus,
+      &:hover{
+         max-width: 300px;
+        h3{
+          opacity:1;
+
+        }
+      }
+
+    }
+
+    &[data-state=disabled] {
+      opacity: 0.3;
+      cursor: default;
+    }
+    &:focus,
+    &:hover{
+        h3{
+          color: $active-link;
+        }
+      }
+  }
+}
+
 @mixin input(){
   display: block;
   border:0px;
@@ -481,10 +873,7 @@
   @include transition (all 0.3s ease-out);
   text-align: left;
   color:$white;
-  
-  &[type="email"],
-  &[type="number"],
-  &[type="tel"],
+
   &[type="search"],
   &[type="text"]{
     font-weight: normal;
@@ -498,7 +887,7 @@
     -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
   }
- 
+
     &.focus,
     &:hover,
     &:focus{
@@ -507,7 +896,7 @@
 
     }
 }
- 
+
 @mixin search-box(){
  position:relative;
  float:left;
@@ -532,8 +921,8 @@
 }
 
 @mixin pin() {
-  input[type=checkbox] {  
-    display: none;  
+  input[type=checkbox] {
+    display: none;
   }
 
   input[type=checkbox] + label.selected,
@@ -560,7 +949,7 @@
     }
   }
 
-  input[type=checkbox] + label {  
+  input[type=checkbox] + label {
     &:before{
       position:absolute;
       content: "";
@@ -580,60 +969,26 @@
       height: 21px;
       @include roundcorners (6em);
     }
-  } 
- 
-} 
-  
+  }
+
+
+  label {
+
+
+   }
+}
+
 
 @mixin fadein(){
   opacity:0;
-   -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
-   filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  @include animation(fadeIn ease-in 1) ;
+  @include animation(fadeIn ease-in 1);
   @include animation-fill-mode(forwards);
   @include animation-duration(1s);
   @include animation-delay(1.2s);
 }
 
-@-webkit-keyframes fadeIn {
-from {
-    opacity:0;
-    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
-  }
-to {
-    opacity:1;
-    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
-  }  
-}
-@-moz-keyframes fadeIn { 
-from {
-    opacity:0;
-    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
-  }
-to {
-    opacity:1;
-    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
-  } 
-}
-@-ms-keyframes fadeIn { 
-from {
-    opacity:0;
-    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
-  }
-to {
-    opacity:1;
-    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
-  } 
-}
-@keyframes fadeIn { 
-from {
-    opacity:0;
-    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
-  }
-to {
-    opacity:1;
-    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
-  } 
-}
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
 

@@ -2,8 +2,20 @@
 
 	.interactive-container{
 		width: 100%;
+		background-color:$turquoise;
 		overflow: hidden;
+    color: #fff;
     position: relative;
+    &:before{
+    	content: '';
+    	position: absolute;
+    	width: 100%;
+    	height: 100%;
+    	top:0;
+    	left:0;
+			@include background-image(radial-gradient(left, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%));
+
+    }
 	}
 	.angle-container{
 		width: 100%;
@@ -13,26 +25,20 @@
     @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
     background:$white;
     z-index: 4;
-    margin: -60px 0 -80px 0;
-    @include breakpoint(tabletPortrait) {
-    	margin: -36px 0 -80px 0;
-    }
-		@include breakpoint(wideDesktop) {
-			margin: -100px 0 -80px 0;
-		}
+    margin: -80px 0 -80px 0;
+ 
     .copy{
     	width:100%;
     	display: block;
     	margin: auto;
     	z-index: 2;
     	padding: 40px 0;
-		  @include breakpoint(phonePortrait) {
+		  @include breakpoint(tabletPortrait) {
   	    @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(5deg) skewX(0deg));
  	    }
 	  
     	h1{
     		color: $darker-blue;
-    		font-size: 40px;
     		br{
     			display: none;
     			@include breakpoint(phonePortrait) {
@@ -45,17 +51,16 @@
     	}
     	h2{
     		padding: 0px 5%;
-    		font-size: 24px;
-    		text-transform: inherit;
+    		font-size: 22px;
+    		text-transform: uppercase;
         color: $darker-blue;
         max-width:1170px;
         text-align: center;
         display: block;
         margin: auto;
-        font-family: $font-ICLPlight;
-				font-weight:300;
         @include breakpoint(phonePortrait) {
-					font-size: 20px; 
+					font-size: 20px;
+					font-family: $font-ICLPlight;
         }        
     	}
     } 
@@ -68,11 +73,7 @@
 			display: table;
 			width: 100%;
 			@include banner;
-			@include breakpoint(tabletPortrait) {
-				margin-top: 0px;
-			}
 			@include breakpoint(phonePortrait) {
-				margin-top: 30px;
 				display: inline-block;
 			}
 		} 
@@ -101,7 +102,7 @@
 				width:100%;
 				height: 415px;
 			}
-			&.pane {
+			&.pane{
 				width:33%;
 				@include breakpoint(tabletPortrait) {
 					position: absolute;
@@ -132,81 +133,44 @@
 				.carousel-container{
 					background: $orange;
 					position: absolute;
-					top: -90px;
+					top: -39px;
+					height: 100%;
 					width: 100%;
 					padding: 0% 0;
 					z-index: 1;
-					@include transition((all 0.3s ease-out));
-					&:hover{
-						background:#c06612;
-					} 
-  
 					@include breakpoint(tabletPortrait) {
 						top: 0px;
 						height: 100%;
 					}
 					.copy{
-						padding: 30px 0 66px 0;
+						padding: 44px 0 12px 0;
 						display: block;
 						margin: 0 auto;
 						max-width: 270px;
-						position: relative;
-
-						@include breakpoint(phonePortrait) {
-							display: none;
-						}
 
 						@include breakpoint(tabletPortrait) {
 							padding: 20px 0 0px 0;
 						}
-
 						h1{
 							text-transform: uppercase;
 							width: 100%;
 							text-align: center;
 							display: inline-block;
 							padding: 0px 0 12px 0;
-							a{
-								line-height: 1.3em;
-								font-weight: 900;
-								&:hover{
-									color: $white;
-								}
-							}
 						}
 						p{
 							width: 100%;
 							text-align: center;
+							display: inline-block;
 							padding: 0 0 12px 0;
-							position: absolute;
-							z-index: 1;
-							@include breakpoint(phonePortrait) {
-								padding: 0 8px 12px 8px;
-							}
-						}
-					}
-					.mobile{
-						display: none;
-						@include breakpoint(phonePortrait) {
-							display: block;
-							position: relative;
-							padding-top: 124px;
-							.animated.ourservices{
-								padding: 78px 12px 0 12px;
-								@include breakpoint(tabletPortrait) {
-								 font-size: 17px;
-								}
-							}
+							 
 						}
 					}
 					.carousel{
-						height: 210px;
+						height: 74%;
 						display: inline-block;
 						width: 100%;
-						margin-bottom: 85px;
-						@include breakpoint(phonePortrait) {
-							display: none;
-						}
+						background: #f08017;
 						.carousel-inner{
 							padding: 0;
 							height: 100%;
@@ -214,103 +178,42 @@
 								padding:0;
 								height: 100%;
 								.carousel-caption{
-									padding: 12% 0 0 0;
-									@include breakpoint(tabletPortrait) {
-										padding-top: 4%;
-									}
-									a{
-										display: inline-block;
-										width: 100%;
-										h2{
-											margin-top:0;
-											font-size: 17px;
-											@include breakpoint(tabletPortrait) {
-											 font-size: 17px;
-											}
-										}
-								    &:focus .circle[data-anim~=bigger],
-								    &:hover .circle[data-anim~=bigger]{
-								      opacity: 0.75;
-								    }
-								    &:focus .circle[data-anim~=bigger]:before,
-								    &:hover .circle[data-anim~=bigger]:before{
-								      @include transform (rotate(180deg));
-								    }
-								    &:focus .circle[data-anim~=smaller],
-								    &:hover .circle[data-anim~=smaller]{
-								      opacity: 1;
-								    }
-								    &:focus .circle[data-anim~=smaller]:before,
-								    &:hover .circle[data-anim~=smaller]:before{
-								      @include transform (rotate(180deg));
-								    }
+									padding: 21% 0 0 0;
+									h2{
+										margin-top:0;
 									}
 								}
 							}
 						}
 						@include breakpoint(tabletPortrait) {
-							padding: 96px 0 0 0;
-							height: 82.9%;
-						}
-						@include breakpoint(phonePortrait) {
-							padding: 133px 0 0 0;
-							height: 72.9%;
-						}
-						.carousel-control{
-							z-index: 1;
+							padding: 0;
+							height: 52.6%;
 						}
 					}
 				} 
 				a.pane-content{
 					position: absolute;
 					top: 0;
-					height: 415px;
+					height: 100%;
 					width: 100%;
-					padding:0;
+					padding: 26% 0;
 					@include breakpoint(tabletPortrait) {
 						padding: 0;
-						height:208px;
-					}
-					h2{
-						top: 50%;
-  					@include transform(translateY(-50%));
-						margin: 0;
-						font-size: 22px;
-						@include breakpoint(phonePortrait) {
-						 font-size: 17px;
-						}
-					}
-					p{
-						width: 70%;
-						text-align: center;
-						display: block;
-						margin: auto;
-					}
-					img{
-						position: absolute;
-						top:0;
-						left:0;
-						width: 100%;
-						height:100%;
 					}
 					
 					&:hover{
-						background:rgba(0,0,0,0.40);
+						background:rgba(0,0,0,0.20);
 						@include transition((all 0.3s ease-out));
-					} 
-			    &:focus .circle[data-anim~=bigger],
-			    &:hover .circle[data-anim~=bigger]{
+					}
+					&:hover .circle[data-anim~=bigger]{
 			      opacity: 0.75;
 			    }
-			    &:focus .circle[data-anim~=bigger]:before,
 			    &:hover .circle[data-anim~=bigger]:before{
 			      @include transform (rotate(180deg));
 			    }
-			    &:focus .circle[data-anim~=smaller],
 			    &:hover .circle[data-anim~=smaller]{
 			      opacity: 1;
 			    }
-			    &:focus .circle[data-anim~=smaller]:before,
 			    &:hover .circle[data-anim~=smaller]:before{
 			      @include transform (rotate(180deg));
 			    }
@@ -323,13 +226,8 @@
 		background: $white;
 		.twitter{
 			position: relative;
-			padding:0 0 15px 0;
-		}
-	}
-
-	&.open-sidebar{
-		.angle-container{
-			margin-top: -110px;
+			padding: 3.8% 0;
+		 
 		}
 	}
 

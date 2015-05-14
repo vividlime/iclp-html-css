@@ -31,13 +31,14 @@ html, body {
   *zoom: 1;
 }
 
-body {
+body {  
   padding: 0;
-  font-family: $font-ICLPRegular;
-  font-weight: 400;
+  font-family: $font-family;
   min-height: 100%;
   height: auto;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -47,38 +48,35 @@ h1,h2,h3,h4{
 }
 h1{
   font-family: $font-ICLPblack;
-  font-weight:900;
   text-transform: uppercase;
-  font-size:45px;
-  line-height: 1.3em;
-  display: block;
-    @include breakpoint(phonePortrait) {
+  font-size:40px;
+    @include breakpoint(tabletPortrait) {
       font-size:30px;
     }
-}
+    @include breakpoint(phonePortrait) {
 
+    }
+}
 h2{
-  font-family: $font-ICLPblack;
-  font-weight:900;
   text-transform: uppercase;
   font-size:26px;
-  line-height: 1.3em;
-  display: block;
+    @include breakpoint(tabletPortrait) {
+      font-size:20px;
+    }
+    @include breakpoint(phonePortrait) {
+
+    }
 }
-
-
-
-strong{
-  font-family: $font-ICLPblack;
-  font-weight:900;
-}
+  strong{
+    font-family: $font-ICLPbold;
+  }
 .ie9 .gradient {
    filter: none;
 }
 p{
-  line-height:1.5em;
+  line-height:1.4em;
   color:$white;
-  font-size: 17px;
+  font-size: 16px;
   &.subtitle{
     color:$white;
     clear: both;
@@ -86,80 +84,72 @@ p{
     display:block;
   }
   @include breakpoint(tabletPortrait) {
-    font-size: 18px;
-  }
+    font-size: 16px;
+  } 
 }
 input{
   @include input;
   font-family: $font-family;
 }
 :-moz-placeholder {
-  color:#c1c2c3;
+  color:$white;
   font-weight: 100;
   font-family: $font-family;
-  font-size:16px;
+  font-size:18px;
   opacity: 1;
 }
 ::-moz-placeholder {
-  color:#c1c2c3;
+  color:$white;
   font-weight: 100;
   font-family: $font-family;
-  font-size:16px;
+  font-size:18px;
   opacity: 1;
 }
 :-ms-input-placeholder {
-  color:#c1c2c3;
+  color:$white;
   font-weight: 100;
   font-family: $font-family;
-  font-size:16px;
+  font-size:18px;
   opacity: 1;
 }
 ::-webkit-input-placeholder {
-  color:#c1c2c3;
+  color:$white;
   font-weight: 100;
   font-family: $font-family;
-  font-size:16px;
+  font-size:18px;
   opacity: 1;
   -webkit-font-smoothing: antialiased;
 }
 #clonethis{
   :-moz-placeholder {
-    color:#c1c2c3;
+    color:$white;
     font-weight: 100;
     font-family: $font-family;
     font-size:16px;
     opacity: 1;
   }
   ::-moz-placeholder {
-    color:#c1c2c3;
+    color:$white;
     font-weight: 100;
     font-family: $font-family;
     font-size:16px;
     opacity: 1;
   }
   :-ms-input-placeholder {
-    color:#c1c2c3;
+    color:$white;
     font-weight: 100;
     font-family: $font-family;
     font-size:16px;
     opacity: 1;
   }
   ::-webkit-input-placeholder {
-    color:#c1c2c3;
+    color:$white;
     font-weight: 100;
     font-family: $font-family;
     font-size:16px;
     opacity: 1;
     -webkit-font-smoothing: antialiased;
   }
-}
-
-video::-moz-media-controls {
-    display:none !important;
-}
-
-video::-webkit-media-controls {
-    display:none !important;
 }
 
 textarea{
@@ -182,6 +172,15 @@ textarea{
   width: 100%;
 }
 
+input[type=checkbox]:checked + label:before {  
+    content: "\2713";  
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 15px;  
+    color: #f3f3f3;  
+    text-align: center;  
+    line-height: 15px;  
+}  
+
 ::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
@@ -189,11 +188,8 @@ textarea{
 a{
   @include transition(color 0.3s ease-out);
   color:$white;
-  line-height: 1.5em;
   text-decoration: none;
-  font-family: $font-ICLPblack;
-  font-weight:900;
-  position: relative;
+  line-height: 1.3em;
 }
 
 .scrolltotop {
@@ -201,6 +197,11 @@ a{
  @include scrolltotop;
 }
 
+@-moz-document url-prefix() {
+  a {
+    font-weight: normal;
+  }
+}
 ::-webkit-scrollbar-thumb{
   background-color:#B03C3F;
   border-radius:10px;
@@ -212,7 +213,7 @@ a{
 ::-webkit-scrollbar-thumb:active{
   background-color:#A6393D;
   border:1px solid #333333;
-}
+} 
 body {
   .container{
     top:63px;
@@ -220,30 +221,28 @@ body {
       top:48px;
     }
   }
-
+  
   #container, #contact-form, #footer{
     position:relative;
     width: 100%;
     height: 100%;
     min-height: 100%;
     right:0;
-
-
-    @include transform (translate3d(0px, 0, 0));
+    @include transform (translateX(0px));
     @include transition((all 0.3s ease-out));
   }
-
+  
   &.open-sidebar{
     #container, #contact-form, #footer{
       width:calc(100% - (320px));
-      @include transform (translate3d(320px, 0, 0));
+      @include transform (translateX(320px));
       @include breakpoint(tabletPortrait) {
         width:100%;
       }
     }
      #contact-form, #footer{
       width:calc(100% - (320px));
-      @include transform (translate3d(160px, 0, 0));
+      @include transform (translateX(160px));
     }
   }
 }
@@ -270,7 +269,6 @@ h2{
 blockquote{
   color: $white;
   font-size: 16px;
-  line-height: 1.3;
   em{
     color:$light-blue;
   }
@@ -326,7 +324,7 @@ blockquote{
 .progressbar::-webkit-progress-bar{
   background:-webkit-linear-gradient(135deg, rgba(120,182,250,1), rgba(120,182,250,1) 33%, rgba(120,182,250,1) 33%, rgba(120,182,250,1) 66%, rgba(0, 0, 0, 0) 66%), -webkit-linear-gradient(center top , rgba(120,182,250,1), rgba(120,182,250,1)), -webkit-linear-gradient(left center , #78b6fa, #78b6fa);
 }
-
+ 
 
 .wrap-content{
   margin:0 auto;
@@ -350,50 +348,35 @@ h2.animated{
   text-align: center;
   display: block;
   @include circle;
+  @include breakpoint(phonePortrait) {
+    .wrapper-circle{
+      display: none;
+    }
+  }
 }
-
+ 
 .head-theme{
   display: inline-block;
   width: 100%;
   position: relative;
   &.blue{
     background: $dark-blue;
-    &:after{
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top:0;
-      left:0;
-      @include background-image(linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%));
-      z-index: 0;
-    }
   }
   &.red{
     background: $red;
-    &:after{
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top:0;
-      left:0;
-      @include background-image(linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%));
-      z-index: 0;
-    }
   }
   &.orange{
     background: $orange;
-    &:after{
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top:0;
-      left:0;
-      @include background-image(linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%));
-      z-index: 0;
-    }
+  }
+  &:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    @include background-image(linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.7) 100%));
+    z-index: 1;
   }
 }
 
@@ -420,7 +403,7 @@ iframe.twitter-widget-0 {
 /* arrow colour */
 .gm-style > div:first-child > div + div > div:last-child > div > div:first-child > div > div > div
 {
-    //background-color: #003366 !important;
+    //background-color: #003366 !important; 
     display: none;
     background-color:transparent;
 }
@@ -454,3 +437,4 @@ ol.h-feed{
   width: 100!important;
 }
 
+ 

@@ -2,174 +2,91 @@
 
  .hero-content{
  	width:100%;
- 	height: 100%;
  	display:inline-block;
  	position: relative;
-
+ 
 	#heroCarousel{
-
-    &:before{
-    	content: '';
-    	position: absolute;
-    	width: 100%;
-    	height: 100%;
-    	top:0;
-    	left:0;
-    	z-index: -1;
-			@include background-image(radial-gradient(left, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%));
-    }
-    .carousel-outer{
-    	width: 100%;
-			height: 100%;
-	 		position: absolute;
-	 		top:0;
-	 		z-index: 1;
-	 		opacity: 0;
-	 		@include transition(all 0.5s ease-out);
-	 		background-color:$turquoise;
-    }
-
-
- 		&.show{
- 			.carousel-outer{
-	 			z-index: 1;
-	 			opacity: 1;
-
-	 			.carousel-inner .carousel-content{
-	 				opacity: 1;
-
-	 			}
-				.carousel-inner figure{
-					opacity: 1;
-
-					@include filter(blur(0px));
-					@include transform (translateX(0px) translateY(0px) translateZ(0px) scale(1));
-				}
-			}
+		display: inline-block;
+		width: 100%;
+ 		position: relative;
+ 		
+ 		ol.carousel-indicators{
+ 			display: none;
+ 			@include breakpoint(tabletPortrait) {
+ 				bottom: 99px;
+ 				display: block;
+ 			}
+ 			@include breakpoint(tabletPortrait) {
+ 				bottom: 90px;
+ 			}
  		}
 
-	 	@include breakpoint(tabletPortrait) {
-	 		.carousel-outer{
-	    	z-index: 1;
-	 			opacity: 1;
-
-	 			position: relative;
-	 			.carousel-inner .carousel-content{
-	 				opacity: 1;
-
-	 			}
-				.carousel-inner figure{
-					opacity: 1;
-
-					@include filter(blur(0px));
-					@include transform (translateX(0px) translateY(0px) translateZ(0px) scale(1));
-				}
-				.carousel-inner .carousel-content .ring:before{
-					@include transform (translateX(0px) translateY(0px) translateZ(0px) rotate(0deg));
-				}
-			}
-    }
-
-
- 		.close-carousel{
-			position: absolute;
-			top:43px;
-			right:0;
-	    padding: 26px 0px 0px 0;
-	    @include breakpoint(tabletPortrait) {
-	    	display: none;
-	    }
-
-		    span{
-		    	position: relative;
-		    	z-index: 4;
-		    	color:rgba(255,255,255,0.70);
-			    text-transform: uppercase;
-			    font-size: 22px;
-			    @include transition((all 0.3s ease-out));
-		    }
-
-		    svg#Layer_1 {
-					right: -20px;
-					padding: 0;
-					position: absolute;
-					top: -40px;
-				}
-		}
-
-
-
  		.carousel-inner{
- 			height: 100%;
- 			min-width: 1024px;
-
+ 			max-height: 686px;
+ 			min-height: 655px;
  			@include breakpoint(tabletPortrait) {
- 				 height: 530px;
+ 				 height: 526px;
  			}
- 			@include breakpoint(phonePortrait) {
- 				 height: 520px;
- 			}
- 			@include breakpoint(wideDesktop) {
-				min-height: 790px;
-			}
+ 
+ 		
 
 	 		.carousel-content{
 	 			margin: auto 0;
 	 			width: 100%;
-	 			@include transition(all 0.5s ease-out);
-	 			opacity: 0;
-	 			height: 100%;
- 				position: absolute;
-
-
 	 			span{
 				 	&.ring{
-		 	 			width: 587px;
-	 	 				height: 587px;
+		 	 			width: 100%;
+	 	 				height: 100%;
 		 	 			position: absolute;
 		 	 			top:0;
-		 	 			z-index: 0;
-		 	 			@include border-radius(20em);
-		 	 			@include transition(all 0.5s ease-out);
-						@include transform (translateX(0px) translateY(0px) translateZ(0px) rotate(0deg) scale(1));
-		 	 			right: 38%;
-		 	 			@include breakpoint(tabletPortrait) {
-							right: 41%;
-						}
-		 	 			@include breakpoint(wideDesktop) {
-							right: 45%;
-						}
-
-
-		 	 			&:before{
-		 	 				top: 0;
-		 	 				left:0;
+		 	 			left:0;
+		 	 			z-index: 2;
+		 	 			&:after{
 				 	 		content: '';
 				 	 		position: absolute;
+				 	 		top: 40px;
+				 	 		left: 50%;
+				 	 		margin-left: 81px;
+				 	 		height: 228px;
+				 	 		width: 120px;
+				 	 		background-color: #0db1aa;
+				 	 		@include box-shadow(0px 23px 21px -18px #000);
+				 	 		overflow: hidden;
+				 	 		z-index: -1;
+
+				 	 		@include breakpoint(tabletPortrait) {
+				 	 			height:261px;
+				 	 		}
+				 	 		@include breakpoint(phonePortrait) {
+				 	 			left: 193px;
+				 	 			margin-left: 0;
+				 	 			top: 260px;
+				 	 			width: 100px;
+				 	 			@include box-shadow(0px -18px 21px -18px #000);
+				 	 		}
+				 	 		
+				 	 	}
+		 	 			&:before{
+				 	 		content: '';
+				 	 		position: absolute;
+				 	 		top: 10px;
+				 	 		left: 50%;
+				 	 		margin-left: -406px;
 				 	 		height: 100%;
 				 	 		width: 100%;
 				 	 		background: url(../assets/images/svg/journey-curve-blueandwhite.svg) 0% 0% no-repeat;
 							overflow: hidden;
+							@include transform (rotate(0deg));
 							z-index: -1;
-
-							@include breakpoint(wideDesktop) {
-								height: 110%;
-								width: 121%;
-								background-size: cover;
-							}
-
-
-
-							@include breakpoint(tabletPortrait) {
-								background-size: 73%;
-							}
 							@include breakpoint(phonePortrait) {
-								background-size: 55%;
-								@include transform (translateX(-266px) translateY(36px) translateZ(0px) rotate(75deg));
-							}
+								background-size: 94%;
+								margin-left:0;
+								@include transform(rotate(70deg));
+								top: -18px;
+								left: -73px;
+
+		 	 				}
 				 	 	}
-
-
 		 	 		}
 		 	 	}
 				article{
@@ -179,12 +96,13 @@
 				 	 	top:40px;
 				 	 	background: $dark-blue;
 				 	 	width: 444px;
+				 	 	padding: 38px 38px 0px 38px;
 
 				 	 	@include breakpoint(wideDesktop) {
 							right:50%;
 							margin-right: -520px;
 			 			}
-
+				 	 	 
 				 	 	&:after{
 				 	 		content: '';
 				 	 		position: absolute;
@@ -197,15 +115,14 @@
 				  		background: $dark-blue;
 				  		z-index:1;
 				 	 	}
-
+				 	 	
 				 		.content{
 							background: $dark-blue;
-							min-height: 180px;
+							height: 100%;
 							width: 100%;
 							display: inline-block;
 							position: relative;
 					 	 	z-index: 3;
-					 	 	padding: 38px 38px 0px 38px;
 
 					 	 	h1{
 					 	 		font-size: 40px;
@@ -213,13 +130,11 @@
 					 	 		text-align: left;
 					 	 		padding-bottom: 10px;
 					 	 		font-family: $font-ICLPlight;
-								font-weight:300;
-
+			  
 					 	 		strong{
 					 	 			display: inline-block;
 					 	 			clear: left;
 					 	 			font-family: $font-ICLPblack;
-									font-weight:900;
 					 	 		}
 					 	 	}
 					 	 	h2{
@@ -229,80 +144,47 @@
 					 	 		text-transform: uppercase;
 					 	 		font-size: 22px;
 					 	 		font-family: $font-ICLPblack;
-								font-weight:900;
 					 	 	}
 
 					 	 	.buttons{
 					 	 		position: relative;
 					 	 		z-index: 3;
 							 	display: none;
+								 	@include breakpoint(tabletPortrait) {
+							 		display: block;
+									.button{
+								 		display: block;
+									 	float: left;
+									 	margin: 12px 0;
+									 	min-width:197px;
+								 	}
+							 	}
 							}
 			 	 	}
-			 	 	@include breakpoint(tabletPortrait) {
-	 					width: 312px;
-	 					right: 34%;
-	 					top: 20px;
-	 					&:after{
-	 						height: 89px;
-							bottom: -23px;
-							@include breakpoint(phonePortrait) {
-								height: 169px;
-								bottom: -123px;
-							}
-	 					}
-
-					 .content{
-					 	padding:18px;
-						 h1{
-						 	font-size: 25px;
-						 	width: 100%;
-						 }
-						 h2{
-						 	font-size: 16px;
-						 }
-						}
-					}
-
 			 	 	@include breakpoint(phonePortrait) {
 					 left:0;
 					 margin-left:0;
-					 top: 237px;
+					 top: 240px;
 					 width: 294px;
-
+					 padding: 0px 24px 0px 24px;
 					 .content{
 					 	background-color: transparent;
-					 	padding:0;
 
 						 h1{
-						 	font-size: 24px;
-						 	width: 90%;
-						 	line-height:1em;
+						 	font-size: 20px;
+						 	padding-right: 0%;
+						 	width: 70%;
 						 	background: $dark-blue;
-						 	padding: 28px 0px 4px 20px;
+						 	padding-top: 24px;
 						 }
 						 h2{
 						 	font-size: 14px;
-						 	line-height:1.3em;
-						 	padding: 0px 0 0 20px;
 						 }
-						 .buttons{
-						 	display: inline-block;
-						 	padding: 0px 0px 7px 20px;
-						 	float: left;
-							.button{
-						 		display: block;
-							 	float: left;
-							 	margin: 12px 0;
-							 	min-width:197px;
-							 	font-size: 14px;
-						 	}
 
-						 }
 						}
 					}
-
 			 	 }
-
+	 	  
 					&.subtitle{
 					 	right:7%;
 					 	top:240px;
@@ -315,6 +197,8 @@
 							right:50%;
 							margin-right: -560px;
 			 			}
+
+
 						&:before{
 					 		content: '';
 					 		position: absolute;
@@ -325,7 +209,7 @@
 					 		@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
 							@include transition(opacity 0.3s ease-out);
 							background: $yellow;
-							z-index: 0;
+							z-index: -1;
 				 		}
 						.content{
 							margin-top: 56px;
@@ -349,21 +233,17 @@
 
 							}
 							.buttons{
-								margin-top: 0px;
-								display: inline-block;
-								float: left;
-								.button{
-									float: left;
-									margin: 0;
-								}
+								margin-top: 22px;
 							}
 
 							ul{
 								display: block;
 								width: 100%;
 								padding-bottom: 12px;
+								margin-bottom: 12px;
+								border-bottom: 1px solid $orange;
 								li{
-									line-height: 1.1em;
+									line-height: 1.4em;
 									text-align: left;
 									padding:4px 0 4px 14px;
 									position: relative;
@@ -372,7 +252,7 @@
 										position: absolute;
 										content: '';
 										left:0px;
-										top:10px;
+										top:13px;
 										width:7px;
 										height:7px;
 										background: $orange;
@@ -381,31 +261,6 @@
 							}
 						}
 						@include breakpoint(tabletPortrait) {
-							right: 31%;
-							top: 187px;
-							width: 247px;
-
-							.content{
-								margin-top: 44px;
-								padding: 0px 18px 0px 18px;
-								h3{
-									padding-bottom:0;
-								}
-								ul{
-									padding:0 0 8px 0;
-
-								}
-								.buttons{
-									margin:0 0 18px 0;
-									float: left;
-									.button{
-										min-width:202px;
-										font-size: 14px;
-									}
-								}
-							}
-						}
-						@include breakpoint(phonePortrait) {
 							display: none;
 						}
 					}
@@ -416,469 +271,163 @@
 				height: 100%;
 				position: relative;
 				display: inline-block;
-				@include transition(all 0.7s 0.7s ease-out);
-				opacity: 0;
-				@include transform (translateX(0px) translateY(10px) translateZ(0px) scale(1));
-				z-index: 0;
-		    @include filter(blur(4px));
-		    z-index: -1;
-		    img{
+		 	 	img{	
+		 	 		z-index: -2;
 		 	 		position: relative;
 		 	 		float: left;
-					width:70%;
+		 	 		margin-left: -432px;
+					left: 50%;
+					width:50%;
 					height: auto;
+ 
+	 
+		 	 		@include breakpoint(phonePortrait) {
+					 width: 100%;
+					 left:0;
+					 margin-left: 0;
+					}	 
+		 	 	}
+	 		 }
+	 	}
+	}
+
+
+
+ .banner-inner{
+		display: inline-block;
+		width: 100%;
+ 		position: relative;
+
+ 		 
+	 	.video-wrap{
+			overflow: hidden;
+		  @include transition((all 0.3s ease-out));
+			max-width: 1980px;
+			min-width: 800px;
+			max-height: 1080px;
+			min-height: 600px;
+ 
+			@include breakpoint(wideDesktop) {
+				min-height: 790px;
+			}
+			@include breakpoint(tabletPortrait) {
+				min-width: 800px;
+				min-height: 450px;
+			}
+
+			.target{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				 
+				video{
+					background-color: #53abc5;
+					width: 100%;
+					height: auto;
+					@include fadein;
 					@include breakpoint(tabletPortrait) {
-					 width: 64%;
+						min-width: 800px;
+						min-height: auto;
 					}
-					@include breakpoint(phonePortrait) {
-					 width: 47%;
-					}
+				}
+				 
+		 	 	img{	
+		 	 		z-index: 0;
+		 	 		position: relative;
+		 	 		display: inline-block;
+					width:100%;
+					height: auto;
 		 	 	}
 
- 				&.first{
-		    	img{
-		    		left: 50%;
-						margin-left: -550px;
-		    		@include breakpoint(wideDesktop) {
-		    			left: 50%;
-							margin-left: -740px;
-						}
-		    		@include breakpoint(tabletPortrait) {
-		    			margin-left: -605px;
-
-						}
-						@include breakpoint(phonePortrait) {
-							margin-left: -590px;
-
-						}
-		    	}
-		    }
-		    &.second{
-		    	img{
-		   			right: -8%;
-
-		    		@include breakpoint(desktop) {
-		    			right: 0%;
-						}
-						@include breakpoint(wideDesktop) {
-		    			left: 50%;
-							margin-left: -700px;
-						}
-		    		@include breakpoint(tabletPortrait) {
-							right: 5%;
-							top: -9px;
-							width: 54%;
-						}
-						@include breakpoint(phonePortrait) {
-			 			 	right: 4%;
-							top: 11px;
-							width: 44%;
-						}
-		    	}
-		    }
-		    &.third{
-		    	img{
-		    		left: 50%;
-						margin-left: -560px;
-		    		@include breakpoint(wideDesktop) {
-		    			left: 50%;
-							margin-left: -739px;
-						}
-		    		@include breakpoint(tabletPortrait) {
-							right: 8%;
-						}
-						@include breakpoint(phonePortrait) {
-			 			 right: 4%;
-						}
-		    	}
-		    }
-		    &.forth{
-		    	img{
-		    		left: 50%;
-						margin-left: -520px;
-
-		    		@include breakpoint(wideDesktop) {
-		    			left: 50%;
-							margin-left: -630px;
-						}
-		    		@include breakpoint(tabletPortrait) {
-							right: 8%;
-						}
-						@include breakpoint(phonePortrait) {
-			 			 right: 4%;
-						}
-		    	}
-		    }
-		    &.fith{
-		    	img{
-		    		width: 54%;
-		    		left: 50%;
-						margin-left: -400px;
-		    		@include breakpoint(wideDesktop) {
-		    			width:54%;
-		    			left: 50%;
-							margin-left: -510px;
-						}
-		    		@include breakpoint(tabletPortrait) {
-							margin-left:-480px;
-						}
-						@include breakpoint(phonePortrait) {
-			 			 width: 39%;
-						}
-
-		    	}
-		    }
-
-	 		}
-	 	}
-
-
-
-
-
-	 .banner-inner{
-			display: inline-block;
-			width: 100%;
-	 		position: relative;
-	 		top:0;
-	 		z-index: 1;
-	 		opacity: 1;
-
-	 		@include transition(opacity 0.5s ease-out);
-	 		@include transform (translateX(0px) translateY(0px) translateZ(0px) scale(1));
-
-
-	 		&.hide{
-	 			z-index: -1;
-	 			opacity: 0;
-	 			@include transform (translateX(0px) translateY(0px) translateZ(0px) scale(1));
-	 		}
-
-		 	.video-wrap{
-				overflow: hidden;
-			  @include transition((all 0.3s ease-out));
-				max-width: 1980px;
-				min-width: 1024px;
-				max-height: 1080px;
-				min-height: 600px;
-
-				@include breakpoint(wideDesktop) {
-					min-height: 790px;
-				}
-				@include breakpoint(tabletPortrait) {
-					max-width: 100%;
-					min-width: 100%;
-					max-height: 30px;
-					min-height: 10px;
-					position: absolute;
-					bottom:50px;
-					overflow: visible;
-				}
-
-				.target{
-					width: 100%;
-					height: 100%;
-					position: absolute;
-
-					@include breakpoint(tabletPortrait) {
-						display: none;
-				 	}
-
-					video{
-						background-color: #53abc5;
-						width: 100%;
-						min-width: 1024px;
-						height: auto;
-						@include fadein;
-						@include breakpoint(tabletPortrait) {
-							min-width: 800px;
-							min-height: auto;
-						}
-						@include breakpoint(tabletLandscape) {
-							width: 1024px;
-						}
-					}
-
-			 	 	img{
-			 	 		z-index: 0;
-			 	 		position: relative;
-			 	 		display: inline-block;
-						width:100%;
-						height: auto;
-			 	 	}
-
-		 		 }
-
-		 		ol.people{
-		 			@include hotspot;
-		 			position: absolute;
-		 			width: 100%;
-		 			height: 100%;
-		 			min-height: 100%;
-		 			@include transition(all 0.3s ease-out);
-		 			z-index: 5;
-		 			@include breakpoint(tabletLandscape) {
-						width: 1024px;
-					}
-
-
-		 			li{
-		 				height: 100%;
-		 				width: 20%;
-		 				float: left;
-		 				a{
-		 					height: 100%;
-		 					width: 100%;
-		 					position: relative;
-		 					display: inline-block;
-		 					@include hotspot;
-		 					@include fadein;
-	 						@include transform (translateX(0px) translateY(0px) translateZ(0px));
-
-							@include breakpoint(tabletPortrait) {
-								display: none
-							}
-
-		 					&:hover{
-		 						 .hover{
-		 							opacity: 1;
-
-		 						}
-		 						.hotspot{
-		 							@include transform(translate(0% , 0% ) scale( 1.60 ));
-		 						}
-		 					}
-
-	 						span{
-	 							&.hotspot{
-		 							position:absolute;
-		 							@include transform(translate( 0% , 0% ) scale( 1.45 ));
-		 						}
-		 						@include breakpoint(tabletPortrait) {
-									display: none
+	 		 }
+	 
+	 		ul.people{
+	 			@include hotspot;
+	 			position: absolute;
+	 			width: 100%;
+	 			height: 100%;
+	 			min-height: 100%;
+	 			@include transition(all 0.3s ease-out);
+	 			z-index: 5;
+	 			li{
+	 				
+	 				border: 1px solid red;
+	 				height: 100%;
+	 				width: 20%;
+	 				float: left;
+	 				a{
+	 					height: 100%;
+	 					width: 100%;
+	 					position: relative;
+	 					display: inline-block;
+	 					@include hotspot;
+	 					
+ 						span{
+ 							&.hotspot{
+ 								@include fadein;
+	 							position:absolute;
+	 							@include transform(translate( 0% , 0% ) scale( 1.45 ));
+			 					&:hover{
+									@include transform(translate( 0% , 0% ) scale( 1.60 ));
 								}
 	 						}
-	 						>div.hover {
-	 							@include transition(all 0.3s ease-out);
-	 							position: absolute;
-	 							width: 100%;
-	 							top:9%;
-	 							left:50%;
-	 							opacity:0;
-	 							@include transform (translateX(0px) translateY(0px) translateZ(0px));
+ 						}
+							
+						 
 
-	 							 @include breakpoint(tabletPortrait) {
-									display: none
-								}
-							 	.ring{
-					 	 			position: absolute;
-					 	 			z-index: 4;
-						 	 		top: 0%;
-									left: 0%;
-						 	 		margin-left:0px;
-						 	 		height: 503px;
-									width: 549px;
-						 	 		background: url(../assets/images/svg/journey-curve-blueandwhite.svg) 0% 0% no-repeat;
-						 	 		background-size: cover;
-									@include transform (translateX(-158px) translateY(-96px) translateZ(0px) rotate(75.6deg) scale(0.6));
-					 	 		}
+	 				}
 
-								.hotspot-content{
-									position: absolute;
-									top: 250px;
-									left: 0;
-							 	 	background: $blue;
-							 	 	width: 293px;
-							 	 	padding: 0px 0px 0px 0px;
-
-							 	 	&:after{
-							 	 		content: '';
-							 	 		position: absolute;
-							 	 		width: 100%;
-							 	 		height:90px;
-							 	 		bottom:-16px;
-							 	 		left:0;
-							 	 		@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
-							  		@include transition(opacity 0.3s ease-out);
-							  		background: $dark-blue;
-							  		z-index:1;
-							 	 	}
-
-									.title{
-										.content{
-											background: $dark-blue;
-											min-height:198px;
-											width: 100%;
-											display: inline-block;
-											position: relative;
-
-									 	 	h1{
-									 	 		font-size: 21px;
-									 	 		line-height:1.1em;
-									 	 		text-align: left;
-									 	 		padding: 5px 10px 0 20px;
-									 	 		margin-top: 26px;
-									 	 		font-family: $font-ICLPlight;
-												font-weight:300;
-									 	 		position: relative;
-									 	 		z-index: 4;
-									 	 		letter-spacing: 0.7px;
-
-									 	 		&:after{
-										 	 		content: '';
-										 	 		position: absolute;
-										 	 		top: -26px;
-													right: 0%;
-													height: 133px;
-													width: 173px;
-													background-color: #1e428a;
-													overflow: hidden;
-													z-index: -1;
-										 	 	}
-									 	 		&:before{
-										 	 		content: '';
-										 	 		position: absolute;
-										 	 		top: 0px;
-										 	 		left: 0%;
-										 	 		height: 133px;
-										 	 		width: 123px;
-										 	 		background-color: $dark-blue;
-										 	 		@include box-shadow(0px -23px 21px -18px #000);
-										 	 		overflow: hidden;
-										 	 		z-index: -1;
-										 	 	}
-									 	 	}
-
-								 	 		h2{
-									 	 		text-align: left;
-									 	 		color: $yellow;
-									 	 		line-height:1.3em;
-									 	 		text-transform: uppercase;
-									 	 		font-size: 14px;
-												position: relative;
-									 	 		z-index: 4;
-									 	 		padding: 3px 0 0 20px;
-									 	 		letter-spacing: 0.7px;
-									 	 	}
-
-									 	 	.buttons{
-									 	 		position: absolute;
-									 	 		z-index: 4;
-										 		bottom: 0;
-										 		padding: 0px 0 0px 20px;
-												.button{
-											 		display: block;
-												 	float: left;
-												 	margin: 12px 0;
-												 	padding: 6px 16px;
-												 	min-width:147px;
-												 	font-size: 13.75px;
-												 	background: none;
-												 	border: 1px solid $white;
-												 	&:hover {
-										        background: rgba(0,0,0,0.2);
-										      }
-											 	}
-
-											}
-								 	 	}
-									}
-								}
-							}
-		 				}
-			 			&.first{
-			 				width: 23.6%;
-
-			 				a{
-			 					@include animation-delay(2.4s);
-			 					div{
-									margin-left: -70px;
-				 				}
-			 					.hotspot{
-				 					top:32%;
-									left: 64%;
-				 				}
-				 				.hotspot-content{
-				 					top: 49%;
-									left: 14%;
-				 				}
+		 			&.first{
+		 				a{
+		 					.hotspot{
+			 					top: 40%;
+								left: 73%;
 			 				}
+		 				}
 
-						}
-						&.second{
-							width: 22%;
-							a{
-								@include animation-delay(2.6s);
-								div{
-				 					margin-left: -138px;
-				 				}
-								.hotspot{
-									top:32%;
-									left: 42%;
-				 				}
-				 				.hotspot-content{
-				 					top: 49%;
-									left: 14%;
-				 				}
-							}
-
-						}
-						&.third{
-							width: 15.5%;
-							a{
-								@include animation-delay(2.8s);
-								div{
-				 					margin-left: -130px;
-				 				}
-								.hotspot{
-									top:32%;
-									left: 43%;
-				 				}
-				 				.hotspot-content{
-				 					top: 49%;
-									left: 14%;
-				 				}
-							}
-
-						}
-						&.forth{
-							width: 18%;
-							a{
-								@include animation-delay(3s);
-								div{
-				 					margin-left: -130px;
-				 				}
-								.hotspot{
-									top:32%;
-									left: 42%;
-				 				}
-				 				.hotspot-content{
-				 					top: 49%;
-									left: 14%;
-				 				}
-							}
-
-						}
-						&.fith{
-							width: 20.9%;
-							a{
-								@include animation-delay(3.2s);
-								div{
-				 					margin-left: -180px;
-				 				}
-								.hotspot{
-									top:32%;
-									left: 24%;
-				 				}
-				 				.hotspot-content{
-				 					top: 49%;
-									left: 14%;
-				 				}
-							}
-						}
 					}
-		 		}
-		 	}
+					&.second{
+						a{
+							.hotspot{
+								@include animation-delay(1.4s);
+								top: 40%;
+								left: 60%;
+			 				}
+						}
+
+					}
+					&.third{
+						a{
+							.hotspot{
+								@include animation-delay(1.6s);
+								top: 40%;
+								left: 58%;
+			 				}
+						}
+
+					}
+					&.forth{
+						a{
+							.hotspot{
+								@include animation-delay(1.8s);
+								top: 40%;
+								left: 42%;
+			 				}
+						}
+
+					}
+					&.fith{
+						a{
+							.hotspot{
+								@include animation-delay(2s);
+								top: 40%;
+								left: 14%;
+			 				}
+						}
+
+					}
+				}
+	 		}
 	 	}
  	}
  }
@@ -889,10 +438,4 @@
 
 
 
-}
-
-.open-sidebar{
-	.interactive-container .hero-content .banner-inner .video-wrap {
-		min-height: 620px;
-	}
 }

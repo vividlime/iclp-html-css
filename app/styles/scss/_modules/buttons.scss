@@ -4,7 +4,9 @@ a.button,
   color:$white;
   background-color:$orange;
   @include transition(all 0.15s ease-out);
+  font-family: $font-family;
   @include box-shadow(1px 1px 0px rgba(0,0,0,0.70));
+  
   &:hover{
     color:$link;
     opacity: 0.85;
@@ -23,21 +25,18 @@ a.button,
   margin: 0 auto;
   color: $white;
   text-transform: uppercase;
-  font-family: $font-ICLPblack;
-  font-weight:900;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.4em;
   @include border-radius(3px);
- 
+  font-weight: normal;
+  min-width: 257px;
+  
   &.large{
     min-width: 185px;
     padding:9px 26px;
   }
   &.default{
     width:136px;
-  }
-  &.small{
-   padding:5px 32px;
   }
 
   &.form{
