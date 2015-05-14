@@ -105,8 +105,8 @@ module.exports = function (grunt) {
             dist: {
               options: {
                 app: 'stand_alone',
-                // basePath: '',
-                // sassDir: 'build/app/styles/scss/',
+                basePath: '',
+                sassDir: 'build/app/styles/scss/',
                 environment: 'development',
                 specify: 'build/app/styles/scss/screen.scss',
                 // cssPath: 'build/processed/styles/css/',
@@ -145,7 +145,7 @@ module.exports = function (grunt) {
 
         // Minify the css
         cssmin: {
-            frontEnd: {
+            build: {
                 files: {
                     'build/processed/styles/css/screen.min.css': 'build/processed/styles/css/screen.css'
                 }
