@@ -2,7 +2,6 @@ module.exports = function (grunt) {
 
     var bowerDir = 'app/bower_components/';
     var autoprefixer = require('autoprefixer-core');
-    var compass = require('compass');
 
     // Use a grunt process timer
     require('time-grunt')(grunt);
@@ -95,35 +94,26 @@ module.exports = function (grunt) {
             distjs: {
                 expand: true,
                 flatten: true,
-                src: [ 'build/app/js/vendor/*.js', 'build/processed/js/*.js'],
-                dest: 'js/'
+                src: [ 'build/processed/js/*.js'],
+                dest: 'assets/js/app'
             },
         },
 
 
+        // Grunt Contrib Compass
         compass: {
             dist: {
-                options: {
-                    config: 'config.rb',
-                    basePath: ''
-                }
-            }
-        },
-
-
-        // Grunt-Sass preprocessor (NPM version for LibSass)
-        sass: {
-            options: {
-
+              options: {
+                app: 'stand_alone',
+                // basePath: '',
+                // sassDir: 'build/app/styles/scss/',
+                environment: 'development',
+                specify: 'build/app/styles/scss/screen.scss',
+                // cssPath: 'build/processed/styles/css/',
+                // extensionsDir: 'build/bower_components/bower-compass-core/',
+                // require: 'compass'
+              }
             },
-            dist: {
-                files: {
-                    'build/processed/styles/css/screen.css' : 'build/app/styles/scss/screen.scss',
-                    'build/processed/styles/css/shame.css' : 'build/app/styles/scss/shame.scss'
-                }
-            }
-
-
         },
 
 
@@ -132,9 +122,9 @@ module.exports = function (grunt) {
 
             js: {
                 src: [
-                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
-                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
-                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js'
+                    'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
+                    'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
+                    'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js'
                 ],
                 dest: 'build/processed/js/bootstrap.js'
             }
@@ -157,8 +147,7 @@ module.exports = function (grunt) {
         cssmin: {
             frontEnd: {
                 files: {
-                    'build/processed/styles/css/screen.min.css': 'build/processed/styles/css/screen.css',
-                    'build/processed/styles/css/shame.min.css': 'build/processed/styles/css/shame.css'
+                    'build/processed/styles/css/screen.min.css': 'build/processed/styles/css/screen.css'
                 }
             }
         },
@@ -172,8 +161,7 @@ module.exports = function (grunt) {
                   report: 'min'
                 },
                 files: {
-                  'build/processed/js/app.min.js': ['build/processed/js/app.js'],
-                  'build/processed/js/admin.min.js': ['build/processed/js/admin.js']
+                  'build/processed/js/app.min.js': ['build/processed/js/app.js']
                 }
             }
         },
@@ -207,7 +195,7 @@ module.exports = function (grunt) {
             options: {
 
             },
-            src: ['styles/app.css']
+            src: ['stylesheets/screen.css']
         },
     });
 
