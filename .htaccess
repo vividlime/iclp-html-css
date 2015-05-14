@@ -1,0 +1,17 @@
+AddDefaultCharset utf-8
+
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    # mod_headers, y u no match by Content-Type?!
+    <FilesMatch "\.(gif|png|jpe?g|svg|svgz|ico|webp)$">
+      SetEnvIf Origin ":" IS_CORS
+      Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    </FilesMatch>
+  </IfModule>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    <FilesMatch "\.(html|php|txt|xml|js|css|map)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
+</IfModule>
