@@ -12,7 +12,84 @@
  
 
 
-<div id="header"></div>
+<div id="header">
+	<div class="navigation-wrap">
+	<div id="sidebar" class="container-navigation">
+			<nav class="navigation">
+				<div class="menu" id="menu">
+					
+					<a class="close-menu" href="#">CLOSE</a>
+
+				  <ul>
+				    <li><a href="index.html" class="home">HOME</a></li>
+						<li><a href="whatwedo.html" class="whatwedo" rel="external">WHAT WE DO</a></li>
+						<li><a href="clients.html" class="clients" rel="external">CLIENTS</a></li>
+						<li><a href="services.html" class="services" rel="external">SERVICES</a>
+
+							<ul class="dorpdown submenu">
+								<li><a href="services-strategy.html" class="" rel="external">Strategy</a></li>
+								<li><a href="#" class="" rel="external">Insight</a></li>
+								<li><a href="#" class="" rel="external">Engagement</a></li>
+								<li><a href="#" class="" rel="external">Technology</a></li>
+								<li><a href="#" class="" rel="external">Customer management</a></li>
+							</ul>
+						</li>
+						<li><a href="contacts.html" class="contactus" rel="external">CONTACT US</a></li>
+					 
+					</ul>
+	 
+			  </div>
+			</nav>
+	</div>
+</div>
+
+<header class="header">
+	<div id="sidebar-toggle"> 
+    <div>
+    	<span class="bar"></span>
+	    <span class="bar"></span>
+	    <span class="bar"></span>
+	  </div>
+	</div>
+		<div class="outer">
+			<div class="wrap">
+				<div class="logo-container">
+					<h1>
+						<a href="index.html"></a>
+							<embed src="assets/images/svg/ICLP_LOGO.svg" type="image/svg+xml"></embed>
+					</h1>
+				</div> 
+				<ul class="cta">
+					<li><a href="#" class="Contact-form"><span>Contact Form</span></a></li>
+					<li><a href="#" class="Search"><span>Search</span></a></li>
+				</ul>
+				
+			</div>
+		</div>
+
+	<div class="Contact-div section"></div>
+ 
+
+	<div class="Search-div section">
+		<div class="search-container">
+			<h2>Search website</h2>
+			<a href="#" class="header-close"><span>close</span></a>
+			<form class="form">
+				<div class="fieldset-container">
+					<div class="fieldset-wrap">
+						<fieldset>
+							<div>
+								<input type="search" placeholder="Enter a keyword">
+								<input type="submit" class="search" value="submit">
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</header>
+</div>
 <div class="container" id="container">
 
 	 <main>
@@ -28,7 +105,7 @@
 		 						<div class="hotspot-area">
 		 							<div class="pick-country"> 
 		 								<div class="country"></div>
-		 								<span id="first">PICK A COUNTRY</span>
+		 								<span id="first">PICK AN OFFICE</span>
 								    <span data-id="London" class="London hotspot"><em>London</em></span>
 								    <span data-id="CapeTown" class="CapeTown hotspot"><em>Cape Town</em></span>
 								    <span data-id="Beijing" class="Beijing hotspot"><em>Beijing</em></span>
@@ -307,14 +384,108 @@
 	 </main>  
 </div>
 
-<div class="sections" id="contact-form"></div>
-<footer class="footer" id="footer"></footer> 
+<div class="sections" id="contact-form">
+	<section class="contact-container" id="clonethis">
+
+	<h2 class="animated contact">Contact us
+		<div class="customer wrapper-circle" data-anim="base wrapper">
+		<div class="circle" data-anim="bigger"></div>
+	  <div class="circle" data-anim="smaller"></div>
+		</div>
+	</h2>
+	 
+		<a href="#" class="close-form"><span>close</span></a>
+		<form class="form contacts" id="form">
+			<p>Wherever you’re located, you’ll find it easy to talk to us.</p>
+
+			<div class="fieldset-container">
+				<div class="fieldset-wrap">
+					<fieldset>
+						<div><label class="email"></label><input type="email" placeholder="Your Email"></div>
+						<div><label class="name"></label><input type="text" placeholder="Your name"></div>
+						<div><label class="telephone"></label><input type="number" placeholder="Telephone"></div>
+						<div><label class="company"></label><input type="text" placeholder="Company"></div>
+						<div class="country"><label class="country"></label>
+
+							<select name="Country" id="country">
+								<option>Select Country</option>
+								<option value="Afghanistan">Afghanistan</option>
+								<option value=" Albania">Albania</option>
+								<option value=" Algeria">Algeria</option>
+								<option value=" Andorra">Andorra</option>
+								<option value=" Angola">Angola</option>
+								<option value=" Antigua &amp; Deps">Antigua &amp; Deps</option>
+								<option value=" Argentina">Argentina</option>
+								<option value=" Armenia">Armenia</option>
+								<option value=" Australia">Australia</option>
+								<option value=" Austria">Austria</option>
+								<option value=" Azerbaijan">Azerbaijan</option>
+								<option value=" Bahamas">Bahamas</option>
+								<option value=" Bahrain">Bahrain</option>
+								<option value=" Bangladesh">Bangladesh</option>
+								<option value=" Barbados">Barbados</option>
+								<option value=" Belarus">Belarus</option>
+								<option value=" Belgium">Belgium</option>
+								<option value=" Belize">Belize</option>
+								<option value=" Benin">Benin</option>
+								<option value=" Bhutan">Bhutan</option>
+								<option value=" Bolivia">Bolivia</option>
+								<option value=" Bosnia Herzegovina">Bosnia Herzegovina</option>
+							</select>
+						</div>
+					</fieldset>
+				</div>
+				<div class="fieldset-wrap">
+
+					<fieldset>
+					<div><label class="message"></label>
+						<textarea placeholder="Message"></textarea>
+					</div>
+
+					<div class="buttons checkboxes">
+						<label><input type="checkbox">Please tick if you would like us to contact you with information we feel may be of interest to you by electronic means (email)</label>
+				 	</div>
+					<div class="buttons checkboxes">
+						<label><input type="checkbox">Please tick if you would like us to contact you with information we feel may be of interest to you by electronic means (email)</label>
+				 	</div>
+						  
+					<div class="buttons">
+						<button class="button large">SEND</button>
+					</div>
+					</fieldset>
+				</div>
+			</div>
+		</form>
+</section>
+</div>
+<footer class="footer" id="footer">
+<a href="#backtotop" class="scrolltotop">Back to top</a>
+
+<div class="footer-content">
+		
+	<nav class="sitehelp">
+		<ul class="socials">
+			<li><a href="#" class="twitter"></a></li>
+			<li><a href="#" class="linkedin"></a></li>
+		</ul>
+		
+		<ul>
+			<li><a href="#">Site map</a></li>
+			<li><a href="#">Accessibility</a></li>
+			<li><a href="#">Terms of use</a></li>
+			<li><a href="#">Privacy Policy</a></li>
+			<li><a href="#">Cookie policy</a></li>
+		</ul>
+	</nav>
+		<p class="copyright">© 2015 ICLP Worldwide Ltd. Registered in England & Wales under registration No. 6297514 &nbsp; | &nbsp; A COLLINSON GROUP COMPANY</p>
+</div>
+</footer> 
 
 
  
   <script src="assets/js/lib/jquery.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-	<script src="assets/js/app/default.js"></script>
+	<script src="assets/js/app/default-backend.js"></script>
   <script src="assets/js/app/contactus.js"></script>
 </body>
 </html>
