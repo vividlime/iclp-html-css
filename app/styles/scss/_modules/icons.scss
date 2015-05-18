@@ -7,7 +7,7 @@ label{
     position:absolute;
     content: "";
     @include transition((all 0.3s ease-out));
-    color:$white;
+    color: $dark-grey;
     font-size: 1.3em;
   }
 	&.email{
@@ -47,21 +47,21 @@ label{
 		}
 	}
 }
-.socials{
 
 	ul{
+    &.socials{
+
 		li{
 			float: left;
 			display: inline;
 			& + li {
 				padding-left: 40px;
 			}
-
 			a{
 				position: relative;
 				padding:10% 0;
 				display: block;
-				
+
 				&:before{
 			    @include iconsFonts;
 			    top: 0%;
@@ -81,13 +81,16 @@ label{
 			  }
 		  	&.twitter{
 		  		&:before{
-		  			content: "\e009";
+		  			 background: url(../assets/images/twitter-white.png) no-repeat 0 0;
+            width:24px;
+            height:20px;
 		  		}
 		  	}
 			}
 		}
 	}
 }
+a.close-carousel span,
 a.header-close,
 a.close-menu,
 a.close-form{
@@ -109,11 +112,8 @@ a.close-form{
 
 
 h2.animated{
-  font-family: $font-ICLPblack;
 	width:100%;
-	text-transform: uppercase;
 	text-align: center;
-	display: block;
 	position: relative;
   margin-top: 20px;
   width: 100%;
@@ -123,9 +123,9 @@ h2.animated{
 
   @include breakpoint(tabletPortrait) {
    margin-top: 12px;
-   padding: 68px 0 12px 0;
+   padding: 78px 0 12px 0;
   }
-  
+
   strong{
     display: block;
     font-weight:bold;
@@ -137,18 +137,20 @@ h2.animated{
     @include transition((all 0.3s ease-out));
     color:$white;
     @include breakpoint(phonePortrait) {
-   
+
     }
   }
 
-  &.contact{
+  &.contacthome{
+
     &:before{
       top: 22px;
       left: 50%;
       margin-left: -16px;
       font-size: 30px;
-      @include transform (rotate(-90deg));
-      content: "\e048";
+      // @include transform (rotate(-90deg));
+      content: "\e086";
+      @include transition((all 0.3s ease-out));
       @include breakpoint(phonePortrait) {
         top: 25px;
         margin-left: -11px;
@@ -157,19 +159,86 @@ h2.animated{
     }
     .wrapper-circle{
       @include transform(scale(1.3));
+      @include breakpoint(tabletPortrait) {
+        @include transform(scale(1));
+      }
+    }
+    &:focus:before,
+    &:hover:before{
+      opacity: 1;
+    }
+  }
+  &.contact{
+
+    &:before{
+      top: 22px;
+      left: 50%;
+      margin-left: -16px;
+      font-size: 30px;
+      @include transform (rotate(-90deg));
+      content: "\e048";
+      @include transition((all 0.3s ease-out));
+      @include breakpoint(phonePortrait) {
+        top: 25px;
+        margin-left: -11px;
+        font-size: 21px;
+      }
+    }
+    &:after{
+      top: 12px;
+      left: 50%;
+      margin-left: -13px;
+      position: absolute;
+      opacity: 0;
+      background: url(../assets/images/arrow.png) no-repeat 0 0;
+      width: 20px;
+      height: 40px;
+      content: "";
+      @include transform(rotate(90deg));
+      @include transition((all 0.3s ease-out));
+    }
+    &:focus:before,
+    &:hover:before{
+      opacity: 0;
+    }
+    &:hover:after{
+      opacity: 1;
+      top: 22px;
+    }
+
+
+    .wrapper-circle{
+      @include transform(scale(1.3));
+      @include breakpoint(tabletPortrait) {
+        @include transform(scale(1));
+      }
+    }
+  }
+  &.play{
+    &:before{
+      top: 23px;
+      left: 50%;
+      margin-left: -12px;
+      font-size: 1.3em;
+      content: "\e071";
+      @include breakpoint(phonePortrait) {
+        font-size: 21px;
+        margin-left: -9px;
+        top:25px;
+      }
     }
   }
   &.customer{
   	&:before{
   		top: 23px;
       left: 50%;
-      margin-left: -12px;
+      margin-left: -15px;
   		font-size: 1.3em;
-    	content: "\e071";
+    	content: "\e08a";
       @include breakpoint(phonePortrait) {
-        font-size: 30px;
+        font-size: 21px;
         margin-left: -11px;
-        top:25px;
+        top:27px;
       }
     }
   }
@@ -181,7 +250,7 @@ h2.animated{
   		font-size: 28px;
     	content: "\e06a";
       @include breakpoint(phonePortrait) {
-        font-size: 30px;
+        font-size: 21px;
         margin-left: -11px;
         top:25px;
       }
@@ -194,11 +263,11 @@ h2.animated{
       margin-left: -20px;
       font-size: 38px;
       content: "\e09e";
-      @include breakpoint(phonePortrait) {
-        font-size: 30px;
-        margin-left: -11px;
-        top:25px;
-
+      @include breakpoint(tabletPortrait) {
+        // font-size: 31px;
+        // margin-left: 29px;
+        // top: 22px;
+        // left: 11px;
       }
     }
   }
@@ -263,6 +332,9 @@ h2.animated{
       margin-left: -15px;
   		font-size: 1.8em;
     	content: "\e001";
+      @include breakpoint(tabletPortrait) {
+        font-size: 30px;
+      }
       @include breakpoint(phonePortrait) {
         font-size: 30px;
       }
@@ -275,8 +347,12 @@ h2.animated{
       margin-left: -19px;
       font-size: 40px;
       content: "\e087";
-      @include breakpoint(phonePortrait) {
-        font-size: 30px;
+
+      @include breakpoint(tabletPortrait) {
+        font-size: 27px;
+        margin-left: 0px;
+        top: 2px;
+        left: 11px;
       }
     }
   }
@@ -287,8 +363,11 @@ h2.animated{
       margin-left: -18px;
       font-size: 36px;
       content: "\e06b";
-      @include breakpoint(phonePortrait) {
+      @include breakpoint(tabletPortrait) {
         font-size: 30px;
+        margin-left: 0px;
+        top: 2px;
+        left: 11px;
       }
     }
   }
@@ -299,8 +378,11 @@ h2.animated{
       margin-left: -21px;
       font-size: 40px;
       content: "\e015";
-      @include breakpoint(phonePortrait) {
-        font-size: 30px;
+      @include breakpoint(tabletPortrait) {
+        font-size: 26px;
+        margin-left: 0px;
+        top: 2px;
+        left: 11px;
       }
     }
   }
@@ -311,10 +393,32 @@ h2.animated{
       margin-left: -18px;
       font-size: 35px;
       content: "\e098";
-      @include breakpoint(phonePortrait) {
-        font-size: 30px;
+      @include breakpoint(tabletPortrait) {
+        font-size: 26px;
+        margin-left: 0px;
+        top: 2px;
+        left: 11px;
       }
     }
   }
- 
+  &.ourservices{
+    &:before{
+      top: 22px;
+      left: 50%;
+      margin-left: -15px;
+      font-size: 27px;
+      content: "\e026";
+    }
+  }
+
+}
+
+
+#services h2.animated.strategy:before{
+  @include breakpoint(tabletPortrait) {
+    font-size: 26px;
+    margin-left: 0px;
+    top: 2px;
+    left: 11px;
+  }
 }

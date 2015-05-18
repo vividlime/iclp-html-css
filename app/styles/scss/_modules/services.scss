@@ -5,165 +5,124 @@
 			&.head{
 				.head-container{
 					.head-theme{
-						@include OrangeCircle;
 						.headings{
-							h1{
-								&.imagery{
- 									&:after{
-										background:  url(../assets/images/hero-imagery-services.jpg) 0 center no-repeat;
-									}
-									&:before{
-										background: url(../assets/images/svg/small-ring-red.svg) 50% 50% no-repeat;
-										background-size: 79%;
-									}
+							&.theme{
+								.angle{
+									z-index: 2;
 								}
-								&.theme{
-									&:after{
-										background:  url(../assets/images/hero-imagery-services2.jpg) 0 top no-repeat;
-									}
+								.ring{
 									&:before{
-										content: "";
-										position: absolute;
-										top:0;
-										left:5%;
-										width: 90%;
-										height: 100%;
- 										z-index: 1;
-										@include transform (translateX(0px) translateY(0px) translateZ(0px) rotate(0deg));
-										background-size: cover;
-										background: url(../assets/images/svg/small-ring-red.svg) 50% 50% no-repeat;
-										background-size: 79%;
+										background-image: url(../assets/images/svg/Banner-Services-JourneyCurve-L1.svg);
 									}
 								}
 							}
-							.angle{
-								&:before{
-									@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
-								}
-								h2{
+
+							&.imagery{
+								background: $orange;
+								.ring{
 									&:before{
-										content: "\e026";
+										background-image: url(../assets/images/svg/Banner-Services-JourneyCurve-L2.svg);
 									}
-								} 
-							}
-							h3{
-								color: $orange;
+								}
 							}
 						}
+
+						.angle{
+							&:before{
+								@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
+							}
+						}
+
+						.sub-heading{
+							h3{
+								color: $grey;
+							}
+							.titles{
+								h1,h2,h3,blockquote{
+									color: $grey;
+								}
+								h2{
+									text-transform: inherit
+								}
+							}
+						}
+
 					}
 				}
 			}
-		 
+
 			&.copy-content{
 				&:before{
-					background-image: url(../assets/images/svg/large-ring-red.svg);
-					@include breakpoint(phonePortrait) {
+ 					@include breakpoint(phonePortrait) {
 						display: none;
 					}
 				}
-				&.imagery{
-					&:before{
-						background-image: none;
-					}
-				}
-				.copy{
-					padding: 38px 0px 38px 110px;
-					&:first-child{
-						h2{
-							padding-top: 0;
-						}
-					}
-					&:nth-child(even){
+				.copy-wrap{
+					&:nth-child(odd){
 						background:$lighter-grey;
-						overflow: hidden;
-						position: relative;
 					}
-					&.programme-design{
-						background-image: url(../assets/images/imagery-5.png);
-						background-position: 100% 50%;
-						background-repeat: no-repeat;
-						@include breakpoint(phonePortrait) {
-							background-image: none;
+					&:first-child{
+						.copy{
+							padding-top:178px;
+							@include breakpoint(phonePortrait) {
+								padding-top: 128px;
+							}
 						}
 					}
-					&.partnership-strategy{
-						background-image: url(../assets/images/imagery-4.png);
-						background-position: 100% 50%;
-						background-repeat: no-repeat;
-						@include breakpoint(phonePortrait) {
-							background-image: none;
+					.copy{
+						h2{
+							color: $grey;
 						}
 					}
-					&.performance-evaluation{
-						background-position: 100% 0;
-						background-repeat: no-repeat;
-					}
-					h2{
-						font-family: $font-ICLPblack;
-						position: relative;
-						z-index: 1;
-						color:$orange;
-						padding-right: 50%;
-						padding-bottom: 18px;
-						padding-top: 40px;
-						@include breakpoint(phonePortrait) {
-							padding-right: 0%;
-		        }
-					}
-					p{
-						position: relative;
-						z-index: 1;
-						line-height: 1.7em;
-						font-size: 17px;
-						color:$grey;
-						padding-right: 50%;
-						padding-bottom: 40px;
-						font-family: $font-ICLPlight;
-						@include breakpoint(phonePortrait) {
-							padding-right: 0%;
-							font-size: 16px;
-		        }
-					}
-					@include breakpoint(phonePortrait) {
-							background-image: none;
-							padding: 20px;
-		        }
-					
 				}
-
 			}
 			&.head,
-			&.hero-sevices{
+			&.hero-services{
 				position: relative;
-				padding: 0px 0 1px 0;
+				padding: 0px 0 0px 0;
 				z-index: 1;
 				.nav-icons{
 					position: relative;
 					top: 0;
 					width: 100%;
 					z-index: 3;
+					background: #ebe7e4;
 					.icons{
-						width: 100%;
 						display: table;
-						padding: 0px 0 0 0;
+						padding: 10px 0 10px 0;
+						max-width: 1170px;
+						margin: auto;
+						@include breakpoint(desktop) {
+							padding: 10px;
+						}
+						@include breakpoint(tabletPortrait) {
+							width: 100%;
+							padding: 0px 0;
+						}
+
 						a.icon-wrap{
 							position: relative;
 							display: table-cell;
-							background: url(../assets/images/hero-imagery-services2.jpg);
-							background-size:cover;
 							width: 20%;
-							padding: 0 10px;
+							padding: 0px 10px 100px 10px;
 							@include transition((all 0.5s ease-out));
-							border-left: 1px solid $white;
 							@include transform(translateZ(0px));
+							background: $turquoise;
+							border-right: 10px solid $rodeo-dust;
+							overflow: hidden;
+							&:last-child{
+								border-right: 0px solid #f08017;
+							}
+
 							&:after{
 						    content:'';
 						    position:absolute;
 						    left:0;
 						    top:0;
+						    bottom: 0;
 						    width:100%;
-						    height:100%;
-						    background: $orange;
+						    height:600px;
+						    // background: $orange;
 						    background-size:cover;
 						    opacity:1;
 						    @include transition((all 0.35s ease-out));
@@ -171,29 +130,37 @@
 							}
 							&:hover:after{
 							  opacity:0;
-							  background: rgba(0,0,0,0.40);
-							} 
-							&:first-child{
-								border-left: 0px solid $white;
+							  background: rgba(0,0,0,0.20);
 							}
+
+							&.active p:after,
+							&.active p:before{
+								background: #c06612;
+							}
+
+
 							h2.animated{
-								padding-top: 178px;
+								margin-top:30px;
+								@include breakpoint(phonePortrait) {
+									margin-top:18px;
+								}
 								span{
 									text-align: center;
 									width: 100%;
 									position: absolute;
-									top:110px;
+									top:98px;
 									left:0;
 									&:after{
 								    content:'';
 								    position:absolute;
 								    left:20%;
-								    top:52px;
+								    top:48px;
 								    width:60%;
 								    height: 1px;
 								    background:$white;
 									}
 								}
+
 								&.customerengagement{
 									span{
 										top: 100px;
@@ -204,19 +171,30 @@
 								}
 							}
 							p{
-								font-size: 17px;
+								width: 96%;
 								display: block;
 								text-align: center;
-								padding:0px 1% 48px 1%;
+								margin: 50px auto 0px auto;
+								padding:0 10px;
+								position: relative;
+
 							}
 							span.view{
 								border: 1px solid $white;
 								@include border-radius(3px);
 								padding: 10px 40px;
-								margin:20px auto;
+								margin:0px auto;
 								text-align: center;
-								display: table;
+								position: absolute;
+								z-index: 2;
+								bottom: 30px;
+								left: 50%;
+								margin-left: -63px;
+								@include transition((all 0.35s ease-out));
 
+								&:hover{
+		             background: rgba(255,255,255,0.2);
+		            }
 							}
 							&:focus .circle[data-anim~=bigger],
 							&:hover .circle[data-anim~=bigger]{
@@ -235,7 +213,7 @@
 						    @include transform (rotate(180deg));
 						  }
 						  &.active{
-
+						  	background: #336979;
 
 								.circle[data-anim~=bigger],
 								.circle[data-anim~=bigger]{
@@ -255,32 +233,45 @@
 							  }
 							  &:after{
 								  opacity:1;
+								  background:$turquoise;
 								  @include breakpoint(phonePortrait) {
-									  background:#904d0e;
+									  background:#c06612;
 									}
 								}
 						  }
 						  &:hover{
- 						  	background-image: url(../assets/images/hero-imagery-services2.jpg);
 						  }
+						  &:focus,
+						  &:hover{
+								background-image: none;
+							}
+							&:focus:after,
+							&:hover:after{
+							  opacity:1;
+							  background: #336979;
+							}
 						}
 					}
-					@include breakpoint(phonePortrait) {
+					@include breakpoint(tabletPortrait) {
 						.icons{
 							display: inline-block;
 							a.icon-wrap{
-								padding: 0;
+								padding: 0px 0;
 								background-image: none;
 								width: 100%;
 								display: inline-block;
+								border:0;
 								border-top:1px solid $white;
-								&:focus,&:hover{
+								height: auto;
+								&:focus,
+								&:hover{
 									background-image: none;
 								}
-								&:focus:after,&:hover:after{
+								&:focus:after,
+								&:hover:after{
 								  opacity:1;
-								  background:#904d0e;
-								} 
+								  background:#c06612;
+								}
 								h2.animated{
 									padding:22px 0;
 									span{
@@ -290,10 +281,10 @@
 										padding-left: 60px;
 										font-size: 18px;
 									}
-									&:before{
-										margin-left: 0;
-										left: 10px;
-										top: 0;
+
+									.wrapper-circle{
+										display: none;
+
 									}
 								}
 								p,span.view{

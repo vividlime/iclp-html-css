@@ -1,0 +1,384 @@
+#clients{
+	.sections{
+		section{
+			&.head{
+				.head-container{
+					.head-theme{
+						.headings{
+							&.theme{
+								.ring{
+									&:before{
+										background-image: url(../assets/images/svg/Banner-Clients-JourneyCurve-L1.svg);
+									}
+								}
+							}
+							&.imagery{
+								background: $red;
+								.ring{
+									&:before{
+										background-image: url(../assets/images/svg/Banner-Clients-JourneyCurve-L2.svg);
+									}
+								}
+							}					 
+						}
+						.sub-heading{
+							h3{
+								color: $red;
+							}
+							.titles{
+								h1,h2,h3,blockquote{
+									color: $red;
+								}
+								h3{
+									&:before{
+										background: $red;
+									}
+								}
+							}
+						}
+						.angle{
+							&:before{
+								z-index: 2;
+							} 
+						}
+						
+					}
+				}
+			}
+
+			&.hero-clients-logo{
+ 				position: relative;
+				padding: 0;
+				overflow: hidden;
+				margin-top: -46px;
+				z-index: 2;
+		
+				.wrapper{
+					width: 100%;
+					display: table;
+
+					&:first-child{
+						border-top: 1px solid $red;
+						margin-top: -8px;
+					}
+					&:last-child{
+						border-bottom: 0px solid $red;
+					}
+					>div{
+						display: table-cell;
+						&.colleft{
+							width: 31.794871794871793%; /* 372 / 1170 */
+							.wrap{
+								min-height: 100%;
+								height: 100%;
+								width: 100%;
+								display: inline-block;
+							}
+						}
+						&.colright{
+							width: 68.20512820512821%; /* 798 / 1170 */
+							.wrap{
+								width: 100%;
+							}
+						}
+
+						.row{
+						 width: 100%;
+						 display: table;
+						}
+						.wrap{
+							display: table-cell;
+							position: relative;
+							&.short{
+								width: 326px;
+							}
+							&.wide{
+								width: 442px;
+							}
+							a{
+								position: absolute;
+								width: 100%;
+								height:100%;
+								border: 1px solid $red;
+								@include transition(all 0.3s ease-out);
+								&:hover{
+									figure{
+										img{
+											@include transform(translateY(-10px));
+										}
+										figcaption{
+											bottom: 0;
+ 											opacity: 1;
+ 											@include breakpoint(phonePortrait) {
+												display: none;
+											}
+										}
+									}
+								}
+								&.harrods{
+									border-left: 0;
+									figure{
+										img{
+											left:calc(50% - 140px /2);
+											@include breakpoint(phonePortrait) {
+												@include transform(scale(0.8) translateX(17px) translateY(0));
+											}
+										}
+									}
+								}
+								&.img{
+									figure{
+										img{
+											left:calc(50% - 120px /2);
+											top:calc(50% - 58px /2);
+											@include breakpoint(phonePortrait) {
+												@include transform(scale(0.8) translateX(17px) translateY(0));
+											}
+										}
+									}
+								}
+								&.dhl{
+									border-right: 0;
+									figure{
+										img{
+											left:calc(50% - 154px /2);
+											top:calc(50% - 31px /2);
+											@include breakpoint(phonePortrait) {
+												@include transform(scale(0.8) translateX(17px) translateY(0));
+											}
+										}
+									}
+	 							}
+								&.saudiarabian{
+									figure{
+										img{
+											left:calc(50% - 274px /2);
+											top:calc(50% - 53px /2);
+											&.desktop{
+												display: block;
+												@include breakpoint(phonePortrait) {
+													display: none;
+												}
+											}
+											&.mobile{
+												display: none;
+												@include breakpoint(phonePortrait) {
+													display: block;
+													@include transform(scale(0.6) translateX(123px) translateY(-70px));
+										 
+												}
+											}
+											
+										}
+									}
+	 							}
+								&.asiamiles{
+									border-right: 0;
+									figure{
+										img{
+											left:calc(50% - 147px /2);
+											top:calc(50% - 45px /2);
+											@include breakpoint(phonePortrait) {
+												@include transform(scale(0.8) translateX(30px) translateY(0));
+											}
+										}
+									}
+	 							}
+	 							&.manchesterutd{
+	 								border-bottom: 0;
+									border-left: 0;
+									figure{
+										img{
+											left:	calc(50% - 101px /2);
+											top:	calc(50% - 107px /2);
+											@include breakpoint(phonePortrait) {
+												@include transform(scale(0.8) translateX(17px) translateY(0));
+											}
+										}
+
+									} 
+ 								}	
+								&.ghadiscovery{
+									border-bottom: 0;
+									figure{
+										img{
+											left:calc(50% - 196px /2);
+											top:calc(50% - 24px /2);
+											@include breakpoint(phonePortrait) {
+												@include transform(scale(0.8) translateX(51px) translateY(0));
+											}
+										}
+									}
+	 							}		
+								&.virgin{
+									border-right: 0;
+									border-bottom: 0;
+									figure{
+										img{
+											left:calc(50% - 204px /2);
+											top:calc(50% - 58px /2);
+											@include breakpoint(phonePortrait) {
+												@include transform(scale(0.8) translateX(47px) translateY(0));
+											}
+										}
+									}
+	 							}	
+								figure{
+									width: 100%;
+									height: 100%;
+									position: relative;
+									figcaption{
+										@include transform(translateZ(0px));
+										@include transition(all 0.3s ease-out);
+										opacity: 0;
+										font-size: 17px;
+										display: block;
+										text-align: center;
+										padding:12px 2% 12px 2%;
+										text-align: center;
+										position: absolute;
+										color:$grey;
+										bottom:0;
+										&:before{
+									    content:'';
+									    position:absolute;
+									    left:25%;
+									    top:-12px;
+									    width:50%;
+									    height: 1px;
+									    background:$red;
+										} 
+									} 
+									img{
+										@include transition(all 0.3s ease-out);
+				            position:absolute;
+				            top:50%;
+				            left:50%;
+				            max-width: 100%;
+				            z-index: 1;
+									}
+								}
+							}
+						}
+					}
+
+					//wrapper:first-child
+					
+					&:first-child{
+						.colleft{
+							.wrap{
+								a{
+									height: $bigrow;
+								}
+							}
+						}
+						.colright{
+							.row{
+								height: $bigrow / 2;
+								.wrap{
+									a{
+										height: $bigrow / 2;
+									}
+								}
+							}
+						}
+					}
+					//wrapper:last-child
+					&:last-child{
+						>div{
+							
+							&.first {
+								width: 23.931623931623933%;
+							}
+							&.second {
+								width: 36.23931623931624%;
+							}
+							&.third {
+								width: 39.829059829059826%;
+							}
+							.wrap{
+								min-height:$smallrow;
+								width: 100%;
+								display: inline-block;
+							}
+						}
+						
+					}
+				}
+				  
+				a.pane-content{
+					position: absolute;
+					top: 0;
+					height: 100%;
+					width: 100%;
+					padding: 0;
+				}
+				h2{
+					position: absolute;
+					top: 30%;
+					padding-top: 106px;
+					&:before{
+						top: 28px;
+						left: 49%;
+					}
+				}
+			}
+			&.copy-content{
+				&:before{
+					background: url(../assets/images/svg/Clients-Noimages-Body-JourneyCurve.svg) no-repeat 0 0;
+					 
+					background-repeat: no-repeat;
+					@include breakpoint(phonePortrait) {
+						left: -140px;
+						top: -40px;
+						width: 210%;
+					}
+				}
+				 
+				.copy-wrap{
+					&:first-child{
+						.copy{
+							padding-top: 190px;
+						}
+					}
+					&:nth-child(odd){
+						background:$lighter-blue;
+						&:after{
+							width: 100%;
+							height: 100%;
+							content: "";
+							position: absolute;
+							bottom: 0%;
+							left:0;
+							@include background-image(radial-gradient(at bottom 40%, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0) 100%));
+						}
+					}
+					.copy{
+						width: 100%;
+						min-height: 400px;
+						margin: 0 auto;
+
+						@include breakpoint(tabletPortrait) {
+							min-height: inherit;
+						}
+	  
+						position: relative;
+						overflow: hidden;
+					}
+				}
+			}
+ 
+		}
+
+
+
+
+
+
+	}
+
+.sections > section.angle-top-end{
+	margin-top: 0;
+}
+
+}

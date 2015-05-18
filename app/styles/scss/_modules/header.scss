@@ -1,4 +1,5 @@
 body{
+
   header.header{
   	width: 100%;
   	margin: 0 auto;
@@ -6,13 +7,10 @@ body{
     top: 0;
     right: 0;
   	z-index:10;
-    @include transition((width 0.3s ease-out));
-    @include breakpoint(phonePortrait) {
-      
-    }
-    
-     #sidebar-toggle{ 
-      left: 0;
+    @include transition((all 0.3s ease-out));
+
+    #sidebar-toggle{
+      left:0;
       width: 40px;
       top:0;
       position:absolute;
@@ -20,102 +18,126 @@ body{
       cursor:pointer;
       display:block;
       @include transition((all 0.3s ease-out));
-      @include transform (translateX(20px) translateY(20px) translateZ(0px) rotate(0deg));
+      @include transform (translateX(24px) translateY(24px) translateZ(0px) rotate(0deg));
+
       @include breakpoint(tabletPortrait) {
-        width: 30px;
+        width: 40px;
         @include transform (translateX(12px) translateY(12px) translateZ(0px) rotate(0deg));
       }
- 
-        > div{
-          padding:0px;
+
+      > div{
+        width: 100%;
+        padding:0px;
+        float: left;
+        position:relative;
+        @include transition((all 0.3s ease-out));
+
+        span.bar{
+          display: inline-block;
+          @include roundcorners(3px);
+          // @include box-shadow(0 2px 1px rgba(0,0,0,0.90) inset);
+          margin-bottom: 7px;
           float: left;
-          position:relative;
-          opacity:1;
+          height: 3px;
+          width: 100%;
+          background-color:#929288;
           @include transition((all 0.3s ease-out));
 
-          span.bar{
-            display: block;
-            @include roundcorners(2px);
-            @include box-shadow(0 1px 1px rgba(205,195,187,0.40) inset);
+          @include breakpoint(tabletPortrait) {
             margin-bottom: 6px;
-            height: 4px;
-            width: 40px;
-            background-color:#929288;
-            @include transition((all 0.3s ease-out));
-            
-            &:last-child{
-               margin-bottom: 0;   
-            }
-            @include breakpoint(tabletPortrait) {
-              width: 30px;
-            }
           }
         }
-        &.active{
-         .browse{
-          opacity: 1;
-         }
-        }
-   
-        
+      }
+      &.active{
+       .browse{
+        opacity: 1;
+       }
+      }
     }
-    
+
   	.outer{
-      background: $white;
+      background: #fff;
   		margin:0 auto;
   		width: 100%;
       position: relative;
       z-index: 1;
-      border-bottom: 2px solid $light-grey;
+      height:75px;
+      &:before{
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+      }
 
+      &:after{
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: $rodeo-dust;
+        bottom: 0;
+        z-index: 1;
+      }
+      @include breakpoint(tabletPortrait) {
+       height: 48px;
+      }
   		.wrap{
   			position:relative;
   			@include transition((all 0.3s ease-out));
-        height:63px;
-        @include breakpoint(tabletPortrait) {
-         height: 48px;
-        }
 
   			.logo-container{
   				display:block;
   				position: relative;
-  				width:116px;
+          width: 186px;
   				margin:0px auto 0 auto;
-
           @include breakpoint(tabletPortrait) {
-            padding-top: 8px;
+            width: 146px;
           }
- 
   				h1{
   					display:block;
+            position: relative;
+            width: 100%;
+            padding-top: 9px;
+            @include breakpoint(tabletPortrait) {
+              padding: 0;
+            }
   					a{
   						margin:auto;
   						display:block;
-  						width: 116px;
-              @include breakpoint(tabletPortrait) {
-                width: 100px;
-              }
+  						width:100%;
+              position: absolute;
+              top:0;
+              left:0;
+              height: 100%;
+              z-index: 4;
 
-  						img{
-  							width:100%;
-                height: auto;
-  						}
-  					}
+                @include breakpoint(tabletPortrait) {
+                  padding-top: 0px;
+                }
+              }
+						embed{
+              height: 50px;
+              @include breakpoint(tabletPortrait) {
+                height: 44px;
+                @include transform (scale(0.9));
+              }
+						}
   				}
   			}
         .cta{
           position: absolute;
           right:20px;
-          //top:calc(50% / 2 - 0px);
-          top:3px;
+          top:13px;
           @include breakpoint(tabletPortrait) {
-            right:12px;
+            right:20px;
+            top:1px;
           }
           li{
             display: inline-block;
             padding: 0 16px;
             @include breakpoint(tabletPortrait) {
-              padding: 0 4px;
+              padding: 0 14px;
             }
             &:first-child{
               padding-left: 0;
@@ -144,12 +166,14 @@ body{
                 content: "";
                 @include transition((all 0.3s ease-out));
                 color:$dark-grey;
+
                 @include breakpoint(tabletPortrait) {
                   font-size: 1.4em;
+                  color:$grey;
                 }
               }
               &:hover:before{
-                color:$grey
+                color:$grey;
               }
               &.selected{
                 &:after{
@@ -161,12 +185,17 @@ body{
                   height: 53px;
                   width: 40px;
                   left: -6px;
+
                 }
                 &:before{
                   color:$white;
                 }
+
                 &:hover:before{
-                  color:$white
+                  color:$white;
+                  @include breakpoint(phonePortrait) {
+                    color:$grey;
+                  }
                 }
               }
 
@@ -175,13 +204,30 @@ body{
 
               &.Contact-form{
                 &:before{
-                  @include transform (rotate(-90deg));
-                  content: "\e048";
+                  // @include transform (rotate(-90deg));
+                  content: "\e086";
+                }
+                &.selected{
+                  &:after{
+                    @include breakpoint(phonePortrait) {
+                      display: none;
+                    }
+                  }
+                  &:before{
+                    @include breakpoint(phonePortrait) {
+                      color:$grey;
+                    }
+                  }
+                  &:hover:before{
+                  @include breakpoint(phonePortrait) {
+                      color:$grey;
+                    }
+                  }
                 }
               }
               &.Languages{
                 &:before{
-                  content: "\e036"; 
+                  content: "\e036";
                 }
               }
               &.Search{
@@ -194,11 +240,8 @@ body{
         }
   		}
   	}
-
-
-
 .Contact-div,.Languages-div,.Search-div{
-  background: $grey;
+  background: $rodeo-dust;
   width: 320px;
   position: absolute;
   top:0px;
@@ -216,18 +259,21 @@ body{
     height: 76px;
     bottom: -54px;
     left:0;
-    @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
-    background: $grey;
+    @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
+    background: $rodeo-dust;
     z-index: 0;
     @include transition(all 0.9s ease-out);
     opacity: 1;
   }
- 
+
   &.open{
     z-index:4;
     display: block;
     opacity: 1;
-    top: 64px;
+    top: 75px;
+    @include breakpoint(tabletPortrait) {
+      top: 50px;
+    }
   }
 
   .header-close{
@@ -247,7 +293,7 @@ body{
     }
     &:after{
       right: 20px;
-      font-size: 1.5em;
+      font-size: 21px;
     }
   }
 
@@ -256,11 +302,13 @@ body{
       h2{
         margin-top:0;
         font-size: 22px;
-        padding:0 0 6px 0;
+        padding:0 0 18px 0;
         text-align: left;
+        &:after,
         &:before{
           display: none;
         }
+
         .wrapper-circle{
           display: none;
         }
@@ -271,6 +319,9 @@ body{
         text-align: left;
         padding-bottom: 12px;
         position: relative;
+        @include breakpoint(tabletPortrait) {
+          width: 100%;
+        }
       }
 
       form.form{
@@ -288,26 +339,51 @@ body{
             }
             fieldset{
               width: 100%;
-              div{
+              >div{
                 width: 100%;
                 border-bottom: 1px solid #fff;
                 margin-bottom: 10px;
                 width: 100%;
                 display: inline-block;
                 position:relative;
+                background-color: $white;
                 label{
                   position: absolute;
                   top: 7px;
-                  &.search{
-                    right: 30px;
-                  }
                 }
                 input{
                   font-size: 16px;
                   height: 32px;
+                  &.search{
+                    cursor: pointer;
+                    width:24px;
+                    height: 22px;
+                    font-size: 0;
+                    position: absolute;
+                    top: 3px;
+                    right: 3px;
+                    background: none;
+                    -webkit-appearance: button;
+                    @include transition((all 0.3s ease-out));
+                    color:$dark-grey;
+                    background-image: url(../assets/images/search.png);
+                    background-position: 0 0;
+                    background-repeat: no-repeat;
+                    opacity: 0.90;
+                    &:hover{
+                      opacity: 1;
+                    }
+                  }
                 }
                 textarea{
                   height: 80px;
+                }
+                select{
+                  width: 89%;
+                  height:32px;
+                }
+                &.country{
+                  height:32px;
                 }
                 &.buttons{
                   border-bottom:0;
@@ -319,9 +395,28 @@ body{
                 }
                 &.checkboxes{
                   border: 0;
-                  margin-bottom: 0px;
+                  margin: 0px 0 12px 0;
+                  padding:0px;
+                  display: inline-block;
                   label{
-                    font-size: 14px;
+                    font-size: 12px;
+                    position: relative;
+                    top:0;
+                    left:0;
+                    padding: 2px 0 2px 0;
+                    float: left;
+                    color:$white;
+                    display: inline-block;
+                    line-height: 1.1em;
+                    &:before{
+                      display: none;
+                    }
+                    input[type=checkbox]{
+                      float: left;
+                      height: auto;
+                      margin: 4px 10px 23px 0;
+                      padding: 0;
+                    }
                   }
                 }
               }
@@ -345,20 +440,29 @@ body{
 
 
 
- 
+
   }
   &.open-sidebar{
     header.header{
       width:calc(100% - (320px));
       @include breakpoint(tabletPortrait) {
-
-        @include transform (translateX(320px));
+        @include transform (translate3d(320px, 0, 0));
         width: 100%;
       }
 
       #sidebar-toggle{
-        @include transform (translateX(10px) translateY(20px) translateZ(0px) rotate(-90deg));
+        @include transform (translateX(10px) translateY(18px) translateZ(0px) rotate(-90deg));
+        @include breakpoint(phoneLandscape) {
+          @include transform (translateX(10px) translateY(8px) translateZ(0px) rotate(-90deg));
+        }
       }
     }
+  }
+}
+
+
+body header.header .Contact-div.open {
+  @include breakpoint(phonePortrait) {
+    display: none;
   }
 }

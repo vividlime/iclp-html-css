@@ -2,90 +2,176 @@
 
  .hero-content{
  	width:100%;
+ 	height: 100%;
  	display:inline-block;
  	position: relative;
- 
+
 	#heroCarousel{
-		display: inline-block;
-		width: 100%;
- 		position: relative;
- 		
- 		ol.carousel-indicators{
- 			display: none;
- 			@include breakpoint(tabletPortrait) {
- 				bottom: 99px;
- 				display: block;
- 			}
- 			@include breakpoint(tabletPortrait) {
- 				bottom: 90px;
- 			}
+
+    &:before{
+    	content: '';
+    	position: absolute;
+    	width: 100%;
+    	height: 100%;
+    	top:0;
+    	left:0;
+    	z-index: -1;
+			@include background-image(radial-gradient(left, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%));
+    }
+    .carousel-outer{
+    	width: 100%;
+			height: 100%;
+	 		position: absolute;
+	 		top:0;
+	 		z-index: 1;
+	 		opacity: 0;
+	 		@include transition(all 0.5s ease-out);
+	 		background-color:$turquoise;
+    }
+ 		&.show{
+ 			.carousel-outer{
+	 			z-index: 1;
+	 			opacity: 1;
+	 			.carousel-inner .carousel-content{
+	 				opacity: 1;
+	 			}
+				.carousel-inner figure{
+					opacity: 1;
+					@include filter(blur(0px));
+					@include transform (translateX(0px) translateY(0px) translateZ(0px) scale(1));
+				}
+			}
  		}
 
- 		.carousel-inner{
- 			max-height: 686px;
- 			min-height: 655px;
- 			@include breakpoint(tabletPortrait) {
- 				 height: 526px;
- 			}
- 
- 		
+	 	@include breakpoint(tabletPortrait) {
+	 		.carousel-outer{
+	    	z-index: 1;
+	 			opacity: 1;
 
+	 			position: relative;
+	 			.carousel-inner .carousel-content{
+	 				opacity: 1;
+	 				max-width: 800px;
+	 			}
+				.carousel-inner{
+					height: 543px;
+					@include breakpoint(phonePortrait) {
+						height:503px;
+					}
+					@include breakpoint(phoneLandscape) {
+						height:443px;
+					}
+					figure{
+						opacity: 1;
+						@include filter(blur(0px));
+						@include transform (translateX(0px) translateY(0px) translateZ(0px) scale(1));
+					}
+					.carousel-content .ring:before{
+						@include transform (translateX(0px) translateY(0px) translateZ(0px) rotate(0deg));
+					}
+				}
+			}
+    }
+
+
+ 		.close-carousel{
+			position: absolute;
+			top:43px;
+			right:0;
+	    padding: 26px 0px 0px 0;
+	    @include breakpoint(tabletPortrait) {
+	    	display: none;
+	    }
+
+	    span{
+	    	position: relative;
+	    	z-index: 4;
+	    	color:rgba(255,255,255,0.70);
+		    text-transform: uppercase;
+		    font-size: 22px;
+		    @include transition((all 0.3s ease-out));
+	    }
+
+	    svg#Layer_1 {
+				right: -20px;
+				padding: 0;
+				position: absolute;
+				top: -40px;
+				}
+		}
+
+
+ 		.carousel-inner{
+ 			height: 100%;
+ 			width: 100%;
+
+			@include breakpoint(desktop) {
+				max-width: 1170px;
+			}
 	 		.carousel-content{
 	 			margin: auto 0;
 	 			width: 100%;
+	 			@include transition(all 0.5s ease-out);
+	 			opacity: 0;
+	 			height: 100%;
+ 				position: absolute;
+
 	 			span{
 				 	&.ring{
-		 	 			width: 100%;
-	 	 				height: 100%;
+		 	 			width: 587px;
+	 	 				height: 587px;
 		 	 			position: absolute;
-		 	 			top:0;
-		 	 			left:0;
-		 	 			z-index: 2;
-		 	 			&:after{
-				 	 		content: '';
-				 	 		position: absolute;
-				 	 		top: 40px;
-				 	 		left: 50%;
-				 	 		margin-left: 81px;
-				 	 		height: 228px;
-				 	 		width: 120px;
-				 	 		background-color: #0db1aa;
-				 	 		@include box-shadow(0px 23px 21px -18px #000);
-				 	 		overflow: hidden;
-				 	 		z-index: -1;
+		 	 			z-index: 0;
+		 	 			@include transition(all 0.5s ease-out);
+						@include transform (translateX(0px) translateY(0px) translateZ(0px) scale(0.72));
+						right: 50%;
 
-				 	 		@include breakpoint(tabletPortrait) {
-				 	 			height:261px;
-				 	 		}
-				 	 		@include breakpoint(phonePortrait) {
-				 	 			left: 193px;
-				 	 			margin-left: 0;
-				 	 			top: 260px;
-				 	 			width: 100px;
-				 	 			@include box-shadow(0px -18px 21px -18px #000);
-				 	 		}
-				 	 		
-				 	 	}
+		 	 			@include breakpoint(bigDesktop) {
+							@include transform (scale(1.1));
+							top: 90px;
+  						margin-right: 60px;
+  						width:592px;
+		 	 			}
+		 	 			@include breakpoint(mediumDesktop) {
+		 	 				top:-55px;
+							@include transform (scale(0.79));
+			 	 			margin-right: -45px;
+						}
+		 	 			@include breakpoint(tabletPortrait) {
+							right: 50%;
+							top: 5px;
+  						margin-right: -190px;
+  						@include transform (scale(0.93));
+						}
+		 	 			@include breakpoint(phonePortrait) {
+							right: 50%;
+						  top: -25px;
+						  margin-right: -417px;
+  						@include transform (scale(0.94));
+						}
+						@include breakpoint(phoneLandscape) {
+							right: 50%;
+						  top: -95px;
+						  margin-right: -210px;
+						  @include transform (scale(0.73));
+						}
 		 	 			&:before{
-				 	 		content: '';
+		 	 				top: 0;
+		 	 				left:0;
+				 	 		content:'';
 				 	 		position: absolute;
-				 	 		top: 10px;
-				 	 		left: 50%;
-				 	 		margin-left: -406px;
 				 	 		height: 100%;
 				 	 		width: 100%;
 				 	 		background: url(../assets/images/svg/journey-curve-blueandwhite.svg) 0% 0% no-repeat;
 							overflow: hidden;
-							@include transform (rotate(0deg));
 							z-index: -1;
+							@include breakpoint(tabletPortrait) {
+								background-size: 73%;
+							}
 							@include breakpoint(phonePortrait) {
-								background-size: 94%;
-								margin-left:0;
-								@include transform(rotate(70deg));
-								top: -18px;
-								left: -73px;
-
-		 	 				}
+								background-size: 55%;
+								@include transform (translateX(-266px) translateY(36px) translateZ(0px) rotate(75deg));
+							}
 				 	 	}
 		 	 		}
 		 	 	}
@@ -95,46 +181,58 @@
 				 	 	right:10%;
 				 	 	top:40px;
 				 	 	background: $dark-blue;
-				 	 	width: 444px;
-				 	 	padding: 38px 38px 0px 38px;
+				 	 	width: 580px;
 
-				 	 	@include breakpoint(wideDesktop) {
-							right:50%;
-							margin-right: -520px;
-			 			}
-				 	 	 
+			 			@include breakpoint(bigDesktop) {
+			 				right:50%;
+							margin-right: -535px;
+							width: 700px;
+							top: 110px;
+						}
+
+		 				@include breakpoint(mediumDesktop) {
+		 					right:50%;
+		 					margin-right: -415px;
+					 	 	top:40px;
+					 	 	width: 520px;
+						}
+
+						@include breakpoint(desktop) {
+							right: 11%;
+		 					margin-right: 0px;
+						}
 				 	 	&:after{
 				 	 		content: '';
 				 	 		position: absolute;
 				 	 		width: 100%;
 				 	 		height:100px;
-				 	 		bottom:-33px;
+				 	 		bottom:-19px;
 				 	 		left:0;
-				 	 		@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+				 	 		@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 				  		@include transition(opacity 0.3s ease-out);
 				  		background: $dark-blue;
 				  		z-index:1;
+				  		@include breakpoint(bigDesktop) {
+				 				bottom:-26px;
+							}
 				 	 	}
-				 	 	
 				 		.content{
 							background: $dark-blue;
-							height: 100%;
 							width: 100%;
 							display: inline-block;
 							position: relative;
 					 	 	z-index: 3;
-
+					 	 	padding: 38px 38px 0px 38px;
 					 	 	h1{
-					 	 		font-size: 40px;
+					 	 		font-size: 28px;
 					 	 		line-height:1em;
 					 	 		text-align: left;
 					 	 		padding-bottom: 10px;
-					 	 		font-family: $font-ICLPlight;
-			  
 					 	 		strong{
-					 	 			display: inline-block;
-					 	 			clear: left;
-					 	 			font-family: $font-ICLPblack;
+									font-weight:400;
+									// width: 100%;
+									// display: inline-block;
+
 					 	 		}
 					 	 	}
 					 	 	h2{
@@ -142,61 +240,146 @@
 					 	 		color: $yellow;
 					 	 		line-height:1em;
 					 	 		text-transform: uppercase;
-					 	 		font-size: 22px;
-					 	 		font-family: $font-ICLPblack;
+					 	 		font-size: 17px;
+								font-weight:400;
+								padding-bottom: 10px;
+					 	 	}
+					 	 	.buttons{
+					 	 		display: none;
+					 	 		@include breakpoint(phonePortrait) {
+					 	 			display: block;
+					 	 		}
 					 	 	}
 
-					 	 	.buttons{
-					 	 		position: relative;
-					 	 		z-index: 3;
-							 	display: none;
-								 	@include breakpoint(tabletPortrait) {
-							 		display: block;
-									.button{
-								 		display: block;
-									 	float: left;
-									 	margin: 12px 0;
-									 	min-width:197px;
-								 	}
-							 	}
+			 	 		}
+			 	 	@include breakpoint(tabletPortrait) {
+	 					width: 375px;
+	 					right: 60px;
+	 					top: 20px;
+	 					margin-right:0;
+	 					&:after{
+	 						height: 89px;
+							bottom: -23px;
+							@include breakpoint(phonePortrait) {
+								height: 169px;
+								bottom: -123px;
 							}
-			 	 	}
+	 					}
+
+					 .content{
+					 	padding:18px;
+						 h1{
+						 	font-size: 25px;
+						 	width: 100%;
+						 }
+						 h2{
+						 	font-size: 16px;
+						 }
+						}
+					}
+
 			 	 	@include breakpoint(phonePortrait) {
 					 left:0;
 					 margin-left:0;
-					 top: 240px;
+					 top: 237px;
 					 width: 294px;
-					 padding: 0px 24px 0px 24px;
+
 					 .content{
 					 	background-color: transparent;
+					 	padding:0;
 
 						 h1{
-						 	font-size: 20px;
-						 	padding-right: 0%;
-						 	width: 70%;
+						 	font-size: 24px;
+						 	width: 90%;
+						 	line-height:1em;
 						 	background: $dark-blue;
-						 	padding-top: 24px;
+						 	padding: 20px 0px 4px 20px;
 						 }
 						 h2{
 						 	font-size: 14px;
+						 	line-height:1.3em;
+						 	padding: 0px 0 0 20px;
 						 }
+						 .buttons{
+						 	display: inline-block;
+						 	padding: 0px 0px 7px 20px;
+						 	float: left;
+							.button{
+						 		display: block;
+							 	float: left;
+							 	margin: 12px 0;
+							 	min-width:197px;
+							 	font-size: 14px;
+						 	}
 
+						 }
 						}
 					}
+
+			 	 	@include breakpoint(phoneLandscape) {
+					 left:0;
+					 margin-left: 256px;
+  				 top: 20px;
+					 width: 294px;
+
+					 .content{
+					 	background-color: transparent;
+					 	padding:0;
+
+						 h1{
+						 	font-size: 24px;
+						 	width: 90%;
+						 	line-height:1em;
+						 	background: $dark-blue;
+						 	padding: 20px 0px 4px 20px;
+						 }
+						 h2{
+						 	font-size: 14px;
+						 	line-height:1.3em;
+						 	padding: 0px 0 0 20px;
+						 }
+						 .buttons{
+						 	display: inline-block;
+						 	padding: 0px 0px 7px 20px;
+						 	float: left;
+							.button{
+						 		display: block;
+							 	float: left;
+							 	margin: 12px 0;
+							 	min-width:197px;
+							 	font-size: 14px;
+						 	}
+
+						 }
+						}
+					}
+
+
 			 	 }
-	 	  
 					&.subtitle{
-					 	right:7%;
-					 	top:240px;
+					 	right:50%;
+					 	margin-right: -460px;
+					 	top:165px;
 						background: $yellow;
-						width: 333px;
+						width: 406px;
 						position: absolute;
 						padding:0px;
 
+			 			@include breakpoint(bigDesktop) {
+			 				top: 225px;
+			 				margin-right: -590px;
+						}
+						@include breakpoint(mediumDesktop) {
+							top:165px;
+							margin-right: -460px;
+						}
 						@include breakpoint(wideDesktop) {
-							right:50%;
-							margin-right: -560px;
-			 			}
+
+						}
+						@include breakpoint(desktop) {
+							right: 7%;
+		 					margin-right: 0px;
+						}
 
 
 						&:before{
@@ -206,14 +389,14 @@
 					 		height:100px;
 					 		top:-21px;
 					 		left:0;
-					 		@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+					 		@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 							@include transition(opacity 0.3s ease-out);
 							background: $yellow;
-							z-index: -1;
+							z-index: 0;
 				 		}
 						.content{
 							margin-top: 56px;
-							padding: 8px 36px 28px 36px ;
+							padding: 8px 36px 58px 36px;
 							background: $yellow;
 							height: 100%;
 							width: 100%;
@@ -222,9 +405,8 @@
 					 	 	z-index: 3;
 
 							h3{
-								font-weight: bold;
 								color: $dark-blue;
-								font-size: 16px;
+								font-size: 17px;
 								text-align: left;
 								display: block;
 								padding-bottom: 12px;
@@ -233,17 +415,22 @@
 
 							}
 							.buttons{
-								margin-top: 22px;
+								margin-top: 0px;
+								display: inline-block;
+								float: left;
+								.button{
+									float: left;
+									margin: 0;
+								}
 							}
 
 							ul{
 								display: block;
 								width: 100%;
 								padding-bottom: 12px;
-								margin-bottom: 12px;
-								border-bottom: 1px solid $orange;
 								li{
-									line-height: 1.4em;
+									font-size: 17px;
+									line-height: 1.3em;
 									text-align: left;
 									padding:4px 0 4px 14px;
 									position: relative;
@@ -252,182 +439,575 @@
 										position: absolute;
 										content: '';
 										left:0px;
-										top:13px;
-										width:7px;
-										height:7px;
-										background: $orange;
+										top:10px;
+										width:5px;
+										height:5px;
+										@include border-radius(50%);
+										background: $dark-blue;
 									}
 								}
 							}
 						}
 						@include breakpoint(tabletPortrait) {
+							right: 40px;
+							margin-right:0;
+							top: 155px;
+							width: 340px;
+
+							.content{
+								margin-top: 44px;
+								padding: 0px 24px 6px 24px;
+								h3{
+									padding-bottom:0;
+									font-size: 15px;
+								}
+								ul{
+									padding:0 0 8px 0;
+									li{
+										font-size: 15px;
+									}
+								}
+								.buttons{
+									margin:0 0 18px 0;
+									float: left;
+									.button{
+										min-width:202px;
+										font-size: 14px;
+									}
+								}
+							}
+						}
+						@include breakpoint(phoneLandscape) {
+							display: none;
+						}
+						@include breakpoint(phonePortrait) {
 							display: none;
 						}
 					}
 				}
 	 		}
 	 		figure{
-		 	 	width: 100%;
+		 	 	max-width: 1170px;
 				height: 100%;
 				position: relative;
 				display: inline-block;
-		 	 	img{	
-		 	 		z-index: -2;
+				@include transition(all 0.7s 0.7s ease-out);
+				opacity: 0;
+				@include transform (translateX(0px) translateY(10px) translateZ(0px) scale(1));
+				z-index: 0;
+		    @include filter(blur(4px));
+		    z-index: -1;
+
+		    @include breakpoint(bigDesktop) {
+					max-width: 1400px;
+					@include transition(all 0.3s 0s ease-out);
+				}
+
+				@include breakpoint(mediumDesktop) {
+					max-width: 1170px;
+					@include transition(all 0.3s 0s ease-out);
+				}
+				@include breakpoint(tabletPortrait) {
+					float: left;
+ 					width: 800px;
+					@include transition(all 0.3s 0s ease-out);
+				}
+				@include breakpoint(phonePortrait) {
+					float: left;
+					width: 320px;
+					@include transition(all 0.3s 0s ease-out);
+				}
+
+
+		    img{
 		 	 		position: relative;
 		 	 		float: left;
-		 	 		margin-left: -432px;
-					left: 50%;
-					width:50%;
+					width:60%;
+					left:50%;
 					height: auto;
- 
-	 
-		 	 		@include breakpoint(phonePortrait) {
-					 width: 100%;
-					 left:0;
-					 margin-left: 0;
-					}	 
-		 	 	}
-	 		 }
-	 	}
-	}
-
-
-
- .banner-inner{
-		display: inline-block;
-		width: 100%;
- 		position: relative;
-
- 		 
-	 	.video-wrap{
-			overflow: hidden;
-		  @include transition((all 0.3s ease-out));
-			max-width: 1980px;
-			min-width: 800px;
-			max-height: 1080px;
-			min-height: 600px;
- 
-			@include breakpoint(wideDesktop) {
-				min-height: 790px;
-			}
-			@include breakpoint(tabletPortrait) {
-				min-width: 800px;
-				min-height: 450px;
-			}
-
-			.target{
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				 
-				video{
-					background-color: #53abc5;
-					width: 100%;
-					height: auto;
-					@include fadein;
-					@include breakpoint(tabletPortrait) {
-						min-width: 800px;
-						min-height: auto;
+					&.mobile{
+						display: none;
 					}
-				}
-				 
-		 	 	img{	
-		 	 		z-index: 0;
-		 	 		position: relative;
-		 	 		display: inline-block;
-					width:100%;
-					height: auto;
+					@include breakpoint(tabletPortrait) {
+						position: absolute;
+					}
+					@include breakpoint(phonePortrait) {
+						display: none;
+						&.mobile{
+							display: block;
+						}
+					}
 		 	 	}
 
-	 		 }
-	 
-	 		ul.people{
-	 			@include hotspot;
-	 			position: absolute;
-	 			width: 100%;
-	 			height: 100%;
-	 			min-height: 100%;
-	 			@include transition(all 0.3s ease-out);
-	 			z-index: 5;
-	 			li{
-	 				
-	 				border: 1px solid red;
-	 				height: 100%;
-	 				width: 20%;
-	 				float: left;
-	 				a{
-	 					height: 100%;
-	 					width: 100%;
-	 					position: relative;
-	 					display: inline-block;
-	 					@include hotspot;
-	 					
- 						span{
- 							&.hotspot{
- 								@include fadein;
-	 							position:absolute;
-	 							@include transform(translate( 0% , 0% ) scale( 1.45 ));
-			 					&:hover{
-									@include transform(translate( 0% , 0% ) scale( 1.60 ));
+ 				&.first{
+		    	img{
+
+		    		@include breakpoint(bigDesktop) {
+		    		 margin-left: -810px;
+		    		 width: 70%;
+						}
+						@include breakpoint(mediumDesktop) {
+							margin-left: -550px;
+							width:60%;
+						}
+						@include breakpoint(desktop) {
+							margin-left: -530px;
+							width:60%;
+						}
+		    		@include breakpoint(tabletPortrait) {
+	 						margin-left: -52px;
+						  left: 0;
+						  width: 80%;
+						}
+						@include breakpoint(phonePortrait) {
+						  width: 160%;
+						  margin-left: -77px;
+						  top: -38px;
+						}
+						@include breakpoint(phoneLandscape) {
+					    margin-left: -90px;
+						  left: 0;
+						  width: 60%;
+						}
+		    	}
+		    }
+		    &.second{
+		    	img{
+		    		@include breakpoint(bigDesktop) {
+		    		  margin-left: -797px;
+  						width: 70%;
+						}
+						@include breakpoint(mediumDesktop) {
+							margin-left: -560px;
+							width:60%;
+						}
+						@include breakpoint(desktop) {
+							margin-left: -530px;
+							width:60%;
+						}
+						@include breakpoint(tabletPortrait) {
+	 						margin-left: -44px;
+						  left: 0;
+						  width: 80%;
+						}
+						@include breakpoint(phonePortrait) {
+		 					width: 141%;
+  						margin-left: -40px;
+						  top: -10px;
+						}
+						@include breakpoint(phoneLandscape) {
+		 					  margin-left: -64px;
+							  left: 0;
+							  width: 60%;
+						}
+
+		    	}
+		    }
+		    &.third{
+		    	img{
+
+
+		    		@include breakpoint(bigDesktop) {
+		    		 	margin-left: -767px;
+  						width: 70%;
+						}
+						@include breakpoint(mediumDesktop) {
+							margin-left: -560px;
+							width:60%;
+						}
+						@include breakpoint(desktop) {
+							margin-left: -530px;
+							width:60%;
+						}
+		    		@include breakpoint(tabletPortrait) {
+	 						margin-left: -60px;
+						  left: 0;
+						  width: 80%;
+						}
+						@include breakpoint(phonePortrait) {
+						  width: 170%;
+						  margin-left: -90px;
+						  top: -30px;
+						}
+						@include breakpoint(phoneLandscape) {
+					    margin-left: -80px;
+						  left: 0;
+						  width: 60%;
+						}
+		    	}
+		    }
+		    &.forth{
+		    	img{
+
+
+		    		@include breakpoint(bigDesktop) {
+		    		 margin-left: -797px;
+  						width: 70%;
+						}
+						@include breakpoint(mediumDesktop) {
+							margin-left: -570px;
+							width:60%;
+						}
+						@include breakpoint(desktop) {
+							margin-left: -530px;
+							width:60%;
+						}
+		    		@include breakpoint(tabletPortrait) {
+	 						margin-left: -70px;
+						  left: 0;
+						  width: 80%;
+						}
+
+						@include breakpoint(phonePortrait) {
+						  width: 160%;
+						  margin-left: -74px;
+						  top: -34px;
+						}
+						@include breakpoint(phoneLandscape) {
+						  margin-left: -80px;
+						  left: 0;
+						  width: 60%;
+						}
+		    	}
+		    }
+		    &.fith{
+		    	img{
+
+
+		    		@include breakpoint(bigDesktop) {
+		    		 	margin-left: -887px;
+  						width: 100%;
+						}
+						@include breakpoint(mediumDesktop) {
+							margin-left: -590px;
+							width:60%;
+						}
+						@include breakpoint(desktop) {
+							margin-left: -530px;
+							width:60%;
+						}
+		    		@include breakpoint(tabletPortrait) {
+	 						margin-left: -50px;
+						  left: 0;
+						  width: 80%;
+						}
+						@include breakpoint(phonePortrait) {
+							width: 180%;
+						  margin-left: -100px;
+						  top: -50px;
+						}
+						@include breakpoint(phoneLandscape) {
+						  margin-left: -80px;
+						  left: 0;
+						  width: 60%;
+						}
+		    	}
+		    }
+	 		}
+	 	}
+	 .banner-inner{
+			display: inline-block;
+			width: 100%;
+	 		position: relative;
+	 		top:0;
+	 		z-index: 1;
+	 		opacity: 1;
+	 		@include transition(opacity 0.5s ease-out);
+	 		@include transform (translateX(0px) translateY(0px) translateZ(0px));
+
+	 		&.hide{
+	 			z-index: -1;
+	 			opacity: 0;
+	 			@include transform (translateX(0px) translateY(0px) translateZ(0px));
+	 		}
+
+		 	.video-wrap{
+				overflow: hidden;
+			  @include transition((all 0.3s ease-out));
+ 				width: 100%;
+				min-height: 546px;
+
+				@include breakpoint(bigDesktop) {
+					min-height: 710px;
+				}
+ 				@include breakpoint(mediumDesktop) {
+					min-height: 546px;
+				}
+				@include breakpoint(tabletPortrait) {
+					max-width: 100%;
+					min-width: 100%;
+					max-height: 30px;
+					min-height: 10px;
+					position: absolute;
+					bottom:50px;
+					overflow: visible;
+				}
+				.target{
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					background: $white;
+					top: 0px;
+
+					@include breakpoint(tabletPortrait) {
+						display: none;
+				 	}
+
+					video{
+						background: $turquoise url('../assets/video-loop/Screen-Shot.jpg') 50% 50% / cover no-repeat ;
+						width: 100%;
+						height: auto;
+						@include fadein;
+						@include breakpoint(tabletPortrait) {
+							min-width: 800px;
+							min-height: auto;
+						}
+						@include breakpoint(tabletLandscape) {
+							width: 1024px;
+						}
+					}
+			 	 	img{
+			 	 		z-index: 0;
+			 	 		position: relative;
+			 	 		display: inline-block;
+						width:100%;
+						height: auto;
+			 	 	}
+		 		 }
+
+		 		ol.people{
+		 			@include hotspot;
+		 			position: absolute;
+		 			width: 100%;
+		 			height: 100%;
+		 			min-height: 100%;
+		 			@include transition(all 0.3s ease-out);
+		 			z-index: 5;
+		 			@include breakpoint(tabletLandscape) {
+						width: 1024px;
+					}
+
+
+		 			li{
+		 				height: 100%;
+		 				width: 20%;
+		 				float: left;
+		 				>a{
+		 					height: 100%;
+		 					width: 100%;
+		 					position: relative;
+		 					display: inline-block;
+		 					@include hotspot;
+		 					@include fadein;
+	 						@include transform (translateX(0px) translateY(0px) translateZ(0px));
+
+							@include breakpoint(tabletPortrait) {
+								display: none
+							}
+
+		 					&:focus,
+		 					&:hover{
+		 						 .hover{
+		 							opacity: 1;
+		 						}
+		 						.hotspot{
+		 							@include transform(translate(0% , 0% ) scale( 1.60 ));
+		 						}
+		 					}
+	 						span{
+	 							&.hotspot{
+		 							position:absolute;
+		 							@include transform(translate( 0% , 0% ) scale( 1.45 ));
+		 						}
+		 						@include breakpoint(tabletPortrait) {
+									display: none
 								}
 	 						}
- 						}
-							
-						 
+	 						>div.hover {
+	 							@include transition(all 0.3s ease-out);
+	 							position: absolute;
+	 							width: 100%;
+	 							top:9%;
+	 							left:50%;
+	 							opacity:0;
+	 							@include transform (translateX(0px) translateY(0px) translateZ(0px));
 
-	 				}
+	 							 @include breakpoint(tabletPortrait) {
+									display: none
+								}
+							 	.ring{
+					 	 			position: absolute;
+					 	 			z-index: 0;
+						 	 		top: 0%;
+									left: 0%;
+						 	 		margin-left:0px;
+						 	 		height: 503px;
+									width: 549px;
+						 	 		background: url(../assets/images/svg/journey-curve-home-banner.svg) 0% 0% no-repeat;
+						 	 		background-size: cover;
+									@include transform (translateX(-158px) translateY(-96px) translateZ(0px) rotate(75.6deg) scale(0.6));
+					 	 		}
 
-		 			&.first{
-		 				a{
-		 					.hotspot{
-			 					top: 40%;
-								left: 73%;
-			 				}
+								.hotspot-content{
+									position: absolute;
+									top: 238px;
+									left: 0;
+							 	 	background: $blue;
+							 	 	width: 293px;
+							 	 	padding: 0px 0px 0px 0px;
+
+							 	 	&:after{
+							 	 		content: '';
+							 	 		position: absolute;
+							 	 		width: 100%;
+							 	 		height:90px;
+							 	 		bottom:-16px;
+							 	 		left:0;
+							 	 		@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
+							  		@include transition(opacity 0.3s ease-out);
+							  		background: $blue;
+							  		z-index:1;
+							 	 	}
+
+									.title{
+										.content{
+											background: $blue;
+											width: 100%;
+											display: inline-block;
+											position: relative;
+
+									 	 	h1{
+									 	 		font-size: 17px;
+									 	 		line-height:1.1em;
+									 	 		text-align: left;
+									 	 		padding: 20px 20px 12px 20px;
+									 	 		position: relative;
+									 	 		z-index: 4;
+									 	 		font-weight: 300;
+									 	 		strong{
+									 	 			font-weight: 700;
+									 	 		}
+									 	 	}
+
+								 	 		h2{
+									 	 		text-align: left;
+									 	 		color: $yellow;
+									 	 		line-height:1.3em;
+									 	 		text-transform: uppercase;
+									 	 		font-size: 14px;
+												position: relative;
+									 	 		z-index: 4;
+									 	 		padding: 0px 20px 0px 20px;
+									 	 		font-weight: 700;
+									 	 		margin-bottom: 18px;
+												&:after{
+											 		content: '';
+											 		position: absolute;
+											 		bottom:3px;
+												 	width:7px;
+												 	height: 11px;
+												 	background: url(../assets/images/arrow-small.png) 0 0 no-repeat;
+												 	margin-left: 6px;
+											 	}
+									 	 	}
+								 	 	}
+									}
+								}
+							}
 		 				}
+			 			&.first{
+			 				width: 23.6%;
 
-					}
-					&.second{
-						a{
-							.hotspot{
-								@include animation-delay(1.4s);
-								top: 40%;
-								left: 60%;
+			 				a{
+			 					@include animation-delay(2.4s);
+			 					div{
+									margin-left: -70px;
+				 				}
+			 					.hotspot{
+				 					top:32%;
+									left: 64%;
+				 				}
+				 				.hotspot-content{
+				 					top: 49%;
+									left: 14%;
+				 				}
 			 				}
-						}
 
-					}
-					&.third{
-						a{
-							.hotspot{
-								@include animation-delay(1.6s);
-								top: 40%;
-								left: 58%;
-			 				}
 						}
+						&.second{
+							width: 22%;
+							a{
+								@include animation-delay(2.6s);
+								div{
+				 					margin-left: -138px;
+				 				}
+								.hotspot{
+									top:32%;
+									left: 42%;
+				 				}
+				 				.hotspot-content{
+				 					top: 49%;
+									left: 14%;
+				 				}
+							}
 
-					}
-					&.forth{
-						a{
-							.hotspot{
-								@include animation-delay(1.8s);
-								top: 40%;
-								left: 42%;
-			 				}
 						}
+						&.third{
+							width: 15.5%;
+							a{
+								@include animation-delay(2.8s);
+								div{
+				 					margin-left: -130px;
+				 				}
+								.hotspot{
+									top:32%;
+									left: 43%;
+				 				}
+				 				.hotspot-content{
+				 					top: 49%;
+									left: 14%;
+				 				}
+							}
 
-					}
-					&.fith{
-						a{
-							.hotspot{
-								@include animation-delay(2s);
-								top: 40%;
-								left: 14%;
-			 				}
 						}
+						&.forth{
+							width: 18%;
+							a{
+								@include animation-delay(3s);
+								div{
+				 					margin-left: -130px;
+				 				}
+								.hotspot{
+									top:32%;
+									left: 42%;
+				 				}
+				 				.hotspot-content{
+				 					top: 49%;
+									left: 14%;
+				 				}
+							}
 
+						}
+						&.fith{
+							width: 20.9%;
+							a{
+								@include animation-delay(3.2s);
+								div{
+				 					margin-left: -180px;
+				 				}
+								.hotspot{
+									top:32%;
+									left: 24%;
+				 				}
+				 				.hotspot-content{
+				 					top: 49%;
+									left: 14%;
+				 				}
+							}
+						}
 					}
-				}
-	 		}
+		 		}
+		 	}
 	 	}
  	}
  }
@@ -438,4 +1018,10 @@
 
 
 
+}
+
+.open-sidebar{
+	.interactive-container .hero-content .banner-inner .video-wrap {
+		min-height: 620px;
+	}
 }

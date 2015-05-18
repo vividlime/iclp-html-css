@@ -96,65 +96,74 @@
     position: absolute;
   }
   @include breakpoint(tabletPortrait) {
+    //top: calc(28% - (84px));
+  }
+  @include breakpoint(tabletPortrait) {
     display: none;
   }
 }
 .carousel-control.left { 
-  @include transform (translateZ(0em) translateX(0px) scale(1));
+  @include transform (scale(1));
+  @include transform (translateZ(0em));
   left: 20px;
   &:after{
    top:0;
-	 background: url(../assets/images/svg/arrow.svg) no-repeat 0 center ;
-   @include transform (rotate(180deg));
+	 background: url(../assets/images/arrow-left.png) no-repeat 0 center ;
   }
    
 } 
 .carousel-control.right {
   left: auto;
   right: 20px;
-  @include transform (translateZ(0em) translateX(0px) scale(1));
+  @include transform (scale(1));
+  @include transform (translateZ(0em));
   &:after{
     top:0;
-  	background: url(../assets/images/svg/arrow.svg) no-repeat 0 center ;
+  	background: url(../assets/images/arrow-right.png) no-repeat 0 center ;
   } 
 }
 .carousel-control:hover,
 .carousel-control:focus {
   outline: 0;
-  opacity: 0.9;
-  filter: alpha(opacity=90);
+  // opacity: 0.9;
+  // filter: alpha(opacity=90);
 }
-.carousel-indicators {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  z-index: 3;
-  width: 60%;
-  margin-left: -30%;
-  padding-left: 0;
-  list-style: none;
-  text-align: center;
-}
-.carousel-indicators li {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 1px;
-  text-indent: -999px;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
-}
-.carousel-indicators .active {
-  margin: 0;
-  width: 12px;
-  height: 12px;
-  background-color: #ffffff;
-}
-.carousel-caption {
+@include breakpoint(tabletPortrait) {
+  .people {
+    position: absolute;
+    bottom: 10px;
+    left: 50%!important;
+    z-index: 3;
+    width: 60%!important;
+    margin-left: -7%!important;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+    @include breakpoint(phonePortrait) {
+      margin-left: -15%!important;
+    }
+  }
+  .people li {
+    display: inline-block;
+    width: 14px!important;
+    height: 14px!important;
+    margin: 3px!important;
+    text-indent: -999px;
+     
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #fff\9;
+    background-color: rgba(255, 255, 255, 0.30);
+  }
+  .people li.active {
+    margin: 0;
+    background-color: rgba(255, 255, 255, 1);
+  }
 
+}
+
+
+.carousel-caption {
  
   text-align: center;
 }

@@ -1,0 +1,108 @@
+#tac{
+	.sections{
+		section{
+			&.head{
+				.head-container{
+					.head-theme{
+						.headings{
+
+							&.imagery{
+								background:#47aac7;
+								padding: 0 0 20px 0;
+								.ring{
+									&:before{
+										background-image: url(../assets/images/svg/Banner-SimpleTextPage-JourneyCurve-L2.svg);
+									}
+								}
+								.titles{
+									h1,h2,h3,blockquote{
+										color: #grey;
+									}
+									 
+								}
+							} 
+						}
+					}
+					
+				}
+			}
+	 
+			&.copy-content{
+				margin: auto;
+				display: block;
+				padding: 0px 0px 0px 0px;
+
+				&:before{
+					display: none;
+				}
+				
+				.copy{
+					padding: 0px 20px 38px 20px;
+					z-index: 4;
+					&:first-child{
+						padding-top: 0px;
+
+						@include breakpoint(tabletPortrait) {
+							padding-top: 38px;
+						}
+					}
+					&:nth-child(odd){
+						background:none;
+					}
+
+					h1{
+						text-align: left;
+						position: relative;
+						z-index: 4;
+						display: block;
+						color: $grey;
+						padding: 48px 0px 12px 0%;
+					}
+					h2{
+						text-align: left;
+						position: relative;
+						z-index: 4;
+						display: block;
+						color: $grey;
+						padding: 0px 0% 12px 0%;
+						font-size: 24px;
+						text-transform: inherit;
+						margin: 0;
+					}
+					h3{
+						margin: 0;
+						text-transform: uppercase;
+						position: relative;
+						z-index: 1;
+						display: block;
+						font-size: 17px;
+						padding-bottom: 12px;
+					}
+					h3,ul,li{
+						color: $grey;
+						margin: 0;
+						padding-right:0;
+					}
+					a{	
+						color:$orange;
+					}
+					.buttons{
+						margin: 20px 0;
+						display: inline-block;
+						width: 100%;
+					}
+				}
+			}
+			 
+		}
+
+
+
+
+
+
+	}
+
+
+
+}

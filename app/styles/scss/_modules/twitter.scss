@@ -3,6 +3,9 @@ iframe#twitter-widget-0 {
   min-width:100%!important;
   display: block!important;
   margin: auto!important;
+  max-height: 300px !important;
+  min-height: 200px !important;
+  
   @include breakpoint(tabletPortrait) {
   	max-width:800px!important;
   	min-width:100%!important;
