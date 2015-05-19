@@ -167,6 +167,7 @@ body{
                 content: "";
                 @include transition((all 0.3s ease-out));
                 color:$dark-grey;
+               
 
                 @include breakpoint(tabletPortrait) {
                   font-size: 1.4em;
@@ -206,6 +207,9 @@ body{
                 &:before{
                   // @include transform (rotate(-90deg));
                   content: "\e086";
+                  @include breakpoint(phonePortrait) {
+                    left:60%;
+                  }
                 }
                 &.selected{
                   &:after{
@@ -215,7 +219,7 @@ body{
                   }
                   &:before{
                     @include breakpoint(phonePortrait) {
-                      color:$grey;
+                      color:$grey; 
                     }
                   }
                   &:hover:before{

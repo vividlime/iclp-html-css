@@ -163,13 +163,16 @@ h2.animated{
       content: "\e086";
       @include transition((all 0.3s ease-out));
       @include breakpoint(phonePortrait) {
-        top: 25px;
-        margin-left: -11px;
-        font-size: 21px;
+        top: 23px;
+        margin-left: -13.5px;
+        font-size: 27px;
       }
     }
     .wrapper-circle{
       @include transform(scale(1.3));
+      @include breakpoint(phonePortrait) {
+       @include transform(scale(0.8));
+      }
     }
     &:focus:before,
     &:hover:before{
