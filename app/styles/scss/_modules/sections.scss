@@ -8,7 +8,7 @@
 			margin-bottom: -112px;
 			padding-bottom: 112px;
 			background: $white;
- 
+
 		 	&:after{
 				content: '';
 				position: absolute;
@@ -25,9 +25,9 @@
 					height: 30px;
 					bottom: 23%;
 				}
-			}	
+			}
 		}
- 
+
 		&.head{
 			.head-container{
 				.head-theme{
@@ -42,7 +42,7 @@
 							@include breakpoint(phonePortrait) {
 								min-height: 208px;
 							}
-						   
+
 						&.theme{
 							overflow: hidden;
 							.wrap-headings{
@@ -57,6 +57,7 @@
 									min-width: 1170px;
 									left: 50%;
 									margin-left: -580px;
+
 
 									@include breakpoint(tabletPortrait) {
 										min-width: 800px;
@@ -78,12 +79,13 @@
 										background-repeat: no-repeat;
 										background-position: center 0;
 										background-size: 100%;
+										background-image: url(/assets/images/svg/Banner-Clients-JourneyCurve-L1.svg);
 
 										@include breakpoint(phonePortrait) {
 											background-position: center 100%;
 											@include transform (rotate(180deg));
 											background-size: 148%;
-										}						 
+										}
 									}
 								}
 								>h1{
@@ -114,7 +116,7 @@
 									@include breakpoint(tabletPortrait) {
 										display: none;
 									}
-								} 
+								}
 							}
 						}
 						&.imagery{
@@ -159,7 +161,7 @@
 								}
 							}
 						}
-						 
+
 						> img{
 							position: absolute;
 							top:0;
@@ -184,11 +186,15 @@
 							position: relative;
 							z-index: 4;
 							padding: 30px 16% 65px 16%;
+<<<<<<< Updated upstream
 							color: $grey;
  
+=======
+
+>>>>>>> Stashed changes
 							@include breakpoint(tabletPortrait) {
 								padding: 30px 60px 65px 60px;
-							} 
+							}
 							@include breakpoint(phonePortrait) {
 								font-size:24px;
 								line-height: 1.2em;
@@ -262,7 +268,7 @@
 								z-index: 1;
 								text-transform: inherit;
 								padding: 0px 0% 12px 0%;
- 
+
 								@include breakpoint(phonePortrait) {
 									font-size:24px;
 									line-height: 1.2em;
@@ -312,7 +318,7 @@
 								@include breakpoint(phonePortrait) {
 									margin: 74px 0 0px 0;
 								}
-							} 
+							}
 						}
 
 						&:before{
@@ -336,13 +342,13 @@
 								margin: 94px 0 0px 0;
 							}
 						}
-					} 
+					}
 				}
 			}
 		}
-  
 
-		&.copy-content{ 
+
+		&.copy-content{
 			&:before{
 				@include breakpoint(tabletPortrait) {
 					display: none;
@@ -361,7 +367,7 @@
 				overflow: hidden;
 				&:nth-child(odd){
 					overflow: hidden;
-					
+
 				}
 				.copy{
 					max-width: 1170px;
@@ -374,7 +380,7 @@
 					}
 					@include breakpoint(phonePortrait) {
 						padding: 60px 20px 60px 20px;
-					} 
+					}
 
 					img{
 						position:absolute;
@@ -441,7 +447,7 @@
 						& + p{
 							padding-top: 18px;
 						}
- 
+
 						@include breakpoint(tabletPortrait) {
 							font-size: 18px;
 							padding-right: 0%;
@@ -451,8 +457,8 @@
 						background-image: none;
 	        }
 				}
-				
-				&.result{	
+
+				&.result{
 				 &:before{
 					content: "";
 					position: absolute;
