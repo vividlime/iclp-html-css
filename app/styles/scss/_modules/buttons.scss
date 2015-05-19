@@ -6,8 +6,7 @@ a.button,
   @include transition(all 0.15s ease-out);
   @include box-shadow(1px 1px 0px rgba(0,0,0,0.70));
   &:hover{
-    color:$link;
-    opacity: 0.85;
+    background-color:$active-link;
   }
 }
 
@@ -31,6 +30,7 @@ a.button,
   &.large{
     min-width: 185px;
     padding:9px 26px;
+    letter-spacing: 1px;
   }
   &.default{
     width:136px;

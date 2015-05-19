@@ -64,7 +64,7 @@
 
     &:focus .circle[data-anim~=bigger],
     &:hover .circle[data-anim~=bigger]{
-      opacity: 0.75;
+      opacity: 0.4;
     }
     &:focus .circle[data-anim~=bigger]:before,
     &:hover .circle[data-anim~=bigger]:before{
@@ -72,7 +72,7 @@
     }
     &:focus .circle[data-anim~=smaller],
     &:hover .circle[data-anim~=smaller]{
-      opacity: 1;
+      opacity: 0.6;
     }
     &:focus .circle[data-anim~=smaller]:before,
     &:hover .circle[data-anim~=smaller]:before{
@@ -107,6 +107,7 @@
       top: 73px;
       left: 0px;
       position: absolute;
+      opacity: 0.4;
       &:before{
         top: 0;
         left: 0;
@@ -138,6 +139,7 @@
       top: 6px;
       left: 6px;
       position: absolute;
+      opacity: 0.6;
 
       &:before{
         top: 0;
@@ -505,7 +507,7 @@
     &:hover,
     &:focus{
       background:rgba(255,255,255,0.04);
-      color:$white;
+      color:$grey;
 
     }
 }
