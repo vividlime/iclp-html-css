@@ -96,6 +96,7 @@
 									text-align: center;
 									margin:auto;
 									padding:0;
+									color: $white;
 
 									@include breakpoint(tabletPortrait) {
 										 font-size:36px;
@@ -113,6 +114,7 @@
 									padding:0;
 									font-weight: 300;
 									color: $white;
+									line-height: 1.1em;
 									@include breakpoint(tabletPortrait) {
 										display: none;
 									}
@@ -194,6 +196,10 @@
 							@include breakpoint(phonePortrait) {
 								font-size:24px;
 								line-height: 1.2em;
+							}
+
+							@include breakpoint(normalDesktop) {
+								width: 70%;
 							}
 						}
 						.titles{
@@ -437,7 +443,7 @@
 						z-index: 1;
 						color:$grey;
 						padding-right: 30%;
-						line-height: 1.7em;
+						line-height: 1.5em;
 						font-weight: 300;
 
 						& + p{

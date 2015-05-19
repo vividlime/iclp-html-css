@@ -84,7 +84,6 @@ strong{
 
 p{
   line-height:1.5em;
-  color:$white;
   font-size: 17px;
 
   &.subtitle{
@@ -292,7 +291,7 @@ blockquote{
     height: 100%;
     background-size: 100%;
     background-repeat: no-repeat;
-    background-position: 0 0;
+    background-position: 0 -40px;
     z-index: 1;
     top: -10%;
     left: -20px;
