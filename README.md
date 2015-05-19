@@ -10,7 +10,7 @@ https://www.ruby-lang.org/en/
 
 
 3. Compass 0.12.7
-gem install compass -v 0.12.7
+gem install compass -v 1.0.3
 
 
 4. Bower
