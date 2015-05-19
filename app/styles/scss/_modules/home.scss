@@ -49,6 +49,7 @@
         text-align: center;
         display: block;
         margin: auto;
+        font-weight: 300;
         @include breakpoint(phonePortrait) {
 					font-size: 20px; 
         }        
@@ -86,7 +87,7 @@
 
 		article{
 			position: relative;
-			background:$blue;
+			background:$turquoise;
 			display: table-cell;
 			vertical-align: top;
 			padding: 0;
@@ -285,9 +286,14 @@
 						position: absolute;
 						top:0;
 						left:0;
-						width: 100%;
+						width: auto;
 						height:100%;
 					}
+
+					span.image:before {
+							background: rgba(0,0,0,0.4);
+						}
+
 					
 					&:hover{
 						background:rgba(0,0,0,0.40);

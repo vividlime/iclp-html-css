@@ -184,6 +184,7 @@ a{
 .scrolltotop {
  @include scrolltotop;
  font-weight: 400;
+ color: $white;
 }
 ::-webkit-scrollbar-thumb{
   background-color:#B03C3F;

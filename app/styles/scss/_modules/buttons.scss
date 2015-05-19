@@ -22,9 +22,9 @@ a.button,
   margin: 0 auto;
   color: $white;
   text-transform: uppercase;
-  font-weight:300;
   font-size: 14px;
   line-height: 1.4em;
+  letter-spacing: 1px;
   @include border-radius(3px);
  
   &.large{

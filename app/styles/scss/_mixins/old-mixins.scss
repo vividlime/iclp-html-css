@@ -265,6 +265,11 @@
       @content;
     }
   }
+    @else if $point == normalDesktop {
+      @media (min-width: 1400px) {
+        @content;
+    }
+  }
    @else if $point == extraWideDesktopMenuOpen {
     @media (min-width: 1600px) {
       @content;

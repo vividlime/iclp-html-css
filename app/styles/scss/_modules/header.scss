@@ -21,8 +21,8 @@ body{
       @include transform (translateX(24px) translateY(24px) translateZ(0px) rotate(0deg));
 
       @include breakpoint(tabletPortrait) {
-        width: 40px;
-        @include transform (translateX(12px) translateY(12px) translateZ(0px) rotate(0deg));
+        width: 30px;
+        @include transform (translateX(12px) translateY(17px) translateZ(0px) rotate(0deg));
       }
 
       > div{
@@ -44,7 +44,7 @@ body{
           @include transition((all 0.3s ease-out));
 
           @include breakpoint(tabletPortrait) {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
           }
         }
       }
@@ -80,7 +80,7 @@ body{
         z-index: 1;
       }
       @include breakpoint(tabletPortrait) {
-       height: 48px;
+       height: 55px;
       }
   		.wrap{
   			position:relative;
@@ -92,7 +92,8 @@ body{
           width: 186px;
   				margin:0px auto 0 auto;
           @include breakpoint(tabletPortrait) {
-            width: 146px;
+            width: 191px;
+            padding-top: 1px;
           }
   				h1{
   					display:block;
@@ -114,13 +115,13 @@ body{
 
                 @include breakpoint(tabletPortrait) {
                   padding-top: 0px;
+                  width: 85%;
                 }
               }
 						embed{
               height: 50px;
               @include breakpoint(tabletPortrait) {
-                height: 44px;
-                @include transform (scale(0.9));
+                @include transform (scale(0.6));
               }
 						}
   				}
@@ -169,7 +170,6 @@ body{
 
                 @include breakpoint(tabletPortrait) {
                   font-size: 1.4em;
-                  color:$grey;
                 }
               }
               &:hover:before{

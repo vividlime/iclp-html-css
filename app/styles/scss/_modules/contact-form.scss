@@ -114,7 +114,7 @@
 
 		@include breakpoint(tabletPortrait) {
 			margin-top: 34px;
-			padding: 78px 0 0px 0;
+			padding: 78px 0 40px 0;
 		}
 		@include transition((all 0.3s ease-out));
 		&:hover{

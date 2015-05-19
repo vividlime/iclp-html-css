@@ -128,7 +128,7 @@
 
 		 	 			@include breakpoint(bigDesktop) {
 							@include transform (scale(1.1));
-							top: 90px;
+							top: 60px;
   						margin-right: 60px;
   						width:592px;
 		 	 			}
@@ -162,7 +162,7 @@
 				 	 		position: absolute;
 				 	 		height: 100%;
 				 	 		width: 100%;
-				 	 		background: url(../assets/images/svg/journey-curve-blueandwhite.svg) 0% 0% no-repeat;
+				 	 		background: url(../assets/images/svg/journey-curve-home-banner.svg) 0% 0% no-repeat;
 							overflow: hidden;
 							z-index: -1;
 							@include breakpoint(tabletPortrait) {
@@ -180,7 +180,7 @@
 	 				&.title{
 				 	 	right:10%;
 				 	 	top:40px;
-				 	 	background: $dark-blue;
+				 	 	background: $blue;
 				 	 	width: 580px;
 
 			 			@include breakpoint(bigDesktop) {
@@ -210,24 +210,26 @@
 				 	 		left:0;
 				 	 		@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 				  		@include transition(opacity 0.3s ease-out);
-				  		background: $dark-blue;
+				  		background: $blue;
 				  		z-index:1;
 				  		@include breakpoint(bigDesktop) {
 				 				bottom:-26px;
 							}
 				 	 	}
 				 		.content{
-							background: $dark-blue;
+							background: $blue;
 							width: 100%;
 							display: inline-block;
 							position: relative;
 					 	 	z-index: 3;
 					 	 	padding: 38px 38px 0px 38px;
 					 	 	h1{
-					 	 		font-size: 28px;
+					 	 		font-size: 32px;
 					 	 		line-height:1em;
 					 	 		text-align: left;
 					 	 		padding-bottom: 10px;
+					 	 		color: $white;
+					 	 		font-weight: 300;
 					 	 		strong{
 									font-weight:400;
 									// width: 100%;
@@ -241,7 +243,7 @@
 					 	 		line-height:1em;
 					 	 		text-transform: uppercase;
 					 	 		font-size: 17px;
-								font-weight:400;
+								font-weight: bold;
 								padding-bottom: 10px;
 					 	 	}
 					 	 	.buttons{
@@ -319,7 +321,7 @@
 			 	 	@include breakpoint(phoneLandscape) {
 					 left:0;
 					 margin-left: 256px;
-  				 top: 20px;
+  				 	 top: 20px;
 					 width: 294px;
 
 					 .content{
@@ -330,7 +332,7 @@
 						 	font-size: 24px;
 						 	width: 90%;
 						 	line-height:1em;
-						 	background: $dark-blue;
+						 	background: $blue;
 						 	padding: 20px 0px 4px 20px;
 						 }
 						 h2{
@@ -361,7 +363,7 @@
 					 	margin-right: -460px;
 					 	top:165px;
 						background: $yellow;
-						width: 406px;
+						width: 436px;
 						position: absolute;
 						padding:0px;
 
@@ -403,6 +405,7 @@
 							display: inline-block;
 							position: relative;
 					 	 	z-index: 3;
+					 	 	font-weight: 400;
 
 							h3{
 								color: $dark-blue;
@@ -412,6 +415,7 @@
 								padding-bottom: 12px;
 								position: relative;
 					 	 		z-index: 3;
+					 	 		font-weight: 400;
 
 							}
 							.buttons{
@@ -421,6 +425,7 @@
 								.button{
 									float: left;
 									margin: 0;
+									font-family:  "Lato", Arial, Sans-serif;
 								}
 							}
 
@@ -429,7 +434,7 @@
 								width: 100%;
 								padding-bottom: 12px;
 								li{
-									font-size: 17px;
+									font-size: 15px;
 									line-height: 1.3em;
 									text-align: left;
 									padding:4px 0 4px 14px;
@@ -835,6 +840,9 @@
 	 							 @include breakpoint(tabletPortrait) {
 									display: none
 								}
+								@include breakpoint(normalDesktop) {
+										top: 15%;
+									}
 							 	.ring{
 					 	 			position: absolute;
 					 	 			z-index: 0;
@@ -846,6 +854,10 @@
 						 	 		background: url(../assets/images/svg/journey-curve-home-banner.svg) 0% 0% no-repeat;
 						 	 		background-size: cover;
 									@include transform (translateX(-158px) translateY(-96px) translateZ(0px) rotate(75.6deg) scale(0.8));
+
+									@include breakpoint(mediumDesktop) {
+										@include transform (translateX(-158px) translateY(-96px) translateZ(0px) rotate(75.6deg) scale(0.6));
+									}
 					 	 		}
 
 								.hotspot-content{
@@ -878,6 +890,7 @@
 
 									 	 	h1{
 									 	 		font-size: 21px;
+									 	 		color: $white;
 									 	 		line-height:1.1em;
 									 	 		text-align: left;
 									 	 		padding: 20px 20px 5px 20px;
@@ -886,6 +899,9 @@
 									 	 		font-weight: 300;
 									 	 		strong{
 									 	 			font-weight: 700;
+									 	 		}
+									 	 		@include breakpoint(mediumDesktop) {
+									 	 			font-size: 17px;
 									 	 		}
 									 	 	}
 
@@ -900,6 +916,9 @@
 									 	 		padding: 0px 20px 0px 20px;
 									 	 		font-weight: 700;
 									 	 		margin-bottom: 18px;
+									 	 		@include breakpoint(mediumDesktop) {
+									 	 			font-size: 14px;
+									 	 		}
 												&:after{
 											 		content: '';
 											 		position: absolute;

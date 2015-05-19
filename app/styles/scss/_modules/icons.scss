@@ -155,10 +155,10 @@ h2.animated{
   &.contacthome{
 
     &:before{
-      top: 22px;
-      left: 50%;
-      margin-left: -16px;
-      font-size: 30px;
+      top: 18px;
+      left: 49.89%;
+      margin-left: -18px;
+      font-size: 38px;
       // @include transform (rotate(-90deg));
       content: "\e086";
       @include transition((all 0.3s ease-out));
@@ -170,9 +170,6 @@ h2.animated{
     }
     .wrapper-circle{
       @include transform(scale(1.3));
-      @include breakpoint(tabletPortrait) {
-        @include transform(scale(1));
-      }
     }
     &:focus:before,
     &:hover:before{
