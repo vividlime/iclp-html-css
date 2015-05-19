@@ -811,13 +811,13 @@
 		 							opacity: 1;
 		 						}
 		 						.hotspot{
-		 							@include transform(translate(0% , 0% ) scale( 1.60 ));
+		 							@include transform(translate(0% , 100% ) scale( 1.60 ));
 		 						}
 		 					}
 	 						span{
 	 							&.hotspot{
 		 							position:absolute;
-		 							@include transform(translate( 0% , 0% ) scale( 1.45 ));
+		 							@include transform(translate( 0% , 100% ) scale( 1.45 ));
 		 						}
 		 						@include breakpoint(tabletPortrait) {
 									display: none
@@ -845,7 +845,7 @@
 									width: 549px;
 						 	 		background: url(../assets/images/svg/journey-curve-home-banner.svg) 0% 0% no-repeat;
 						 	 		background-size: cover;
-									@include transform (translateX(-158px) translateY(-96px) translateZ(0px) rotate(75.6deg) scale(0.6));
+									@include transform (translateX(-158px) translateY(-96px) translateZ(0px) rotate(75.6deg) scale(0.8));
 					 	 		}
 
 								.hotspot-content{
@@ -877,10 +877,10 @@
 											position: relative;
 
 									 	 	h1{
-									 	 		font-size: 17px;
+									 	 		font-size: 21px;
 									 	 		line-height:1.1em;
 									 	 		text-align: left;
-									 	 		padding: 20px 20px 12px 20px;
+									 	 		padding: 20px 20px 5px 20px;
 									 	 		position: relative;
 									 	 		z-index: 4;
 									 	 		font-weight: 300;
@@ -892,9 +892,9 @@
 								 	 		h2{
 									 	 		text-align: left;
 									 	 		color: $yellow;
-									 	 		line-height:1.3em;
+									 	 		line-height:1.2em;
 									 	 		text-transform: uppercase;
-									 	 		font-size: 14px;
+									 	 		font-size: 17px;
 												position: relative;
 									 	 		z-index: 4;
 									 	 		padding: 0px 20px 0px 20px;
