@@ -110,6 +110,12 @@ a.close-form{
   }
 }
 
+.icons {
+  p {
+    font-size: 15px;
+  }
+}
+
 
 h2.animated{
 	width:100%;
@@ -120,6 +126,7 @@ h2.animated{
   font-size: 22px;
   padding: 98px 0 20px 0;
   z-index: 1;
+  color: $white;
 
   @include breakpoint(tabletPortrait) {
    margin-top: 12px;
@@ -135,10 +142,14 @@ h2.animated{
     position:absolute;
     content: "";
     @include transition((all 0.3s ease-out));
-    color:$white;
     @include breakpoint(phonePortrait) {
 
     }
+  }
+  span {
+    color: $white;
+    font-size: 17px;
+    font-weight: bold;
   }
 
   &.contacthome{
@@ -171,17 +182,19 @@ h2.animated{
   &.contact{
 
     &:before{
-      top: 22px;
+      top: 19px;
       left: 50%;
-      margin-left: -16px;
-      font-size: 30px;
-      @include transform (rotate(-90deg));
-      content: "\e048";
+      margin-left: -18px;
+      font-size: 38px;
+      /*@include transform (rotate(-90deg));*/
+      content: "\e086";
+      color: $grey;
       @include transition((all 0.3s ease-out));
       @include breakpoint(phonePortrait) {
         top: 25px;
         margin-left: -11px;
         font-size: 21px;
+        
       }
     }
     &:after{
@@ -190,7 +203,7 @@ h2.animated{
       margin-left: -13px;
       position: absolute;
       opacity: 0;
-      background: url(../assets/images/arrow.png) no-repeat 0 0;
+      background: url(../assets/images/arrow-grey.png) no-repeat 0 0;
       width: 20px;
       height: 40px;
       content: "";
