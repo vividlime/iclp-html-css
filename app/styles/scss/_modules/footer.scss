@@ -81,6 +81,9 @@ footer.footer{
 			text-align: center;
 			// color:$rodeo-dust;
 			font-size: 12px;
+			&.copyright{
+				color: $white;
+			}
 		}
 	}
 

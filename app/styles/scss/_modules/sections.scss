@@ -240,6 +240,9 @@
 								background: $white;
 								@include transition(all 0.9s ease-out);
 								opacity: 1;
+								@include breakpoint(phonePortrait){
+									bottom:-20px;
+								}
 							}
 							h1{
 								max-width: 1170px;
@@ -258,12 +261,15 @@
 										display: block;
 										width: 50%;
 										height: auto;
+										@include breakpoint(phonePortrait) {
+										width: 80%;
+									}
 									}
 								}
 							}
 							h2{
 								max-width: 1170px;
-  							margin:0 auto;
+  								margin:0 auto;
 								position: relative;
 								text-align: center;
 								display: block;
@@ -272,26 +278,40 @@
 								padding: 0px 0% 12px 0%;
 
 								@include breakpoint(phonePortrait) {
-									font-size:24px;
+									font-size:22px;
 									line-height: 1.2em;
+									padding: 0;
+								}
+								@include breakpoint(normalDesktop) {
+									width: 70%;
 								}
 							}
 							h3{
 								font-style: italic;
 								background: $white;
-								font-size: 18px;
+								font-size: 17px;
 								text-align: center;
 								display: block;
 								position: relative;
 								z-index: 1;
 								padding: 50px 0 12px 0;
+								margin: 0 auto;
+								@include breakpoint(normalDesktop) {
+									width: 70%;
+								}
+								@include breakpoint(phonePortrait) {
+									padding: 30px 0 0 0;
+								}
 								&:before{
-									top: 25px;
+									top: 30px;
 									left:0;
 									width: 100%;
 									content: "";
 									position: absolute;
 									height: 1px;
+									@include breakpoint(phonePortrait) {
+										top: 15px;
+									}
 								}
 							}
 							blockquote{
@@ -381,7 +401,7 @@
 						padding: 60px;
 					}
 					@include breakpoint(phonePortrait) {
-						padding: 60px 20px 60px 20px;
+						padding: 20px 20px 60px 20px;
 					}
 
 					img{
@@ -405,6 +425,7 @@
 						padding-bottom: 18px;
 						@include breakpoint(tabletPortrait) {
 							padding: 12px 0 12px 0;
+							font-size: 22px;
 		        }
 					}
 					ul{

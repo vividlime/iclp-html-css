@@ -38,7 +38,7 @@
 				margin-top: 0px;
 				z-index: 2;
 				width: 100%;
-				background:rgba(97, 99, 101,0.20);
+				background: $ebb;
 				.client-outer{
 					max-width: 1170px;
 					display: block;
@@ -150,9 +150,12 @@
 				}
 
 				.copy-wrap{
+					&:nth-child(odd) {
+						background: $pampas;
+					}
 					&:first-child{
 						.copy{
-							padding-top: 190px;
+							padding-top: 50px;
 						}
 					}
 					.copy{

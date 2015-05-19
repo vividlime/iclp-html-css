@@ -116,6 +116,10 @@
 			margin-top: 34px;
 			padding: 78px 0 40px 0;
 		}
+		@include breakpoint(phonePortrait) {
+			font-size: 22px;
+		}
+		
 		@include transition((all 0.3s ease-out));
 		&:hover{
 			@include transition((all 0.3s ease-out));
