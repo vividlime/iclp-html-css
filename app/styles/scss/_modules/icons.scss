@@ -243,9 +243,9 @@ h2.animated{
   }
   &.customer{
   	&:before{
-  		top: 23px;
+  		top: 20px;
       left: 50%;
-      margin-left: -15px;
+      margin-left: -18.5px;
   		font-size: 1.3em;
     	content: "\e08a";
       @include breakpoint(phonePortrait) {
@@ -357,7 +357,7 @@ h2.animated{
     &:before{
       top: 18px;
       left: 50%;
-      margin-left: -19px;
+      margin-left: -20.5px;
       font-size: 40px;
       content: "\e087";
 
