@@ -381,7 +381,7 @@
           
 
           @include breakpoint(tabletPortrait) {
-            padding-top:100%;
+            padding-top:150%;
           }
           @include breakpoint(phonePortrait) {
             padding-top:90%;
@@ -397,6 +397,8 @@
             line-height: 0;
             @include breakpoint(phoneLandscape) {
               top:28px;
+              width: auto;
+              height: 100%;
             }
           }
         }
