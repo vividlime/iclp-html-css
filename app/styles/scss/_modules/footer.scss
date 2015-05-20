@@ -6,7 +6,7 @@ footer.footer{
 	z-index: 1;
 	background:$rodeo-dust;
 	overflow: hidden;
-	top: 75px;
+	top: 85px;
 	@include breakpoint(phonePortrait) {
     top:48px;
   }
