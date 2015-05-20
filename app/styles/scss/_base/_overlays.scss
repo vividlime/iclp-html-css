@@ -1,0 +1,37 @@
+// Overlays. Used when hovering over an item to add a darker semi-transparent overlay.
+
+.overlay-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(17,17,17,.5);
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    transition: all .3s;
+    z-index: 10;
+
+    &:hover {
+        opacity: 1;
+        filter: alpha(opacity=50);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    }
+}
+
+.overlay-wrapper--dark {
+    background-color: rgba(0,0,0,.8);
+}
+
+.overlay-content-wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.overlay-content {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 20px;
+}
