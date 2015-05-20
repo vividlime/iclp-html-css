@@ -346,11 +346,24 @@
         //   height: 282px;
         // }
 
+        span.pane-image:before{
+           content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+          @include transition((all 0.3s ease-out));
+          background: rgba(0,0,0,0.4);          
+           }
+
         > span.image {
           position:relative;
           padding-top:82%;
           display: block;
           overflow: hidden;
+          background: $turquoise;
           &:before{
             content: "";
             position: absolute;
@@ -358,14 +371,14 @@
             width: 100%;
             top:0;
             left:0;
-            background: rgba(0,0,0,0);
-            @include transition(all 0.35s ease-out);
+            @include transition((all 0.35s ease-out));
             @include transform(translateZ(0px));
             z-index: 1;
             @include breakpoint(tabletPortrait) {
-              background: rgba(0,0,0,0.4);
+              /*background: rgba(0,0,0,0.4);*/
             }
           }
+          
 
           @include breakpoint(tabletPortrait) {
             padding-top:100%;
@@ -404,7 +417,7 @@
             text-align: center;
             padding: 30% 0 12px 0;
             display: block;
-            font-size: 26px;
+            font-size: 28px;
             @include breakpoint(tabletPortrait) {
               font-size: 22px;
             }
@@ -466,6 +479,9 @@
       &:focus figure span:before,
       &:hover figure span:before{
         background: rgba(0,0,0,0.4);
+      }
+      &:hover figure span.pane-image:before {
+        background: rgba(0,0,0,0.8);
       }
       // &:hover figcaption span.findoutmore{
       //   background: rgba(255,255,255,0.2);

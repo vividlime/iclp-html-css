@@ -176,6 +176,7 @@
 							padding: 0 0 12px 0;
 							position: absolute;
 							z-index: 1;
+							color: $white;
 							@include breakpoint(phonePortrait) {
 								padding: 0 8px 12px 8px;
 							}
@@ -263,6 +264,7 @@
 					height: 415px;
 					width: 100%;
 					padding:0;
+					@include transition((all 0.3s ease-out));
 					@include breakpoint(tabletPortrait) {
 						padding: 0;
 						height:208px;
@@ -271,7 +273,8 @@
 						top: 50%;
   					@include transform(translateY(-50%));
 						margin: 0;
-						font-size: 22px;
+						font-size: 28px;
+						pointer-events: none;
 						@include breakpoint(phonePortrait) {
 						 font-size: 17px;
 						}
@@ -290,13 +293,26 @@
 						height:100%;
 					}
 
+					span.image:hover:before{
+						content: "";
+						background: rgba(0,0,0,0.8);
+					}
+
 					span.image:before {
-							background: rgba(0,0,0,0.4);
+						content:"";
+						  position: absolute;
+						  height: 100%;
+						  width: 100%;
+						  top: 0;
+						  left: 0;
+						  z-index: 1;
+						@include transition((all 0.3s ease-out));
+						background: rgba(0,0,0,0.4);
 						}
 
 					
 					&:hover{
-						background:rgba(0,0,0,0.40);
+						background:rgba(0,0,0,0.4);
 						@include transition((all 0.3s ease-out));
 					} 
 			    &:focus .circle[data-anim~=bigger],

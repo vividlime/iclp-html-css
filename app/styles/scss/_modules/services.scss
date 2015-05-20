@@ -65,7 +65,7 @@
 						.copy{
 							padding-top:178px;
 							@include breakpoint(phonePortrait) {
-								padding-top: 128px;
+								padding-top: 50px;
 							}
 						}
 					}
@@ -75,6 +75,9 @@
 						}
 						p {
 							padding-right: 50%;
+							@include breakpoint(tabletPortrait) {
+								padding-right: 0px;
+							}
 						}
 					}
 				}
@@ -111,7 +114,7 @@
 							@include transition((all 0.5s ease-out));
 							@include transform(translateZ(0px));
 							background: $turquoise;
-							border-right: 10px solid $rodeo-dust;
+							border-right: 10px solid $ebb;
 							overflow: hidden;
 							&:last-child{
 								border-right: 0px solid #f08017;
@@ -138,7 +141,7 @@
 
 							&.active p:after,
 							&.active p:before{
-								background: #c06612;
+								background: $ming;
 							}
 
 
@@ -167,8 +170,9 @@
 								&.customerengagement{
 									span{
 										top: 100px;
+										line-height: 1.1em;
 										&:after{
-											top: 62px;
+											
 										}
 									}
 								}
@@ -180,6 +184,8 @@
 								margin: 50px auto 0px auto;
 								padding:0 10px;
 								position: relative;
+								color: $white;
+								font-weight: 300;
 
 							}
 							span.view{
@@ -193,6 +199,7 @@
 								bottom: 30px;
 								left: 50%;
 								margin-left: -63px;
+								color: $white;
 								@include transition((all 0.35s ease-out));
 
 								&:hover{
@@ -216,7 +223,7 @@
 						    @include transform (rotate(180deg));
 						  }
 						  &.active{
-						  	background: #336979;
+						  	background: $ming;
 
 								.circle[data-anim~=bigger],
 								.circle[data-anim~=bigger]{
@@ -236,9 +243,9 @@
 							  }
 							  &:after{
 								  opacity:1;
-								  background:$turquoise;
+								  background:$ming;
 								  @include breakpoint(phonePortrait) {
-									  background:#c06612;
+									  background: $ming;
 									}
 								}
 						  }
@@ -261,11 +268,18 @@
 							a.icon-wrap{
 								padding: 0px 0;
 								background-image: none;
-								width: 100%;
+								width: 85%;
 								display: inline-block;
 								border:0;
-								border-top:1px solid $white;
+								/*border-top:1px solid $white;*/
 								height: auto;
+								margin: 5px 0 10px 8%;
+								&:first-of-type{
+									margin-top: 20px;
+								}
+								&:last-of-type{
+									margin-bottom: 20px;
+								}
 								&:focus,
 								&:hover{
 									background-image: none;
