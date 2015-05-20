@@ -1,0 +1,38 @@
+// Text Helpers
+
+// http://www.appnovation.com/blog/modern-approach-css-image-replacement
+.hide-text {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+ // Text Transforms
+
+.text-upper {
+    text-transform: uppercase;
+}
+
+.text-lower {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+
+// Font Weights (Other than regular)
+
+.text-light {
+    font-family: $font-ICLPlight;
+}
+
+.text-black {
+    font-family: $font-ICLPblack;
+}
+
+.text-bold {
+    font-family: $font-ICLPbold;
+}
