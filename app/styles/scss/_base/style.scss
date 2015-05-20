@@ -49,7 +49,7 @@ h1{
   text-transform: uppercase;
   font-size:45px;
     @include breakpoint(phonePortrait) {
-      font-size:30px;
+      font-size:28px;
     }
 }
 

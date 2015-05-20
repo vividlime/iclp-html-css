@@ -412,6 +412,7 @@
 						width: 50%;
 						height: auto;
 						top: 50%;
+						padding-right: 20px;
   					@include transform(translateY(-50%));
 
 						@include breakpoint(tabletPortrait) {

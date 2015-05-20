@@ -65,7 +65,7 @@
 						.copy{
 							padding-top:178px;
 							@include breakpoint(phonePortrait) {
-								padding-top: 128px;
+								padding-top: 50px;
 							}
 						}
 					}
@@ -75,6 +75,9 @@
 						}
 						p {
 							padding-right: 50%;
+							@include breakpoint(tabletPortrait) {
+								padding-right: 0px;
+							}
 						}
 					}
 				}
@@ -138,7 +141,7 @@
 
 							&.active p:after,
 							&.active p:before{
-								background: #c06612;
+								background: $ming;
 							}
 
 
@@ -220,7 +223,7 @@
 						    @include transform (rotate(180deg));
 						  }
 						  &.active{
-						  	background: #336979;
+						  	background: $ming;
 
 								.circle[data-anim~=bigger],
 								.circle[data-anim~=bigger]{
@@ -240,9 +243,9 @@
 							  }
 							  &:after{
 								  opacity:1;
-								  background:$turquoise;
+								  background:$ming;
 								  @include breakpoint(phonePortrait) {
-									  background:#c06612;
+									  background: $ming;
 									}
 								}
 						  }
