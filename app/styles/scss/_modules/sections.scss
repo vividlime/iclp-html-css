@@ -64,7 +64,7 @@
 										margin-left: -400px;
 									}
 									@include breakpoint(phonePortrait) {
-										min-width: 320px;
+										min-width: 350px;
 										margin-left: -180px;
 									}
 									&:before{
@@ -102,7 +102,7 @@
 										 font-size:36px;
 									}
 									@include breakpoint(phonePortrait) {
-										font-size:30px;
+										font-size:28px;
 									}
 								}
 								>h2{
@@ -194,8 +194,9 @@
 								padding: 30px 60px 65px 60px;
 							}
 							@include breakpoint(phonePortrait) {
-								font-size:24px;
+								font-size:22px;
 								line-height: 1.2em;
+								padding: 0px 20px 40px 20px;
 							}
 
 							@include breakpoint(normalDesktop) {

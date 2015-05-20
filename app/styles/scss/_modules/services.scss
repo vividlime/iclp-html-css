@@ -111,7 +111,7 @@
 							@include transition((all 0.5s ease-out));
 							@include transform(translateZ(0px));
 							background: $turquoise;
-							border-right: 10px solid $rodeo-dust;
+							border-right: 10px solid $ebb;
 							overflow: hidden;
 							&:last-child{
 								border-right: 0px solid #f08017;
@@ -167,8 +167,9 @@
 								&.customerengagement{
 									span{
 										top: 100px;
+										line-height: 1.1em;
 										&:after{
-											top: 62px;
+											
 										}
 									}
 								}
@@ -180,6 +181,8 @@
 								margin: 50px auto 0px auto;
 								padding:0 10px;
 								position: relative;
+								color: $white;
+								font-weight: 300;
 
 							}
 							span.view{
@@ -193,6 +196,7 @@
 								bottom: 30px;
 								left: 50%;
 								margin-left: -63px;
+								color: $white;
 								@include transition((all 0.35s ease-out));
 
 								&:hover{
@@ -261,11 +265,18 @@
 							a.icon-wrap{
 								padding: 0px 0;
 								background-image: none;
-								width: 100%;
+								width: 85%;
 								display: inline-block;
 								border:0;
-								border-top:1px solid $white;
+								/*border-top:1px solid $white;*/
 								height: auto;
+								margin: 5px 0 10px 8%;
+								&:first-of-type{
+									margin-top: 20px;
+								}
+								&:last-of-type{
+									margin-bottom: 20px;
+								}
 								&:focus,
 								&:hover{
 									background-image: none;
