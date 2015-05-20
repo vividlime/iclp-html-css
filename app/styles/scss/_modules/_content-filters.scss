@@ -1,0 +1,64 @@
+// Content Filter such as the one used in Resources
+
+
+// The wrapper around the entire filter
+.content-filter {
+
+}
+
+
+// toggle button to show or hide the filter
+.filter-toggle {
+    color: $white;
+    background-color: $turquoise;
+    padding: 20px;
+}
+
+// Wrapper around the tabs
+.filter-tabs {
+
+}
+
+
+.filter-tab {
+
+}
+
+.filter-tags {
+    .label {
+        display: inline-block;
+        padding: 5px 20px;
+        color: $dark-grey;
+        background-color: $white;
+        font-size: 1em;
+        font-weight: bold;
+        margin: 5px 5px 5px 0;
+
+        &.selected {
+            color: $white;
+            background-color: $turquoise;
+        }
+    }
+}
+
+.selected-filter-tags {
+    .label {
+
+        &.selected {
+            color: $dark-grey;
+            background-color: $rodeo-dust-light;
+        }
+    }
+}
+
+
+// Wrapper for the tab content
+.tab-content {
+    padding: 20px;
+}
+
+
+// The search terms that make up the filter
+.filter-terms {
+
+}
