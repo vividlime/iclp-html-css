@@ -30,14 +30,14 @@
                                     </div>
                                 </article>
 
-                                <div class="angle">
+                                <!-- <div class="angle">
                                     <nav class="breadcrumb">
                                         <ul class="crumbs">
                                             <li><a href="index.html">HOME</a></li>
-                                            <li><a href="whatwedo.html">Reources</a></li>
+                                            <li><a href="resources.html">Resources</a></li>
                                         </ul>
                                     </nav>
-                                </div>
+                                </div> -->
 
                                 <article class="sub-heading">
                                     <h3>Helping companies build a complete picutre of their customers, facilitating them to deepen their relationships and maximise the customers' total contribution to their business.</h3>
@@ -47,38 +47,164 @@
                             </div>
                         </div>
                     </section>
-                    <div class="filter">
-                        <div role="tabpanel">
+                </div>
 
-                            <!-- Filter tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation">
-                                    <a href="#filter-media-type" aria-controls="filter-media-type" role="tab" data-toggle="tab">MEDIA TYPE</a>
-                                </li>
-                                <li role="presentation" class="active">
-                                    <a href="#filter-category" aria-controls="filter-category" role="tab" data-toggle="tab">CATEGORY</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#filter-sector" aria-controls="filter-sector" role="tab" data-toggle="tab">SECTOR</a>
+                <!-- Start Content Wrapper -->
+                <section class="content-wrapper container">
+
+                    <!-- Start Filter Bar -->
+                    <div class="row">
+                        <div class="content-filter">
+                            <div class="filter-toggle js-toggle-filter-state">Filter</div>
+
+                            <div role="tabpanel">
+
+                                <!-- Start Filter Tabs -->
+                                <ul class="nav nav-tabs filter-tabs" role="tablist">
+                                    <li class="filter-tab active" role="presentation">
+                                        <a href="#filter-media-type" aria-controls="filter-media-type" role="tab" data-toggle="tab">MEDIA TYPE</a>
+                                    </li>
+                                    <li class="filter-tab" role="presentation" >
+                                        <a href="#filter-category" aria-controls="filter-category" role="tab" data-toggle="tab">CATEGORY</a>
+                                    </li>
+                                    <li class="filter-tab" role="presentation">
+                                        <a href="#filter-sector" aria-controls="filter-sector" role="tab" data-toggle="tab">SECTOR</a>
+                                    </li>
+                                </ul>
+                                <!-- End Filter Tabs -->
+
+                                <!-- Start Filter Tab Content -->
+                                <div class="tab-content bgc-rodeo-dust">
+
+                                    <!-- Media Filter Tags -->
+                                    <div role="tabpanel" class="tab-pane clearfix active" id="filter-media-type">
+                                        <ul id="tag-filter" class="list-inline filter-tags">
+                                            <li class="label js-selectable" data-tag-id="1611">
+                                                <span>
+                                                    News (10)
+                                                </span>
+                                            </li>
+                                            <li class="label js-selectable" data-tag-id="1612">
+                                                <span >
+                                                    Loyalty and CRM Strategy (10)
+                                                </span>
+                                            </li>
+                                            <li class="label js-selectable" data-tag-id="1613">
+                                                <span>
+                                                    Conferences (20)
+                                                </span>
+                                            </li>
+                                            <li class="label js-selectable" data-tag-id="1614">
+                                                <span>
+                                                    Data Analytics and Insight (10)
+                                                </span>
+                                            </li>
+                                            <li class="label js-selectable" data-tag-id="1615">
+                                                <span>
+                                                    Performance/ROI (10)
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- End Media Filter Tags -->
+
+
+
+                                    <!-- Start Category Filter Tags -->
+                                    <div role="tabpanel" class="tab-pane" id="filter-category">
+
+                                        <ul id="tag-filter" class="list-inline filter-tags">
+                                            <li class="label js-selectable" data-tag-id="1616">
+                                                <span >
+                                                    Category 1 (10)
+                                                </span>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <!-- End Category Filter Tags -->
+
+
+
+                                    <!-- Start Sector Filter Tags -->
+                                    <div role="tabpanel" class="tab-pane" id="filter-sector">
+
+                                        <ul id="tag-filter" class="list-inline filter-tags">
+                                            <li class="label js-selectable" data-tag-id="1617">
+                                                <span>
+                                                    Sector 1 (10)
+                                                </span>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <!-- End Sector Filter Tags -->
+
+                                </div>
+                                <!-- End Filter Tab Content -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Filter Bar -->
+
+
+                    <!-- Start Selected Filter Terms -->
+                    <div class="row">
+                        <div id="filter-terms">
+                            SELECTED TAGS
+                            <ul id="selected-filter-tags" class="filter-tags selected-filter-tags list-inline">
+                                <li class="label js-selectable" data-tag-id="1611">
+                                    <span>News</span>
                                 </li>
                             </ul>
 
-                            <!-- Filter Tab Panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="filter-media-type">
-                                    <h2>Media Types</h2>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="filter-category">
-                                    <h2>Categories</h2>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="filter-sector">
-                                    <h2>Sectors</h2>
-                                </div>
-                            </div>
-
-                            </div>
+                            <input id="selected-filter-ids" type="text" value="">
+                        </div>
                     </div>
-                </div>
+                    <!-- End Selected Filter Terms -->
+
+                    <!-- Start Filtered Content -->
+                    <div class="row">
+                        <ul class="entry-items resource-download-items">
+                            <li class="entry-item">
+                                <div class="resource-download-item bgc-orange">
+                                    <a href="#" class="overlay-wrapper"></a>
+
+                                    <div class="resource-download-item__header">
+                                        <div class="entry-item__title">
+                                            End of year Financial Report 2015
+                                        </div>
+                                    </div>
+
+
+                                    <div class="entry-item__meta-data">
+                                        <div class="meta-data-type">Report</div>
+                                        <div class="meta-data-date">Aug 2015</div>
+                                    </div>
+
+                                    <div class="resource-download-item__content">
+                                        <div class="entry-item__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis laborum qui tempora laboriosam ipsa consequuntur, facilis reiciendis unde fuga minus consectetur accusamus veritatis iste, veniam earum doloribus omnis maiores in.
+                                        </div>
+
+                                        <img src="" class="entry-item__image" alt="" />
+                                    </div>
+
+                                    <div class="resource-download-item__footer">
+                                        <div class="button resource-download-item__button">DOWNLOAD</div>
+                                        <div class="resource-download-item__share-link share-this"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="button w-full">VIEW MORE</div>
+                    </div>
+                    <!-- End Filtered Content -->
+
+                </section>
+                <!-- End Content Wrapper -->
 
             </div>
         </main>
