@@ -1,29 +1,49 @@
 // Content Filter such as the one used in Resources
 
 
-// The wrapper around the entire filter
+// The wrapper around the entire filter bar
 .content-filter {
-
+    margin: 50px 0;
 }
 
 
 // toggle button to show or hide the filter
 .filter-toggle {
+    display: none;
     color: $white;
     background-color: $turquoise;
     padding: 20px;
 }
 
-// Wrapper around the tabs
+// Wrapper around the filter tabs AND tab contents
+.filter-tab-panel {
+
+}
+
+
+// Wrapper around the tabs only
 .filter-tabs {
 
 }
 
 
 .filter-tab {
+    background-color: $rodeo-dust-lighter;
+    margin-right: 15px;
 
+    &:last-child {
+        margin-right: 0;
+    }
 }
 
+// Wrapper for the tab content
+.tab-content {
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+
+// The tag items in the tab content area
 .filter-tags {
     .label {
         display: inline-block;
@@ -32,7 +52,9 @@
         background-color: $white;
         font-size: 1em;
         font-weight: bold;
+        text-transform: uppercase;
         margin: 5px 5px 5px 0;
+        cursor: default;
 
         &.selected {
             color: $white;
@@ -41,24 +63,42 @@
     }
 }
 
-.selected-filter-tags {
-    .label {
 
-        &.selected {
-            color: $dark-grey;
-            background-color: $rodeo-dust-light;
+// Wrapper around the selected tags area
+.selected-filter-tag-bar {
+
+}
+
+.selected-tags-label {
+    margin-right: 10px;
+}
+
+
+// The UL containing the list of selected tags
+.selected-filter-tags {
+    display: inline-block;
+
+    .label {
+        color: $dark-grey;
+        background-color: $rodeo-dust-light;
+        cursor: default;
+        text-transform: uppercase;
+
+        .tag-name {
+            margin-right: 10px;
+        }
+
+        &:after {
+            content: '\2716';
         }
     }
 }
 
 
-// Wrapper for the tab content
-.tab-content {
-    padding: 20px;
-}
+
 
 
 // The search terms that make up the filter
-.filter-terms {
+// .filter-terms {
 
-}
+// }
