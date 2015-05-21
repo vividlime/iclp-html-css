@@ -325,6 +325,9 @@
 	            input{
 	              font-size: 16px;
 	              height: 32px;
+	              @include breakpoint(phonePortrait){
+	              	height: 46px;
+	              }
 	            }
 	            textarea{
 

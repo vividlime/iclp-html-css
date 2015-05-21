@@ -80,7 +80,7 @@
     }
 
     @include breakpoint(phonePortrait) {
-      @include transform (scale(0.7));
+      @include transform (scale(0.8));
       .circle[data-anim~=bigger],
       .circle[data-anim~=bigger]{
         opacity: 0.75;

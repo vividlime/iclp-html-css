@@ -70,6 +70,10 @@
 					video{
 						width: 100%;
 						position: relative;
+						@include breakpoint(phonePortrait){
+							width: auto;
+							height: 190px;
+						}
 					}
 					&:after{
 						content: '';
@@ -80,6 +84,9 @@
 						height: 100%;
 						background: rgba(0,0,0,0.4);
 						@include transition((all 0.3s ease-out));
+						@include breakpoint(phonePortrait){
+							background: rgba(0,0,0,0.8);
+						}
 					}
 				}
 
@@ -113,9 +120,10 @@
 
 				@include breakpoint(phonePortrait) {
 					padding: 0;
-					height: 200px;
+					height: 190px;
 						h2{
 							top:10%;
+							font-size: 22px;
 						}
 				}
 			}

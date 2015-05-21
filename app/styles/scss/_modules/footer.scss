@@ -38,11 +38,20 @@ footer.footer{
 					padding-bottom: 6px;
 					&.socials{
 						padding-bottom: 40px;
-						@include breakpoint(phoneLandscape){
+						@include breakpoint(phonePortrait){
 							padding: 0 0 20px 0;
 						}
 
 						li{
+							@include breakpoint(phonePortrait){
+								margin: 0px 10px;
+								display: inline-block;
+							}
+							a{
+								@include breakpoint(phonePortrait) {
+									margin: 0 10px;
+								}
+							}
 							& + li{
 								border:0;
 								@include breakpoint(phoneLandscape) {
@@ -54,7 +63,7 @@ footer.footer{
 					}
 					li{
 						float: left;
-						@include breakpoint(phoneLandscape) {
+						@include breakpoint(phonePortrait) {
 						display: block;
 						border: none;
 						float: none;
@@ -68,7 +77,7 @@ footer.footer{
 							font-size: 13px;
 							text-transform: uppercase;
 							color: $white;
-							@include breakpoint(phoneLandscape) {
+							@include breakpoint(phonePortrait) {
 								padding: 5px 10px;
 								width: 100%;
 								display: block;
@@ -88,6 +97,11 @@ footer.footer{
 								padding-left: 6px;
 								margin-left: 6px;
 							}
+							@include breakpoint(phonePortrait){
+								border-left: 0;
+								padding-left: 0px;
+								margin-left: 0px;
+							}
 						}
 					}
 	  		}
@@ -100,6 +114,7 @@ footer.footer{
 			text-align: center;
 			// color:$rodeo-dust;
 			font-size: 12px;
+			font-weight: 400;
 			&.copyright{
 				color: $white;
 			}
