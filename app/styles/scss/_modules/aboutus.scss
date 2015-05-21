@@ -5,17 +5,15 @@
 			&.head{
 				.head-container{
 					.head-theme{
-
 						.headings{
-				 
 								&.theme{
+									.angle{
+									z-index: 2;
+									}
 									.ring{
 										&:before{
 											background-image: url(../assets/images/svg/Banner-WhatWeDo-JourneyCurve-L1.svg);
 										}
-									}
-									h3{
-										color: $grey;
 									}
 								}
 
@@ -26,22 +24,26 @@
 											background-image: url(../assets/images/svg/Banner-Services-JourneyCurve-L2.svg);
 										}
 									}
-									.titles{
-										h1,h2,h3,blockquote{
-											color: $grey;
-										}
-										h2{
-											text-transform: inherit
-										}
-									}
 								}
+							}
 					 
 							.angle{
 								&:before{
 									@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
 								} 
 							}
-							
+							.sub-heading{
+							h3{
+								color: $grey;
+							}
+							.titles{
+								h1,h2,h3,blockquote{
+									color: $grey;
+								}
+								h2{
+									text-transform: inherit
+								}
+							}
 						}
 					}
 				}
