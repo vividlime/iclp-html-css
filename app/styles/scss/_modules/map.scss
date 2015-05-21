@@ -21,7 +21,7 @@
 				position: relative;
 				padding: 30px 102px 0px 102px;
 				@include breakpoint(tabletPortrait) {
-
+					padding: 24px 0px 44px 0px;
 				}
 
 				.hotspot-area{
@@ -178,7 +178,9 @@
 				  		cursor: pointer;
 				  		position: relative;
 				  		overflow: hidden;
-				  		width:266px;
+				  		@include breakpoint(phonePortrait){
+				  			width: 320px;
+				  		}
 
 					  	.country{
 					  		z-index: 4;
@@ -186,9 +188,8 @@
 					  		position: relative;
 					  		@include transition((all 0.3s ease-out));
 					  		width: 265px;
-						  	margin: auto;
-						  	border-bottom: 3px solid #f5f3f1;
-						  	padding: 20px 0px 20px 48px;
+						  	margin: 0 auto;
+						  	padding: 20px;
 						  	background: rgba(255,255,255,0.10);
 						  	font-size: 18px;
 						  	color:$white;
@@ -227,17 +228,20 @@
 						  	position: absolute;
 						  	display: block;
 						  	@include transition((all 0.3s ease-out));
-						  	width: 240px;
-						  	left: 50%;
+						  	width: 170px;
+						  	left: 55%;
 				  			margin-left: -92px;
 				  			border:0;
 				  			background:none;
-				  			z-index: 5;
 						  	font-size: 18px;
+						  	font-family: inherit;
 						  	color:$white;
 						  	height: 45px;
-								z-index: 5;
-
+							z-index: 5;
+							-webkit-appearance: none;
+						    -moz-appearance: none;
+						    text-indent: 1px;
+						    text-overflow: '';
 
 					  		option{
 					  			width: 100%;
@@ -584,6 +588,10 @@
 		.close-form{
 			top:177px;
 		}
+	}
+
+	#footer{
+		top: 85px;
 	}
 
 }

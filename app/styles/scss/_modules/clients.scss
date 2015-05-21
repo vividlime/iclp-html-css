@@ -56,6 +56,9 @@
 							background: $white;
 							margin-bottom: 12px;
 							float: left;
+							@include breakpoint(phonePortrait){
+								margin-bottom: 20px;
+							}
 							& + a {
 									margin-left: 1.0619469026548672%;
 							}
@@ -101,6 +104,9 @@
 								width: 100%;
 								height: 100%;
 								position: relative;
+								@include breakpoint(phonePortrait){
+									height: 170px;
+								}
 								&:before{
 									content: "";
 									position: absolute;
@@ -114,6 +120,11 @@
 			            max-width: 100%;
 			            height: auto;
 			            display: block;
+			            @include breakpoint(phonePortrait){
+			            	max-width: 250px;
+			            	margin: 0 auto;
+			            	@include transform(translateY(-40px));
+			            }
 								}
 							}
 						}
