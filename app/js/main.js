@@ -3,7 +3,9 @@
     this.carousels();
     this.twitter();
     this.playVideos();
-    this.jsSelectable();
+    this.setupBlazy();
+    this.setupIsotope();
+    this.resourceFilter();
   },
 
   twitter: function (){
@@ -171,44 +173,92 @@
   },
 
 
-  jsSelectable: function() {
-    // var handler = $('#tag-filter .js-selectable').selectable({
-    //     class: 'selected'
-    //   }
-    // );
+  resourceFilter: function() {
+    var allTagLists,
+        // selectedTagsList,
+        selectedTags,
+        selectedTagIDs = [];
+
+    allTagLists = $('#filter-tag-pane');
+    // selectedTagsList = $('#selected-filter-tags');
+    selectedTags = $('#selected-filter-tags');
 
 
-  // Setup selectable Filter Tags
-  $('#tag-filter .js-selectable').selectable({
+
+    // Setup Selectable Filter Tags
+    tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
         class: 'selected',
         onSelected: function(el) {
-          // console.log(el.attr('data-tag-id'));
+
+
         },
         onChange: function(data) {
-          var ids = [];
+          var tagID,
+              tagName,
+              selectedTagIDs = [];
+
+          selectedTags.find('li').remove();
+
           $(data.selected).each(function(){
-            ids.push($(this).attr('data-tag-id'))
+            tagID = $(this).attr('data-tag-id');
+            tagName = $(this).find('.tag-name').text();
+
+            selectedTagIDs.push(tagID);
+
+            selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
           });
-          data.selected = ids;
-          console.log(JSON.stringify(ids));
-          $('#selected-filter-ids').val(ids);
-        }
-      });
 
+          data.selected = selectedTagIDs;
 
-  // Setup Selected Tags
-  $('#selected-filter-tags .js-selectable').selectable({
-        class: 'selected',
-        onSelected: function(el) {
-          console.log("ADDED");
-        },
-        onChange: function(data) {
-          console.log("REMOVED");
+          $('#selected-filter-ids').val(selectedTagIDs);
 
         }
       });
 
 
+    // Setup Selected Tags
+    $(selectedTags).on('click', 'li', function(){
+      var selectedTag = this;
+      var selectedTagID;
+
+      selectedTagID = $(selectedTag).attr('data-tag-id');
+      allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
+
+      tagListHandle.onChange();
+    });
+  },
+
+
+  setupBlazy: function(){
+    var bLazy = new Blazy({
+        breakpoints: [
+            {
+                width: 480 // max-width
+                , src: 'data-src-small'
+            },
+            {
+                  width: 1024 // max-width
+                , src: 'data-src-medium'
+            }
+        ],
+        offset: 200,
+
+    });
+  },
+
+  setupIsotope: function(){
+    var $container = $('.isotope-grid');
+
+    if ($container) {
+        $container.isotope({
+            itemSelector: '.isotope-item',
+            layoutMode: 'masonry',
+            masonry: {
+                columnWidth: '.grid-sizer',
+                gutter: '.gutter-sizer'
+            }
+        });
+    }
   }
 
 };
