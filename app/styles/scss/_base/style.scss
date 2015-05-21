@@ -185,6 +185,9 @@ a{
  font-weight: 400;
  color: $white;
  letter-spacing: 1px;
+ @include breakpoint(phonePortrait) {
+  margin-bottom: 30px;
+ }
 }
 ::-webkit-scrollbar-thumb{
   background-color:#B03C3F;
