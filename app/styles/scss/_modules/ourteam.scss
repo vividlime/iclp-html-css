@@ -59,7 +59,7 @@
 							position: relative;
 							width:19.150442%;
 							@include transition(all 0.3s ease-out);
-							background: $white;
+							background: $ebb;
 							margin-bottom: 12px;
 							float: left;
 							@include breakpoint(phonePortrait){
@@ -93,7 +93,7 @@
 							&:hover{
 								figure{
 									&:before{
-										border: 10px solid rgba(97, 99, 101, 0.40);
+
 									}
 								}
 							}
@@ -101,7 +101,7 @@
 								&:hover{
 									figure{
 										&:before{
-											border: 0px solid rgba(97, 99, 101, 0);
+											/*border: 0px solid rgba(97, 99, 101, 0);*/
 										}
 									}
 								}
@@ -119,7 +119,7 @@
 									width: 100%;
 									height: 100%;
 									@include transition(all 0.3s ease-out);
-									border: 10px solid rgba(97, 99, 101,0.0);
+									
 								}
 
 								img{
