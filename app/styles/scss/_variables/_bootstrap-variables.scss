@@ -8,7 +8,7 @@
 
 //=== Shared nav styles
 $nav-link-padding:                          10px 15px !default;
-$nav-link-hover-bg:                         $rodeo-dust !default;
+$nav-link-hover-bg:                         $rodeo-dust-lighter !default;
 
 $nav-disabled-link-color:                   $lighter-grey !default;
 $nav-disabled-link-hover-color:             $lighter-grey !default;
@@ -18,7 +18,7 @@ $nav-tabs-border-color:                     #ddd !default;
 
 $nav-tabs-link-hover-border-color:          $lighter-grey !default;
 
-$nav-tabs-active-link-hover-bg:             $rodeo-dust !default;
+$nav-tabs-active-link-hover-bg:             $rodeo-dust-light !default;
 $nav-tabs-active-link-hover-color:          $grey !default;
 $nav-tabs-active-link-hover-border-color:   #ddd !default;
 

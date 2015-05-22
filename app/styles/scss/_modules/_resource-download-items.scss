@@ -6,19 +6,36 @@
 
 
 .resource-download-item {
+    position: relative;
+    width: 33.33%;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    color: $white;
 
+    &:nth-child(3n) {
+        margin-right: 0;
+    }
 }
 
 .resource-download-item__header {
-
+    padding: 20px;
 }
 
 .resource-download-item__content {
+    background-color: rgba(255,255,255, .5);
 
+    .entry-item__text {
+        padding: 20px;
+    }
+}
+
+.resource-download-item__meta-data {
+    padding: 20px;
 }
 
 .resource-download-item__footer {
-
+    padding: 20px;
 }
 
 .resource-download-item__button {

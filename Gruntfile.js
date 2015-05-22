@@ -120,13 +120,23 @@ module.exports = function (grunt) {
         // Concatenate files
         concat: {
 
-            js: {
+            bootstrapJS: {
                 src: [
                     'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
                     'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
                     'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js'
                 ],
                 dest: 'build/processed/js/bootstrap.js'
+            },
+
+            mainJS: {
+                src: [
+                    'build/app/js/jquery.selectable.js',
+                    'build/bower_components/blazy/blazy.js',
+                    'build/bower_components/isotope/dist/isotope.pkgd.min.js',
+                    'build/app/js/main.js'
+                ],
+                dest: 'build/processed/js/main.js'
             }
         },
 
@@ -161,7 +171,8 @@ module.exports = function (grunt) {
                   report: 'min'
                 },
                 files: {
-                  'build/processed/js/app.min.js': ['build/processed/js/app.js']
+                  'build/processed/js/bootstrap.min.js': ['build/processed/js/bootstrap.js'],
+                  'build/processed/js/main.min.js': ['build/processed/js/main.js']
                 }
             }
         },
@@ -238,7 +249,7 @@ module.exports = function (grunt) {
     // ------------------------
     // Process JS
     // ------------------------
-    grunt.registerTask('js', 'Compiles all of the js and copies the files to the live directory.', [ 'copybuild', 'concat:js', 'uglify', 'copy:distjs']);
+    grunt.registerTask('js', 'Compiles all of the js and copies the files to the live directory.', [ 'copybuild', 'concat', 'uglify', 'copy:distjs']);
 
 
 
