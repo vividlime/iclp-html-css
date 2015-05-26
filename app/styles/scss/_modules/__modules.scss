@@ -1,6 +1,7 @@
 // Module imports
 
-@import "carousels",
+@import "ajax-loaders",
+        "carousels",
         "content-filters",
         "entry-items",
         "resource-download-items",
@@ -21,4 +22,5 @@
         "ourteam",
         "services",
         "tac",
-        "breadcrumb";
+        "breadcrumb",
+        "nav-tabs";
