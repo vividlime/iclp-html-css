@@ -1,0 +1,31 @@
+// Navtabs (Bootstrap)
+
+.nav-tabs {
+    border-bottom: 0;
+
+
+}
+
+.nav-tabs > li {
+    margin-bottom: 0;
+
+    // &.active {
+    //     background-color: $rodeo-dust-lighter;
+    // }
+
+    @include breakpoint(bigDesktop) {
+        margin-right: 15;
+        margin-bottom: 0;
+        float: left;
+
+    }
+
+    @include breakpoint(phonePortrait) {
+        margin-right: 0;
+        margin-bottom: 10px;
+        float: none;
+
+    }
+
+
+}

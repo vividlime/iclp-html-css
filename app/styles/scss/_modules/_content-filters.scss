@@ -7,16 +7,29 @@
 }
 
 
-// toggle button to show or hide the filter
+// Toggle button to show or hide the filter
 .filter-toggle {
-    display: none;
+
     color: $white;
     background-color: $turquoise;
     padding: 20px;
+    margin: 10px 0;
+
+    @include breakpoint(bigDesktop) {
+        display: none;
+    }
+
+    @include breakpoint(phonePortrait) {
+        display: block;
+    }
 }
 
 // Wrapper around the filter tabs AND tab contents
 .filter-tab-panel {
+
+    @include breakpoint(phonePortrait) {
+       background-color: $rodeo-dust-light;
+    }
 
 }
 
@@ -53,8 +66,8 @@
         font-size: 1em;
         font-weight: bold;
         text-transform: uppercase;
-        margin: 5px 5px 5px 0;
-        cursor: default;
+        margin: 0 5px 7px 0;
+        cursor: pointer;
 
         &.selected {
             color: $white;
@@ -69,6 +82,12 @@
 
 }
 
+
+.tag-bar-header {
+    @include clearfix();
+    margin-bottom: 20px;
+}
+
 .selected-tags-label {
     margin-right: 10px;
 }
@@ -81,7 +100,7 @@
     .label {
         color: $dark-grey;
         background-color: $rodeo-dust-light;
-        cursor: default;
+        cursor: pointer;
         text-transform: uppercase;
 
         .tag-name {

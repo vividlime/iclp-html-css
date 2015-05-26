@@ -51,25 +51,22 @@
 
                  <!-- Start Filter Bar -->
                 <div class="content-filter">
-                    <div class="container">
-                        <div class="filter-toggle js-toggle-filter-state">Filter</div>
+                    <div class="container filter-tab-panel" role="tabpanel">
+                        <div class="filter-toggle text-bold js-toggle-filter-state">Filter</div>
 
-                        <div class="filter-tab-panel" role="tabpanel">
-
-                            <!-- Start Filter Tabs -->
-                            <ul class="nav nav-tabs filter-tabs" role="tablist">
-                                <li class="filter-tab" role="presentation">
-                                    <a href="#filter-media-type" aria-controls="filter-media-type" role="tab" data-toggle="tab">MEDIA TYPE</a>
-                                </li>
-                                <li class="filter-tab active" role="presentation" >
-                                    <a href="#filter-category" aria-controls="filter-category" role="tab" data-toggle="tab">CATEGORY</a>
-                                </li>
-                                <li class="filter-tab" role="presentation">
-                                    <a href="#filter-sector" aria-controls="filter-sector" role="tab" data-toggle="tab">SECTOR</a>
-                                </li>
-                            </ul>
-                            <!-- End Filter Tabs -->
-                        </div>
+                        <!-- Start Filter Tabs -->
+                        <ul class="nav nav-tabs filter-tabs" role="tablist">
+                            <li class="filter-tab" role="presentation">
+                                <a href="#filter-media-type" aria-controls="filter-media-type" role="tab" data-toggle="tab">MEDIA TYPE</a>
+                            </li>
+                            <li class="filter-tab active" role="presentation" >
+                                <a href="#filter-category" aria-controls="filter-category" role="tab" data-toggle="tab">CATEGORY</a>
+                            </li>
+                            <li class="filter-tab" role="presentation">
+                                <a href="#filter-sector" aria-controls="filter-sector" role="tab" data-toggle="tab">SECTOR</a>
+                            </li>
+                        </ul>
+                        <!-- End Filter Tabs -->
                     </div>
 
 
@@ -173,11 +170,13 @@
                     <!-- Start Selected Filter Terms -->
                     <div class="selected-filter-tag-bar">
                         <div class="container">
-                            <span class="selected-tags-label text-bold">SELECTED TAGS:</span>
+                            <div class="tag-bar-header">
+                                <span class="pull-right text-bold">34 SEARCH RESULTS</span>
+                                <span class="pull-left selected-tags-label text-bold">SELECTED TAGS:</span>
+                            </div>
+
                             <ul id="selected-filter-tags" class="filter-tags selected-filter-tags list-inline">
                             </ul>
-
-                            <input class="hidden" id="selected-filter-ids" type="text" value="">
                         </div>
                     </div>
                     <!-- End Selected Filter Terms -->
@@ -193,13 +192,13 @@
 
                     <!-- Start Filtered Content -->
                     <div class="row">
-                        <ul class="entry-items resource-download-items">
-                            <li class="entry-item resource-download-item">
+                        <ul class="entry-items resource-download-items isotope-grid">
+                            <li class="entry-item resource-download-item isotope-item">
                                 <div class="bgc-orange">
 
                                     <div class="resource-download-item__header">
                                         <h2 class="entry-item__title">
-                                            End of year Financial Report 2015
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         </h2>
                                     </div>
 
@@ -210,11 +209,168 @@
                                     </div>
 
                                     <div class="resource-download-item__content">
-                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x300" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+                                        <div class="entry-item-text"></div>
+                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x300&text=image+1" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
                                     </div>
 
                                     <div class="resource-download-item__footer">
-                                        <div class="button resource-download-item__button">DOWNLOAD</div>
+                                        <div class="button transparent resource-download-item__button">DOWNLOAD</div>
+                                        <div class="resource-download-item__share-link share-this"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="entry-item resource-download-item isotope-item">
+                                <div class="bgc-red">
+
+                                    <div class="resource-download-item__header">
+                                        <h2 class="entry-item__title">
+                                            Lorem ipsum dolor sit
+                                        </h2>
+                                    </div>
+
+
+                                    <div class="resource-download-item__meta-data">
+                                        <div class="meta-data-type pull-left">Report</div>
+                                        <div class="meta-data-date pull-right">Aug 2015</div>
+                                    </div>
+
+                                    <div class="resource-download-item__content">
+                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x150&text=image+2" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+                                    </div>
+
+                                    <div class="resource-download-item__footer">
+                                        <div class="button transparent resource-download-item__button">DOWNLOAD</div>
+                                        <div class="resource-download-item__share-link share-this"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="entry-item resource-download-item isotope-item">
+                                <div class="bgc-turquoise">
+
+                                    <div class="resource-download-item__header">
+                                        <h2 class="entry-item__title">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        </h2>
+                                    </div>
+
+
+                                    <div class="resource-download-item__meta-data">
+                                        <div class="meta-data-type pull-left">Report</div>
+                                        <div class="meta-data-date pull-right">Aug 2015</div>
+                                    </div>
+
+                                    <div class="resource-download-item__content">
+                                        <div class="entry-item__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum, minima quam assumenda cupiditate voluptas itaque expedita quae architecto unde vero inventore tempora debitis tempore eaque dolorum nobis enim nostrum?
+                                        </div>
+                                    </div>
+
+                                    <div class="resource-download-item__footer">
+                                        <div class="button transparent resource-download-item__button">DOWNLOAD</div>
+                                        <div class="resource-download-item__share-link share-this"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="entry-item resource-download-item isotope-item">
+                                <div class="bgc-turquoise">
+
+                                    <div class="resource-download-item__header">
+                                        <h2 class="entry-item__title">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        </h2>
+                                    </div>
+
+
+                                    <div class="resource-download-item__meta-data">
+                                        <div class="meta-data-type pull-left">Report</div>
+                                        <div class="meta-data-date pull-right">Aug 2015</div>
+                                    </div>
+
+                                    <div class="resource-download-item__content">
+                                        <div class="entry-item__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum, minima quam assumenda cupiditate voluptas.
+                                        </div>
+                                    </div>
+
+                                    <div class="resource-download-item__footer">
+                                        <div class="button transparent resource-download-item__button">DOWNLOAD</div>
+                                        <div class="resource-download-item__share-link share-this"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="entry-item resource-download-item isotope-item">
+                                <div class="bgc-blue">
+
+                                    <div class="resource-download-item__header">
+                                        <h2 class="entry-item__title">
+                                            Lorem ipsum dolor sit
+                                        </h2>
+                                    </div>
+
+
+                                    <div class="resource-download-item__meta-data">
+                                        <div class="meta-data-type pull-left">Report</div>
+                                        <div class="meta-data-date pull-right">Aug 2015</div>
+                                    </div>
+
+                                    <div class="resource-download-item__content">
+                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x300&text=image+3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+                                    </div>
+
+                                    <div class="resource-download-item__footer">
+                                        <div class="button transparent resource-download-item__button">DOWNLOAD</div>
+                                        <div class="resource-download-item__share-link share-this"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="entry-item resource-download-item isotope-item">
+                                <div class="bgc-orange">
+
+                                    <div class="resource-download-item__header">
+                                        <h2 class="entry-item__title">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        </h2>
+                                    </div>
+
+
+                                    <div class="resource-download-item__meta-data">
+                                        <div class="meta-data-type pull-left">Report</div>
+                                        <div class="meta-data-date pull-right">Aug 2015</div>
+                                    </div>
+
+                                    <div class="resource-download-item__content">
+                                        <div class="entry-item__text">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum, minima quam assumenda cupiditate voluptas itaque expedita quae architecto unde vero inventore tempora debitis tempore eaque dolorum nobis enim nostrum?
+                                        </div>
+                                    </div>
+
+                                    <div class="resource-download-item__footer">
+                                        <div class="button transparent resource-download-item__button">DOWNLOAD</div>
+                                        <div class="resource-download-item__share-link share-this"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="entry-item resource-download-item isotope-item">
+                                <div class="bgc-red">
+
+                                    <div class="resource-download-item__header">
+                                        <h2 class="entry-item__title">
+                                            Lorem ipsum dolor sit
+                                        </h2>
+                                    </div>
+
+
+                                    <div class="resource-download-item__meta-data">
+                                        <div class="meta-data-type pull-left">Report</div>
+                                        <div class="meta-data-date pull-right">Aug 2015</div>
+                                    </div>
+
+                                    <div class="resource-download-item__content">
+                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x400&text=image+6" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+                                    </div>
+
+                                    <div class="resource-download-item__footer">
+                                        <div class="button transparent resource-download-item__button">DOWNLOAD</div>
                                         <div class="resource-download-item__share-link share-this"></div>
                                     </div>
                                 </div>

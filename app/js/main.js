@@ -3,8 +3,8 @@
     this.carousels();
     this.twitter();
     this.playVideos();
-    this.setupBlazy();
-    this.setupIsotope();
+    this.setupLazyIsotope();
+    // this.setupIsotope();
     this.resourceFilter();
   },
 
@@ -210,7 +210,15 @@
 
           data.selected = selectedTagIDs;
 
-          $('#selected-filter-ids').val(selectedTagIDs);
+
+          // Append the selected ID's to the UL after the hash
+          if (data.selected.length) {
+            document.location.hash = '?' + $.param({filterid: selectedTagIDs.toString()});
+          }
+          else {
+            document.location.hash = '';
+          }
+
 
         }
       });
@@ -229,8 +237,30 @@
   },
 
 
-  setupBlazy: function(){
+  setupLazyIsotope: function(){
+
+    var $container = $('.isotope-grid').isotope({
+          itemSelector: '.isotope-item',
+          percentPosition: true,
+          layoutMode: 'masonry',
+          masonry: {
+              // columnWidth: '.grid-sizer',
+              gutter: 0
+          }
+      });
+
+    // $container.imagesLoaded().always( function(){
+    //   $container.isotope('reLayout');
+    //   console.log('loaded');
+    // });
+
+
     var bLazy = new Blazy({
+        success: function(ele){
+          $container.isotope('layout');
+          console.log('Re laid out');
+        },
+
         breakpoints: [
             {
                 width: 480 // max-width
@@ -244,21 +274,8 @@
         offset: 200,
 
     });
-  },
 
-  setupIsotope: function(){
-    var $container = $('.isotope-grid');
 
-    if ($container) {
-        $container.isotope({
-            itemSelector: '.isotope-item',
-            layoutMode: 'masonry',
-            masonry: {
-                columnWidth: '.grid-sizer',
-                gutter: '.gutter-sizer'
-            }
-        });
-    }
   }
 
 };
