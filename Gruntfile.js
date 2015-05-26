@@ -45,6 +45,15 @@ module.exports = function (grunt) {
                     },
 
 
+                    // Images loaded (for isotope)
+                    {
+                        expand: true,
+                        cwd: bowerDir + 'imagesloaded',
+                        src: ['**/*'],
+                        dest: 'build/bower_components/imagesloaded',
+                    },
+
+
                     // Isotope
                     {
                         expand: true,
@@ -132,8 +141,9 @@ module.exports = function (grunt) {
             mainJS: {
                 src: [
                     'build/app/js/jquery.selectable.js',
-                    'build/bower_components/blazy/blazy.js',
+                    'build/bower_components/blazy/blazy.min.js',
                     'build/bower_components/isotope/dist/isotope.pkgd.min.js',
+                    'build/bower_components/imagesloaded/imagesloaded.pkgd.js',
                     'build/app/js/main.js'
                 ],
                 dest: 'build/processed/js/main.js'
