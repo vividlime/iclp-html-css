@@ -1,0 +1,13 @@
+// Labels (Bootstrap)
+
+.label {
+    display: inline-block;
+    background-color: $rodeo-dust-lighter;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 5px 20px;
+    margin: 0 5px 7px 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: $dark-grey;
+}
