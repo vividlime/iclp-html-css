@@ -51,11 +51,12 @@
 
                  <!-- Start Filter Bar -->
                 <div class="content-filter">
+                    <a href="#" class="filter-toggle text-bold js-toggle-filter-state">Filter</a>
+
                     <div class="container filter-tab-panel" role="tabpanel">
-                        <div class="filter-toggle text-bold js-toggle-filter-state">Filter</div>
 
                         <!-- Start Filter Tabs -->
-                        <ul class="nav nav-tabs filter-tabs" role="tablist">
+                        <ul id="filter-tabs" class="nav nav-tabs filter-tabs" role="tablist">
                             <li class="filter-tab" role="presentation">
                                 <a href="#filter-media-type" aria-controls="filter-media-type" role="tab" data-toggle="tab">MEDIA TYPE</a>
                             </li>
@@ -70,14 +71,14 @@
                     </div>
 
 
-                    <div id="filter-tag-pane" class="bgc-rodeo-dust-lighter">
+                    <div id="filter-tag-pane" class="bgc-ebb">
 
                         <!-- Start Filter Tab Content -->
                         <div  class="container tab-content">
 
                             <!-- Media Filter Tags -->
                             <div id="filter-media-type" role="tabpanel" class="tab-pane">
-                                <ul class="list-inline filter-tags">
+                                <ul class="list-inline filter-tags selectable">
                                     <li class="label js-selectable selected" data-tag-id="1610">
                                         <span class="tag-name">Media Type 1</span>
                                         </span>
@@ -91,7 +92,7 @@
                             <!-- Start Category Filter Tags -->
                             <div id="filter-category" role="tabpanel" class="tab-pane active">
 
-                                <ul class="list-inline filter-tags">
+                                <ul class="list-inline filter-tags selectable">
                                     <li class="label js-selectable selected" data-tag-id="1611">
                                         <span class="tag-name">News</span>
                                         </span>
@@ -154,7 +155,7 @@
                             <!-- Start Sector Filter Tags -->
                             <div id="filter-sector" role="tabpanel" class="tab-pane">
 
-                                <ul class="list-inline filter-tags">
+                                <ul class="list-inline filter-tags selectable">
                                     <li class="label js-selectable selected" data-tag-id="1624">
                                         <span class="tag-name">Sector 1</span>
                                     </li>
@@ -177,6 +178,9 @@
 
                             <ul id="selected-filter-tags" class="filter-tags selected-filter-tags list-inline">
                             </ul>
+
+                            <!-- Hidden input field to hold the selected tag ID's -->
+                            <input id="selected-filter-tag-ids" class="hidden" type="text">
                         </div>
                     </div>
                     <!-- End Selected Filter Terms -->
@@ -191,51 +195,54 @@
                 <section class="content-wrapper container">
 
                     <!-- Start Filtered Content -->
-                    <div class="row">
+                    <div class="rowx">
                         <ul class="entry-items resource-download-items isotope-grid">
                             <li class="entry-item resource-download-item isotope-item">
-                                <div class="bgc-orange">
 
-                                    <div class="resource-download-item__header">
+                                <div class="bgc-orange">
+                                    <div class="resource-download-item__header angle-orange">
                                         <h2 class="entry-item__title">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         </h2>
                                     </div>
 
-
-                                    <div class="resource-download-item__meta-data">
-                                        <div class="meta-data-type pull-left">Report</div>
-                                        <div class="meta-data-date pull-right">Aug 2015</div>
-                                    </div>
-
                                     <div class="resource-download-item__content">
+                                        <div class="resource-download-item__meta-data">
+                                            <div class="meta-data-type">Report</div>
+                                            <div class="meta-data-date">Aug 2015</div>
+                                        </div>
+
                                         <div class="entry-item-text"></div>
-                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x300&text=image+1" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+
+                                        <img class="entry-item__image b-lazy" data-src="http://lorempixel.com/business/640/480" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
                                     </div>
 
                                     <div class="resource-download-item__footer">
-                                        <div class="button transparent resource-download-item__button">DOWNLOAD</div>
-                                        <div class="resource-download-item__share-link share-this"></div>
+                                        <div class="resource-download-item__download-link pull-left">
+                                            <a class="button transparent">DOWNLOAD</a>
+                                        </div>
+                                        <div class="resource-download-item__share-link pull-right">
+                                            <i class="icon icon-share"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
                             <li class="entry-item resource-download-item isotope-item">
                                 <div class="bgc-red">
 
-                                    <div class="resource-download-item__header">
+                                    <div class="resource-download-item__header angle-red">
                                         <h2 class="entry-item__title">
                                             Lorem ipsum dolor sit
                                         </h2>
                                     </div>
 
-
-                                    <div class="resource-download-item__meta-data">
-                                        <div class="meta-data-type pull-left">Report</div>
-                                        <div class="meta-data-date pull-right">Aug 2015</div>
-                                    </div>
-
                                     <div class="resource-download-item__content">
-                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x150&text=image+2" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+                                        <div class="resource-download-item__meta-data">
+                                            <div class="meta-data-type">Report</div>
+                                            <div class="meta-data-date">Aug 2015</div>
+                                        </div>
+
+                                        <img class="entry-item__image b-lazy" data-src="http://lorempixel.com/business/570/300" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
                                     </div>
 
                                     <div class="resource-download-item__footer">
@@ -244,22 +251,25 @@
                                     </div>
                                 </div>
                             </li>
+
                             <li class="entry-item resource-download-item isotope-item">
                                 <div class="bgc-turquoise">
 
-                                    <div class="resource-download-item__header">
+                                    <div class="resource-download-item__header angle-turquoise">
                                         <h2 class="entry-item__title">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         </h2>
                                     </div>
 
 
-                                    <div class="resource-download-item__meta-data">
-                                        <div class="meta-data-type pull-left">Report</div>
-                                        <div class="meta-data-date pull-right">Aug 2015</div>
-                                    </div>
+
 
                                     <div class="resource-download-item__content">
+                                        <div class="resource-download-item__meta-data">
+                                            <div class="meta-data-type">Report</div>
+                                            <div class="meta-data-date">Aug 2015</div>
+                                        </div>
+
                                         <div class="entry-item__text">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum, minima quam assumenda cupiditate voluptas itaque expedita quae architecto unde vero inventore tempora debitis tempore eaque dolorum nobis enim nostrum?
                                         </div>
@@ -271,22 +281,25 @@
                                     </div>
                                 </div>
                             </li>
+
                             <li class="entry-item resource-download-item isotope-item">
                                 <div class="bgc-turquoise">
 
-                                    <div class="resource-download-item__header">
+                                    <div class="resource-download-item__header angle-turquoise">
                                         <h2 class="entry-item__title">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         </h2>
                                     </div>
 
 
-                                    <div class="resource-download-item__meta-data">
-                                        <div class="meta-data-type pull-left">Report</div>
-                                        <div class="meta-data-date pull-right">Aug 2015</div>
-                                    </div>
+
 
                                     <div class="resource-download-item__content">
+                                        <div class="resource-download-item__meta-data">
+                                            <div class="meta-data-type">Report</div>
+                                            <div class="meta-data-date">Aug 2015</div>
+                                        </div>
+
                                         <div class="entry-item__text">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum, minima quam assumenda cupiditate voluptas.
                                         </div>
@@ -298,23 +311,26 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="entry-item resource-download-item isotope-item">
-                                <div class="bgc-blue">
 
-                                    <div class="resource-download-item__header">
+                            <li class="entry-item resource-download-item isotope-item">
+                                <div class="bgc-dark-blue">
+
+                                    <div class="resource-download-item__header angle-dark-blue">
                                         <h2 class="entry-item__title">
                                             Lorem ipsum dolor sit
                                         </h2>
                                     </div>
 
 
-                                    <div class="resource-download-item__meta-data">
-                                        <div class="meta-data-type pull-left">Report</div>
-                                        <div class="meta-data-date pull-right">Aug 2015</div>
-                                    </div>
+
 
                                     <div class="resource-download-item__content">
-                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x300&text=image+3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+                                        <div class="resource-download-item__meta-data">
+                                            <div class="meta-data-type">Report</div>
+                                            <div class="meta-data-date">Aug 2015</div>
+                                        </div>
+
+                                        <img class="entry-item__image b-lazy" data-src="http://lorempixel.com/business/640/400" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
                                     </div>
 
                                     <div class="resource-download-item__footer">
@@ -323,22 +339,24 @@
                                     </div>
                                 </div>
                             </li>
+
                             <li class="entry-item resource-download-item isotope-item">
                                 <div class="bgc-orange">
 
-                                    <div class="resource-download-item__header">
+                                    <div class="resource-download-item__header angle-orange">
                                         <h2 class="entry-item__title">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         </h2>
                                     </div>
 
 
-                                    <div class="resource-download-item__meta-data">
-                                        <div class="meta-data-type pull-left">Report</div>
-                                        <div class="meta-data-date pull-right">Aug 2015</div>
-                                    </div>
+
 
                                     <div class="resource-download-item__content">
+                                        <div class="resource-download-item__meta-data">
+                                            <div class="meta-data-type">Report</div>
+                                            <div class="meta-data-date">Aug 2015</div>
+                                        </div>
                                         <div class="entry-item__text">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum, minima quam assumenda cupiditate voluptas itaque expedita quae architecto unde vero inventore tempora debitis tempore eaque dolorum nobis enim nostrum?
                                         </div>
@@ -350,23 +368,26 @@
                                     </div>
                                 </div>
                             </li>
+
                             <li class="entry-item resource-download-item isotope-item">
                                 <div class="bgc-red">
 
-                                    <div class="resource-download-item__header">
+                                    <div class="resource-download-item__header angle-red">
                                         <h2 class="entry-item__title">
                                             Lorem ipsum dolor sit
                                         </h2>
                                     </div>
 
 
-                                    <div class="resource-download-item__meta-data">
-                                        <div class="meta-data-type pull-left">Report</div>
-                                        <div class="meta-data-date pull-right">Aug 2015</div>
-                                    </div>
+
 
                                     <div class="resource-download-item__content">
-                                        <img class="entry-item__image b-lazy" data-src="http://placehold.it/400x400&text=image+6" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+                                        <div class="resource-download-item__meta-data">
+                                            <div class="meta-data-type">Report</div>
+                                            <div class="meta-data-date">Aug 2015</div>
+                                        </div>
+
+                                        <img class="entry-item__image b-lazy" data-src="http://lorempixel.com/business/400/350" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
                                     </div>
 
                                     <div class="resource-download-item__footer">
@@ -377,7 +398,7 @@
                             </li>
                         </ul>
 
-                        <div class="button w-full">VIEW MORE</div>
+                        <div class="button rodeo-dust-lighter text-bold w-full">VIEW MORE</div>
                     </div>
                     <!-- End Filtered Content -->
 
