@@ -171,7 +171,7 @@
 									top:110px;
 									left:0;
 									font-size: 26px;
-									font-weight: 400;
+									font-weight: bold;
 									&:after{
 								    content:'';
 								    position:absolute;
@@ -294,7 +294,7 @@
 								}
 								&:focus:after,&:hover:after{
 								  opacity:1;
-								  background:#904d0e;
+								  background:$ming;
 								} 
 								h2.animated{
 									padding:22px 0;
