@@ -87,6 +87,12 @@
 						padding: 10px 0 10px 0;
 						max-width: 1170px;
 						margin: auto;
+						&:first-of-type {
+							margin-top: 20px;
+						}
+						&:last-of-type {
+							margin-bottom: 20px;
+						}
 						@include breakpoint(desktop) {
 							padding: 10px;
 						}
@@ -131,6 +137,32 @@
 							}
 							h2.animated{
 								padding-top: 220px;
+								&.team:before {
+									top: 18px;
+									left: 50%;
+									margin-left: -20px;
+									font-size: 38px;
+									content: "\e09e";
+									@include breakpoint(tabletPortrait){
+										font-size: 26px;
+										margin-left: 0px;
+										top: 2px;
+										left: 11px;
+									}
+								}
+								&.collinson:before {
+									top: 18px;
+									left: 50%;
+									margin-left: -20px;
+									font-size: 38px;
+									content: "\e09e";
+									@include breakpoint(tabletPortrait){
+										font-size: 26px;
+										margin-left: 0px;
+										top: 2px;
+										left: 11px;
+									}
+								}
 
 								span{
 									text-align: center;
@@ -251,11 +283,12 @@
 							a.icon-wrap{
 								padding: 0px 0;
 								background-image: none;
-								width: 100%;
+								width: 85%;
 								display: inline-block;
 								border:0;
-								border-top:1px solid $white;
+								border-top: none;
 								height: auto;
+								margin: 5px 0 10px 8%;
 								&:focus,&:hover{
 									background-image: none;
 								}
