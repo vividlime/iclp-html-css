@@ -10,4 +10,9 @@
     font-size: 1em;
     font-weight: bold;
     color: $dark-grey;
+
+    &.label--share {
+        background-color: $turquoise;
+        color: $white;
+    }
 }
