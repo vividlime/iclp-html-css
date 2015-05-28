@@ -174,19 +174,26 @@
 
 
   resourceFilter: function() {
-    var allTagLists,
-        // selectedTagsList,
-        selectedTags,
-        selectedTagIDs = [];
+    var $filterToggle,
+        $filterTabs,
+        $tagListHandle,
+        $allTagLists,
+        $selectedTags;
 
-    allTagLists = $('#filter-tag-pane');
-    // selectedTagsList = $('#selected-filter-tags');
-    selectedTags = $('#selected-filter-tags');
+    $filterToggle = $('.js-toggle-filter-state');
+    $filterTabs = $('#filter-tabs');
+    $allTagLists = $('#filter-tag-pane');
+    $selectedTags = $('#selected-filter-tags');
 
 
+    // Setup Filter Toggle
+    $filterToggle.on('click', function(){
+        $filterTabs.toggleClass('hidden');
+        $allTagLists.toggleClass('hidden');
+    })
 
     // Setup Selectable Filter Tags
-    tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
+    $tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
         class: 'selected',
         onSelected: function(el) {
 
@@ -197,7 +204,7 @@
               tagName,
               selectedTagIDs = [];
 
-          selectedTags.find('li').remove();
+          $selectedTags.find('li').remove();
 
           $(data.selected).each(function(){
             tagID = $(this).attr('data-tag-id');
@@ -205,19 +212,27 @@
 
             selectedTagIDs.push(tagID);
 
-            selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
+            $selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
           });
 
           data.selected = selectedTagIDs;
 
 
+          // Update the hidden input field with selected tag ids
+          $('#selected-filter-tag-ids').val(selectedTagIDs.toString());
+
+          // Call the Ajax function to load filtered content
+
+          // loadFilteredContent();
+
+
           // Append the selected ID's to the UL after the hash
-          if (data.selected.length) {
-            document.location.hash = '?' + $.param({filterid: selectedTagIDs.toString()});
-          }
-          else {
-            document.location.hash = '';
-          }
+          // if (data.selected.length) {
+          //   document.location.hash = '?' + $.param({filterid: selectedTagIDs.toString()});
+          // }
+          // else {
+          //   document.location.hash = '';
+          // }
 
 
         }
@@ -225,14 +240,14 @@
 
 
     // Setup Selected Tags
-    $(selectedTags).on('click', 'li', function(){
+    $($selectedTags).on('click', 'li', function(){
       var selectedTag = this;
       var selectedTagID;
 
       selectedTagID = $(selectedTag).attr('data-tag-id');
-      allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
+      $allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
 
-      tagListHandle.onChange();
+      $tagListHandle.onChange();
     });
   },
 
@@ -249,16 +264,10 @@
           }
       });
 
-    // $container.imagesLoaded().always( function(){
-    //   $container.isotope('reLayout');
-    //   console.log('loaded');
-    // });
-
 
     var bLazy = new Blazy({
         success: function(ele){
           $container.isotope('layout');
-          console.log('Re laid out');
         },
 
         breakpoints: [
