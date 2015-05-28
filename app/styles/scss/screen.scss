@@ -20,6 +20,8 @@ MASTER PARTIAL SCSS IMPORT FILE
 
 @import "_variables/_variables";
 
+@import "_vendor/_vendor";
+
 
 @import "_mixins/_mixins";
 
@@ -33,7 +35,7 @@ MASTER PARTIAL SCSS IMPORT FILE
 @import "_layout/_layout";
 
 
-@import "_vendor/_vendor";
+
 
 
 @import "_elements/_elements";
