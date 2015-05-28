@@ -30,49 +30,7 @@ module.exports = function (grunt) {
 
         // Copy source files files to the build directory
         copy: {
-            bower: {
 
-                // Copy vendor files over from Bower to build directory
-
-                files: [
-
-                    // Bootstrap
-                    {
-                        expand: true,
-                        cwd: bowerDir + 'bootstrap-sass-official',
-                        src: ['**/*'],
-                        dest: 'build/bower_components/bootstrap-sass-official',
-                    },
-
-
-                    // Images loaded (for isotope)
-                    {
-                        expand: true,
-                        cwd: bowerDir + 'imagesloaded',
-                        src: ['**/*'],
-                        dest: 'build/bower_components/imagesloaded',
-                    },
-
-
-                    // Isotope
-                    {
-                        expand: true,
-                        cwd: bowerDir + 'isotope',
-                        src: ['**/*'],
-                        dest: 'build/bower_components/isotope',
-                    },
-
-
-                    // BLazy lazyloader
-                    {
-                        expand: true,
-                        cwd: bowerDir + 'blazy',
-                        src: ['**/*'],
-                        dest: 'build/bower_components/blazy',
-                    }
-
-                ],
-            },
 
             // App scss files to build directory
             buildcss: {
@@ -131,9 +89,9 @@ module.exports = function (grunt) {
 
             bootstrapJS: {
                 src: [
-                    'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
-                    'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
-                    'build/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js'
+                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
+                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
+                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js'
                 ],
                 dest: 'build/processed/js/bootstrap.js'
             },
@@ -141,9 +99,9 @@ module.exports = function (grunt) {
             mainJS: {
                 src: [
                     'build/app/js/jquery.selectable.js',
-                    'build/bower_components/blazy/blazy.min.js',
-                    'build/bower_components/isotope/dist/isotope.pkgd.min.js',
-                    'build/bower_components/imagesloaded/imagesloaded.pkgd.js',
+                    'app/bower_components/blazy/blazy.min.js',
+                    'app/bower_components/isotope/dist/isotope.pkgd.min.js',
+                    'app/bower_components/imagesloaded/imagesloaded.pkgd.js',
                     'build/app/js/main.js'
                 ],
                 dest: 'build/processed/js/main.js'
@@ -236,7 +194,7 @@ module.exports = function (grunt) {
     // Copy all source files to build
     // -------------------------------
 
-    grunt.registerTask('copybuild', 'Copies the files to the build directory.', [ 'copy:bower', 'copy:buildcss',  'copy:buildjs']);
+    grunt.registerTask('copybuild', 'Copies the files to the build directory.', [ 'copy:buildcss',  'copy:buildjs']);
 
 
 
@@ -267,6 +225,6 @@ module.exports = function (grunt) {
     // Default Grunt task to build the entire site.
     // ===============================================================================
 
-    grunt.registerTask('default', ['clean', 'copybuild', 'sass','concat', 'cssmin', 'uglify', 'copydist']);
+    grunt.registerTask('default', ['clean', 'copybuild', 'compass','concat', 'cssmin', 'uglify', 'copydist']);
 
 };

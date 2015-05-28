@@ -1,3 +1,21 @@
+/***
+
+==============================================
+MASTER PARTIAL SCSS IMPORT FILE
+==============================================
+
+1.  Variables
+2.  Helpers
+3.  Mixins
+4.  Base
+5.  Layout
+7.  Vendor
+8.  Modules
+
+
+***/
+
+
 
 @import "_variables/_variables";
 
@@ -9,6 +27,9 @@
 
 
 @import "_base/_base";
+
+
+@import "_elements/_elements";
 
 
 // @import "_layout/_layout";

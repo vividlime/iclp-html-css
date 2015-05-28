@@ -174,19 +174,7 @@ textarea{
 ::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
-a{
-  @include transition(color 0.3s ease-out);
-  color:$orange;
-  line-height: 1.5em;
-  text-decoration: none;
-  position: relative;
-  font-weight: 400;
 
-  &.inactive {
-     pointer-events: none;
-     cursor: default;
-  }
-}
 .scrolltotop {
  @include scrolltotop;
  font-weight: 400;
@@ -209,7 +197,7 @@ a{
   border:1px solid #333333;
 }
 body {
-  .container{
+  .outer-container{
     top:75px;
     @include breakpoint(tabletPortrait) {
       top:48px;
@@ -270,27 +258,27 @@ blockquote{
     color:$light-blue;
   }
 }
-.share{
-  position: absolute;
-  bottom: 0px;
-  z-index: 2;
-  left: 50%;
-  margin-left: -49px;
-  padding: 13px 35px 0px 0;
-  color: $red;
-  cursor: pointer;
-  &:after{
-    position: absolute;
-    content: "";
-    background: url(../assets/images/share.png) 0 0 no-repeat;
-    right:0;
-    top:0;
-    width: 26px;
-    height: 29px;
+// .share{
+//   position: absolute;
+//   bottom: 0px;
+//   z-index: 2;
+//   left: 50%;
+//   margin-left: -49px;
+//   padding: 13px 35px 0px 0;
+//   color: $red;
+//   cursor: pointer;
+//   &:after{
+//     position: absolute;
+//     content: "";
+//     background: url(/assets/images/share.png) 0 0 no-repeat;
+//     right:0;
+//     top:0;
+//     width: 26px;
+//     height: 29px;
 
 
-  }
-}
+//   }
+// }
 
 .copy-content{
   position: relative;

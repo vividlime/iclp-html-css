@@ -1,0 +1,29 @@
+
+
+.content-entry {
+    padding-bottom: 30px;
+
+
+    .entry-header {
+        padding-bottom: 45px;
+    }
+
+    .entry-title {
+        padding-bottom: 20px;
+    }
+
+    .entry-content {
+        padding-bottom: 45px;
+    }
+
+    .entry-image {
+
+        &.pull-right {
+            padding-left: 30px;
+        }
+
+        &.pull-left {
+            padding-right: 30px;
+        }
+    }
+}
