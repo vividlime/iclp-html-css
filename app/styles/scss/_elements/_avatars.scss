@@ -1,0 +1,15 @@
+// Avatars
+
+.avatar {
+    border: 5px solid $white;
+    @include border-radius(50%);
+}
+
+.avatar--small {
+
+}
+
+.avatar--large {
+    width: 200px;
+    height: 200px;
+}
