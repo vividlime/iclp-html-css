@@ -5,11 +5,12 @@ MASTER PARTIAL SCSS IMPORT FILE
 ==============================================
 
 1.  Variables
-2.  Helpers
-3.  Mixins
+2.  Mixins
+3.  Helpers
 4.  Base
 5.  Layout
-7.  Vendor
+6.  Vendor
+7.  Elements
 8.  Modules
 
 
@@ -20,22 +21,22 @@ MASTER PARTIAL SCSS IMPORT FILE
 @import "_variables/_variables";
 
 
-@import "_helpers/_helpers";
-
-
 @import "_mixins/_mixins";
+
+
+@import "_helpers/_helpers";
 
 
 @import "_base/_base";
 
 
-@import "_elements/_elements";
-
-
-// @import "_layout/_layout";
+@import "_layout/_layout";
 
 
 @import "_vendor/_vendor";
+
+
+@import "_elements/_elements";
 
 
 @import "_modules/_modules";
