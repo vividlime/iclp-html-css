@@ -1,0 +1,141 @@
+// Content Grid Items
+
+.content-grid {
+    @include clearfix();
+
+    .entry-item {
+        position: relative;
+        float: left;
+        margin-bottom: 30px;
+        color: $white;
+
+        @include breakpoint(bigDesktop) {
+            width: 33.333%;
+        }
+
+        @include breakpoint(tabletPortrait) {
+            width: 50%;
+        }
+
+        @include breakpoint(phonePortrait) {
+            width: 100%;
+        }
+
+    }
+
+    .entry-item__header {
+        position: relative;
+        padding: 20px;
+
+
+        .entry-item__title {
+            position: relative;
+            z-index: 2;
+            color: $white;
+
+        }
+
+        &.angle-orange::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            bottom: -35px;
+            left: 0;
+            z-index: 1;
+
+            @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+
+            background: $orange;
+        }
+
+
+        &.angle-turquoise::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            bottom: -35px;
+            left: 0;
+            z-index: 1;
+
+            @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+
+            background: $turquoise;
+        }
+
+
+        &.angle-red::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            bottom: -35px;
+            left: 0;
+            z-index: 1;
+
+            @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+
+            background: $red;
+        }
+
+
+        &.angle-dark-blue::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            bottom: -35px;
+            left: 0;
+            z-index: 1;
+
+            @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+
+            background: $dark-blue;
+        }
+    }
+
+    .entry-item__content {
+        position: relative;
+        background-color: rgba(255,255,255, .2);
+
+        .entry-item__text {
+            padding: 90px 20px 100px;
+            line-height: 1.5;
+
+        }
+
+        .entry-item__image {
+
+        }
+    }
+
+    .entry-item__meta-data {
+        width: 100%;
+
+        .meta-data-type {
+
+        }
+
+        .meta-data-date {
+
+        }
+    }
+
+    .entry-item__footer {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        @include clearfix();
+    }
+
+    .entry-item__download-link {
+        float: left;
+    }
+
+    .entry-item__share-link {
+        float: right;
+        font-size: 20px;
+    }
+
+}
