@@ -53,7 +53,8 @@
 
 // Wrapper for the tab content
 .tab-content {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 
@@ -63,6 +64,7 @@
     &.selectable {
         .label {
             background-color: $white;
+            cursor: pointer;
 
             &.selected {
                 color: $white;
@@ -72,11 +74,6 @@
     }
 }
 
-
-// Wrapper around the selected tags area
-.selected-filter-tag-bar {
-
-}
 
 
 .tag-bar-header {
@@ -98,13 +95,14 @@
 .selected-filter-tags {
 
     .label {
+         cursor: pointer;
 
         .tag-name {
             margin-right: 10px;
         }
 
         &:after {
-            // content: '\2716'; This is the 'X' icon
+            content: '\2716'; // This is the 'X' icon
         }
     }
 }
