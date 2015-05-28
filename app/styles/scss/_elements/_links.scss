@@ -1,0 +1,40 @@
+// Anchor links
+
+a {
+  @include transition(color 0.3s ease-out);
+  color: $orange;
+  text-decoration: none;
+  position: relative;
+  font-weight: 400;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:link, &:visited {
+        color: $orange;
+    }
+
+    &:hover {
+        color: $orange;
+    }
+
+    // Inactive style
+    &.inactive {
+        pointer-events: none;
+        cursor: default;
+    }
+
+
+    // White link style
+    &.white {
+
+        &:link, &:visited {
+            color: $white;
+        }
+
+        &:hover {
+            color: $orange;
+        }
+    }
+}
