@@ -1,0 +1,38 @@
+// Angles
+
+.angle-left {
+    @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+}
+
+
+@mixin angle-box($background-color: $rodeo-dust-light) {
+    position: relative;
+    display: inline-block;
+    background: $background-color;
+    padding: 20px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        overflow: visible;
+        width: 100%;
+        height: 250px;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+
+        @include transform (skewY(-5deg));
+
+        background: $background-color;
+    }
+
+}
+
+.angle-box {
+    @include angle-box();
+}
+
+
+.angle-box-blue {
+    @include angle-box($dark-blue);
+}
