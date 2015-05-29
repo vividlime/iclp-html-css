@@ -194,7 +194,7 @@ module.exports = function (grunt) {
     // Copy all source files to build
     // -------------------------------
 
-    grunt.registerTask('copybuild', 'Copies the files to the build directory.', [ 'copy:buildcss',  'copy:buildjs']);
+    grunt.registerTask('copybuild', 'Copies the files to the build directory.', [ 'clean', 'copy:buildcss',  'copy:buildjs']);
 
 
 
@@ -225,6 +225,6 @@ module.exports = function (grunt) {
     // Default Grunt task to build the entire site.
     // ===============================================================================
 
-    grunt.registerTask('default', ['clean', 'copybuild', 'compass','concat', 'cssmin', 'uglify', 'copydist']);
+    grunt.registerTask('default', ['copybuild', 'compass','concat', 'cssmin', 'uglify', 'copydist']);
 
 };
