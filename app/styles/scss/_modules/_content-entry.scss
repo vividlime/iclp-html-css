@@ -1,8 +1,10 @@
 
 
-.content-entry {
+.content-wrapper {
     padding-bottom: 30px;
+}
 
+.entry-content {
 
     .entry-header {
         padding-bottom: 45px;
@@ -25,5 +27,9 @@
         &.pull-left {
             padding-right: 30px;
         }
+    }
+
+    .entry-footer {
+
     }
 }
