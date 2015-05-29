@@ -1,10 +1,10 @@
-// Bootstrap components
+// Bootstrap components (using the config.rb file these files are found using the add_import_path variable)
 
-@import "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins",
-        "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding",
-        "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/utilities",
-        "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/grid",
-        "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/labels",
-        "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/navs",
-        "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/modals",
-        "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/type";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/mixins",
+        "bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding",
+        "bootstrap-sass-official/assets/stylesheets/bootstrap/utilities",
+        "bootstrap-sass-official/assets/stylesheets/bootstrap/grid",
+        "bootstrap-sass-official/assets/stylesheets/bootstrap/labels",
+        "bootstrap-sass-official/assets/stylesheets/bootstrap/navs",
+        "bootstrap-sass-official/assets/stylesheets/bootstrap/modals",
+        "bootstrap-sass-official/assets/stylesheets/bootstrap/type";
