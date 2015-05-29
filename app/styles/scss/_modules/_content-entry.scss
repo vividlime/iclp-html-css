@@ -2,6 +2,7 @@
 
 .content-wrapper {
     padding-bottom: 30px;
+    @include clearfix();
 }
 
 .entry-content {
