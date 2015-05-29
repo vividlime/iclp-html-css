@@ -4,8 +4,9 @@
 http_path = "/"
 css_dir = "build/processed/styles/css/"
 sass_dir = "build/app/styles/scss"
-images_dir = "images"
-javascripts_dir = "javascripts"
+images_dir = "assets/images"
+javascripts_dir = "build/app/js/"
+add_import_path "app/bower_components/"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
