@@ -53,13 +53,14 @@
 
 			&.copy-content{
 				&:before{
+					display: none;
  					@include breakpoint(phonePortrait) {
 						display: none;
 					}
 				}
 				.copy-wrap{
 					&:nth-child(odd){
-						background:$lighter-grey;
+						// background:$lighter-grey;
 					}
 					&:first-child{
 						.copy{
@@ -77,6 +78,30 @@
 							padding-right: 50%;
 							@include breakpoint(tabletPortrait) {
 								padding-right: 0px;
+							}
+						}
+						table {
+							width: 100%;
+							text-align: left;
+						}
+						tbody tr:nth-child(odd) {
+							  background: $rodeo-dust-lighter;
+							}
+						th{
+							font-size: 18px;
+							font-weight: 400;
+							background: $westar;
+							padding: 10px;
+							height: 80px;
+							vertical-align: middle;
+							text-transform: uppercase;
+						}
+						td,tr {
+							padding: 10px;
+							vertical-align: middle;
+							height: 50px;
+							.button{
+								float: right;
 							}
 						}
 					}
