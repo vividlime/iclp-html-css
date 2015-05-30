@@ -2,19 +2,21 @@
 
 .nav-tabs {
     border-bottom: 0;
-
-
 }
 
 .nav-tabs > li {
     margin-bottom: 0;
 
-    // &.active {
-    //     background-color: $rodeo-dust-lighter;
-    // }
+    &.active {
+        background-color: $rodeo-dust-light;
+
+        a {
+
+        }
+    }
 
     @include breakpoint(bigDesktop) {
-        margin-right: 15;
+        margin-right: 15px;
         margin-bottom: 0;
         float: left;
 
