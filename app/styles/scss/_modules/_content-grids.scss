@@ -124,17 +124,19 @@
 
     .entry-item__footer {
         position: relative;
+        display: table;
         width: 100%;
         padding: 20px;
         @include clearfix();
     }
 
     .entry-item__download-link {
-        float: left;
+        display: table-cell;
     }
 
     .entry-item__share-link {
-        float: right;
+        display: table-cell;
+        vertical-align: middle;
         font-size: 20px;
     }
 
