@@ -58,11 +58,18 @@ module.exports = function (grunt) {
             },
 
 
-            distjs: {
+            distAppjs: {
                 expand: true,
                 flatten: true,
-                src: [ 'build/processed/js/*.js'],
+                src: [ 'build/processed/js/main.js', 'build/processed/js/default.js'],
                 dest: 'assets/js/app'
+            },
+
+            distLibjs: {
+                expand: true,
+                flatten: true,
+                src: [ 'build/processed/js/bootstrap*.js'],
+                dest: 'assets/js/lib'
             },
         },
 
@@ -90,10 +97,19 @@ module.exports = function (grunt) {
             bootstrapJS: {
                 src: [
                     'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
+                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js',
                     'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
+                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js',
                     'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js'
                 ],
                 dest: 'build/processed/js/bootstrap.js'
+            },
+
+            defaultJS: {
+                src: [
+                    'build/app/js/default.js'
+                ],
+                dest: 'build/processed/js/default.js'
             },
 
             mainJS: {
@@ -140,6 +156,7 @@ module.exports = function (grunt) {
                 },
                 files: {
                   'build/processed/js/bootstrap.min.js': ['build/processed/js/bootstrap.js'],
+                  'build/processed/js/default.min.js': ['build/processed/js/default.js'],
                   'build/processed/js/main.min.js': ['build/processed/js/main.js']
                 }
             }
@@ -199,15 +216,7 @@ module.exports = function (grunt) {
 
 
     // ------------------------
-    // Copy processed files
-    // ------------------------
-
-    grunt.registerTask('copydist', 'Copies the compiled files to the live directory.', [ 'copy:distcss',  'copy:distjs']);
-
-
-
-    // ------------------------
-    // Process CSS
+    // Process CSS only
     // ------------------------
 
     grunt.registerTask('css', 'Compiles all of the scss (libsass) and copies the files to the live directory.', [ 'copybuild', 'compass', 'cssmin', 'copy:distcss']);
@@ -215,9 +224,17 @@ module.exports = function (grunt) {
 
 
     // ------------------------
-    // Process JS
+    // Process JS only
     // ------------------------
-    grunt.registerTask('js', 'Compiles all of the js and copies the files to the live directory.', [ 'copybuild', 'concat', 'uglify', 'copy:distjs']);
+    grunt.registerTask('js', 'Compiles all of the js and copies the files to the live directory.', [ 'copybuild', 'concat', 'uglify', 'copy:distAppjs', 'copy:distLibjs']);
+
+
+
+    // -----------------------------
+    // Copy processed files to dist
+    // -----------------------------
+
+    grunt.registerTask('copydist', 'Copies the compiled files to the live directory.', [ 'copy:distcss',  'copy:distAppjs', 'copy:distLibjs']);
 
 
 
