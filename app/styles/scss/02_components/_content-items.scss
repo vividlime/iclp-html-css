@@ -1,0 +1,47 @@
+// Entry Items
+
+// UL container for content-items
+.content-items {
+
+}
+
+// LI items
+.content-item {
+
+}
+
+.content-item__header {
+    padding-bottom: 45px;
+}
+
+.content-item__title {
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+.content-item__meta-data {
+
+}
+
+.content-item__body {
+    padding-bottom: 45px;
+
+
+    .content-item__image {
+
+        &.pull-right {
+            padding-left: 30px;
+        }
+
+        &.pull-left {
+            padding-right: 30px;
+        }
+    }
+
+
+}
+
+
+.content-item__footer {
+
+}
