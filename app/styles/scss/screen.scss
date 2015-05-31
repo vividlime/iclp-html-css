@@ -4,23 +4,17 @@
 MASTER PARTIAL SCSS IMPORT FILE
 ==============================================
 
-1.  Variables
-2.  Mixins
-3.  Helpers
-4.  Base
-5.  Layout
-6.  Vendor
-7.  Elements
-8.  Modules
-
 
 ***/
 
+// Reset styles
+@import "_base/normalize";
 
 
 @import "_variables/_variables";
 
 
+// Bootstrap and Twitter
 @import "_vendor/_vendor";
 
 
@@ -36,7 +30,13 @@ MASTER PARTIAL SCSS IMPORT FILE
 @import "_layout/_layout";
 
 
-@import "_elements/_elements";
 
 
-@import "_modules/_modules";
+
+@import "01_elements/_elements";
+
+
+@import "02_components/_components";
+
+
+@import "03_modules/_modules";
