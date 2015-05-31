@@ -1,6 +1,7 @@
 // Bootstrap components (using the config.rb file these files are found using the add_import_path variable)
 
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap/mixins",
+        "bootstrap-sass-official/assets/stylesheets/bootstrap/component-animations",
         "bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding",
         "bootstrap-sass-official/assets/stylesheets/bootstrap/utilities",
         "bootstrap-sass-official/assets/stylesheets/bootstrap/grid",
