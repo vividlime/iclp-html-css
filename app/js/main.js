@@ -4,7 +4,6 @@
     this.twitter();
     this.playVideos();
     this.setupLazyIsotope();
-    // this.setupIsotope();
     this.resourceFilter();
   },
 
@@ -283,11 +282,10 @@
         offset: 200,
 
     });
-
-
   }
-
 };
+
+
 
 $(document).ready(function () {
   main.init();
