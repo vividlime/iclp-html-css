@@ -1,6 +1,5 @@
 .contact-container{
 	@include transition((all 0.3s ease-out));
-	background: $rodeo-dust;
 
 	@include breakpoint(phonePortrait) {
 		padding: 0 12px;
@@ -119,7 +118,7 @@
 		@include breakpoint(phonePortrait) {
 			font-size: 22px;
 		}
-		
+
 		@include transition((all 0.3s ease-out));
 		&:hover{
 			@include transition((all 0.3s ease-out));
@@ -356,12 +355,12 @@
 	}
 }
 
-#contact-us #contact-form{
+#contact-us #contact-form-section{
 	.close-form{
 		display: none;
 	}
 }
-#home #contact-form{
+#home #contact-form-section{
 	.close-form{
 		display: none;
 	}

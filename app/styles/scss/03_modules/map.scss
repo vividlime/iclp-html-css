@@ -11,176 +11,149 @@
 			margin: auto;
 			display: inline-block;
 			position: relative;
- 
+
 
 			map{
-				width: 100%;
-				display: inline-block;
-				margin:0px auto -66px auto;
+				max-width: 1170px;
+				height: 100%;
+				display: block;
+				margin:0px auto -40px auto;
 				position: relative;
-				padding: 44px 100px 0px 100px;
-				
+				padding: 30px 102px 0px 102px;
+				@include breakpoint(tabletPortrait) {
+					padding: 24px 0px 44px 0px;
+				}
+
 				.hotspot-area{
 					display: block;
 					position: relative;
 					@include hotspot;
 
- 
+
 					.pick-country{
-						h1,.country{
-							display: none;
-						}
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						display: inline-block;
+
+						span#first{
+				  		display: none;
+				  	}
+
 						.hotspot{
-							&:hover{
-									@include transform(translate( 0% , 0% ) scale( 1.05 ));
+							z-index: 4;
+							position: absolute;
+							display: block;
+							text-align: center;
+							opacity: 1;
+							@include transition(all 0.3s ease-out);
+							padding-top: 36px;
+							&:after,
+							&:before{
+								@include breakpoint(tabletLandscape) {
+									@include transform( scale(0.70));
+								}
+
+
+								@include breakpoint(tabletPortrait) {
+									display: none;
 								}
 							}
-						
-							a{
-								z-index: 4;
-								&:after,
-								&:before{
-									@include breakpoint(tabletPortrait) {
-										display: none;
-									}
-								}
-								
-								&:hover span:before{
+							&:hover{
+								@include transform(scale(1.05));
+								em{
 									opacity: 1;
 								}
-								&:hover span{
-									opacity: 1;
+							}
+							&:hover:after,
+							&:hover:before{
+								@include transform( scale( 1 ));
+								@include breakpoint(tabletLandscape) {
+									@include transform(scale(0.75));
 								}
-								span{
-									opacity: 0;
-									position: absolute;
-									left:50%;
-									@include transition(all 0.3s ease-out);
-									&:before{
-										left:-50%;
-							    	top:-20px;
-										white-space: nowrap;
-										content:attr(data-title);
-										
-font-weight:700;
-								    text-transform: uppercase;
-										color:$white;
-										position: relative;
-										opacity: 1;
-										@include transition(all 0.3s ease-out);
-									}
-								}
+							}
+
+							em{
+								font-style: normal;
+								white-space: nowrap;
+								font-weight:700;
+						    text-transform: uppercase;
+								color:$white;
+								display: block;
+								text-align: center;
+								@include transition(all 0.3s ease-out);
+								left:50%;
+						    top:38px;
+						    position: absolute;
+						    @include transform(translateX(-50%));
+						    opacity:0;
+							}
+
 
 								&.London{
-									top: 17%;
-									left: 44%;
-									span{
-
-									}
+									top: 18%;
+									left: 42.9%;
 								}
 								&.CapeTown{
-									top: 81.7%;
-									left: 51.7%;
-									span{
-
-									}
+									top: 80.5%;
+									left: 49.7%;
 								}
 								&.Beijing{
-									top: 22%;
-									left: 73%;
-									span{
-									}
+									top: 24.5%;
+									left: 79.3%;
 								}
 								&.Tokyo{
-									top: 27%;
-									left: 92%;
-									span{
-
-									}
+									top: 27.4%;
+									left: 88.4%;
 								}
 								&.HongKong{
-									top: 38%;
-									left: 84%;
-									span{
-
-									}
+									top: 38.7%;
+									left: 80.6%;
 								}
 								&.KualaLumpur{
-									top: 45%;
-									left: 79.7%;
-									span{
-
-									}
+									top: 47%;
+									left: 76.7%;
 								}
 								&.Singapore{
 									top: 51%;
-									left: 80%;
-									span{
-
-									}
+									left: 78%;
 								}
 								&.Mumbai{
-									top: 42%;
-									left: 71.3%;
-									span{
-
-									}
+									top: 42.2%;
+									left: 68.2%;
 								}
 								&.Shanghai{
-									top: 33%;
-									left: 85%;
-									span{
-
-									}
+									top: 33.5%;
+									left: 82.5%;
 								}
 								&.Sydney{
-									top: 80%;
-									left: 96%;
-									span{
-
-									}
+									top: 81%;
+									left: 91.7%;
 								}
 								&.StPetersburg{
-									top: 14%;
-									left: 54%;
-									span{
+									top: 13%;
+									left: 51.3%;
 
-									}
 								}
 								&.SanPaulo{
 									top: 72%;
-									left: 27%;
-									span{
-
-									}
+									left: 24.4%;
 								}
 								&.SanFrancisco{
-									top: 30%;
-									left: 4%;
-									span{
-
-									}
+									top: 29.4%;
+									left: 3.3%;
 								}
 								&.Dallas{
-									top: 29%;
-									left: 10.4%;
-									span{
-
-									}
+									top: 31%;
+									left: 9.2%;
 								}
 								&.NewYork{
-									top: 25%;
-									left: 19%;
-									span{
-
-									}
+									top: 25.8%;
+									left: 18.5%;
 								}
 								&.Dubai{
-									top: 38%;
-									left: 64%;
-									span{
-
-									}
+									top: 37.6%;
+									left: 61.5%;
 								}
 							}
 					}
@@ -192,19 +165,22 @@ font-weight:700;
 						position: relative;
 						z-index: 3;
 					}
-					
+
 				  @include breakpoint(tabletPortrait) {
-				  	height: 150px;
+
 				  	overflow: visible;
 				  	img{
 				  		display: none;
 				  	}
 				  	.pick-country{
-				  		width: 100%;
 				  		display: block;
 				  		margin:auto;
 				  		cursor: pointer;
-				  		position: absolute;
+				  		position: relative;
+				  		overflow: hidden;
+				  		@include breakpoint(phonePortrait){
+				  			width: 320px;
+				  		}
 
 					  	.country{
 					  		z-index: 4;
@@ -212,25 +188,23 @@ font-weight:700;
 					  		position: relative;
 					  		@include transition((all 0.3s ease-out));
 					  		width: 265px;
-						  	margin: auto;
-						  	border: 1px solid #f5f3f1;
-						  	padding: 20px 0px 20px 48px;
+						  	margin: 0 auto;
+						  	padding: 20px;
 						  	background: rgba(255,255,255,0.10);
-						  	
-font-weight:700;
 						  	font-size: 18px;
 						  	color:$white;
-								@include breakpoint(phonePortrait) {
-						  		left: -70px;
+						  	span#first{
+						  		display: block;
 						  	}
+
 
 						  	&:after{
 						  		right:10px;
 						  		top:18px;
 						  		content: '';
 						  		position: absolute;
-					  			width: 0; 
-									height: 0; 
+					  			width: 0;
+									height: 0;
 									border-left: 12px solid transparent;
 									border-right: 12px solid transparent;
 									border-top: 13px solid $white;
@@ -240,90 +214,41 @@ font-weight:700;
 					  			position: absolute;;
 					  			@include iconsFonts;
 					        @include transition((all 0.3s ease-out));
-					        color:$white;		        
+					        color:$white;
 						  		content: "\e037";
 						  		font-size: 1.6em;
 						  		left:10px;
 						  		top:6px;
 						  	}
 						  }
-						  .country:hover ~ ul.country-list{
-						  	opacity: 1;
-						  	z-index: 6;
-						  }
- 
-					  	  
-					  	ul.country-list{
-					  		//z-index: 6;
+
+
+					  	select.country-list{
 					  		top:0px;
 						  	position: absolute;
 						  	display: block;
-						  	opacity: 0;
 						  	@include transition((all 0.3s ease-out));
-						  	width: 265px;
-						  	left: 50%;
-				  			margin-left: -132px;
+						  	width: 170px;
+						  	left: 55%;
+				  			margin-left: -92px;
+				  			border:0;
+				  			background:none;
+						  	font-size: 18px;
+						  	font-family: inherit;
+						  	color:$white;
+						  	height: 45px;
+							z-index: 5;
+							-webkit-appearance: none;
+						    -moz-appearance: none;
+						    text-indent: 1px;
+						    text-overflow: '';
 
-				  				&:focus,
-							  	&:hover{
-							  	opacity: 1;
-							  	z-index: 6;
-							  }
-
-					  		li{
+					  		option{
 					  			width: 100%;
 					  			float: left;
 					  			display: block;
-					  			background: #f5f3f1;
-					  			&:first-child{
-					  				margin-top: 42px;
-					  			}
-					  			a{
-							  		&.hotspot{
-							  			left:0;
-							  			top:0;
-							  			position: relative;
-							  			display: block;
-							  			width: 100%;
-							  			float: left;
-							  			padding:0px 8px;
-							  			text-align: left;
-							  			height:auto;
-							  			&:hover{
-												@include transform(translate( 0% , 0% ) scale(1));
-											}
-							  			span{
-							  				opacity: 1;
-							  				font-size: 16px;
-							  				
-font-weight:300;
-							  				position: relative;
-							  				left:0;
-							  				&:before{
-							  					text-transform: capitalize;
-							  					position: relative;
-							  					text-align: left;
-							  					left:0;
-							  					top:0;
-							  					font-size: 16px;
-							  					
-font-weight:300;
-							  					color: $grey;
+					  			text-transform: uppercase;
 
-							  				}
-							  			}
-							  			&:after{
-								  			display: none;
-								  		}
-								  		&:hover:before{
-								  			left:0;
-								  		}
-								  		
-							  		}
-							  		&:before{
-							  			display: none;
-							  		}
-							  	}
 					  		}
 					  	}
 				  	}
@@ -334,7 +259,7 @@ font-weight:300;
 			#addresses{
 				position: absolute;
 				width: 100%;
-				
+
 				.address{
 					display: none;
 					position: relative;
@@ -356,31 +281,28 @@ font-weight:300;
 						display: block;
 					}
 					span{
-						font-size: 26px;
+						font-size: 22px;
+						font-weight: 400;
 						display: block;
 						text-align: center;
-						padding: 50px 0 24px 0;
+						padding: 50px 0 20px 0;
 						text-transform: uppercase;
-						color:$white;
 						width: 100%;
-						
-font-weight:700;
 						&.town{
-							color:$red;
+							color:$grey;
 						}
 					}
 					h3.name{
 						font-size: 17px;
-						color:$grey;
 						font-weight: bold;
+						color:$grey;
 						text-align: center;
 						display: block;
-						padding: 0 0 8px 0;
+						padding: 0;
 					}
 					h2{
 						text-transform: uppercase;
 						color:$red;
-						font-size: 26px;
 						display: block;
 						text-align: center;
 						padding: 0 0 12px 0;
@@ -388,7 +310,6 @@ font-weight:700;
 
 					p.marker{
 						text-align: center;
-						font-size: 17px;
 						color:$grey;
 						display: block;
 					}
@@ -398,15 +319,20 @@ font-weight:700;
 						color: $orange;
 						font-size: 17px;
 					}
-					
+
 					p{
 						display: block;
 						color:$grey;
 						text-align: center;
 						&.title{
-							
+
 						}
-						&.tel{}
+						&.tel{
+
+						}
+						a{
+							color:$grey;
+						}
 					}
 					.office-contact{
 						padding: 12px 0 12px 0;
@@ -414,14 +340,15 @@ font-weight:700;
 						width: 100%;
 						p.marker{
 							text-align: center;
-							font-size: 17px;
 							color:$grey;
 							display: block;
 						}
 						button{
 							display: block;
-							font-size: 17px;
+							font-size: 14px;
 							margin:12px auto;
+							letter-spacing: 1px;
+							font-weight: 400;
 
 						}
 					}
@@ -431,9 +358,8 @@ font-weight:700;
 				position: absolute;
 				z-index: 4;
 				width: 100%;
-				padding-top: 10px;
-				margin-top: 119px;
 				cursor: pointer;
+				bottom: -200px;
 
 				h2{
 					top: -72px;
@@ -441,7 +367,7 @@ font-weight:700;
 					&:before{
 		        @include iconsFonts;
 		        @include transition((all 0.3s ease-out));
-		        color:$white;		         
+		        color:$white;
 						position: absolute;
 						top: 26px;
 						left: 50%;
@@ -451,22 +377,22 @@ font-weight:700;
 						content: "\e048";
 						z-index: 4;
 					}
-				} 
+				}
 				span{
+					position: relative;
 					font-size: 26px;
+					font-weight: 400;
 					display: block;
 					text-align: center;
-					padding: 70px 0 12px 0;
+					padding: 0;
 					text-transform: uppercase;
-					color:$white;
+					color:$grey;
 					width: 100%;
-					
-font-weight:700;
 					&.town{
 						color:$red;
 					}
 				}
-				  
+
 			}
 
 			.map-container{
@@ -484,14 +410,14 @@ font-weight:700;
 							content: '';
 							position: absolute;
 							width: 100%;
-							height:970px;
+							height:1500px;
 							bottom:10%;
 							left:0;
 							@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 							@include transition(opacity 0.3s ease-out);
 							background: $red;
 							z-index: 1;
-							@include background-image(linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.3) 100%));
+							// @include background-image(linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.3) 100%));
 						}
 					}
 				}
@@ -509,7 +435,7 @@ font-weight:700;
 							left:0;
 							@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 							@include transition(opacity 0.3s ease-out);
-							background: $grey;
+							background: $rodeo-dust;
 							z-index: 1;
 						}
 					}
@@ -517,7 +443,6 @@ font-weight:700;
 				.contact-name{
 					position: absolute;
 					opacity: 0;
-					filter: alpha(opacity=0);
 					z-index: -1;
 					width: 100%;
 				}
@@ -531,9 +456,9 @@ font-weight:700;
 
 					.angle-bottom{
 						position: relative;
-						margin-bottom: -82px;
+						margin-bottom: -123px;
 						padding-bottom: 70px;
-		 				background: $grey;
+		 				background: $rodeo-dust;
 					 	&:after{
 							content: '';
 							position: absolute;
@@ -543,18 +468,17 @@ font-weight:700;
 							left:0;
 							@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 							@include transition(opacity 0.3s ease-out);
-							background: $grey;
+							background: rodeo-dust;
 							z-index: 1;
 						}
 					}
-					
-						
+
+
 
 					#map-canvas{
 						width: 100%;
 						height: 750px;
 						padding: 110px 0;
-						
 						opacity: 1;
 						filter: alpha(opacity=1);
 						&:before{
@@ -574,15 +498,10 @@ font-weight:700;
 							top:60px;
 						}
 					}
-
-
 					.contact-name{
 						opacity: 1;
-						filter: alpha(opacity=1);
 						z-index: 4;
 						h2{
-							
-font-weight:700;
 							padding-top: 20px;
 							text-transform: uppercase;
 							display: block;
@@ -616,17 +535,17 @@ font-weight:700;
 					}
 				}
 			}
-	 
+
 		}
 	}
- 
-	#contact-form{
- 		margin-top: 243px;
+
+	#contact-form-section{
+ 		margin-top: 193px;
  		top: 93px;
  		&.active{
- 			margin-top:94px;
+ 			margin-top: 16px;
  		}
- 
+
 		.contact-container {
 			padding-top: 0px;
 			.close-form{
@@ -641,7 +560,7 @@ font-weight:700;
 			}
 			.form{
 				p{
-					padding-top: 22px;
+					padding-top: 10px;
 				}
 			}
 		}
@@ -653,7 +572,7 @@ font-weight:700;
 		.form.contacts{
 			padding-top: 0px;
 		}
-		 
+
 	}
 
 
@@ -670,5 +589,9 @@ font-weight:700;
 			top:177px;
 		}
 	}
-	
+
+	#footer{
+		top: 85px;
+	}
+
 }

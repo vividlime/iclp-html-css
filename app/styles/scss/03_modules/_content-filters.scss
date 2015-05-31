@@ -3,13 +3,14 @@
 
 // The wrapper around the entire filter bar
 .content-filter {
-    margin: 50px 0;
+    position: relative;
+    margin-bottom: 50px;
+    z-index: 2;
 }
 
 
 // Toggle button to show or hide the filter
 .filter-toggle {
-
     color: $white;
     background-color: $turquoise;
     padding: 20px;
@@ -60,6 +61,7 @@
 
 // The tag items in the tab content area
 .filter-tags {
+    margin: 0;
 
     &.selectable {
         .label {

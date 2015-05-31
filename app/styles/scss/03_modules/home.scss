@@ -17,7 +17,7 @@
     @include breakpoint(tabletPortrait) {
     	margin: -36px 0 -80px 0;
     }
- 
+
     .copy{
     	width:100%;
     	display: block;
@@ -27,10 +27,11 @@
 		  @include breakpoint(phonePortrait) {
   	    @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(5deg) skewX(0deg));
  	    }
-	  
+
     	h1{
     		color: $grey;
     		font-weight: 400;
+    		margin: 0;
     		br{
     			display: none;
     			@include breakpoint(phonePortrait) {
@@ -51,14 +52,14 @@
         margin: auto;
         font-weight: 300;
         @include breakpoint(phonePortrait) {
-					font-size: 20px; 
-        }        
+					font-size: 20px;
+        }
     	}
-    } 
+    }
 	}
 
 	.banner-container{
-		
+
 		.content{
 			margin-top: -30px;
 			display: table;
@@ -71,13 +72,13 @@
 				margin-top: 30px;
 				display: inline-block;
 			}
-		} 
+		}
 	}
 
 	.pane-container{
 		display: table;
 		width: 100%;
-		
+
 		@include breakpoint(tabletPortrait) {
 			display: inline-block;
 			position: relative;
@@ -104,7 +105,7 @@
 					height: 415px;
 					width: 50%;
 					padding: 0;
-					
+
 					&:first-child{
 						right:0;
 						top:0;
@@ -135,8 +136,8 @@
 					@include transition((all 0.3s ease-out));
 					&:hover{
 						background:#c06612;
-					} 
-  
+					}
+
 					@include breakpoint(tabletPortrait) {
 						top: 0px;
 						height: 100%;
@@ -162,6 +163,7 @@
 							text-align: center;
 							display: inline-block;
 							padding: 0px 0 12px 0;
+							margin: 0;
 							a{
 								line-height: 1.3em;
 								color: $white;
@@ -257,7 +259,7 @@
 							z-index: 1;
 						}
 					}
-				} 
+				}
 				a.pane-content{
 					position: absolute;
 					top: 0;
@@ -310,11 +312,11 @@
 						background: rgba(0,0,0,0.4);
 						}
 
-					
+
 					&:hover{
 						background:rgba(0,0,0,0.4);
 						@include transition((all 0.3s ease-out));
-					} 
+					}
 			    &:focus .circle[data-anim~=bigger],
 			    &:hover .circle[data-anim~=bigger]{
 			      opacity: 0.75;
@@ -331,7 +333,7 @@
 			    &:hover .circle[data-anim~=smaller]:before{
 			      @include transform (rotate(180deg));
 			    }
-				} 
+				}
 			}
 		}
 	}

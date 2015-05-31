@@ -100,6 +100,7 @@ body{
             position: relative;
             width: 100%;
             padding-top: 9px;
+            margin: 0;
             @include breakpoint(tabletPortrait) {
               padding: 0;
             }
@@ -167,7 +168,7 @@ body{
                 content: "";
                 @include transition((all 0.3s ease-out));
                 color:$dark-grey;
-               
+
 
                 @include breakpoint(tabletPortrait) {
                   font-size: 1.4em;
@@ -219,7 +220,7 @@ body{
                   }
                   &:before{
                     @include breakpoint(phonePortrait) {
-                      color:$grey; 
+                      color:$grey;
                     }
                   }
                   &:hover:before{

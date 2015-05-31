@@ -894,6 +894,7 @@
 									 	 		line-height:1.1em;
 									 	 		text-align: left;
 									 	 		padding: 20px 20px 5px 20px;
+									 	 		margin: 0;
 									 	 		position: relative;
 									 	 		z-index: 4;
 									 	 		font-weight: 300;
@@ -915,7 +916,7 @@
 									 	 		z-index: 4;
 									 	 		padding: 0px 20px 0px 20px;
 									 	 		font-weight: 700;
-									 	 		margin-bottom: 18px;
+									 	 		margin: 0 0 18px;
 									 	 		@include breakpoint(mediumDesktop) {
 									 	 			font-size: 14px;
 									 	 		}

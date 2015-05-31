@@ -14,15 +14,11 @@
 
 
 			map{
-				max-width: 1170px;
-				height: 100%;
-				display: block;
-				margin:0px auto -40px auto;
+				width: 100%;
+				display: inline-block;
+				margin:0px auto -66px auto;
 				position: relative;
-				padding: 30px 102px 0px 102px;
-				@include breakpoint(tabletPortrait) {
-					padding: 24px 0px 44px 0px;
-				}
+				padding: 44px 100px 0px 100px;
 
 				.hotspot-area{
 					display: block;
@@ -31,129 +27,160 @@
 
 
 					.pick-country{
-						position: absolute;
-						width: 100%;
-						height: 100%;
-						display: inline-block;
-
-						span#first{
-				  		display: none;
-				  	}
-
+						h1,.country{
+							display: none;
+						}
 						.hotspot{
-							z-index: 4;
-							position: absolute;
-							display: block;
-							text-align: center;
-							opacity: 1;
-							@include transition(all 0.3s ease-out);
-							padding-top: 36px;
-							&:after,
-							&:before{
-								@include breakpoint(tabletLandscape) {
-									@include transform( scale(0.70));
-								}
-
-
-								@include breakpoint(tabletPortrait) {
-									display: none;
+							&:hover{
+									@include transform(translate( 0% , 0% ) scale( 1.05 ));
 								}
 							}
-							&:hover{
-								@include transform(scale(1.05));
-								em{
+
+							a{
+								z-index: 4;
+								&:after,
+								&:before{
+									@include breakpoint(tabletPortrait) {
+										display: none;
+									}
+								}
+
+								&:hover span:before{
 									opacity: 1;
 								}
-							}
-							&:hover:after,
-							&:hover:before{
-								@include transform( scale( 1 ));
-								@include breakpoint(tabletLandscape) {
-									@include transform(scale(0.75));
+								&:hover span{
+									opacity: 1;
 								}
-							}
+								span{
+									opacity: 0;
+									position: absolute;
+									left:50%;
+									@include transition(all 0.3s ease-out);
+									&:before{
+										left:-50%;
+							    	top:-20px;
+										white-space: nowrap;
+										content:attr(data-title);
 
-							em{
-								font-style: normal;
-								white-space: nowrap;
-								font-weight:700;
-						    text-transform: uppercase;
-								color:$white;
-								display: block;
-								text-align: center;
-								@include transition(all 0.3s ease-out);
-								left:50%;
-						    top:38px;
-						    position: absolute;
-						    @include transform(translateX(-50%));
-						    opacity:0;
-							}
-
+font-weight:700;
+								    text-transform: uppercase;
+										color:$white;
+										position: relative;
+										opacity: 1;
+										@include transition(all 0.3s ease-out);
+									}
+								}
 
 								&.London{
-									top: 18%;
-									left: 42.9%;
+									top: 17%;
+									left: 44%;
+									span{
+
+									}
 								}
 								&.CapeTown{
-									top: 80.5%;
-									left: 49.7%;
+									top: 81.7%;
+									left: 51.7%;
+									span{
+
+									}
 								}
 								&.Beijing{
-									top: 24.5%;
-									left: 79.3%;
+									top: 22%;
+									left: 73%;
+									span{
+									}
 								}
 								&.Tokyo{
-									top: 27.4%;
-									left: 88.4%;
+									top: 27%;
+									left: 92%;
+									span{
+
+									}
 								}
 								&.HongKong{
-									top: 38.7%;
-									left: 80.6%;
+									top: 38%;
+									left: 84%;
+									span{
+
+									}
 								}
 								&.KualaLumpur{
-									top: 47%;
-									left: 76.7%;
+									top: 45%;
+									left: 79.7%;
+									span{
+
+									}
 								}
 								&.Singapore{
 									top: 51%;
-									left: 78%;
+									left: 80%;
+									span{
+
+									}
 								}
 								&.Mumbai{
-									top: 42.2%;
-									left: 68.2%;
+									top: 42%;
+									left: 71.3%;
+									span{
+
+									}
 								}
 								&.Shanghai{
-									top: 33.5%;
-									left: 82.5%;
+									top: 33%;
+									left: 85%;
+									span{
+
+									}
 								}
 								&.Sydney{
-									top: 81%;
-									left: 91.7%;
+									top: 80%;
+									left: 96%;
+									span{
+
+									}
 								}
 								&.StPetersburg{
-									top: 13%;
-									left: 51.3%;
+									top: 14%;
+									left: 54%;
+									span{
 
+									}
 								}
 								&.SanPaulo{
 									top: 72%;
-									left: 24.4%;
+									left: 27%;
+									span{
+
+									}
 								}
 								&.SanFrancisco{
-									top: 29.4%;
-									left: 3.3%;
+									top: 30%;
+									left: 4%;
+									span{
+
+									}
 								}
 								&.Dallas{
-									top: 31%;
-									left: 9.2%;
+									top: 29%;
+									left: 10.4%;
+									span{
+
+									}
 								}
 								&.NewYork{
-									top: 25.8%;
-									left: 18.5%;
+									top: 25%;
+									left: 19%;
+									span{
+
+									}
 								}
 								&.Dubai{
-									top: 37.6%;
-									left: 61.5%;
+									top: 38%;
+									left: 64%;
+									span{
+
+									}
 								}
 							}
 					}
@@ -167,20 +194,17 @@
 					}
 
 				  @include breakpoint(tabletPortrait) {
-
+				  	height: 150px;
 				  	overflow: visible;
 				  	img{
 				  		display: none;
 				  	}
 				  	.pick-country{
+				  		width: 100%;
 				  		display: block;
 				  		margin:auto;
 				  		cursor: pointer;
-				  		position: relative;
-				  		overflow: hidden;
-				  		@include breakpoint(phonePortrait){
-				  			width: 320px;
-				  		}
+				  		position: absolute;
 
 					  	.country{
 					  		z-index: 4;
@@ -188,15 +212,17 @@
 					  		position: relative;
 					  		@include transition((all 0.3s ease-out));
 					  		width: 265px;
-						  	margin: 0 auto;
-						  	padding: 20px;
+						  	margin: auto;
+						  	border: 1px solid #f5f3f1;
+						  	padding: 20px 0px 20px 48px;
 						  	background: rgba(255,255,255,0.10);
+
+font-weight:700;
 						  	font-size: 18px;
 						  	color:$white;
-						  	span#first{
-						  		display: block;
+								@include breakpoint(phonePortrait) {
+						  		left: -70px;
 						  	}
-
 
 						  	&:after{
 						  		right:10px;
@@ -221,34 +247,83 @@
 						  		top:6px;
 						  	}
 						  }
+						  .country:hover ~ ul.country-list{
+						  	opacity: 1;
+						  	z-index: 6;
+						  }
 
 
-					  	select.country-list{
+					  	ul.country-list{
+					  		//z-index: 6;
 					  		top:0px;
 						  	position: absolute;
 						  	display: block;
+						  	opacity: 0;
 						  	@include transition((all 0.3s ease-out));
-						  	width: 170px;
-						  	left: 55%;
-				  			margin-left: -92px;
-				  			border:0;
-				  			background:none;
-						  	font-size: 18px;
-						  	font-family: inherit;
-						  	color:$white;
-						  	height: 45px;
-							z-index: 5;
-							-webkit-appearance: none;
-						    -moz-appearance: none;
-						    text-indent: 1px;
-						    text-overflow: '';
+						  	width: 265px;
+						  	left: 50%;
+				  			margin-left: -132px;
 
-					  		option{
+				  				&:focus,
+							  	&:hover{
+							  	opacity: 1;
+							  	z-index: 6;
+							  }
+
+					  		li{
 					  			width: 100%;
 					  			float: left;
 					  			display: block;
-					  			text-transform: uppercase;
+					  			background: #f5f3f1;
+					  			&:first-child{
+					  				margin-top: 42px;
+					  			}
+					  			a{
+							  		&.hotspot{
+							  			left:0;
+							  			top:0;
+							  			position: relative;
+							  			display: block;
+							  			width: 100%;
+							  			float: left;
+							  			padding:0px 8px;
+							  			text-align: left;
+							  			height:auto;
+							  			&:hover{
+												@include transform(translate( 0% , 0% ) scale(1));
+											}
+							  			span{
+							  				opacity: 1;
+							  				font-size: 16px;
 
+font-weight:300;
+							  				position: relative;
+							  				left:0;
+							  				&:before{
+							  					text-transform: capitalize;
+							  					position: relative;
+							  					text-align: left;
+							  					left:0;
+							  					top:0;
+							  					font-size: 16px;
+
+font-weight:300;
+							  					color: $grey;
+
+							  				}
+							  			}
+							  			&:after{
+								  			display: none;
+								  		}
+								  		&:hover:before{
+								  			left:0;
+								  		}
+
+							  		}
+							  		&:before{
+							  			display: none;
+							  		}
+							  	}
 					  		}
 					  	}
 				  	}
@@ -281,28 +356,31 @@
 						display: block;
 					}
 					span{
-						font-size: 22px;
-						font-weight: 400;
+						font-size: 26px;
 						display: block;
 						text-align: center;
-						padding: 50px 0 20px 0;
+						padding: 50px 0 24px 0;
 						text-transform: uppercase;
+						color:$white;
 						width: 100%;
+
+font-weight:700;
 						&.town{
-							color:$grey;
+							color:$red;
 						}
 					}
 					h3.name{
 						font-size: 17px;
-						font-weight: bold;
 						color:$grey;
+						font-weight: bold;
 						text-align: center;
 						display: block;
-						padding: 0;
+						padding: 0 0 8px 0;
 					}
 					h2{
 						text-transform: uppercase;
 						color:$red;
+						font-size: 26px;
 						display: block;
 						text-align: center;
 						padding: 0 0 12px 0;
@@ -310,6 +388,7 @@
 
 					p.marker{
 						text-align: center;
+						font-size: 17px;
 						color:$grey;
 						display: block;
 					}
@@ -327,12 +406,7 @@
 						&.title{
 
 						}
-						&.tel{
-
-						}
-						a{
-							color:$grey;
-						}
+						&.tel{}
 					}
 					.office-contact{
 						padding: 12px 0 12px 0;
@@ -340,15 +414,14 @@
 						width: 100%;
 						p.marker{
 							text-align: center;
+							font-size: 17px;
 							color:$grey;
 							display: block;
 						}
 						button{
 							display: block;
-							font-size: 14px;
+							font-size: 17px;
 							margin:12px auto;
-							letter-spacing: 1px;
-							font-weight: 400;
 
 						}
 					}
@@ -358,8 +431,9 @@
 				position: absolute;
 				z-index: 4;
 				width: 100%;
+				padding-top: 10px;
+				margin-top: 119px;
 				cursor: pointer;
-				bottom: -200px;
 
 				h2{
 					top: -72px;
@@ -379,15 +453,15 @@
 					}
 				}
 				span{
-					position: relative;
 					font-size: 26px;
-					font-weight: 400;
 					display: block;
 					text-align: center;
-					padding: 0;
+					padding: 70px 0 12px 0;
 					text-transform: uppercase;
-					color:$grey;
+					color:$white;
 					width: 100%;
+
+font-weight:700;
 					&.town{
 						color:$red;
 					}
@@ -410,14 +484,14 @@
 							content: '';
 							position: absolute;
 							width: 100%;
-							height:1500px;
+							height:970px;
 							bottom:10%;
 							left:0;
 							@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 							@include transition(opacity 0.3s ease-out);
 							background: $red;
 							z-index: 1;
-							// @include background-image(linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.3) 100%));
+							@include background-image(linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.3) 100%));
 						}
 					}
 				}
@@ -435,7 +509,7 @@
 							left:0;
 							@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 							@include transition(opacity 0.3s ease-out);
-							background: $rodeo-dust;
+							background: $grey;
 							z-index: 1;
 						}
 					}
@@ -443,6 +517,7 @@
 				.contact-name{
 					position: absolute;
 					opacity: 0;
+					filter: alpha(opacity=0);
 					z-index: -1;
 					width: 100%;
 				}
@@ -456,9 +531,9 @@
 
 					.angle-bottom{
 						position: relative;
-						margin-bottom: -123px;
+						margin-bottom: -82px;
 						padding-bottom: 70px;
-		 				background: $rodeo-dust;
+		 				background: $grey;
 					 	&:after{
 							content: '';
 							position: absolute;
@@ -468,7 +543,7 @@
 							left:0;
 							@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 							@include transition(opacity 0.3s ease-out);
-							background: rodeo-dust;
+							background: $grey;
 							z-index: 1;
 						}
 					}
@@ -479,6 +554,7 @@
 						width: 100%;
 						height: 750px;
 						padding: 110px 0;
+
 						opacity: 1;
 						filter: alpha(opacity=1);
 						&:before{
@@ -498,10 +574,15 @@
 							top:60px;
 						}
 					}
+
+
 					.contact-name{
 						opacity: 1;
+						filter: alpha(opacity=1);
 						z-index: 4;
 						h2{
+
+font-weight:700;
 							padding-top: 20px;
 							text-transform: uppercase;
 							display: block;
@@ -539,11 +620,11 @@
 		}
 	}
 
-	#contact-form{
- 		margin-top: 193px;
+	#contact-form-section{
+ 		margin-top: 243px;
  		top: 93px;
  		&.active{
- 			margin-top: 16px;
+ 			margin-top:94px;
  		}
 
 		.contact-container {
@@ -560,7 +641,7 @@
 			}
 			.form{
 				p{
-					padding-top: 10px;
+					padding-top: 22px;
 				}
 			}
 		}
@@ -588,10 +669,6 @@
 		.close-form{
 			top:177px;
 		}
-	}
-
-	#footer{
-		top: 85px;
 	}
 
 }
