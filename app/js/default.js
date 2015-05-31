@@ -12,7 +12,7 @@
   },
 
   responsive: function (){
- 
+
     var $window = $(window);
     var $pane = $('.video-wrap');
 
@@ -29,19 +29,19 @@
 
     checkWidth();
     $(window).resize(checkWidth);
- 
-  
+
+
 
   },
- 
+
 
   anchorTag: function () {
- 
+
     if (window.location.hash && window.location.hash.match('#customer-devotion')){
       var slideNumber= window.location.hash.replace('#customer-devotion','');
       $('html, body').animate({scrollTop: $('#customer-devotion').offset().top -240 }, 'slow');
           $('a.goto').eq(slideNumber).trigger('click')// this assumes you have an a.panel-open for each image
-    } 
+    }
   },
 
   placeholder: function() {
@@ -77,19 +77,23 @@
     $('#header').load('nav-header.html', function(){
 
       module.slideMenuNavigation();
-       
+
       function headerHiddenPannel (){
- 
+
         $('.cta a').on('click', function (e){
           e.preventDefault();
 
             if ($(this).hasClass('Contact-form')) {
 
               var cloner = $('#clonethis').clone();
+
+              // Change the form ID
+              cloner.find('#footer-contact-form').attr('id', 'header-contact-form');
+
               $('.Contact-div').html(cloner);
               $('.Contact-div .close-form').addClass('header-close').removeClass('close-form');
 
-              
+
                 // if already selected
                 if ($(this).hasClass('selected')) {
                   $('.Contact-div').removeClass('open');
@@ -108,12 +112,12 @@
                 $('.header-close').bind('click', function(e) {
                   e.preventDefault();
                   $('.Contact-div').removeClass('open');
-                    
+
                   $('body').find('a.Contact-form.selected').removeClass('selected');
                 });
-            } 
+            }
             else if ($(this).hasClass('Search')) {
- 
+
                 if ($(this).hasClass('selected')) {
                   $('.Search-div').removeClass('open');
                   $(this).removeClass('selected');
@@ -127,12 +131,12 @@
                 $('.header-close').bind('click', function(e) {
                   e.preventDefault();
                   $('.Search-div').removeClass('open');
-                    
+
                   $('body').find('a.Search.selected').removeClass('selected');
                 });
             }
         });
-  
+
       }
       headerHiddenPannel();
 
@@ -146,13 +150,13 @@
           return false;
         });
 
-      } 
+      }
 
     });
 
-    $('#contact-form').load('contact-form.html', function(){
+    $('#contact-form-section').load('contact-form.html', function(){
       module.accordianContactForm();
- 
+
     });
 
     $('#footer').load('footer.html',function(){
@@ -172,7 +176,7 @@
           //do something otherwise
         }
       });
-      
+
     // scroll body to 0px on click
     scrollToTop.click(function () {
       body.animate({
@@ -187,12 +191,12 @@
     if ($('#whatwedo').is(':visible')) {
       $('.video-content').on('click', function(){
       $('html,body').animate({scrollTop: $(this).offset().top -63 }, 800);
-      
+
       $('video').get(0).play();
 
         $(this).parent().toggleClass('active');
-             
- 
+
+
 
       });
       $('video').bind('ended', function() {
@@ -201,13 +205,13 @@
          $('video')[0].loop = false;
          this.pause();
       });
- 
+
     }
   },
 
   accordianContactForm: function (){
 
-    var allPanels = $('form.form');
+    var allPanels = $('#footer-contact-form'); //$('form.form');
     var content = $(this).find('.form');
     var buttonH2 = $(this).find('.close-form');
     var buttonIcon = $(this).find('h2.contact');
@@ -218,7 +222,7 @@
         $(this).toggleClass('on');
         return false;
     });
-    
+
 
 
     if ($('#home').is(':visible')) {
@@ -235,7 +239,7 @@
       $('.contact-container').toggleClass('toggled');
     });
 
-  
+
       $('#home #form').css({
         display: 'block'
       });
@@ -257,23 +261,23 @@
   },
 
   slideMenuNavigation: function() {
-  
+
     var $window = $(window);
     var $pane = $('#menu');
 
     function checkHeight() {
       var height = parseInt($("#menu").height());
         var windowsize = $window.height();
-    
+
           $("#menu").height($(".navigation").height());
-          
+
     }
     checkHeight();
     $(window).resize(checkHeight);
- 
-          
+
+
       $('#sidebar-toggle').on('click', function() {
- 
+
         $(this).toggleClass('active');
         var toggle_el = $(this).data('toggle');
         $(toggle_el).toggleClass('open-sidebar');
@@ -293,4 +297,3 @@
 $(document).ready(function () {
   module.init();
 });
- 
