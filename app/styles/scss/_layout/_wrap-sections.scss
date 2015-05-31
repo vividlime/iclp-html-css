@@ -1,0 +1,13 @@
+// Wrap Sections
+
+.wrap-section{
+  @include transition(opacity 0.3s ease);
+  position:absolute;
+  top:0;
+  display:block;
+  max-width: 1600px;
+
+  .controls{
+    @include arrowLeftRight;
+  }
+}
