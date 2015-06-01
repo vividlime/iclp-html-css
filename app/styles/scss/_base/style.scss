@@ -191,7 +191,7 @@ body {
       top:48px;
     }
   }
-  #container, #contact-form-section, #footer{
+  #container, #contact-form, #footer{
     position:relative;
     width: 100%;
     height: 100%;
@@ -203,14 +203,14 @@ body {
   }
 
   &.open-sidebar{
-    #container, #contact-form-section, #footer{
+    #container, #contact-form, #footer{
       width:calc(100% - (320px));
       @include transform (translate3d(320px, 0, 0));
       @include breakpoint(tabletPortrait) {
         width:100%;
       }
     }
-     #contact-form-section, #footer{
+     #contact-form, #footer{
       width:calc(100% - (320px));
       @include transform (translate3d(160px, 0, 0));
     }
