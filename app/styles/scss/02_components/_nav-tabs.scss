@@ -7,11 +7,20 @@
 .nav-tabs > li {
     margin-bottom: 0;
 
+    a {
+        color: $grey;
+        font-weight: bold;
+
+        &:hover {
+
+        }
+    }
+
     &.active {
-        background-color: $rodeo-dust-light;
 
         a {
-
+            color: $grey;
+            font-weight: bold;
         }
     }
 

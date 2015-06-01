@@ -18,27 +18,33 @@ MASTER PARTIAL SCSS IMPORT FILE
 @import "_vendor/_vendor";
 
 
+// Custom mixins
 @import "_mixins/_mixins";
 
 
+// Helper Classes
 @import "_helpers/_helpers";
 
 
+// Base styling
 @import "_base/_base";
 
 
+// Layouts
 @import "_layout/_layout";
 
 
-
-
-
+// Elements (smallest items)
 @import "01_elements/_elements";
 
 
+// Components (Cominination of elements)
 @import "02_components/_components";
 
 
+// Modules (Combinations of components)
 @import "03_modules/_modules";
 
+
+// Pages
 @import "04_pages/_pages";

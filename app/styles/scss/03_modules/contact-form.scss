@@ -1,4 +1,6 @@
 .contact-container{
+    background-color: $rodeo-dust;
+
 	@include transition((all 0.3s ease-out));
 
 	@include breakpoint(phonePortrait) {
@@ -355,12 +357,12 @@
 	}
 }
 
-#contact-us #contact-form-section{
+#contact-us #contact-form{
 	.close-form{
 		display: none;
 	}
 }
-#home #contact-form-section{
+#home #contact-form{
 	.close-form{
 		display: none;
 	}

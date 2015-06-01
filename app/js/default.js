@@ -87,9 +87,6 @@
 
               var cloner = $('#clonethis').clone();
 
-              // Change the form ID
-              cloner.find('#footer-contact-form').attr('id', 'header-contact-form');
-
               $('.Contact-div').html(cloner);
               $('.Contact-div .close-form').addClass('header-close').removeClass('close-form');
 
@@ -154,7 +151,7 @@
 
     });
 
-    $('#contact-form-section').load('contact-form.html', function(){
+    $('#contact-form').load('contact-form.html', function(){
       module.accordianContactForm();
 
     });
@@ -211,7 +208,7 @@
 
   accordianContactForm: function (){
 
-    var allPanels = $('#footer-contact-form'); //$('form.form');
+    var allPanels = $('form.form');
     var content = $(this).find('.form');
     var buttonH2 = $(this).find('.close-form');
     var buttonIcon = $(this).find('h2.contact');

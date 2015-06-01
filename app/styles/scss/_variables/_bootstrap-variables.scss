@@ -57,23 +57,23 @@ $headings-color:          inherit !default;
 //##
 
 //=== Shared nav styles
-$nav-link-padding:                          10px 15px !default;
-$nav-link-hover-bg:                         $rodeo-dust-lighter !default;
+$nav-link-padding:                          20px 50px !default;
+$nav-link-hover-bg:                         $rodeo-dust-light !default;
 
 $nav-disabled-link-color:                   $lighter-grey !default;
 $nav-disabled-link-hover-color:             $lighter-grey !default;
 
 //== Tabs
-$nav-tabs-border-color:                     #ddd !default;
+$nav-tabs-border-color:                     $rodeo-dust-light !default;
 
-$nav-tabs-link-hover-border-color:          $lighter-grey !default;
+$nav-tabs-link-hover-border-color:          rodeo-dust-light !default;
 
-$nav-tabs-active-link-hover-bg:             $rodeo-dust-lighter !default;
+$nav-tabs-active-link-hover-bg:             $rodeo-dust-light !default;
 $nav-tabs-active-link-hover-color:          $grey !default;
-$nav-tabs-active-link-hover-border-color:   #ddd !default;
+$nav-tabs-active-link-hover-border-color:   $rodeo-dust-light !default;
 
-$nav-tabs-justified-link-border-color:            #ddd !default;
-$nav-tabs-justified-active-link-border-color:     #f00 !default;
+$nav-tabs-justified-link-border-color:            $rodeo-dust-light !default;
+$nav-tabs-justified-active-link-border-color:     $rodeo-dust-light !default;
 
 
 //** Disabled cursor for form controls and buttons.
