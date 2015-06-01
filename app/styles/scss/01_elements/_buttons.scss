@@ -73,6 +73,16 @@ a.button,
   }
 
 
+  &.white {
+    &:link,
+    &:hover {
+      color: $white;
+
+    }
+
+  }
+
+
   &.transparent {
     background-color: transparent;
     border: 1px solid $white;
