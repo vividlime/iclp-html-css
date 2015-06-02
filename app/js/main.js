@@ -258,8 +258,8 @@
           percentPosition: true,
           layoutMode: 'masonry',
           masonry: {
-              // columnWidth: '.grid-sizer',
-              gutter: 0
+              columnWidth: '.grid-sizer',
+              gutter: '.gutter-sizer'
           }
       });
 
