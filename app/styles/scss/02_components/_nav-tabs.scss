@@ -18,10 +18,18 @@
 
     &.active {
 
-        a {
+        a:link,
+        a:hover {
             color: $grey;
             font-weight: bold;
+
+            @include breakpoint(phonePortrait) {
+                color: $white;
+                background-color: $turquoise;
+            }
         }
+
+
     }
 
     @include breakpoint(bigDesktop) {
