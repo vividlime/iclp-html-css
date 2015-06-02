@@ -141,6 +141,7 @@
 									font-size: 17px;
 									padding: 15px 15px;
 									top: 0;
+									margin: 0;
 								}
 								p{
 									color: $white;
@@ -262,8 +263,8 @@
 	}
 .modal {
 	a.close-menu:after{
-	right: -570px;
-	top: -360px;
+	right: -580px;
+	top: -180px;
 	position: absolute;
 	content: "\e082";
 	color: rgba(255, 255, 255, 1);
@@ -296,11 +297,11 @@
 				content: "";
 				position: absolute;
 				width: 100%;
-				height: 22%;
+				height: 27%;
 				background: $turquoise;
 				@include transform (translateY(-35px) skewY(-4deg));
 				@include breakpoint(phonePortrait){
-					height: 22%;
+					// height: 22%;
 					@include transform (translateY(-15px) skewY(-4deg));
 				}
 			}

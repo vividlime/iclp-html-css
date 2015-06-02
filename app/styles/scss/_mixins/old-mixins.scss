@@ -222,7 +222,8 @@
       only screen and (min-device-pixel-ratio: 2),
       only screen and (max-width: #{$bp-iphone5-max})
                   and (min-width: #{$bp-iphone-min})
-                  and (orientation: portrait){
+                  // and (orientation: portrait)
+                  {
       @content;
 
     }
@@ -233,7 +234,8 @@
       only screen and (min-device-pixel-ratio: 2),
       only screen and (max-width: #{$bp-iphone5-max})
                   and (min-width: #{$bp-iphone-min})
-                  and (orientation: landscape){
+                  // and (orientation: landscape)
+                  {
       @content;
     }
   } @else if $point == tabletPortrait {

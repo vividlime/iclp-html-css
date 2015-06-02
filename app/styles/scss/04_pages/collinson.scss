@@ -42,7 +42,10 @@
 									color: $grey;
 								}
 								h2{
-									text-transform: inherit
+									text-transform: inherit;
+									@include breakpoint(phonePortrait){
+										font-size: 22px;
+									}
 								}
 								.cg-logo{
 									display: block;
