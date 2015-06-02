@@ -36,7 +36,19 @@
 						.sub-heading{
 							h3{
 								color: $grey;
+								padding: 20px 16% 0px 16%;
+								@include breakpoint(phonePortrait){
+									padding: 0 20px 40px 20px; 
+								}
 							}
+							.button{
+									z-index: 2;
+									position: relative;
+									height: 100%;
+									width: auto;
+									display: block;
+									margin-top: 20px;
+								}
 							.titles{
 								h1,h2,h3,blockquote{
 									color: $grey;
@@ -59,14 +71,7 @@
 								h2{
 									text-transform: inherit
 								}
-								.button{
-									z-index: 1;
-									position: relative;
-									height: 100%;
-									width: auto;
-									display: block;
-									margin-top: 20px;
-								}
+
 							}
 						}
 
@@ -87,7 +92,8 @@
 					}
 					&:first-child{
 						.copy{
-							padding-top:140px;
+							padding-top:50px;
+							z-index: 5;
 							@include breakpoint(phonePortrait) {
 								padding-top: 50px;
 							}
@@ -133,6 +139,9 @@
 									text-indent: 0.01px;
 									text-overflow: '';
 									margin-left: 40px;
+									@include breakpoint(phonePortrait){
+									width: 80%;
+								}
 									option{
 										color: $grey;
 										background: $white;
@@ -168,11 +177,20 @@
 							text-transform: uppercase;
 							letter-spacing: 1px;
 						}
-						td,tr {
+						td {
 							font-size: 17px;
 							padding: 0 20px;
 							vertical-align: middle;
 							height: 50px;
+							@include breakpoint(phonePortrait){
+								&:last-of-type{
+									display: none;
+								}
+								display: block;
+								padding-top: 10px;
+								height: 35px;
+								line-height: 1em;
+							}
 							.button{
 								float: right;
 								background: $turquoise;
@@ -181,6 +199,20 @@
 								}
 								&:hover{
 									background: $ming;
+								}
+							}
+							a{
+								font-weight: bold;
+							}
+						}
+						tr {
+							font-size: 17px;
+							padding: 0 20px;
+							vertical-align: middle;
+							height: 50px;
+							@include breakpoint(phonePortrait){
+								&:first-of-type{
+									display: none;
 								}
 							}
 							a{
