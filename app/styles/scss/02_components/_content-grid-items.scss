@@ -1,22 +1,31 @@
 // Grid entry items (LI items) E.g. Resources page
 
-.content-grid-item {
-    position: relative;
-    float: left;
-    margin-bottom: 30px;
-    color: $white;
-
+.content-grid-item,
+.grid-sizer {
     @include breakpoint(bigDesktop) {
-        width: 33.333%;
+        width: 32%;
     }
 
     @include breakpoint(tabletPortrait) {
-        width: 50%;
+        width: 48%;
     }
 
     @include breakpoint(phonePortrait) {
         width: 100%;
     }
+}
+
+.gutter-sizer {
+    width: 2%;
+}
+
+.content-grid-item {
+    position: relative;
+    float: left;
+    margin-bottom: 20px;
+    color: $white;
+
+
 
     .content-item__header {
         position: relative;
@@ -38,7 +47,7 @@
             height: 50px;
             bottom: -30px;
             left: 0;
-            z-index: 1;
+            z-index: 20;
 
             @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
 
@@ -53,7 +62,7 @@
             height: 50px;
             bottom: -30px;
             left: 0;
-            z-index: 1;
+            z-index: 20;
 
             @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
 
@@ -68,7 +77,7 @@
             height: 50px;
             bottom: -30px;
             left: 0;
-            z-index: 1;
+            z-index: 20;
 
             @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
 
@@ -83,7 +92,7 @@
             height: 50px;
             bottom: -30px;
             left: 0;
-            z-index: 1;
+            z-index: 20;
 
             @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
 
