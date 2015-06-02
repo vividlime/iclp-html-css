@@ -6,7 +6,7 @@
 	width: 100%;
 	@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 	.crumbs {
-		padding: 25px 20px;
+		padding: 0.8em;
 		margin: 0;
 		li {
 			display: inline-block;
