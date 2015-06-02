@@ -74,8 +74,9 @@
 			&.head,
 			&.hero-services{
 				position: relative;
-				padding: 0px 0 0px 0;
+				padding: 0;
 				z-index: 1;
+				background: $ebb;
 				.nav-icons{
 					position: relative;
 					top: 0;
@@ -84,7 +85,7 @@
 					background: #ebe7e4;
 					.icons{
 						display: table;
-						padding: 20px 0 20px 0;
+						padding: 0;
 						max-width: 1170px;
 						margin: auto;
 						&:first-of-type {
@@ -137,6 +138,9 @@
 							}
 							h2.animated{
 								padding-top: 220px;
+								@include breakpoint(phonePortrait) {
+									margin:18px 0 0 0;
+								}
 								&.team:before {
 									top: 18px;
 									left: 50%;
@@ -180,6 +184,9 @@
 								    width:60%;
 								    height: 1px;
 								    background:$white;
+								    @include breakpoint(phonePortrait){
+								    	display: none;
+								    }
 									}
 								}
 
