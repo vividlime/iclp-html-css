@@ -79,6 +79,7 @@
 						}
 					}
 					.copy{
+						padding: 10px 20px;
 						h2{
 							color: $grey;
 						}
@@ -88,11 +89,12 @@
 								padding-right: 0px;
 							}
 						}
+
 						.top-table{
 							background: $turquoise;
 							height: 100px;
 							width: auto;
-							padding: 20px 5px;
+							padding: 20px;
 							.country{
 								display: inline-block;
 								position: relative;
@@ -112,11 +114,26 @@
 									font-weight: 300;
 									color: $grey;
 									-webkit-appearance: none;
-									&[name="country"]{
-										margin-left: 40px;
+									-moz-appearance: none;
+									text-indent: 0.01px;
+									text-overflow: '';
+									margin-left: 40px;
+									option{
+										color: $grey;
+										background: $white;
+										padding: 10px 0;
 									}
 								}
 							}
+						}
+						.view-load{
+							margin-top: 30px;
+							width: 100%;
+							height: auto;
+							background: $rodeo-dust-lighter;
+							color: $dark-grey;
+							box-shadow: none;
+							font-weight: bold;
 						}
 						table {
 							width: 100%;
@@ -127,15 +144,15 @@
 							}
 						th{
 							font-size: 18px;
-							font-weight: 400;
+							font-weight: bold;
 							background: $westar;
-							padding: 10px;
+							padding: 0 20px;
 							height: 80px;
 							vertical-align: middle;
 							text-transform: uppercase;
 						}
 						td,tr {
-							padding: 10px;
+							padding: 0 20px;
 							vertical-align: middle;
 							height: 50px;
 							.button{

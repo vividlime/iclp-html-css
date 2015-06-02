@@ -36,6 +36,11 @@ label{
 			content: "\e037";
 		}
 	}
+  &.globe{
+    &:before{
+      content: "\e037";
+    }
+  }
   &.message{
     &:before{
       content: "\e060";

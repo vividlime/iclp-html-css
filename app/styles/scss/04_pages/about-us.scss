@@ -29,7 +29,7 @@
 					 
 							.angle{
 								&:before{
-									@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
+									// @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-5deg) skewX(0deg));
 								} 
 							}
 							.sub-heading{
