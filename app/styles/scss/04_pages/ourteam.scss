@@ -254,13 +254,15 @@
 		}
 	}
 
-.titles:before {
+.titles{
+	@include breakpoint(phonePortrait){
+	// margin-top: 10px;
+	}
+	&:before, &:after {
 	display: none;
+	}
 }
 
-.titles:after{
-		display: none;
-	}
 .modal {
 	a.close-menu:after{
 	right: -580px;

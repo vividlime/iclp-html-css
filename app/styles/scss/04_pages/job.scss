@@ -29,7 +29,8 @@
 
 						.angle{
 							&:before{
-								@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
+								z-index: 2;
+								// @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 							}
 						}
 
