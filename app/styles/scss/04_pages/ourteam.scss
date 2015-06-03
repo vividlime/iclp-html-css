@@ -123,14 +123,16 @@
 								}
 							}
 							.topper{
-								background: $turquoise;  
+								background: $turquoise; 
+								 @include transition(all 0.3s ease-out);
 								&:before {
 									content: "";
 									position: absolute;
 									width: 100%;
 									height: 30%;
 									background: $turquoise; 
-									@include transform (translateY(10px) skewY(-4deg));
+									@include transition(all 0.3s ease-out);
+									@include transform (translateY(25px) skewY(-4deg));
 									z-index: -2;
 									@include breakpoint(tabletPortrait){
 										@include transform (translateY(20px) skewY(-4deg));
@@ -177,8 +179,8 @@
 						            display: block;
 						            position: relative;
 						            right: -10%;
-						            top: 60px;
-						            @include transform (scale(1.8));
+						            // top: 60px;
+						            @in transform (scale(1.8));
 						            &:hover {
 						            	/*background: rgba(0,0,0,1);*/
 						            }
@@ -186,12 +188,12 @@
 						            	max-width: 100%;
 						            	right: -10%;
 						            	top: 0px;
-						            	@include transform (scale(1));
+						            	// @include transform (scale(1));
 						            }
 						            @include breakpoint(phonePortrait){
 						            	/*top: -40px;*/
 						            	right: -20%;
-						            	@include transform (scale(1));
+						            	// @include transform (scale(1));
 			            }
 								}
 							}
@@ -283,6 +285,7 @@
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
 	cursor: pointer;
+	z-index: 2;
 	@include breakpoint(tabletPortrait){
 		display: none;
 	}
@@ -299,7 +302,7 @@
 				content: "";
 				position: absolute;
 				width: 100%;
-				height: 27%;
+				height: 23%;
 				background: $turquoise;
 				@include transform (translateY(-35px) skewY(-4deg));
 				@include breakpoint(phonePortrait){
@@ -311,10 +314,10 @@
 				height: auto;
 				width: 100%;
 				position: relative;
-				top: 50px;
+				// top: 50px;
 				@include breakpoint(phonePortrait){
 
-					@include transform (scale(1.2));
+					// @include transform (scale(1.2));
 				}
 			}
 
