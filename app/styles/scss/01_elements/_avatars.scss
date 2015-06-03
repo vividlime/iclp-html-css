@@ -1,8 +1,10 @@
 // Avatars
 
 .avatar {
+    position: relative;
     border: 5px solid $white;
     @include border-radius(50%);
+    z-index: 1;
 }
 
 .avatar--small {
