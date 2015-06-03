@@ -37,9 +37,9 @@
 							h3{
 								color: $grey;
 								padding: 20px 16% 0px 16%;
-								@include breakpoint(phonePortrait){
-									padding: 0 20px 40px 20px; 
-								}
+								// @include breakpoint(phonePortrait){
+								// 	padding: 0px 20px 40px 20px; 
+								// }
 							}
 							.button{
 									z-index: 2;
@@ -139,6 +139,9 @@
 									text-indent: 0.01px;
 									text-overflow: '';
 									margin-left: 40px;
+									line-height: normal;
+									cursor: pointer;
+									width: 100%;
 									@include breakpoint(phonePortrait){
 									width: 80%;
 								}
