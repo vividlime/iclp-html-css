@@ -112,6 +112,9 @@
 							background: $turquoise;
 							border-right: 15px solid $ebb;
 							overflow: hidden;
+							p{
+								margin: 10px 0;
+							}
 
 							&:after{
 						    content:'';
