@@ -204,7 +204,7 @@ h2.animated{
         top: 23px;
         margin-left: -14px;
         font-size: 27px;
-        
+
       }
     }
     &:after{
@@ -300,7 +300,7 @@ h2.animated{
       left:50%;
       margin-left: -15px;
   		font-size: 1.8em;
-    	content: "\e09e";
+    	content: "\e012";
     }
   }
   &.automobile{
@@ -309,7 +309,7 @@ h2.animated{
       left:50%;
       margin-left: -15px;
   		font-size: 1.8em;
-    	content: "\e087";
+    	content: "\e007";
     }
   }
   &.financial-services{
@@ -318,7 +318,7 @@ h2.animated{
       left:50%;
       margin-left: -15px;
   		font-size: 1.8em;
-    	content: "\e06b";
+    	content: "\e025";
     }
   }
   &.hotel{
@@ -327,7 +327,7 @@ h2.animated{
       left:50%;
       margin-left: -15px;
   		font-size: 1.8em;
-    	content: "\e015";
+    	content: "\e08c";
     }
   }
   &.luxury{
@@ -336,7 +336,7 @@ h2.animated{
       left:50%;
       margin-left: -15px;
   		font-size: 1.8em;
-    	content: "\e001";
+    	content: "\e043";
     }
   }
   &.retail{
@@ -345,16 +345,16 @@ h2.animated{
       left:50%;
       margin-left: -15px;
   		font-size: 1.8em;
-    	content: "\e001";
+    	content: "\e035";
     }
   }
-  &.technology{
+  &.technology2{
   	&:before{
   		top: 20px;
       left:50%;
       margin-left: -15px;
   		font-size: 1.8em;
-    	content: "\e001";
+    	content: "\e010";
       @include breakpoint(tabletPortrait) {
         font-size: 30px;
       }

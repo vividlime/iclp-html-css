@@ -1,0 +1,33 @@
+// Testimonials
+
+.testimonial {
+    position: relative;
+    text-align: center;
+    background-color: $rodeo-dust-lighter;;
+    padding: 30px;
+
+    &.left,
+    &.right {
+         width: 50%;
+    }
+
+    &.left {
+        float: left;
+        margin-right: 30px;
+    }
+
+    &.right {
+        float: right;
+    }
+
+    .testimonial-text {
+        font-style: italic;
+        font-weight: bold;
+        margin-bottom: 20px;
+
+    }
+
+    .testimonial-author {
+
+    }
+}

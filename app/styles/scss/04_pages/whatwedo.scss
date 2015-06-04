@@ -15,13 +15,13 @@
 										background-image: url(../assets/images/svg/Banner-WhatWeDo-JourneyCurve-L1.svg);
 									}
 								}
-							}	
+							}
 						}
 					}
 				}
 			}
 
- 
+
 
 
 			&.hero-whatwedo{
@@ -54,7 +54,7 @@
 					@include breakpoint(phonePortrait) {
 						width: 100%;
 					}
-					
+
 				}
 				a.video-content:hover ~ .video-wrap:after{
 					background: rgba(0,0,0,0.8);
@@ -103,9 +103,9 @@
 						background: rgba(0,0,0,0.2);
 					}
 				}
- 
-				
-  
+
+
+
 				h2{
 					position: absolute;
 					top: 30%;
@@ -130,13 +130,13 @@
 			&.copy-content{
 				&:before{
 					background-image: url(../assets/images/svg/WhatWeDo-Body-JourneyCurve.svg);
-					 
+
 				}
 				.copy-wrap{
 					&:nth-child(even){
 						background:$lighter-grey;
 					}
-					.copy{ 
+					.copy{
 						h2{
 							color: $grey;
 						}
@@ -169,7 +169,7 @@
 					padding: 0 20px;
 					@include breakpoint(desktop) {
 						padding:0 60px;
-					} 
+					}
 
 					h2{
 						display: block;
@@ -192,18 +192,29 @@
 							font-size: 17px;
 							display: table-cell;
 						}
-					}	 
+					}
 				}
 			}
 		}
 
-
-
-
-
-
 	}
 
 
+	.nav-icons{
+
+	    .icons{
+
+
+	        a.icon-wrap{
+	        	float: left;
+
+	            width: 25%;
+
+	            @include breakpoint(phonePortrait) {
+			        width: 100%;
+			    }
+	        }
+	    }
+	}
 
 }

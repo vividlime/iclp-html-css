@@ -1,0 +1,106 @@
+// Block Nav Grid Items (E.g. What we do page Industry Sectors grid)
+
+.block-nav-grid__item {
+    position: relative;
+    float: left;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    height: 250px;
+
+
+    @include breakpoint(bigDesktop) {
+        width: 25%;
+
+        &:nth-child(4) {
+            padding-right: 0;
+        }
+    }
+
+    @include breakpoint(tabletPortrait) {
+        width: 100%;
+        height: auto;
+        padding-right: 0;
+
+        h2 {
+
+
+            &.animated {
+                padding: 0 0 0 30px;
+                margin: 0;
+                text-align: left;
+
+                &.airline:before {
+                    top: 0;
+                    left: 10px;
+                    font-size: 1em;
+                }
+                &.automobile:before {
+                    top: 0;
+                    left: 10px;
+                    font-size: 1em;
+                }
+                &.financial-services:before {
+                    top: 0;
+                    left: 10px;
+                    font-size: 1em;
+                }
+                &.hotel:before {
+                    top: 0;
+                    left: 10px;
+                    font-size: 1em;
+                }
+                &.luxury:before {
+                    top: 0;
+                    left: 10px;
+                    font-size: 1em;
+                }
+                &.retail:before {
+                    top: 0;
+                    left: 10px;
+                    font-size: 1em;
+                }
+                &.technology2:before {
+                    top: 0;
+                    left: 10px;
+                    font-size: 1em;
+                }
+            }
+        }
+
+        .wrapper-circle {
+            display: none;
+        }
+
+    }
+
+
+}
+
+.block-nav-grid__item-link {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    background-color: $turquoise;
+    @include transition(background-color .3s);
+
+    @include breakpoint(bigDesktop) {
+        padding: 30px;
+    }
+
+    @include breakpoint(tabletPortrait) {
+        padding: 20px;
+    }
+
+    &:link,
+    &:visited,
+    &:hover {
+        color: $white;
+    }
+
+    &:hover {
+        background-color: darken($turquoise, 20%);
+    }
+}
