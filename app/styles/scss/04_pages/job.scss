@@ -86,6 +86,7 @@
 						}
 					}
 					.copy{
+						max-width: 814px;
 						h2{
 							color: $grey;
 						}
@@ -93,6 +94,11 @@
 							padding-right: 50%;
 							@include breakpoint(tabletPortrait) {
 								padding-right: 0px;
+							}
+						}
+						ul {
+							li{
+								padding-right: 0;
 							}
 						}
 					}
