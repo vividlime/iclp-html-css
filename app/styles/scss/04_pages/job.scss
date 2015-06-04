@@ -334,6 +334,62 @@
 					padding:110px 0 20px 0;
 				}
 			}
+			.top-form{
+							// background: $turquoise;
+							// height: 100px;
+							// width: auto;
+							// padding: 20px;
+							.country{
+								display: inline-block;
+								position: relative;
+								background: $white;
+								width: 100%;
+								label{
+									position: absolute;
+									top: 15px;
+									left: 10px;
+									display: inline-block;
+									height: 100%;
+									font-size: 1.3em;
+								}
+								select {
+									height: 52px;
+									border: none;
+									font-size: 18px;
+									font-weight: 300;
+									color: $grey;
+									-webkit-appearance: none;
+									-moz-appearance: none;
+									text-indent: 0.01px;
+									text-overflow: '';
+									margin-left: 40px;
+									line-height: normal;
+									cursor: pointer;
+									width: 90%;
+									@include breakpoint(phonePortrait){
+									width: 80%;
+								}
+									option{
+										color: $grey;
+										background: $white;
+										padding: 10px 0;
+									}
+								}
+							}
+						}
+						.fieldset-wrap:first-child {
+							padding-right: 0px;
+						}
+		.input-group{
+			height: 46px;
+			input[type="file"]{
+				position: relative;
+				height: 46px;
+				top: 10px;
+				cursor: pointer;
+				width: 100%;
+			}
+		}
 		}
 	}
 }

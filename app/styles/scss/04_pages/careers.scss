@@ -461,12 +461,16 @@
 					padding:110px 0 20px 0;
 				}
 			}
-		.upload{
+		.input-group{
 			height: 46px;
 			input[type="file"]{
-				float: right;
+				position: relative;
+				height: 46px;
+				top: 10px;
+				cursor: pointer;
+				width: 100%;
 			}
 		}
-		}
+	}
 	}
 }
