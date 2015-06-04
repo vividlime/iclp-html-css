@@ -131,7 +131,7 @@
 								select {
 									height: 52px;
 									border: none;
-									font-size: 16px;
+									font-size: 18px;
 									font-weight: 300;
 									color: $grey;
 									-webkit-appearance: none;
@@ -461,6 +461,12 @@
 					padding:110px 0 20px 0;
 				}
 			}
+		.upload{
+			height: 46px;
+			input[type="file"]{
+				float: right;
+			}
+		}
 		}
 	}
 }

@@ -51,6 +51,11 @@ label{
 			content: "\e090";
 		}
 	}
+  &.folder-alt{
+    &:before{
+      content:"\e039";
+    }
+  }
 }
 
 	ul{
