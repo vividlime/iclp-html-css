@@ -142,6 +142,7 @@
 									line-height: normal;
 									cursor: pointer;
 									width: 100%;
+									outline: 0;
 									@include breakpoint(phonePortrait){
 									width: 80%;
 								}
@@ -462,13 +463,14 @@
 				}
 			}
 		.input-group{
-			height: 46px;
+			height: 49px;
 			input[type="file"]{
 				position: relative;
-				height: 46px;
+				height: 49px;
 				top: 10px;
 				cursor: pointer;
 				width: 100%;
+				outline: 0;
 			}
 		}
 	}

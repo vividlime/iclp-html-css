@@ -20,6 +20,9 @@ footer.footer{
 		background: $grey;
 		@include transform (skewY(-4deg));
 	}
+	a {
+		color: $white;
+	}
 	.footer-content{
 		position: relative;
 		max-width: 1170px;

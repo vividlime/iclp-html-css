@@ -81,6 +81,7 @@ p{
   }
 }
 input{
+  outline: 0;
   @include input;
 
 }
