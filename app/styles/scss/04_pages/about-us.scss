@@ -110,8 +110,11 @@
 							@include transition((all 0.5s ease-out));
 							@include transform(translateZ(0px));
 							background: $turquoise;
-							border-right: 15px solid $ebb;
+							// border-right: 15px solid $ebb;
 							overflow: hidden;
+							p{
+								margin: 10px 0;
+							}
 
 							&:after{
 						    content:'';

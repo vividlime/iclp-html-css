@@ -142,6 +142,7 @@
 									line-height: normal;
 									cursor: pointer;
 									width: 100%;
+									outline: 0;
 									@include breakpoint(phonePortrait){
 									width: 80%;
 								}
@@ -461,12 +462,16 @@
 					padding:110px 0 20px 0;
 				}
 			}
-		.upload{
-			height: 46px;
+		.input-group{
+			height: 49px;
 			input[type="file"]{
-				float: right;
+				position: relative;
+				height: 49px;
+				top: 10px;
+				cursor: pointer;
+				width: 100%;
 			}
 		}
-		}
+	}
 	}
 }
