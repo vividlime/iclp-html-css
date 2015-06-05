@@ -42,7 +42,7 @@
 				padding: 0;
 				overflow: hidden;
 				margin-top: 0px;
-				z-index: 2;
+				z-index: 5;
 				width: 100%;
 				background: inherit;
 				.team-outer{
@@ -260,9 +260,9 @@
 	@include breakpoint(phonePortrait){
 	// margin-top: 10px;
 	}
-	&:before, &:after {
-	display: none;
-	}
+	// &:before, &:after {
+	// display: none;
+	// }
 }
 
 .modal {
