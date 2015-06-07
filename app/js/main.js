@@ -1,4 +1,3 @@
- // Updated WITH Joe's code
 
 var $isotopeContainer,
     $blazy;
@@ -10,9 +9,10 @@ var $isotopeContainer,
     this.twitter();
     this.playvideos();
     // this.playnewvideos();
-    this.setupIsotope();
     this.setupLazyLoad();
-    this.setupContentFilter();
+    this.setupIsotope();
+    this.setupContentFilters();
+    this.setupViewMoreButtons("_resource-items-2.html");
   },
 
   twitter: function (){
@@ -200,64 +200,124 @@ var $isotopeContainer,
   },
 
 
-  // Added by Jayson Hunter May 2015
-  setupContentFilter: function() {
-    var $filterToggle,
-        $filterTabs,
-        $tagListHandle,
-        $allTagLists,
-        $selectedTags,
-        selectedTagIDs;
-
-    $filterToggle = $('.js-toggle-filter-state');
-    $filterTabs = $('#filter-tabs');
-    $allTagLists = $('#filter-tag-pane');
-    $selectedTags = $('#selected-filter-tags');
+  // Nav Tabs Content Filter - Added by Jayson Hunter May 2015
+  setupContentFilters: function(){
+    // Resources Content Filter Page
+    ContentFilter("#resources-page", "_resource-items-1.html");
 
 
-    // Setup Filter Toggle
-    $filterToggle.on('click', function(){
-        $filterTabs.toggleClass('hidden');
-        $allTagLists.toggleClass('hidden');
-    });
 
-    // Setup Selectable Filter Tags
-    $tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
-        class: 'selected',
-        onSelected: function(el) {
+    function ContentFilter(pageID, ajaxURL) {
+      var $filterToggle,
+          $filterTabs,
+          $tagListHandle,
+          $allTagLists,
+          $selectedTags,
+          selectedTagIDs;
 
-
-        },
-        onChange: function(data) {
-            var tagID,
-              tagName;
-
-            selectedTagIDs = [];
+      $filterToggle = $(pageID + ' .js-toggle-filter-state');
+      $filterTabs = $('#filter-tabs');
+      $allTagLists = $('#filter-tag-pane');
+      $selectedTags = $('#selected-filter-tags');
 
 
-            $selectedTags.find('li').remove();
-
-            $(data.selected).each(function(){
-            tagID = $(this).attr('data-tag-id');
-            tagName = $(this).find('.tag-name').text();
-
-            selectedTagIDs.push(tagID);
-
-            $selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
-            });
-
-            data.selected = selectedTagIDs;
-
-            ajaxLoad();
-
-            }
-    });
+      // Setup Filter Toggle
+      $filterToggle.on('click', function(){
+          $filterTabs.toggleClass('hidden');
+          $allTagLists.toggleClass('hidden');
+      });
 
 
-    function ajaxLoad(){
-      var $currentItems;
+      // Setup Selectable Filter Tags (uses selectable.js)
+      $tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
+          class: 'selected',
+          onSelected: function(el) {
 
-        // ========================
+          },
+
+          // When a tab tag has been selected or deselected
+          onChange: function(data) {
+              var tagID,
+                tagName;
+
+              selectedTagIDs = [];
+
+              // Remove all the items from the "Selected Tags" list
+              $selectedTags.find('li').remove();
+
+              // Now go through all the selected tab tags
+              $(data.selected).each(function(){
+                tagID = $(this).attr('data-tag-id');
+                tagName = $(this).find('.tag-name').text();
+
+                selectedTagIDs.push(tagID);
+
+                // And build up the Selected Tags list again
+                $selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
+              });
+
+              // This data object belongs to the selectable.js object, $tagListHandle.
+              data.selected = selectedTagIDs;
+
+              console.log(selectedTagIDs);
+
+              $('#selected-filter-tag-ids').val(selectedTagIDs.toString());
+          }
+      });
+
+
+
+
+      // Bind the "Selected Tags" click event
+
+      $($selectedTags).on('click', 'li', function(){
+        var selectedTag = this;
+        var selectedTagID;
+
+        // Get the data-tag-id attribute from the clicked item
+        selectedTagID = $(selectedTag).attr('data-tag-id');
+
+        // Locate the "Tab Tag" with the same attribute, and remove the selected class
+        $allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
+
+        // Call the onChange event
+        $tagListHandle.onChange();
+
+        // main.loadAjaxContent(ajaxURL);
+
+      });
+
+      $('#selected-filter-tag-ids').bind('change', function(){
+
+        // Ajax Code goes here to read in filtered content
+        $.get(ajaxURL, function(data){
+          main.updateAjaxContent(data, true, main.revalidateBlazy);
+        });
+
+      });
+
+
+    };
+
+  },
+
+
+  // View More button - Added by Jayson Hunter June 2015
+  setupViewMoreButtons: function(ajaxURL){
+
+      var ajaxData;
+
+      $('.js-view-more-btn').on('click', function(){
+
+        var viewMoreItems = $.get(ajaxURL, function(data){
+          main.updateAjaxContent(data, false, main.revalidateBlazy);
+        })
+      })
+
+  },
+
+  joesCode: function(){
+    // ========================
         // Start Joes Code
 
         // Update the hidden input field with selected tag ids
@@ -345,44 +405,53 @@ var $isotopeContainer,
 
         // End Joes code
         // ========================
+      },
 
-    };
 
+  // Added by Jayson Hunter June 2015 for the Resources page
+  updateAjaxContent: function(ajaxData, removeCurrent, callback) {
+      var $currentItems;
 
-    // Setup Selected Tags
-    $($selectedTags).on('click', 'li', function(){
-      var selectedTag = this;
-      var selectedTagID;
+      ajaxData = $.parseHTML(ajaxData);
 
-      selectedTagID = $(selectedTag).attr('data-tag-id');
-      $allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
+      if(removeCurrent) {
+        // Delete all existing Isotope items
+        $currentItems = $isotopeContainer.isotope('getItemElements');
+        $isotopeContainer.isotope( 'remove',$currentItems);
+      }
 
-      $tagListHandle.onChange();
-    });
+      // Append new data to existing Isotope object
+      $isotopeContainer
+        .append(ajaxData)
+        .isotope('appended', ajaxData )
+        .isotope('layout');
+
+      callback();
   },
 
 
-    // Added by Jayson Hunter May 2015
-    setupIsotope: function(){
-        var count = 0;
-
-        $isotopeContainer = $('.isotope-grid').isotope({
-            itemSelector: '.isotope-item',
-            percentPosition: true,
-            layoutMode: 'masonry',
-            masonry: {
-                columnWidth: '.grid-sizer',
-                gutter: '.gutter-sizer'
-                }
-        });
-    },
 
 
-    // Added by Jayson Hunter May 2015
+
+  loadAjaxContent: function(ajaxURL, callback){
+    $.get(ajaxURL, function(data){
+      if (typeof callback === 'function') {
+        callback(data);
+      };
+    })
+    .fail(function(){
+        console.log('Ajax failed');
+    });
+
+  },
+
+
+  // Lazy Load images functionality - Added by Jayson Hunter May 2015 for the Resources page
     setupLazyLoad: function(){
 
         $blazy = new Blazy({
             success: function(ele){
+                // When each image loads, layout isotope items
                 $isotopeContainer.isotope('layout');
             },
 
@@ -396,17 +465,37 @@ var $isotopeContainer,
                     , src: 'data-src-medium'
                 }
             ],
-            offset: 200,
+             offset: 200, // The number of pixels below the fold to trigger the image load
         });
+    },
 
-        $isotopeContainer.imagesLoaded( function(){
-            $isotopeContainer.isotope('layout');
+
+
+    // Fire the lazy load again - Added by Jayson Hunter June 2015 for the Resources page
+    revalidateBlazy: function(){
+      $blazy.revalidate();
+    },
+
+
+
+    // Implement the Isotope layout engine - Added by Jayson Hunter May 2015 for the Resources page
+    setupIsotope: function(){
+
+        $isotopeContainer = $('.isotope-grid').isotope({
+            itemSelector: '.isotope-item',
+            percentPosition: true,
+            layoutMode: 'masonry',
+            masonry: {
+              columnWidth: '.grid-sizer',
+              gutter: '.gutter-sizer'
+            }
         });
     }
+
 };
 
 
-
+// Initialise all functionality when document loads
 $(document).ready(function () {
   main.init();
 });
