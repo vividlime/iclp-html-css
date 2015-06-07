@@ -136,7 +136,7 @@
 									max-width: 1170px;
 									width: 100%;
 									@include breakpoint(phonePortrait) {
-										height: 90px;
+										height: 100px;
 									}
 									&:before{
 										content: "";
@@ -223,7 +223,7 @@
 								position: absolute;
 								width: 100%;
 								height:280px;
-								top:-76px;
+								top:-50px;
 								left:0;
 								@include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
 								background: $white;
@@ -339,7 +339,7 @@
 							top:0;
 							.breadcrumb{
 								@include breakpoint(phonePortrait) {
-									margin: 74px 0 0px 0;
+									margin: 72px 0 0px 0;
 								}
 							}
 						}
