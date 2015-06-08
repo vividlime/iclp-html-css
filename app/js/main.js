@@ -1,19 +1,36 @@
 
+// Added by Jayson Hunter - June 2015. Yes they're on the global scope which is bad I know.
 var $isotopeContainer,
-    $blazy;
+    $blazy,
+    $viewMoreButton;
 
- var main = {
+    // Function to get parameters from the url
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 
-  init: function () {
-    this.carousels();
-    this.twitter();
-    this.playvideos();
-    // this.playnewvideos();
-    this.setupLazyLoad();
-    this.setupIsotope();
-    this.setupContentFilters();
-    this.setupViewMoreButtons("_resource-items-2.html");
-  },
+        if (results==null){
+            return null;
+        }
+        else{
+            return results[1] || 0;
+        }
+  };
+
+
+// Module pattern
+var main = {
+
+    init: function () {
+        this.carousels();
+        this.twitter();
+        this.playvideos();
+        // this.playnewvideos();
+        this.setupLazyLoad();
+        this.setupIsotope();
+        this.setupContentFilters();
+        this.setupViewMoreButtons();
+    },
+
 
   twitter: function (){
 
@@ -31,6 +48,7 @@ var $isotopeContainer,
     twitterfix();
 
   },
+
 
     // Copied from Umbraco Live Code
     playnewvideos: function (){
@@ -200,121 +218,185 @@ var $isotopeContainer,
   },
 
 
+
+
   // Nav Tabs Content Filter - Added by Jayson Hunter May 2015
   setupContentFilters: function(){
-    // Resources Content Filter Page
-    ContentFilter("#resources-page", "_resource-items-1.html");
+    var ajaxURL,
+        $filterToggle,
+        $filterTabs,
+        $tagListHandle,
+        $allTagLists,
+        $selectedTags,
+        selectedTagIDs,
+        urlHashTagIDs = [];
+
+
+    ajaxURL = $('.content-items').attr('data-ajaxurl');
+
+    $filterToggle = $('.js-toggle-filter-state');
+    $filterTabs = $('#filter-tabs');
+    $allTagLists = $('#filter-tag-pane');
+    $selectedTags = $('#selected-filter-tags');
 
 
 
-    function ContentFilter(pageID, ajaxURL) {
-      var $filterToggle,
-          $filterTabs,
-          $tagListHandle,
-          $allTagLists,
-          $selectedTags,
-          selectedTagIDs;
-
-      $filterToggle = $(pageID + ' .js-toggle-filter-state');
-      $filterTabs = $('#filter-tabs');
-      $allTagLists = $('#filter-tag-pane');
-      $selectedTags = $('#selected-filter-tags');
+    // Setup Filter Toggle Button (mobile only)
+    $filterToggle.on('click', function(){
+      $filterTabs.toggleClass('hidden');
+      $allTagLists.toggleClass('hidden');
+    });
 
 
-      // Setup Filter Toggle
-      $filterToggle.on('click', function(){
-          $filterTabs.toggleClass('hidden');
-          $allTagLists.toggleClass('hidden');
-      });
+    // Get the url filter variable and any tag id's
+    urlHashTagIDs = decodeURIComponent($.urlParam('filterid')).split(",");
+
+    // Go through the IDs in the url and select the respective tags
+    if(urlHashTagIDs.length) {
+        for (i=0; i < urlHashTagIDs.length; i++) {
+          var tagID = urlHashTagIDs[i];
+          $allTagLists.find('li[data-tag-id="' + tagID + '"]').addClass('selected');
+        };
+    };
 
 
-      // Setup Selectable Filter Tags (uses selectable.js)
-      $tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
-          class: 'selected',
-          onSelected: function(el) {
+    // Setup Selectable Filter Tags (uses selectable.js)
+    $tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
+        class: 'selected',
+        onSelected: function(el) {
 
-          },
+        },
 
-          // When a tab tag has been selected or deselected
-          onChange: function(data) {
-              var tagID,
+        // When a tab tag has been clicked
+        onChange: function(data) {
+            var tagID,
                 tagName;
 
-              selectedTagIDs = [];
+            selectedTagIDs = [];
 
-              // Remove all the items from the "Selected Tags" list
-              $selectedTags.find('li').remove();
+            // Remove all the items from the "Selected Tags" list
+            $selectedTags.find('li').remove();
 
-              // Now go through all the selected tab tags
-              $(data.selected).each(function(){
+            // Now go through all the selected tab tags
+            $(data.selected).each(function(){
                 tagID = $(this).attr('data-tag-id');
                 tagName = $(this).find('.tag-name').text();
 
                 selectedTagIDs.push(tagID);
 
-                // And build up the Selected Tags list again
+
+                // Build up the Selected Tags list again
                 $selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
-              });
+            });
 
-              // This data object belongs to the selectable.js object, $tagListHandle.
-              data.selected = selectedTagIDs;
+            // This data object belongs to the selectable.js object, $tagListHandle.
+            data.selected = selectedTagIDs;
 
-              console.log(selectedTagIDs);
+            $('#selected-filter-tag-ids').val(selectedTagIDs.toString());
 
-              $('#selected-filter-tag-ids').val(selectedTagIDs.toString());
-          }
-      });
+            // Update page URL hash
+            if (selectedTagIDs.length) {
+                document.location.hash = '?' + $.param({filterid: selectedTagIDs.toString()});
+            }
+            else {
+                document.location.hash = '';
 
+                // if(flagStatus.length) {
 
-
-
-      // Bind the "Selected Tags" click event
-
-      $($selectedTags).on('click', 'li', function(){
-        var selectedTag = this;
-        var selectedTagID;
-
-        // Get the data-tag-id attribute from the clicked item
-        selectedTagID = $(selectedTag).attr('data-tag-id');
-
-        // Locate the "Tab Tag" with the same attribute, and remove the selected class
-        $allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
-
-        // Call the onChange event
-        $tagListHandle.onChange();
-
-        // main.loadAjaxContent(ajaxURL);
-
-      });
-
-      $('#selected-filter-tag-ids').bind('change', function(){
-
-        // Ajax Code goes here to read in filtered content
-        $.get(ajaxURL, function(data){
-          main.updateAjaxContent(data, true, main.revalidateBlazy);
-        });
-
-      });
+                // }
+                // else {
+                //     location.reload();
+                // }
+            };
 
 
-    };
+            // Filter the content with the selected tags
+            $.get(ajaxURL + '?page='+ '' +'&'+ selectedTagIDs.toString(), function(data){
+                main.updateAjaxContent(data, true, main.revalidateBlazy);
+            });
+        }
+    });
+
+
+    // Bind the "Selected Tags" click event
+
+    $($selectedTags).on('click', 'li', function(){
+    var selectedTag = this;
+    var selectedTagID;
+
+    // Get the data-tag-id attribute from the clicked item
+    selectedTagID = $(selectedTag).attr('data-tag-id');
+
+    // Locate the "Tab Tag" with the same attribute, and remove the selected class
+    $allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
+
+    // Call the onChange event
+    $tagListHandle.onChange();
+
+    });
 
   },
 
 
   // View More button - Added by Jayson Hunter June 2015
-  setupViewMoreButtons: function(ajaxURL){
+  setupViewMoreButtons: function(){
 
-      var ajaxData;
+      var ajaxURL,
+          ajaxData;
 
-      $('.js-view-more-btn').on('click', function(){
 
-        var viewMoreItems = $.get(ajaxURL, function(data){
-          main.updateAjaxContent(data, false, main.revalidateBlazy);
-        })
-      })
+      $viewMoreButton = $('.js-view-more-btn');
+
+      main.toggleViewMore();
+
+
+      // Get the url to use in the ajax call for new data
+      ajaxURL = $('.content-items').attr('data-ajaxurl');
+
+
+      if(ajaxURL.length) {
+        $viewMoreButton.on('click', function(){
+
+          $viewMoreButton.addClass('hidden');
+          $('.ajax-loader').removeClass('hidden');
+
+          setTimeout(function(){
+
+          var viewMoreItems = $.get(ajaxURL, function(data){
+
+            $('.ajax-loader').addClass('hidden');
+
+            // Update content with new data items
+            main.updateAjaxContent(data, false, main.revalidateBlazy);
+
+          });
+
+          }, 1000);
+
+
+        });
+
+      };
 
   },
+
+
+
+  // Toggle View More button - Added by Jayson Hunter June 2015
+  toggleViewMore: function(){
+
+    // Hide "view more" button if items are from the last page in Umbraco
+    if ( $('.js-last-page-item').length > 0 ) {
+      $viewMoreButton.addClass('hidden');
+    }
+
+    // Else show it
+    else {
+      $viewMoreButton.removeClass('hidden');
+    };
+  },
+
+
 
   joesCode: function(){
     // ========================
@@ -408,13 +490,14 @@ var $isotopeContainer,
       },
 
 
+
   // Added by Jayson Hunter June 2015 for the Resources page
-  updateAjaxContent: function(ajaxData, removeCurrent, callback) {
+  updateAjaxContent: function(ajaxData, removeCurrentItems, callback) {
       var $currentItems;
 
       ajaxData = $.parseHTML(ajaxData);
 
-      if(removeCurrent) {
+      if(removeCurrentItems) {
         // Delete all existing Isotope items
         $currentItems = $isotopeContainer.isotope('getItemElements');
         $isotopeContainer.isotope( 'remove',$currentItems);
@@ -426,24 +509,12 @@ var $isotopeContainer,
         .isotope('appended', ajaxData )
         .isotope('layout');
 
+      main.toggleViewMore();
+
       callback();
   },
 
 
-
-
-
-  loadAjaxContent: function(ajaxURL, callback){
-    $.get(ajaxURL, function(data){
-      if (typeof callback === 'function') {
-        callback(data);
-      };
-    })
-    .fail(function(){
-        console.log('Ajax failed');
-    });
-
-  },
 
 
   // Lazy Load images functionality - Added by Jayson Hunter May 2015 for the Resources page
@@ -453,6 +524,7 @@ var $isotopeContainer,
             success: function(ele){
                 // When each image loads, layout isotope items
                 $isotopeContainer.isotope('layout');
+                console.log('LAyout from blazy');
             },
 
             breakpoints: [
@@ -473,7 +545,10 @@ var $isotopeContainer,
 
     // Fire the lazy load again - Added by Jayson Hunter June 2015 for the Resources page
     revalidateBlazy: function(){
-      $blazy.revalidate();
+      // Add a small timeout as some images weren't loading without it.
+      setTimeout(function(){
+        $blazy.revalidate();
+      }, 500);
     },
 
 
@@ -497,5 +572,5 @@ var $isotopeContainer,
 
 // Initialise all functionality when document loads
 $(document).ready(function () {
-  main.init();
+    main.init();
 });
