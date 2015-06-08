@@ -26,6 +26,15 @@
 								z-index: 2;
 							}
 						}
+						.sub-heading{
+							.titles{
+								h3{
+									&:before{
+										color: $grey;
+									}
+								}
+							}
+						}
 
 					}
 				}
@@ -168,6 +177,14 @@
 						.copy{
 							padding-top: 190px;
 						}
+					}
+					.introduction {
+						p,li{
+						padding-right: 50%;
+						@include breakpoint(tabletPortrait){
+							padding-right: 0;
+						}
+					}
 					}
 					.copy{
 						width: 100%;
