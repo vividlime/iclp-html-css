@@ -1,0 +1,54 @@
+#resources-article{
+
+    .sections{
+        section{
+            &.head{
+                .head-container{
+                    .head-theme{
+                        .headings{
+                            &.theme{
+                                .angle{
+                                    z-index: 2;
+                                }
+                                .ring{
+                                    &:before{
+                                        background-image: url(/assets/images/svg/Banner-Resources-JourneyCurve-L1.svg);
+                                    }
+                                }
+                            }
+
+                            &.imagery{
+                                .ring{
+                                    &:before{
+                                        background-image: url(/assets/images/svg/Banner-Resources-JourneyCurve-L2.svg);
+                                    }
+                                }
+                            }
+                        }
+
+                        .angle{
+                            &:before{
+                                @include transform (translateX(0px) translateY(0px) translateZ(0px) skewY(-4deg) skewX(0deg));
+                            }
+                        }
+
+                        .sub-heading{
+                            h3{
+                                color: $grey;
+                            }
+                            .titles{
+                                h1,h2,h3,blockquote{
+                                    color: $grey;
+                                }
+                                h2{
+                                    text-transform: inherit
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
