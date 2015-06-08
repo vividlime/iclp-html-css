@@ -1,0 +1,11 @@
+// Ajax loaders
+
+.ajax-loader {
+    position: relative;
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    background: url(/assets/images/spin.gif) no-repeat center;
+    background-size: contain;
+    z-index: 100;
+}
