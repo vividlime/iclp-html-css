@@ -76,127 +76,15 @@
 
                         <h2 class="text-upper text-center mtb-30">All articles by Mignon Buckingham</h2>
                         <!-- Start All Articles Content -->
-                        <ul class="content-items content-grid isotope-grid">
+                        <ul class="content-items content-grid isotope-grid" data-ajaxurl="_resource-profile-items.html">
                             <li class="grid-sizer"></li>
                             <li class="gutter-sizer"></li>
-
-                            <li class="content-grid-item isotope-item">
-                                <a href="resources-article.html" class="overlay-wrapper"></a>
-                                <div class="bgc-orange">
-                                    <div class="content-item__header">
-                                        <h2 class="content-item__title">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        </h2>
-                                    </div>
-
-                                    <div class="content-item__content">
-                                        <div class="content-item__text">
-                                            <div class="content-item__meta-data">
-                                                <span class="meta-data-type">Report</span>
-                                                <span class="meta-data-date pull-right">Aug 2015</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="content-grid-item isotope-item">
-                                <a href="resources-article.html" class="overlay-wrapper"></a>
-                                <div class="bgc-dark-blue">
-                                    <div class="content-item__header">
-                                        <h2 class="content-item__title">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        </h2>
-                                    </div>
-
-                                    <div class="content-item__content">
-                                        <div class="content-item__text">
-                                            <div class="content-item__meta-data">
-                                                <span class="meta-data-type">Report</span>
-                                                <span class="meta-data-date pull-right">Aug 2015</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="content-grid-item isotope-item">
-                                <a href="resources-article.html" class="overlay-wrapper"></a>
-                                <div class="bgc-turquoise">
-                                    <div class="content-item__header">
-                                        <h2 class="content-item__title">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        </h2>
-                                    </div>
-
-                                    <div class="content-item__content">
-                                        <div class="content-item__text">
-                                            <div class="content-item__meta-data">
-                                                <span class="meta-data-type">Report</span>
-                                                <span class="meta-data-date pull-right">Aug 2015</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="content-grid-item isotope-item">
-                                <a href="resources-article.html" class="overlay-wrapper"></a>
-                                <div class="bgc-red">
-                                    <div class="content-item__header">
-                                        <h2 class="content-item__title">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        </h2>
-                                    </div>
-
-                                    <div class="content-item__content">
-                                        <div class="content-item__text">
-                                            <div class="content-item__meta-data">
-                                                <span class="meta-data-type">Report</span>
-                                                <span class="meta-data-date pull-right">Aug 2015</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="content-grid-item isotope-item">
-                                <a href="resources-article.html" class="overlay-wrapper"></a>
-                                <div class="bgc-turquoise">
-                                    <div class="content-item__header">
-                                        <h2 class="content-item__title">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        </h2>
-                                    </div>
-
-                                    <div class="content-item__content">
-                                        <div class="content-item__text">
-                                            <div class="content-item__meta-data">
-                                                <span class="meta-data-type">Report</span>
-                                                <span class="meta-data-date pull-right">Aug 2015</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="content-grid-item isotope-item">
-                                <a href="resources-article.html" class="overlay-wrapper"></a>
-                                <div class="bgc-orange">
-                                    <div class="content-item__header">
-                                        <h2 class="content-item__title">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        </h2>
-                                    </div>
-
-                                    <div class="content-item__content">
-                                        <div class="content-item__text">
-                                            <div class="content-item__meta-data">
-                                                <span class="meta-data-type">Report</span>
-                                                <span class="meta-data-date pull-right">Aug 2015</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
 
-                        <a class="button rodeo-dust-lighter text-bold w-full js-view-more-btn">VIEW MORE</a>
+                        <div class="ajax-loader hidden"></div>
+                        <div class="view-more js-view-more-btn hidden">
+                            <a class="button rodeo-dust-lighter text-bold w-full">VIEW MORE</a>
+                        </div>
                     </div>
                 </section>
                 <!-- End All Articles By Section -->
@@ -211,7 +99,7 @@
 
     <script src="/assets/js/lib/jquery.js"></script>
     <script src="/assets/js/lib/jquery.mobile.custom.min.js"></script>
-    <script src="/assets/js/lib/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="/assets/js/app/default.js"></script>
     <script src="/assets/js/app/main.js"></script>
 </body>
