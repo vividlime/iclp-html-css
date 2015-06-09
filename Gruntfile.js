@@ -117,7 +117,7 @@ module.exports = function (grunt) {
                     'build/app/js/jquery.selectable.js',
                     'app/bower_components/blazy/blazy.min.js',
                     'app/bower_components/isotope/dist/isotope.pkgd.min.js',
-                    'app/bower_components/imagesloaded/imagesloaded.pkgd.js',
+                    // 'app/bower_components/imagesloaded/imagesloaded.pkgd.js',
                     'build/app/js/main.js'
                 ],
                 dest: 'build/processed/js/main.js'
