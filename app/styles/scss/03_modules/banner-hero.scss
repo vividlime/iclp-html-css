@@ -28,7 +28,7 @@
 	 		@include transition(all 0.5s ease-out);
 	 		background-color:$turquoise;
     }
- 		&.show{
+ 		&.show-carousel{
  			.carousel-outer{
 	 			z-index: 1;
 	 			opacity: 1;
@@ -720,7 +720,7 @@
 	 		@include transition(opacity 0.5s ease-out);
 	 		@include transform (translateX(0px) translateY(0px) translateZ(0px));
 
-	 		&.hide{
+	 		&.hide-banner{
 	 			z-index: -1;
 	 			opacity: 0;
 	 			@include transform (translateX(0px) translateY(0px) translateZ(0px));
