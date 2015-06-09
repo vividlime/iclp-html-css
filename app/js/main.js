@@ -2,7 +2,8 @@
 // Added by Jayson Hunter - June 2015. Yes they're on the global scope which is bad I know.
 var $isotopeContainer,
     $blazy,
-    $viewMoreButton;
+    $viewMoreButton,
+    pageIndex = 1;
 
     // Function to get parameters from the url
     $.urlParam = function(name){
@@ -24,7 +25,7 @@ var main = {
         this.carousels();
         this.twitter();
         this.playvideos();
-        // this.playnewvideos();
+        this.playnewvideos();
         this.setupLazyLoad();
         this.setupIsotope();
         this.setupContentFilters();
@@ -54,19 +55,23 @@ var main = {
     playnewvideos: function (){
 
         var video = document.getElementById('video1');
-        video.play();
 
-        video.addEventListener('ended',function(){
-          //window.location = 'http://www.google.com';
-        var video1 = document.getElementById('video1');
-        var video2 = document.getElementById('video2');
+        if (video) {
+            video.play();
 
-        video1.style.display='none';
+            video.addEventListener('ended',function(){
+              //window.location = 'http://www.google.com';
+            var video1 = document.getElementById('video1');
+            var video2 = document.getElementById('video2');
 
-        video2.style.visibility='visible';
-        video2.play();
+            video1.style.display='none';
 
-        });
+            video2.style.visibility='visible';
+            video2.play();
+
+            });
+        }
+
     },
 
 
@@ -309,9 +314,8 @@ var main = {
                     // }
                 };
 
-
                 // Now get the data using the tags as the filter using an ajax call
-                $.get(ajaxURL + '?page='+ '' +'&'+ selectedTagIDs.toString(), function(data){
+                $.get(ajaxURL + '-' + pageIndex + '.html?' + $.param({filterid: selectedTagIDs.toString()}), function(data){
                     main.updateIsotopeContent(data, true, main.revalidateBlazy);
                 });
             }
@@ -340,45 +344,49 @@ var main = {
     // View More button - Added by Jayson Hunter June 2015
     setupViewMoreButtons: function(){
         var ajaxURL,
-            ajaxData;
+            ajaxData,
+            ajaxParams = "";
 
         $viewMoreButton = $('.js-view-more-btn');
 
-        // Check if the view more button should be hidden
-        main.toggleViewMore();
+        if($viewMoreButton) {
+            // Check if the view more button should be hidden
+            main.toggleViewMore();
 
 
-        // Get the url to use in the ajax call for new data
-        ajaxURL = $('.content-items').attr('data-ajaxurl');
+            // Get the url to use in the ajax call for new data
+            ajaxURL = $('.content-items').attr('data-ajaxurl');
 
+            // If an ajaxurl is present
+            if(ajaxURL && ajaxURL.length) {
+                $viewMoreButton.on('click', function(){
 
-        // If an ajaxurl is present
-        if(ajaxURL.length) {
-            $viewMoreButton.on('click', function(){
+                    // Hide the view more button
+                    $viewMoreButton.addClass('hidden');
 
-                // Hide the view more button
-                $viewMoreButton.addClass('hidden');
+                    // Show the ajax loader spinner image
+                    $('.ajax-loader').removeClass('hidden');
 
-                // Show the ajax loader spinner image
-                $('.ajax-loader').removeClass('hidden');
+                    pageIndex++;
 
-                setTimeout(function(){
+                    setTimeout(function(){
+                        // Ajax call to get more items
+                        var viewMoreItems = $.get(ajaxURL + '-' + pageIndex + '.html?page=' + pageIndex + '&' + ajaxParams, function(data){
 
-                    // Ajax call to get more items
-                    var viewMoreItems = $.get(ajaxURL, function(data){
+                            // Hide the ajax loader
+                            $('.ajax-loader').addClass('hidden');
 
-                        // Hide the ajax loader
-                        $('.ajax-loader').addClass('hidden');
+                            // Update content with new data items
+                            main.updateIsotopeContent(data, false, main.revalidateBlazy);
 
-                        // Update content with new data items
-                        main.updateIsotopeContent(data, false, main.revalidateBlazy);
+                        });
 
-                    });
+                    }, 1000);
 
-                }, 1000);
+                });
+            };
+        }
 
-            });
-        };
     },
 
 
@@ -497,6 +505,7 @@ var main = {
     // This accepts the data returned from the ajax call, then either appends
     // the data to the existing isotope container (view more), or replaces
     // it with the new data E.g. Resources Content Filter.
+
     updateIsotopeContent: function(ajaxData, removeCurrentItems, callback) {
         var $currentItems;
 
@@ -533,7 +542,6 @@ var main = {
             success: function(ele){
                 // When each image loads, layout isotope items
                 $isotopeContainer.isotope('layout');
-                console.log('LAyout from blazy');
             },
 
             breakpoints: [
