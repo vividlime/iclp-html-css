@@ -195,23 +195,30 @@
                 <!-- Start Content Wrapper -->
                 <section class="content-wrapper">
                     <div class="container">
-                        <div class="entry-content">
+
+                        <!-- Start Content -->
+                        <div class="entry-content" data-ajax-url="http://iclpdev.iclpcreative.com/GetAllData">
 
                             <!-- Start Filtered Content -->
-                            <ul class="content-items content-grid isotope-grid" data-ajaxurl="_resource-items">
+                            <ul class="content-items content-grid isotope-grid" >
                                 <li class="grid-sizer"></li>
                                 <li class="gutter-sizer"></li>
                             </ul>
-
-
-                            <div class="ajax-loader hidden"></div>
-                            <div class="view-more js-view-more-btn hidden">
-                                <a class="button rodeo-dust-lighter text-bold w-full">VIEW MORE</a>
-                            </div>
                             <!-- End Filtered Content -->
-                        </div>
-                    </div>
 
+                            <!-- Start View More -->
+                            <div class="view-more">
+                                <div class="ajax-loader hidden"></div>
+                                <div class="js-view-more-btn hidden">
+                                    <a class="button rodeo-dust-lighter text-bold w-full">VIEW MORE</a>
+                                </div>
+                            </div>
+                            <!-- End View More -->
+
+                        </div>
+                        <!-- End Content -->
+
+                    </div>
                 </section>
                 <!-- End Content Wrapper -->
 
@@ -221,8 +228,6 @@
                         <h2 class="">Receive our newsletter</h2>
 
                     </div>
-
-
 
                     <form class="form contacts" id="newsletter-form" style="display: block;">
                         <p>Register to our newsletter full of loyalty insights arouund the globe</p>
