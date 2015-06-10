@@ -164,7 +164,6 @@ var main = {
       /* SLIDE ON CLICK */
 
       $('.carousel-linked-nav > li > a').on('click', function() {
-        console.log('Carousel clicked');
 
         $('.banner-inner').addClass('hide-banner');
 

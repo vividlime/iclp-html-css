@@ -341,7 +341,7 @@ var main = {
 
       $('.carousel-linked-nav > li > a').on('click', function() {
 
-        $('.banner-inner').addClass('hide');
+        $('.banner-inner').addClass('hide-banner');
 
           var item = Number($(this).attr('href').substring(1));
           $('#heroCarousel').carousel(item - 1);
@@ -352,11 +352,11 @@ var main = {
           // add active class to just clicked on item
           $(this).parent().addClass('active');
 
-          $('.ie9 #heroCarousel').addClass('show');
+          $('.ie9 #heroCarousel').addClass('show-carousel');
 
 
           $('#heroCarousel .item').one('transitionend.loadcontent.open webkitTransitionEnd.loadcontent.open MSTransitionEnd.open', function () {
-              $('#heroCarousel').addClass('show');
+              $('#heroCarousel').addClass('show-carousel');
           });
 
           return false;
@@ -366,11 +366,11 @@ var main = {
         $('.carousel-linked-nav > .first > a').on('click', function() {
 
             if($('.carousel-inner .item:first').hasClass('active')) {
-              $('#heroCarousel').addClass('show');
+              $('#heroCarousel').addClass('show-carousel');
             }
             else{
               $('#heroCarousel .item').one('transitionend.loadcontent.open webkitTransitionEnd.loadcontent.open MSTransitionEnd.open', function () {
-                $('#heroCarousel').addClass('show');
+                $('#heroCarousel').addClass('show-carousel');
               });
             }
 
@@ -379,8 +379,8 @@ var main = {
 
 
       $('.close-carousel').on('click', function(){
-        $('#heroCarousel').removeClass('show');
-        $('.banner-inner.hide').removeClass('hide');
+        $('#heroCarousel').removeClass('show-carousel');
+        $('.banner-inner').removeClass('hide-banner');
       });
 
       $('#heroCarousel').bind('slid', function() {
@@ -490,10 +490,12 @@ var main = {
                     // }
                 };
 
-                // Now get the data using the tags as the filter using an ajax call
-                $.get(ajaxURL + '-' + pageIndex + '.html?' + $.param({filterid: selectedTagIDs.toString()}), function(data){
-                    main.updateIsotopeContent(data, true, main.revalidateBlazy);
-                });
+                if(ajaxURL && ajaxURL.length) {
+                    // Now get the data using the tags as the filter using an ajax call
+                    $.get(ajaxURL + '-' + pageIndex + '.html?' + $.param({filterid: selectedTagIDs.toString()}), function(data){
+                        main.updateIsotopeContent(data, true, main.revalidateBlazy);
+                    });
+                };
             }
         });
 
