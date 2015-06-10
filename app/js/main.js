@@ -3,7 +3,7 @@
 var $isotopeContainer,
     $blazy,
     $viewMoreButton,
-    pageIndex = 1;
+    pageID = 1;
 
     // Function to get parameters from the url
     $.urlParam = function(name){
@@ -225,9 +225,11 @@ var main = {
 
 
 
-    // Nav Tabs Content Filter - Added by Jayson Hunter May 2015
-    setupContentFilters: function(){
-        var ajaxURL,
+    // Nav Tabs Content Filter for the Resources page - Added by Jayson Hunter May 2015
+    // Params is an object with items 'pageID' and 'ajaxURL' as strings
+    setupContentFilters: function(params){
+        var pageID,
+            ajaxURL,
             $filterToggle,
             $filterTabs,
             $tagListHandle,
@@ -236,8 +238,9 @@ var main = {
             selectedTagIDs,
             urlHashTagIDs = [];
 
-
-        ajaxURL = $('.content-items').attr('data-ajaxurl');
+        pageID = $.urlParam('page') || pageID;
+        ajaxURL = $('.entry-content').attr('data-ajax-url');
+        console.log(ajaxURL);
 
         $filterToggle = $('.js-toggle-filter-state');
         $filterTabs = $('#filter-tabs');
@@ -279,6 +282,8 @@ var main = {
 
                 selectedTagIDs = [];
 
+                pageID = 1; // Reset page id
+
                 // Remove all the items from the "Selected Tags" list
                 $selectedTags.find('li').remove();
 
@@ -288,7 +293,6 @@ var main = {
                     tagName = $(this).find('.tag-name').text();
 
                     selectedTagIDs.push(tagID);
-
 
                     // Build up the "Selected Tags" list again
                     $selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
@@ -301,10 +305,10 @@ var main = {
 
                 // Update page URL hash
                 if (selectedTagIDs.length) {
-                    document.location.hash = '?' + $.param({filterid: selectedTagIDs.toString()});
+                    document.location.hash = '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()});
                 }
                 else {
-                    document.location.hash = '';
+                    document.location.hash = '?';
 
                     // if(flagStatus.length) {
 
@@ -315,10 +319,11 @@ var main = {
                 };
 
                 if(ajaxURL && ajaxURL.length) {
-                    // Now get the data using the tags as the filter using an ajax call
-                    $.get(ajaxURL + '-' + pageIndex + '.html?' + $.param({filterid: selectedTagIDs.toString()}), function(data){
-                        main.updateIsotopeContent(data, true, main.revalidateBlazy);
-                    });
+                  // Now get the data using the tags as the filter using an ajax call
+                  $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()}), function(data){
+                          console.log(data);
+                          main.updateIsotopeContent(data, true, main.reLayout);
+                      });
                 };
             }
         });
@@ -357,7 +362,8 @@ var main = {
 
 
             // Get the url to use in the ajax call for new data
-            ajaxURL = $('.content-items').attr('data-ajaxurl');
+            ajaxURL = $('.entry-content').attr('data-ajax-url');
+
 
             // If an ajaxurl is present
             if(ajaxURL && ajaxURL.length) {
@@ -369,22 +375,24 @@ var main = {
                     // Show the ajax loader spinner image
                     $('.ajax-loader').removeClass('hidden');
 
-                    pageIndex++;
+                    pageID = $.urlParam('page') | pageID;
 
-                    setTimeout(function(){
-                        // Ajax call to get more items
-                        var viewMoreItems = $.get(ajaxURL + '-' + pageIndex + '.html?page=' + pageIndex + '&' + ajaxParams, function(data){
+                    selectedTagIDs = $.urlParam('filterid');
 
-                            // Hide the ajax loader
-                            $('.ajax-loader').addClass('hidden');
+                    pageID++;
 
-                            // Update content with new data items
-                            main.updateIsotopeContent(data, false, main.revalidateBlazy);
+                    // Ajax call to get more items
+                    var viewMoreItems = $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs}), function(data){
 
-                        });
+                        // Hide the ajax loader
+                        $('.ajax-loader').addClass('hidden');
 
-                    }, 1000);
+                        // Update content with new data items
+                        main.updateIsotopeContent(data, false, main.reLayout);
 
+                        document.location.hash = '?' + $.param({page: pageID, filterid: selectedTagIDs});
+
+                    });
                 });
             };
         }
@@ -562,10 +570,11 @@ var main = {
 
 
 
-    // Fire the lazy load again - Added by Jayson Hunter June 2015 for the Resources page
-    revalidateBlazy: function(){
+    // Fire the isotope layout and lazy load again - Added by Jayson Hunter June 2015 for the Resources page
+    reLayout: function(){
       // Add a small timeout as some images weren't loading without it.
       setTimeout(function(){
+        $isotopeContainer.isotope('layout');
         $blazy.revalidate();
       }, 500);
     },
