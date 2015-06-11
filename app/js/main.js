@@ -3,7 +3,8 @@
 var $isotopeContainer,
     $blazy,
     $viewMoreButton,
-    pageID = 1;
+    pageID = 1,
+    initialLoad = true;
 
     // Function to get parameters from the url
     $.urlParam = function(name){
@@ -228,122 +229,143 @@ var main = {
     // Nav Tabs Content Filter for the Resources page - Added by Jayson Hunter May 2015
     // Params is an object with items 'pageID' and 'ajaxURL' as strings
     setupContentFilters: function(params){
-        var pageID,
+        var $contentFilter,
+            pageID,
             ajaxURL,
             $filterToggle,
             $filterTabs,
             $tagListHandle,
             $allTagLists,
             $selectedTags,
-            selectedTagIDs,
-            urlHashTagIDs = [];
-
-        pageID = $.urlParam('page') || pageID;
-        ajaxURL = $('.entry-content').attr('data-ajax-url');
-        console.log(ajaxURL);
-
-        $filterToggle = $('.js-toggle-filter-state');
-        $filterTabs = $('#filter-tabs');
-        $allTagLists = $('#filter-tag-pane');
-        $selectedTags = $('#selected-filter-tags');
+            selectedTagIDs;
 
 
+        // Look for a content filter
+        $contentFilter = $('.content-filter');
 
-        // Toggle Filter Button (shown on mobile only)
-        $filterToggle.on('click', function(){
-            $filterTabs.toggleClass('hidden');
-            $allTagLists.toggleClass('hidden');
-        });
+        // If a content filter is found
+        if($contentFilter.length) {
 
+          // If there is a page id parameter already in the URL, use that.
+          pageID = $.urlParam('page') || pageID;
 
-        // Get the url filter parameter and any tag id's
-        urlHashTagIDs = decodeURIComponent($.urlParam('filterid')).split(",");
-
-        // If any tag IDs are present go through them and select the respective tags
-        if(urlHashTagIDs.length) {
-            for (i=0; i < urlHashTagIDs.length; i++) {
-                var tagID = urlHashTagIDs[i];
-                $allTagLists.find('li[data-tag-id="' + tagID + '"]').addClass('selected');
-            };
-        };
+          // Get the url to the data source from the HTML data attribute
+          ajaxURL = $('.entry-content').attr('data-ajax-url');
 
 
-        // Setup the filter tags so they're selectable (uses selectable.js)
-        $tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
-            class: 'selected',
-            onSelected: function(el) {
-
-            },
-
-            // When a tab tag has been clicked (selected/deselected)
-            onChange: function(data) {
-                var tagID,
-                    tagName;
-
-                selectedTagIDs = [];
-
-                pageID = 1; // Reset page id
-
-                // Remove all the items from the "Selected Tags" list
-                $selectedTags.find('li').remove();
-
-                // Now go through all the selected filter tags
-                $(data.selected).each(function(){
-                    tagID = $(this).attr('data-tag-id');
-                    tagName = $(this).find('.tag-name').text();
-
-                    selectedTagIDs.push(tagID);
-
-                    // Build up the "Selected Tags" list again
-                    $selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
-                });
-
-                // This data object belongs to the selectable.js object, $tagListHandle.
-                data.selected = selectedTagIDs;
-
-                $('#selected-filter-tag-ids').val(selectedTagIDs.toString());
-
-                // Update page URL hash
-                if (selectedTagIDs.length) {
-                    document.location.hash = '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()});
-                }
-                else {
-                    document.location.hash = '?';
-
-                    // if(flagStatus.length) {
-
-                    // }
-                    // else {
-                    //     location.reload();
-                    // }
-                };
-
-                if(ajaxURL && ajaxURL.length) {
-                  // Now get the data using the tags as the filter using an ajax call
-                  $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()}), function(data){
-                          console.log(data);
-                          main.updateIsotopeContent(data, true, main.reLayout);
-                      });
-                };
-            }
-        });
+          $filterToggle = $('.js-toggle-filter-state');
+          $filterTabs = $('#filter-tabs');
+          $allTagLists = $('#filter-tag-pane');
+          $selectedTags = $('#selected-filter-tags');
 
 
-        // Bind some functionality to the "Selected Tags" list items when they're removed
-        $($selectedTags).on('click', 'li', function(){
-            var selectedTag = this;
-            var selectedTagID;
 
-            // Get the data-tag-id attribute from the clicked item
-            selectedTagID = $(selectedTag).attr('data-tag-id');
+          // Toggle the filter button (hide/show) that is shown on  mobile only
+          $filterToggle.on('click', function(){
+              $filterTabs.toggleClass('hidden');
+              $allTagLists.toggleClass('hidden');
+          });
 
-            // Locate the "Tab Tag" with the same attribute, and remove the selected class
-            $allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
 
-            // Call the onChange event (above) of these selectable items to do the "Selected Tags"
-            // list updating and ajax call.
-            $tagListHandle.onChange();
-        });
+          // Get the filter id's from the url if there are any
+          selectedTagIDs = $.urlParam('filterid');
+
+          // If any filter id's found
+          if (selectedTagIDs) {
+            selectedTagIDs = decodeURIComponent(selectedTagIDs).split(",");
+
+              // Select the relevant id's in the filter bar
+              for (i=0; i < selectedTagIDs.length; i++) {
+                  var tagID = selectedTagIDs[i];
+                  $allTagLists.find('li[data-tag-id="' + tagID + '"]').addClass('selected');
+              };
+          };
+
+
+          // Setup the filter tags so they're selectable (uses selectable.js)
+          $tagListHandle = $('#filter-tag-pane .js-selectable').selectable({
+              class: 'selected',
+              onSelected: function(el) {
+
+              },
+
+              // When a tab tag has been clicked (selected/deselected)
+              // THIS IS CALLED AT LEAST ONCE WHEN THE PAGE LOADS
+              onChange: function(data) {
+                  var tagID,
+                      tagName;
+
+                  selectedTagIDs = [];
+
+                  // Is this the first time onChange is run?
+                  if (initialLoad) {
+                    pageID = $.urlParam('page');
+
+                    if (!pageID) {
+                      pageID = 1;
+                    }
+
+                    initialLoad = false;
+                  }
+                  else {
+                    pageID = 1;
+                  }
+
+
+                  // Remove all the items from the "Selected Tags" list
+                  $selectedTags.find('li').remove();
+
+                  // Now go through all the selected filter tags
+                  $(data.selected).each(function(){
+                      tagID = $(this).attr('data-tag-id');
+                      tagName = $(this).find('.tag-name').text();
+
+                      selectedTagIDs.push(tagID);
+
+                      // Build up the "Selected Tags" list again
+                      $selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
+                  });
+
+                  // This data object belongs to the selectable.js object, $tagListHandle.
+                  data.selected = selectedTagIDs;
+
+                  $('#selected-filter-tag-ids').val(selectedTagIDs.toString());
+
+                  // Update page URL hash
+                  if (selectedTagIDs.length) {
+                    main.updateLocationHash($.param({page: pageID, filterid: selectedTagIDs.toString()}));
+                  }
+                  else {
+                    main.updateLocationHash($.param({page: pageID, filterid: selectedTagIDs.toString()}));
+                  };
+
+                  if(ajaxURL && ajaxURL.length) {
+                    // Now get the data using the tags as the filter using an ajax call
+                    $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()}), function(data){
+                            main.updateIsotopeContent(data, true, main.reLayout);
+                        });
+                  };
+              }
+          });
+
+
+          // Bind some functionality to the "Selected Tags" list items when they're removed
+          $($selectedTags).on('click', 'li', function(){
+              var selectedTag = this;
+              var selectedTagID;
+
+              // Get the data-tag-id attribute from the clicked item
+              selectedTagID = $(selectedTag).attr('data-tag-id');
+
+              // Locate the "Tab Tag" with the same attribute, and remove the selected class
+              $allTagLists.find('li[data-tag-id="' + selectedTagID + '"]').removeClass('selected');
+
+              // Call the onChange event (above) of these selectable items to update
+              // the "Selected Tags" and fire the ajax call.
+              $tagListHandle.onChange();
+          });
+
+        }
 
     },
 
@@ -351,8 +373,7 @@ var main = {
     // View More button - Added by Jayson Hunter June 2015
     setupViewMoreButtons: function(){
         var ajaxURL,
-            ajaxData,
-            ajaxParams = "";
+            ajaxData;
 
         $viewMoreButton = $('.js-view-more-btn');
 
@@ -365,32 +386,36 @@ var main = {
             ajaxURL = $('.entry-content').attr('data-ajax-url');
 
 
-            // If an ajaxurl is present
+            // If an ajax url is present
             if(ajaxURL && ajaxURL.length) {
                 $viewMoreButton.on('click', function(){
 
                     // Hide the view more button
                     $viewMoreButton.addClass('hidden');
 
-                    // Show the ajax loader spinner image
+                    // Show the loading spinner image
                     $('.ajax-loader').removeClass('hidden');
 
-                    pageID = $.urlParam('page') | pageID;
+                    // Get the page ID and filter tags from the URL hash
+                    pageID = $.urlParam('page') || pageID;
 
-                    selectedTagIDs = $.urlParam('filterid');
-
+                    // Increment the page ID
                     pageID++;
 
-                    // Ajax call to get more items
-                    var viewMoreItems = $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs}), function(data){
+                    selectedTagIDs = decodeURIComponent($.urlParam('filterid'));
+
+
+                    // Ajax call with parameters to get more items
+                    var viewMoreItems = $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()}), function(data){
 
                         // Hide the ajax loader
                         $('.ajax-loader').addClass('hidden');
 
-                        // Update content with new data items
+                        // Update isotope content with new data items
                         main.updateIsotopeContent(data, false, main.reLayout);
 
-                        document.location.hash = '?' + $.param({page: pageID, filterid: selectedTagIDs});
+                        // Update the url hash with the new page id
+                        main.updateLocationHash($.param({page: pageID, filterid: selectedTagIDs}));
 
                     });
                 });
@@ -406,109 +431,31 @@ var main = {
 
         // Hide "view more" button if items are from the last page in Umbraco.
         // Items must have class 'js-is-last-page' class to hide the view more button.
-        if ( $('.js-last-page-item').length > 0 ) {
-            $viewMoreButton.addClass('hidden');
-        }
 
-        // Else show it
-        else {
-            $viewMoreButton.removeClass('hidden');
-        };
+        setTimeout(function(){ // Put a slight timeout as the toggle was firing too quickly
+          if ( $('.js-last-page-item').length > 0 ) {
+            $viewMoreButton.addClass('hidden');
+          }
+
+          // Else show it
+          else {
+              $viewMoreButton.removeClass('hidden');
+          };
+
+        }, 500);
+
     },
 
 
+    // Added by Jayson Hunter June 2015
+    updateLocationHash: function(params) {
+      document.location.hash = '?' + params;
+    },
 
-  joesCode: function(){
-    // ========================
-        // Start Joes Code
-
-        // Update the hidden input field with selected tag ids
-        $('#selected-filter-tag-ids').val(selectedTagIDs.toString());
-
-        var selectedTag = selectedTagIDs.toString();
-        $('#selectedCountry').val(selectedTagIDs.toString());
-
-        // Append the selected ID's to the UL after the hash
-        var flagStatus = document.getElementById('flagStatus').value;
-
-        if (selectedTag.length) {
-            document.location.hash = '?' + $.param({filterid: selectedTagIDs.toString()});
-
-            $(".content-items").html('');
-            //$('.articles-footer').html('');
-            document.getElementById('flagStatus').value = '';
-            var selectedTagAdded = document.getElementById('selectedCountry').value;
-
-            $("div.pageNavigation").replaceWith("<a class='button rodeo-dust-lighter text-bold w-full js-view-more-btn'>VIEW MORE</a>");
-         // We show the loading image while we're getting our data.
-            $("a.js-view-more-btn").replaceWith("<img class='loading' src='/media/imgs/loader.gif' alt='loading...' />");
-
-            loadCountRecallAjax = 2;
-            var selectedTag = document.getElementById('selectedCountry').value;
-
-
-            // Get filtered data set
-            $.get('RecallAjaxGetAllResources?page='+ '' +'&'+ selectedTag, function (data) {
-
-              // Convert returned data into Object
-              data = $.parseHTML(data);
-
-              // When everything is loaded we don't need this image anymore
-              $("img.loading").remove();
-
-              // Delete all existing Isotope items
-              $currentItems = $isotopeContainer.isotope('getItemElements');
-              $isotopeContainer.isotope( 'remove',$currentItems);
-
-              // Append new data to existing Isotope object
-              $isotopeContainer.append(data).isotope('appended', data );
-
-              // Layout items
-              $isotopeContainerisotope( 'layout');
-
-              // Lazy load all new images, which in turn calls Isotope layout
-              $blazy.revalidate();
-
-                $isotopeContainer
-                    // .html(data) // We insert the data we requested in to the div
-                    // .hide() // We make it visible again in the slideDown
-                    // .appendTo($('ul.content-items')) // Yes we do
-                    .slideDown(250, function () { // two and a half second slide down
-                      //loadCountRecallAjax++;
-                      initRecallAjax();
-                    });
-            });
-
-        }
-        else {
-            document.location.hash = '';
-            //$(".resource-download-items").html('');
-
-            if(flagStatus.length) {
-
-            }
-            else {
-                location.reload();
-            }
-        }
-
-        // Call the Ajax function to load filtered content
-
-        // loadFilteredContent();
-
-
-        // Append the selected ID's to the UL after the hash
-        // if (data.selected.length) {
-        //   document.location.hash = '?' + $.param({filterid: selectedTagIDs.toString()});
-        // }
-        // else {
-        //   document.location.hash = '';
-        // }
-
-        // End Joes code
-        // ========================
-      },
-
+    // Added by Jayson Hunter June 2015
+    getLocationHash: function() {
+      return document.location.hash;
+    },
 
 
     // Added by Jayson Hunter June 2015 for the Resources page
@@ -537,15 +484,13 @@ var main = {
         // Toggle the view more button
         main.toggleViewMore();
 
-        // Once all the items have been appended and laid out, make a all to a callback function
-        // to finish. Currently it's to lazy load the images in these isotope items.
+        // Once all the items have been appended and laid out, make a call to a callback function
+        // to finish. Currently it's to lazy load the images for these new isotope items.
         callback();
-  },
+    },
 
 
-
-
-    // Lazy Load images functionality - Added by Jayson Hunter May 2015 for the Resources page
+    // Lazy Load images functionality - Added by Jayson Hunter May 2015
     setupLazyLoad: function(){
 
         $blazy = new Blazy({
@@ -570,18 +515,26 @@ var main = {
 
 
 
-    // Fire the isotope layout and lazy load again - Added by Jayson Hunter June 2015 for the Resources page
+    // Fire the isotope layout and lazy load again - Added by Jayson Hunter June 2015
     reLayout: function(){
       // Add a small timeout as some images weren't loading without it.
       setTimeout(function(){
+
+        // Layout Isotope items
         $isotopeContainer.isotope('layout');
-        $blazy.revalidate();
+
+        // Lazy load new images
+        $blazy.revalidate
+
+        // Tell Sharethis to activate and show any new ShareThis buttons
+        if (window.stButtons){stButtons.locateElements();}
+
       }, 500);
     },
 
 
 
-    // Implement the Isotope layout engine - Added by Jayson Hunter May 2015 for the Resources page
+    // Implement the Isotope layout engine - Added by Jayson Hunter May 2015
     setupIsotope: function(){
 
         $isotopeContainer = $('.isotope-grid').isotope({
