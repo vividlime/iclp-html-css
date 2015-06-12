@@ -64,6 +64,12 @@
 				}
 			}
 
+			&.apply {
+				@include breakpoint(tabletPortrait){
+					display: none;
+				}
+			}
+
 			&.copy-content{
 				&:before{
  					@include breakpoint(phonePortrait) {

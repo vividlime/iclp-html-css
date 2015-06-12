@@ -422,6 +422,7 @@
             padding: 30% 0 12px 0;
             display: block;
             font-size: 28px;
+            font-style: normal;
             @include breakpoint(tabletPortrait) {
               font-size: 22px;
             }
@@ -436,6 +437,7 @@
             position: relative;
             padding-top: 12px;
             margin:auto;
+            font-style: normal;
             @include breakpoint(tabletPortrait) {
               width: 100%;
               padding: 12px 20px 0 20px;
