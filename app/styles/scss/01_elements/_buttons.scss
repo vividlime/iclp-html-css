@@ -5,7 +5,14 @@ a.button,
   background-color:$orange;
   @include transition(all 0.15s ease-out);
   @include box-shadow(1px 1px 0px rgba(0,0,0,0.70));
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
   &:hover{
+    color: $white;
     background-color:$active-link;
   }
 }
