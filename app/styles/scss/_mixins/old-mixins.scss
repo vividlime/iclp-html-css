@@ -397,11 +397,11 @@
             display: block;
             height: auto;
             line-height: 0;
-            @include breakpoint(phoneLandscape) {
-              top:28px;
-              width: auto;
-              height: 100%;
-            }
+            // @include breakpoint(phoneLandscape) {
+            //   top:28px;
+            //   width: auto;
+            //   height: 100%;
+            // }
           }
         }
         figcaption{
@@ -469,6 +469,7 @@
             display: table;
             color: $white;
             text-transform: uppercase;
+            font-style: normal;
             @include transition (all 0.3s ease-out);
 
             &:hover{
