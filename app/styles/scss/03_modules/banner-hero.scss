@@ -785,6 +785,7 @@
 		 		 }
 
 		 		ol.people{
+		 			list-style-type: none;
 		 			@include hotspot;
 		 			position: absolute;
 		 			width: 100%;
