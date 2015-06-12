@@ -58,9 +58,7 @@
 					@include breakpoint(phonePortrait) {
 						height:503px;
 					}
-					@include breakpoint(phoneLandscape) {
-						height:443px;
-					}
+
 					figure{
 						opacity: 1;
 						@include filter(blur(0px));
@@ -149,12 +147,7 @@
 						  margin-right: -417px;
   						@include transform (scale(0.94));
 						}
-						@include breakpoint(phoneLandscape) {
-							right: 50%;
-						  top: -95px;
-						  margin-right: -210px;
-						  @include transform (scale(0.73));
-						}
+
 		 	 			&:before{
 		 	 				top: 0;
 		 	 				left:0;
@@ -233,8 +226,6 @@
 					 	 		margin: 0;
 					 	 		strong{
 									font-weight:400;
-									// width: 100%;
-									// display: inline-block;
 
 					 	 		}
 					 	 	}
@@ -290,61 +281,22 @@
 
 					 .content{
 					 	background-color: transparent;
-					 	padding:0;
+					 	padding: 20px;
 
 						 h1{
 						 	font-size: 24px;
 						 	width: 90%;
 						 	line-height:1em;
 						 	background: $blue;
-						 	padding: 20px 0px 4px 20px;
+
 						 }
 						 h2{
 						 	font-size: 14px;
 						 	line-height:1.3em;
-						 	padding: 0px 0 0 20px;
+
 						 }
 						 .buttons{
 						 	display: inline-block;
-						 	padding: 0px 0px 7px 20px;
-						 	float: left;
-							.button{
-						 		display: block;
-							 	float: left;
-							 	margin: 12px 0;
-							 	min-width:197px;
-							 	font-size: 14px;
-						 	}
-
-						 }
-						}
-					}
-
-			 	 	@include breakpoint(phoneLandscape) {
-					 left:0;
-					 margin-left: 256px;
-  				 	 top: 20px;
-					 width: 294px;
-
-					 .content{
-					 	background-color: transparent;
-					 	padding:0;
-
-						 h1{
-						 	font-size: 24px;
-						 	width: 90%;
-						 	line-height:1em;
-						 	background: $blue;
-						 	padding: 20px 0px 4px 20px;
-						 }
-						 h2{
-						 	font-size: 14px;
-						 	line-height:1.3em;
-						 	padding: 0px 0 0 20px;
-						 }
-						 .buttons{
-						 	display: inline-block;
-						 	padding: 0px 0px 7px 20px;
 						 	float: left;
 							.button{
 						 		display: block;
@@ -416,7 +368,6 @@
 								display: block;
 								padding-bottom: 12px;
 								position: relative;
-					 	 		// z-index: 3;
 					 	 		font-weight: 400;
 					 	 		margin: 0;
 
@@ -441,19 +392,9 @@
 									font-size: 15px;
 									line-height: 1.3em;
 									text-align: left;
-									padding:4px 0 4px 14px;
+									padding:4px 0;
 									position: relative;
 									color: $dark-blue;
-									&:before{
-										position: absolute;
-										content: '';
-										left:0px;
-										top:10px;
-										width:5px;
-										height:5px;
-										@include border-radius(50%);
-										background: $dark-blue;
-									}
 								}
 							}
 						}
@@ -550,6 +491,7 @@
 
  				&.first{
 		    	img{
+		    		max-width: none;
 
 		    		@include breakpoint(bigDesktop) {
 		    		 margin-left: -810px;
@@ -562,6 +504,7 @@
 						@include breakpoint(desktop) {
 							margin-left: -530px;
 							width:60%;
+
 						}
 		    		@include breakpoint(tabletPortrait) {
 	 						margin-left: -52px;
@@ -573,11 +516,7 @@
 						  margin-left: -77px;
 						  top: -38px;
 						}
-						@include breakpoint(phoneLandscape) {
-					    margin-left: -90px;
-						  left: 0;
-						  width: 60%;
-						}
+
 		    	}
 		    }
 		    &.second{
