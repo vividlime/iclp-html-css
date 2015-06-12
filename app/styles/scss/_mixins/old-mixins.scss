@@ -277,6 +277,11 @@
       @content;
     }
   }
+  @else if $point == inbetweenMobile {
+      @media (max-width: 568px) {
+        @content;
+    }
+  }
 }
 
 

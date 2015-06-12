@@ -244,6 +244,9 @@
 								@include breakpoint(phonePortrait){
 									bottom:-20px;
 								}
+									@include breakpoint(inbetweenMobile){
+										bottom: -86px;
+									}
 							}
 							h1{
 								max-width: 1170px;
@@ -340,6 +343,9 @@
 							.breadcrumb{
 								@include breakpoint(phonePortrait) {
 									margin: 88px 0 0px 0;
+								}
+								@include breakpoint(inbetweenMobile){
+									margin: 74px 0 0 0;
 								}
 							}
 						}
