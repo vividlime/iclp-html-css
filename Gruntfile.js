@@ -94,16 +94,6 @@ module.exports = function (grunt) {
         // Concatenate files
         concat: {
 
-            bootstrapJS: {
-                src: [
-                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
-                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js',
-                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
-                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js',
-                    'app/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js'
-                ],
-                dest: 'build/processed/js/bootstrap.js'
-            },
 
             defaultJS: {
                 src: [
@@ -155,7 +145,6 @@ module.exports = function (grunt) {
                   report: 'min'
                 },
                 files: {
-                  'build/processed/js/bootstrap.min.js': ['build/processed/js/bootstrap.js'],
                   'build/processed/js/default.min.js': ['build/processed/js/default.js'],
                   'build/processed/js/main.min.js': ['build/processed/js/main.js']
                 }
