@@ -81,6 +81,11 @@
 					}
 				}
 			}
+			&.register {
+				@include breakpoint(tabletPortrait){
+					display: none;
+				}
+			}
 
 			&.copy-content{
 				&:before{
@@ -157,16 +162,16 @@
 								}
 							}
 						}
-						.view-load{
-							margin-top: 30px;
-							width: 100%;
-							height: auto;
-							background: $rodeo-dust-lighter;
-							color: $dark-grey;
-							box-shadow: none;
-							font-weight: bold;
-							outline: 0;
-						}
+						// .view-load{
+						// 	margin-top: 30px;
+						// 	width: 100%;
+						// 	height: auto;
+						// 	background: $rodeo-dust-lighter;
+						// 	color: $dark-grey;
+						// 	box-shadow: none;
+						// 	font-weight: bold;
+						// 	outline: 0;
+						// }
 						table {
 							width: 100%;
 							text-align: left;
