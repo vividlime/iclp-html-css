@@ -482,7 +482,7 @@
 						position: absolute;
 					}
 					@include breakpoint(phonePortrait) {
-						display: none;
+						// display: none;
 						&.mobile{
 							display: block;
 						}
@@ -492,6 +492,7 @@
  				&.first{
 		    	img{
 		    		max-width: none;
+		    		width :100%;
 
 		    		@include breakpoint(bigDesktop) {
 		    		 margin-left: -810px;
@@ -519,6 +520,7 @@
 
 		    	}
 		    }
+		    /*
 		    &.second{
 		    	img{
 		    		@include breakpoint(bigDesktop) {
@@ -650,7 +652,7 @@
 						  width: 60%;
 						}
 		    	}
-		    }
+		    }*/
 	 		}
 	 	}
 	 .banner-inner{
