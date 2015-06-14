@@ -31,6 +31,7 @@ var main = {
         this.setupIsotope();
         this.setupContentFilters();
         this.setupViewMoreButtons();
+        this.injectAjaxData();
     },
 
 
@@ -61,14 +62,14 @@ var main = {
             video.play();
 
             video.addEventListener('ended',function(){
-              //window.location = 'http://www.google.com';
-            var video1 = document.getElementById('video1');
-            var video2 = document.getElementById('video2');
+                //window.location = 'http://www.google.com';
+              var video1 = document.getElementById('video1');
+              var video2 = document.getElementById('video2');
 
-            video1.style.display='none';
+              video1.style.display='none';
 
-            video2.style.visibility='visible';
-            video2.play();
+              video2.style.visibility='visible';
+              video2.play();
 
             });
         }
@@ -259,7 +260,6 @@ var main = {
           $selectedTags = $('#selected-filter-tags');
 
 
-
           // Toggle the filter button (hide/show) that is shown on  mobile only
           $filterToggle.on('click', function(){
               $filterTabs.toggleClass('hidden');
@@ -297,19 +297,6 @@ var main = {
 
                   selectedTagIDs = [];
 
-                  // Is this the first time onChange is run?
-                  if (initialLoad) {
-                    pageID = $.urlParam('page');
-
-                    if (!pageID) {
-                      pageID = 1;
-                    }
-
-                    initialLoad = false;
-                  }
-                  else {
-                    pageID = 1;
-                  }
 
 
                   // Remove all the items from the "Selected Tags" list
@@ -336,15 +323,33 @@ var main = {
                     main.updateLocationHash($.param({page: pageID, filterid: selectedTagIDs.toString()}));
                   }
                   else {
-                    main.updateLocationHash($.param({page: pageID, filterid: selectedTagIDs.toString()}));
+                    main.updateLocationHash($.param({page: pageID}));
                   };
 
-                  if(ajaxURL && ajaxURL.length) {
-                    // Now get the data using the tags as the filter using an ajax call
-                    $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()}), function(data){
-                            main.updateIsotopeContent(data, true, main.reLayout);
-                        });
-                  };
+                  // if(ajaxURL && ajaxURL.length) {
+                  //   // Now get the data using the tags as the filter using an ajax call
+                  //   $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()}), function(data){
+                  //           main.updateIsotopeContent(data, true, main.reLayout);
+                  //       });
+                  // };
+
+                  // Is this the first time onChange is run?
+                  if (initialLoad) {
+                    pageID = $.urlParam('page');
+
+                    if (!pageID) {
+                      pageID = 1;
+                    }
+
+                    initialLoad = false;
+                  }
+                  else {
+                    pageID = 1;
+                    main.injectAjaxData();
+                  }
+
+
+
               }
           });
 
@@ -373,13 +378,14 @@ var main = {
     // View More button - Added by Jayson Hunter June 2015
     setupViewMoreButtons: function(){
         var ajaxURL,
-            ajaxData;
+            ajaxData,
+            filterIDs;
 
         $viewMoreButton = $('.js-view-more-btn');
 
         if($viewMoreButton) {
             // Check if the view more button should be hidden
-            main.toggleViewMore();
+
 
 
             // Get the url to use in the ajax call for new data
@@ -393,34 +399,99 @@ var main = {
                     // Hide the view more button
                     $viewMoreButton.addClass('hidden');
 
-                    // Show the loading spinner image
-                    $('.ajax-loader').removeClass('hidden');
-
                     // Get the page ID and filter tags from the URL hash
                     pageID = $.urlParam('page') || pageID;
 
                     // Increment the page ID
                     pageID++;
 
-                    selectedTagIDs = decodeURIComponent($.urlParam('filterid'));
-
+                    filterIDs = decodeURIComponent($.urlParam('filterid'));
 
                     // Ajax call with parameters to get more items
-                    var viewMoreItems = $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()}), function(data){
+                    // $.when(loadAjaxData())
+                    //   .then(function(data){
 
-                        // Hide the ajax loader
-                        $('.ajax-loader').addClass('hidden');
+                    //     // Update isotope content with new data items
+                    //     main.updateIsotopeContent(data, false, main.reLayout);
 
-                        // Update isotope content with new data items
-                        main.updateIsotopeContent(data, false, main.reLayout);
+                    //     // Update the url hash with the new page id
+                    //     main.updateLocationHash($.param({page: pageID, filterid: filterIDs}));
+                    //   });
 
-                        // Update the url hash with the new page id
-                        main.updateLocationHash($.param({page: pageID, filterid: selectedTagIDs}));
+                    main.injectAjaxData();
 
-                    });
+                    // var viewMoreItems = $.get(ajaxURL + '?' + $.param({page: pageID, filterid: filterIDs.toString()}), function(data){
+
+                    //     // Hide the ajax loader
+                    //     $('.ajax-loader').addClass('hidden');
+
+                    //     // Update isotope content with new data items
+                    //     main.updateIsotopeContent(data, false, main.reLayout);
+
+                    //     // Update the url hash with the new page id
+                    //     main.updateLocationHash($.param({page: pageID, filterid: filterIDs}));
+
+                    // });
                 });
             };
-        }
+        };
+
+    },
+
+
+    injectAjaxData: function(){
+      var ajaxURL,
+          filterIDs,
+          urlHash = {};
+
+      console.log('Injecting data');
+
+      // Get the url to use in the ajax call for new data
+      ajaxURL = $('.entry-content').attr('data-ajax-url');
+
+      // Get the page ID and filter tags from the URL hash
+      pageID = $.urlParam('page') || pageID;
+      filterIDs = decodeURIComponent($.urlParam('filterid'));
+
+
+      $.when(main.getAjaxData(ajaxURL, $.param({page: pageID, filterid: filterIDs.toString()})))
+        .then(function(data){
+
+          // Update isotope content with new data items
+          main.updateIsotopeContent(data, false, main.reLayout);
+
+
+          urlHash.page = pageID;
+          urlHash.filterid = "";
+
+          // Update page URL hash
+          if (filterIDs.length) {
+            urlHash.filterid = filterIDs.toString();
+          };
+
+          main.updateLocationHash($.param(urlHash));
+
+          main.toggleViewMore();
+        });
+    },
+
+
+    getAjaxData: function(ajaxURL, params) {
+      var dfd = new $.Deferred();
+
+      if(ajaxURL && ajaxURL.length) {
+        // Show the loading spinner image
+        $('.ajax-loader').removeClass('hidden');
+
+        // Now get the data usng a pageid and the filter parameter
+        $.get(ajaxURL + '?' + params, function(data){
+            // Hide the ajax loader
+            $('.ajax-loader').addClass('hidden');
+            return dfd.resolve(data);
+        });
+      };
+
+      return dfd.promise();
 
     },
 
@@ -494,6 +565,7 @@ var main = {
     setupLazyLoad: function(){
 
         $blazy = new Blazy({
+            selector: '.b-lazy',
             success: function(ele){
                 // When each image loads, layout isotope items
                 $isotopeContainer.isotope('layout');
@@ -501,12 +573,12 @@ var main = {
 
             breakpoints: [
                 {
-                    width: 480 // max-width
-                    , src: 'data-src-small'
+                    width: 480, // max-width
+                    src: 'data-src-small'
                 },
                 {
-                      width: 1024 // max-width
-                    , src: 'data-src-medium'
+                    width: 1024, // max-width
+                    src: 'data-src-medium'
                 }
             ],
              offset: 200, // The number of pixels below the fold to trigger the image load
