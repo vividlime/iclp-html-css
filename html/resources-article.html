@@ -207,18 +207,26 @@
                     <div class="container">
                         <hr>
 
-                        <h2 class="text-center mtb-30">RELATED RESOURCES</h2>
-                        <!-- Start All Articles Content -->
-                        <ul class="content-items content-grid isotope-grid" data-ajaxurl="_related-resources">
-                            <li class="grid-sizer"></li>
-                            <li class="gutter-sizer"></li>
+                        <div class="entry-content">
+                            <h2 class="text-center mtb-30">RELATED RESOURCES</h2>
 
-                        </ul>
+                            <!-- Start All Articles Content -->
+                            <ul class="content-items content-grid isotope-grid js-ajax-data-container" data-ajax-url="http://iclpdev.iclpcreative.com/GetAllData">
+                                <li class="grid-sizer"></li>
+                                <li class="gutter-sizer"></li>
+                            </ul>
+                            <!-- End Filtered Content -->
 
-                        <div class="ajax-loader hidden"></div>
-                        <div class="view-more js-view-more-btn hidden">
-                            <a class="button rodeo-dust-lighter text-bold w-full">VIEW MORE</a>
+                            <!-- Start View More -->
+                            <div class="view-more">
+                                <div class="ajax-loader hidden"></div>
+                                <div class="js-view-more-btn hidden">
+                                    <a class="button rodeo-dust-lighter text-bold w-full">VIEW MORE</a>
+                                </div>
+                            </div>
+                            <!-- End View More -->
                         </div>
+
                     </div>
                 </section>
                 <!-- End Related Resource Section -->

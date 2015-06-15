@@ -74,17 +74,26 @@
                 <section class="content-wrapper">
                     <div class="container">
 
-                        <h2 class="text-upper text-center mtb-30">All articles by Mignon Buckingham</h2>
-                        <!-- Start All Articles Content -->
-                        <ul class="content-items content-grid isotope-grid" data-ajaxurl="_resource-profile-items">
-                            <li class="grid-sizer"></li>
-                            <li class="gutter-sizer"></li>
-                        </ul>
+                        <div class="entry-content">
+                            <h2 class="text-upper text-center mtb-30">All articles by Mignon Buckingham</h2>
 
-                        <div class="ajax-loader hidden"></div>
-                        <div class="view-more js-view-more-btn hidden">
-                            <a class="button rodeo-dust-lighter text-bold w-full">VIEW MORE</a>
+                            <!-- Start All Articles Content -->
+                            <ul class="content-items content-grid isotope-grid js-ajax-data-container" data-ajax-url="http://iclpdev.iclpcreative.com/AllArticlefromAuthor">
+                                <li class="grid-sizer"></li>
+                                <li class="gutter-sizer"></li>
+                            </ul>
+                            <!-- End Filtered Content -->
+
+                            <!-- Start View More -->
+                            <div class="view-more">
+                                <div class="ajax-loader hidden"></div>
+                                <div class="js-view-more-btn hidden">
+                                    <a class="button rodeo-dust-lighter text-bold w-full">VIEW MORE</a>
+                                </div>
+                            </div>
+                            <!-- End View More -->
                         </div>
+
                     </div>
                 </section>
                 <!-- End All Articles By Section -->
