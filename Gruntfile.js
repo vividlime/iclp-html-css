@@ -61,7 +61,7 @@ module.exports = function (grunt) {
             distAppjs: {
                 expand: true,
                 flatten: true,
-                src: [ 'build/processed/js/main.js', 'build/processed/js/default.js'],
+                src: [ 'build/processed/js/main.*', 'build/processed/js/default.*'],
                 dest: 'assets/js/app'
             },
 
