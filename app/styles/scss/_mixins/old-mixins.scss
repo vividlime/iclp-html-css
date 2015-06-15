@@ -282,6 +282,11 @@
         @content;
     }
   }
+  @else if $point == bannerMobile {
+      @media (min-width: 500px) and (max-width: 568px) {
+        @content;
+    }
+  }
 }
 
 
