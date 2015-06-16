@@ -164,6 +164,9 @@
 								    width:60%;
 								    height: 1px;
 								    background:$white;
+								    @include breakpoint(tabletPortrait){
+								    	display: none;
+								    }
 									}
 								}
 
