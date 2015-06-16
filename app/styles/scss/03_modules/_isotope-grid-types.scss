@@ -1,0 +1,80 @@
+// Isotope Grid Types
+
+.isotope-grid {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    @include clearfix();
+
+    // Grid type 1 - max 2 items on row
+    &.grid-type-1 {
+        .gutter-sizer {
+            width: 2%;
+        }
+
+        .isotope-item,
+        .grid-sizer {
+            margin-bottom: 20px;
+
+            @include breakpoint(bigDesktop) {
+                width: 49%;
+            }
+
+            @include breakpoint(phonePortrait) {
+                width: 100%;
+            }
+        }
+    }
+
+
+
+    // Grid type 2 - max 3 items on row
+    &.grid-type-2 {
+        .gutter-sizer {
+            width: 2%;
+        }
+
+        .isotope-item,
+        .grid-sizer {
+            margin-bottom: 20px;
+
+            @include breakpoint(bigDesktop) {
+                width: 32%;
+            }
+
+            @include breakpoint(tabletPortrait) {
+                width: 48%;
+            }
+
+            @include breakpoint(phonePortrait) {
+                width: 100%;
+            }
+        }
+    }
+
+    // Grid type 3 - max 4 items on row
+    &.grid-type-3 {
+        .gutter-sizer {
+            width: 1%;
+        }
+
+        .isotope-item,
+        .grid-sizer {
+            margin-bottom: 10px;
+
+            @include breakpoint(bigDesktop) {
+                width: 24%;
+            }
+
+            @include breakpoint(tabletPortrait) {
+                width: 48%;
+            }
+
+            @include breakpoint(phonePortrait) {
+                width: 100%;
+            }
+        }
+    }
+
+}
+
