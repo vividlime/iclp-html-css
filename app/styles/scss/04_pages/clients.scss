@@ -30,7 +30,7 @@
 							.titles{
 								h3{
 									&:before{
-										color: $grey;
+										background: #cccccc;
 									}
 								}
 							}
@@ -176,6 +176,9 @@
 					&:first-child{
 						.copy{
 							padding-top: 190px;
+							@include breakpoint(phonePortrait){
+								padding-top: 90px;
+							}
 						}
 					}
 					.introduction {
