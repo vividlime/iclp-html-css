@@ -30,8 +30,8 @@ var main = {
         this.setupLazyLoad();
         this.setupIsotope();
         this.setupContentFilters();
+        this.populateAjaxData(true);
         this.setupViewMoreButtons();
-        this.injectAjaxData();
     },
 
 
@@ -227,12 +227,10 @@ var main = {
 
 
 
-    // Nav Tabs Content Filter for the Resources page - Added by Jayson Hunter May 2015
-    // Params is an object with items 'pageID' and 'ajaxURL' as strings
-    setupContentFilters: function(params){
+    // Nav Tabs (Bootstrap) Content Filter - Originally added for the Resources page.
+    // Added by Jayson Hunter May 2015
+    setupContentFilters: function(){
         var $contentFilter,
-            pageID,
-            ajaxURL,
             $filterToggle,
             $filterTabs,
             $tagListHandle,
@@ -246,13 +244,6 @@ var main = {
 
         // If a content filter is found
         if($contentFilter.length) {
-
-          // If there is a page id parameter already in the URL, use that.
-          pageID = $.urlParam('page') || pageID;
-
-          // Get the url to the data source from the HTML data attribute
-          ajaxURL = $('.entry-content').attr('data-ajax-url');
-
 
           $filterToggle = $('.js-toggle-filter-state');
           $filterTabs = $('#filter-tabs');
@@ -274,7 +265,7 @@ var main = {
           if (selectedTagIDs) {
             selectedTagIDs = decodeURIComponent(selectedTagIDs).split(",");
 
-              // Select the relevant id's in the filter bar
+              // Select the relevant tags in the filter bar
               for (i=0; i < selectedTagIDs.length; i++) {
                   var tagID = selectedTagIDs[i];
                   $allTagLists.find('li[data-tag-id="' + tagID + '"]').addClass('selected');
@@ -290,13 +281,13 @@ var main = {
               },
 
               // When a tab tag has been clicked (selected/deselected)
-              // THIS IS CALLED AT LEAST ONCE WHEN THE PAGE LOADS
+              // THIS EVENT IS CALLED AT LEAST ONCE WHEN THE PAGE LOADS
               onChange: function(data) {
                   var tagID,
-                      tagName;
+                      tagName,
+                      urlParams = {};
 
                   selectedTagIDs = [];
-
 
 
                   // Remove all the items from the "Selected Tags" list
@@ -309,7 +300,7 @@ var main = {
 
                       selectedTagIDs.push(tagID);
 
-                      // Build up the "Selected Tags" list again
+                      // Build up the "Selected Tags" list
                       $selectedTags.append('<li class="label" data-tag-id="' + tagID + '"><span class="tag-name">' + tagName + '</span></li>');
                   });
 
@@ -318,43 +309,29 @@ var main = {
 
                   $('#selected-filter-tag-ids').val(selectedTagIDs.toString());
 
+
+                  urlParams.page = 1;
+
                   // Update page URL hash
                   if (selectedTagIDs.length) {
-                    main.updateLocationHash($.param({page: pageID, filterid: selectedTagIDs.toString()}));
-                  }
-                  else {
-                    main.updateLocationHash($.param({page: pageID}));
+                    urlParams.filterid = selectedTagIDs.toString();
                   };
 
-                  // if(ajaxURL && ajaxURL.length) {
-                  //   // Now get the data using the tags as the filter using an ajax call
-                  //   $.get(ajaxURL + '?' + $.param({page: pageID, filterid: selectedTagIDs.toString()}), function(data){
-                  //           main.updateIsotopeContent(data, true, main.reLayout);
-                  //       });
-                  // };
+                  main.updateLocationHash($.param(urlParams));
 
-                  // Is this the first time onChange is run?
+
+                  // Don't load ajax data on first load as it's done in the Init script up top
                   if (initialLoad) {
-                    pageID = $.urlParam('page');
-
-                    if (!pageID) {
-                      pageID = 1;
-                    }
-
                     initialLoad = false;
                   }
-                  else {
-                    pageID = 1;
-                    main.injectAjaxData();
-                  }
-
-
-
+                  else{
+                    main.populateAjaxData(true);
+                  };
               }
           });
 
 
-          // Bind some functionality to the "Selected Tags" list items when they're removed
+          // Bind some functionality to the "Selected Tags" list items when they're clicked
           $($selectedTags).on('click', 'li', function(){
               var selectedTag = this;
               var selectedTagID;
@@ -375,119 +352,35 @@ var main = {
     },
 
 
-    // View More button - Added by Jayson Hunter June 2015
-    setupViewMoreButtons: function(){
-        var ajaxURL,
-            ajaxData,
-            filterIDs;
+    // This locates the ajax url to call
+    // Added by Jayson Hunter June 2015
+    getAjaxURL: function(){
+      var ajaxURL;
 
-        $viewMoreButton = $('.js-view-more-btn');
+      ajaxURL = $('.js-ajax-data-container').attr('data-ajax-url');
 
-        if($viewMoreButton) {
-            // Check if the view more button should be hidden
-
-
-
-            // Get the url to use in the ajax call for new data
-            ajaxURL = $('.entry-content').attr('data-ajax-url');
-
-
-            // If an ajax url is present
-            if(ajaxURL && ajaxURL.length) {
-                $viewMoreButton.on('click', function(){
-
-                    // Hide the view more button
-                    $viewMoreButton.addClass('hidden');
-
-                    // Get the page ID and filter tags from the URL hash
-                    pageID = $.urlParam('page') || pageID;
-
-                    // Increment the page ID
-                    pageID++;
-
-                    filterIDs = decodeURIComponent($.urlParam('filterid'));
-
-                    // Ajax call with parameters to get more items
-                    // $.when(loadAjaxData())
-                    //   .then(function(data){
-
-                    //     // Update isotope content with new data items
-                    //     main.updateIsotopeContent(data, false, main.reLayout);
-
-                    //     // Update the url hash with the new page id
-                    //     main.updateLocationHash($.param({page: pageID, filterid: filterIDs}));
-                    //   });
-
-                    main.injectAjaxData();
-
-                    // var viewMoreItems = $.get(ajaxURL + '?' + $.param({page: pageID, filterid: filterIDs.toString()}), function(data){
-
-                    //     // Hide the ajax loader
-                    //     $('.ajax-loader').addClass('hidden');
-
-                    //     // Update isotope content with new data items
-                    //     main.updateIsotopeContent(data, false, main.reLayout);
-
-                    //     // Update the url hash with the new page id
-                    //     main.updateLocationHash($.param({page: pageID, filterid: filterIDs}));
-
-                    // });
-                });
-            };
-        };
-
+      return ajaxURL;
     },
 
 
-    injectAjaxData: function(){
-      var ajaxURL,
-          filterIDs,
-          urlHash = {};
-
-      console.log('Injecting data');
-
-      // Get the url to use in the ajax call for new data
-      ajaxURL = $('.entry-content').attr('data-ajax-url');
-
-      // Get the page ID and filter tags from the URL hash
-      pageID = $.urlParam('page') || pageID;
-      filterIDs = decodeURIComponent($.urlParam('filterid'));
-
-
-      $.when(main.getAjaxData(ajaxURL, $.param({page: pageID, filterid: filterIDs.toString()})))
-        .then(function(data){
-
-          // Update isotope content with new data items
-          main.updateIsotopeContent(data, false, main.reLayout);
-
-
-          urlHash.page = pageID;
-          urlHash.filterid = "";
-
-          // Update page URL hash
-          if (filterIDs.length) {
-            urlHash.filterid = filterIDs.toString();
-          };
-
-          main.updateLocationHash($.param(urlHash));
-
-          main.toggleViewMore();
-        });
-    },
-
-
+    // Set up a Promise, call the ajax url and return the data
+    // Added by Jayson Hunter June 2015
     getAjaxData: function(ajaxURL, params) {
       var dfd = new $.Deferred();
 
-      if(ajaxURL && ajaxURL.length) {
+      if(ajaxURL.length) {
         // Show the loading spinner image
         $('.ajax-loader').removeClass('hidden');
 
-        // Now get the data usng a pageid and the filter parameter
+        // Now get the data using parameters
         $.get(ajaxURL + '?' + params, function(data){
-            // Hide the ajax loader
+            // Once done, hide the ajax loader
             $('.ajax-loader').addClass('hidden');
             return dfd.resolve(data);
+        }).
+        fail(function(){
+          $('.ajax-loader').addClass('hidden');
+          return dfd.resolve("");
         });
       };
 
@@ -495,13 +388,58 @@ var main = {
 
     },
 
+    // Responsible for getting the data, adding it to the page, updating the url hash
+    // and toggling the view more button.
+    // Added by Jayson Hunter June 2015
+    populateAjaxData: function(removeCurrentItems){
+      var ajaxURL,
+          filterIDs,
+          urlParams = {};
+
+      ajaxURL = main.getAjaxURL();
 
 
-    // Toggle View More button - Added by Jayson Hunter June 2015
+      // Only process ajax data if there's an ajax url
+      if(ajaxURL && ajaxURL.length) {
+
+        // Get the page ID and filter tags from the URL hash (if present)
+        urlParams.page = $.urlParam('page') || pageID;
+        filterIDs = $.urlParam('filterid');
+
+        if (filterIDs != null){
+          filterIDs = decodeURIComponent(filterIDs);
+          urlParams.filterid = filterIDs;
+        };
+
+
+        $.when(main.getAjaxData(ajaxURL, $.param(urlParams)))
+        .then(function(data){
+
+          // Update isotope content with new data items
+          main.updateIsotopeContent(data, removeCurrentItems, main.reLayout);
+
+          main.updateLocationHash($.param(urlParams));
+
+          // console.log('Data length is ' + data.trim().length);
+          // If no data is returned, then hide the view more button
+          if(data.trim().length) {
+            // console.log(data);
+            main.toggleViewMore();
+          }
+          else {
+            $viewMoreButton.addClass('hidden');
+          }
+
+        });
+      };
+    },
+
+
+    // Toggle View More button
+    // Hide "view more" button if items are from the last page in Umbraco.
+    // Items must have class 'js-is-last-page' class to hide the view more button.
+    // Added by Jayson Hunter June 2015
     toggleViewMore: function(){
-
-        // Hide "view more" button if items are from the last page in Umbraco.
-        // Items must have class 'js-is-last-page' class to hide the view more button.
 
         setTimeout(function(){ // Put a slight timeout as the toggle was firing too quickly
           if ( $('.js-last-page-item').length > 0 ) {
@@ -518,21 +456,70 @@ var main = {
     },
 
 
+    // Set up the View More button functionality
+    // Added by Jayson Hunter June 2015
+    setupViewMoreButtons: function(){
+        var ajaxURL,
+            ajaxData,
+            filterIDs,
+            urlParams = {};
+
+        $viewMoreButton = $('.js-view-more-btn');
+
+        if($viewMoreButton) {
+            // Get the url to use in the ajax call for new data
+            ajaxURL = main.getAjaxURL();
+
+
+            // If an ajax url is present
+            if(ajaxURL && ajaxURL.length) {
+                $viewMoreButton.on('click', function(){
+
+                    // Hide the view more button
+                    $viewMoreButton.addClass('hidden');
+
+                    // Get the page ID from the URL hash
+                    pageID = $.urlParam('page') || pageID;
+
+                    // Increment the page ID
+                    pageID++;
+
+                    urlParams.page = pageID;
+
+
+                    // Get the filterid parameter if present
+                    filterIDs = $.urlParam('filterid');
+
+                    if (filterIDs != null){
+                      filterIDs = decodeURIComponent(filterIDs);
+                      urlParams.filterid = filterIDs.toString();
+                    };
+
+                    // Update hte url hash and call populate page with ajax data
+                    main.updateLocationHash($.param(urlParams));
+                    main.populateAjaxData(false);
+
+                });
+            };
+        };
+
+    },
+
+
+    // Update the page hash location
     // Added by Jayson Hunter June 2015
     updateLocationHash: function(params) {
       document.location.hash = '?' + params;
     },
 
-    // Added by Jayson Hunter June 2015
-    getLocationHash: function() {
-      return document.location.hash;
-    },
 
 
-    // Added by Jayson Hunter June 2015 for the Resources page
+
+
     // This accepts the data returned from the ajax call, then either appends
     // the data to the existing isotope container (view more), or replaces
     // it with the new data E.g. Resources Content Filter.
+    // Added by Jayson Hunter June 2015
 
     updateIsotopeContent: function(ajaxData, removeCurrentItems, callback) {
         var $currentItems;
@@ -552,16 +539,14 @@ var main = {
             .isotope('appended', ajaxData )
             .isotope('layout');
 
-        // Toggle the view more button
-        main.toggleViewMore();
-
         // Once all the items have been appended and laid out, make a call to a callback function
         // to finish. Currently it's to lazy load the images for these new isotope items.
         callback();
     },
 
 
-    // Lazy Load images functionality - Added by Jayson Hunter May 2015
+    // Lazy Load images functionality
+    // Added by Jayson Hunter May 2015
     setupLazyLoad: function(){
 
         $blazy = new Blazy({
@@ -587,7 +572,8 @@ var main = {
 
 
 
-    // Fire the isotope layout and lazy load again - Added by Jayson Hunter June 2015
+    // Fire the isotope layout and lazy load again
+    // Added by Jayson Hunter June 2015
     reLayout: function(){
       // Add a small timeout as some images weren't loading without it.
       setTimeout(function(){
@@ -606,7 +592,8 @@ var main = {
 
 
 
-    // Implement the Isotope layout engine - Added by Jayson Hunter May 2015
+    // Implement the Isotope layout engine
+    // Added by Jayson Hunter May 2015
     setupIsotope: function(){
 
         $isotopeContainer = $('.isotope-grid').isotope({
