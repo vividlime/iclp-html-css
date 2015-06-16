@@ -11,6 +11,11 @@
         color: $grey;
         font-weight: bold;
 
+        @include breakpoint(phonePortrait) {
+            padding: 20px;
+
+        }
+
         &:hover {
 
         }
