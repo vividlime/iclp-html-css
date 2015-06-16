@@ -231,7 +231,6 @@ var main = {
     // Added by Jayson Hunter May 2015
     setupContentFilters: function(){
         var $contentFilter,
-            $filterToggle,
             $filterTabs,
             $tagListHandle,
             $allTagLists,
@@ -245,17 +244,9 @@ var main = {
         // If a content filter is found
         if($contentFilter.length) {
 
-          $filterToggle = $('.js-toggle-filter-state');
           $filterTabs = $('#filter-tabs');
           $allTagLists = $('#filter-tag-pane');
           $selectedTags = $('#selected-filter-tags');
-
-
-          // Toggle the filter button (hide/show) that is shown on  mobile only
-          $filterToggle.on('click', function(){
-              $filterTabs.toggleClass('hidden');
-              $allTagLists.toggleClass('hidden');
-          });
 
 
           // Get the filter id's from the url if there are any
