@@ -50,13 +50,17 @@
 
                  <!-- Start Filter Bar -->
                 <div class="content-filter">
-                    <a class="filter-toggle white text-bold" data-toggle="collapse" href="#content-filter-tab-with-tags" aria-expanded="true" aria-controls="content-filter-tab-with-tags">Filter</a>
+                    <div class="container">
+                        <a class="filter-toggle white text-bold" data-toggle="collapse" href="#content-filter-tab-with-tags" aria-expanded="true" aria-controls="content-filter-tab-with-tags">Filter <span class="pull-right">+ -</span></a>
+                    </div>
 
                     <!-- Start Filter Tabs and Tab Content -->
                     <div id="content-filter-tab-with-tags" class="collapse in" >
                         <!-- Start Filter Tabs -->
                         <div id="filter-tab-panel" class="filter-tab-panel" role="tabpanel">
                             <div class="container">
+
+
                                 <ul id="filter-tabs" class="nav nav-tabs filter-tabs" role="tablist">
                                     <li class="filter-tab" role="presentation">
                                         <a href="#filter-media-type" aria-controls="filter-media-type" role="tab" data-toggle="tab">MEDIA TYPE</a>
@@ -199,7 +203,7 @@
                         <div class="entry-content">
 
                             <!-- Start Filtered Content -->
-                            <ul class="content-items content-grid isotope-grid js-ajax-data-container" data-ajax-url="http://iclpdev.iclpcreative.com/GetAllData">
+                            <ul class="content-items isotope-grid grid-type-2 js-ajax-data-container" data-ajax-url="_resource-items-1">
                                 <li class="grid-sizer"></li>
                                 <li class="gutter-sizer"></li>
                             </ul>
