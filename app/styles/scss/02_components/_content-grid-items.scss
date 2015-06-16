@@ -1,27 +1,11 @@
 // Grid entry items (LI items) E.g. Resources page
 
-.content-grid-item,
-.grid-sizer {
-    @include breakpoint(bigDesktop) {
-        width: 32%;
-    }
-
-    @include breakpoint(tabletPortrait) {
-        width: 48%;
-    }
-
-    @include breakpoint(phonePortrait) {
-        width: 100%;
-    }
-}
 
 .content-grid-item {
     position: relative;
     float: left;
     margin-bottom: 20px;
     color: $white;
-
-
 
     .content-item__header {
         position: relative;
