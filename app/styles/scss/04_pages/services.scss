@@ -169,7 +169,7 @@
 
 								&.customerengagement{
 									span{
-										top: 100px;
+										// top: 100px;
 										line-height: 1.1em;
 										&:after{
 
@@ -191,7 +191,7 @@
 							span.view{
 								border: 1px solid $white;
 								@include border-radius(3px);
-								padding: 10px 40px;
+								padding: 15px 45px;
 								margin:0px auto;
 								text-align: center;
 								line-height: 1;

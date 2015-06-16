@@ -66,6 +66,7 @@ footer.footer{
 					}
 					li{
 						float: left;
+						display: inline;
 						@include breakpoint(tabletPortrait) {
 						display: block;
 						border: none;
