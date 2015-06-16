@@ -29,7 +29,7 @@
 .filter-tab-panel {
 
     @include breakpoint(phonePortrait) {
-       background-color: $rodeo-dust-light;
+       // background-color: $rodeo-dust-light;
        padding-top: 10px;
     }
 
