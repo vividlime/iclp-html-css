@@ -1,4 +1,26 @@
-// Isotope Grids
+/* Isotope Grids.
+
+Allows you to specify an isotope grid layout and how many
+items per row you need (2, 3, or 4).
+
+E.g. :
+
+<ul class="isotope-grid grid-3-up">
+    <li class="grid-sizer"></li>
+    <li class="gutter-sizer"></li>
+
+    <li class="isotope-item">
+        ...
+    </li>
+    <li class="isotope-item">
+        ...
+    </li>
+
+    ...
+</ul>
+
+*/
+
 
 .isotope-grid {
     margin: 0;

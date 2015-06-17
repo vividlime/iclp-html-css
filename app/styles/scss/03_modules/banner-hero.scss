@@ -491,18 +491,11 @@
 					width:60%;
 					left:50%;
 					height: auto;
-					&.mobile{
-						display: none;
-					}
+
 					@include breakpoint(tabletPortrait) {
 						position: absolute;
 					}
-					@include breakpoint(phonePortrait) {
-						// display: none;
-						&.mobile{
-							display: block;
-						}
-					}
+
 		 	 	}
 
  				&.first{
@@ -511,26 +504,26 @@
 		    		width :100%;
 
 		    		@include breakpoint(bigDesktop) {
-		    		 margin-left: -810px;
-		    		 width: 70%;
+		    		 margin-left: -770px;
+		    		 width: 330%;
 						}
 						@include breakpoint(mediumDesktop) {
-							margin-left: -550px;
-							width:60%;
+							margin-left: -510px;
+							width:110%;
 						}
 						@include breakpoint(desktop) {
 							margin-left: -530px;
-							width:60%;
+							width:110%;
 
 						}
 		    		@include breakpoint(tabletPortrait) {
-	 						margin-left: -52px;
+	 						margin-left: -100px;
 						  left: 0;
 						  width: 80%;
 						}
 						@include breakpoint(phonePortrait) {
-						  width: 160%;
-						  margin-left: -77px;
+						  width: 180%;
+						  margin-left: -117px;
 						  top: -38px;
 						}
 
