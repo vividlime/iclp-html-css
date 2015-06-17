@@ -25,10 +25,10 @@ var main = {
     init: function () {
         this.carousels();
         this.twitter();
-        this.playvideos();
+        // this.playvideos();
         this.playnewvideos();
-        this.setupLazyLoad();
         this.setupIsotope();
+        this.setupLazyLoad();
         this.setupContentFilters();
         this.populateAjaxData(true);
         this.setupViewMoreButtons();
@@ -544,7 +544,11 @@ var main = {
             selector: '.b-lazy',
             success: function(ele){
                 // When each image loads, layout isotope items
-                $isotopeContainer.isotope('layout');
+
+                if($isotopeContainer) {
+                  $isotopeContainer.isotope('layout');
+                };
+
             },
 
             breakpoints: [
