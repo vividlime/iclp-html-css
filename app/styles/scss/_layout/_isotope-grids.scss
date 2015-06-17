@@ -1,4 +1,4 @@
-// Isotope Grid Types
+// Isotope Grids
 
 .isotope-grid {
     margin: 0;
@@ -6,8 +6,8 @@
     list-style-type: none;
     @include clearfix();
 
-    // Grid type 1 - max 2 items on row
-    &.grid-type-1 {
+    // Max 2 items on row
+    &.grid-2-up {
         .gutter-sizer {
             width: 2%;
         }
@@ -28,8 +28,8 @@
 
 
 
-    // Grid type 2 - max 3 items on row
-    &.grid-type-2 {
+    // Max 3 items on row
+    &.grid-3-up {
         .gutter-sizer {
             width: 2%;
         }
@@ -52,8 +52,8 @@
         }
     }
 
-    // Grid type 3 - max 4 items on row
-    &.grid-type-3 {
+    // Max 4 items on row
+    &.grid-4-up {
         .gutter-sizer {
             width: 1%;
         }
