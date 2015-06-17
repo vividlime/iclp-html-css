@@ -88,7 +88,7 @@
 								margin-left:0;
 							}
 							@include breakpoint(tabletPortrait) {
-								width: 49.21052631578947%;
+								// width: 49.21052631578947%;
 								& + a {
 									margin-left: 1.5789473684210527%;
 								}
@@ -291,7 +291,13 @@
 	cursor: pointer;
 	z-index: 2;
 	@include breakpoint(tabletPortrait){
-		display: none;
+		// display: none;
+		right: -90%;
+		top: 5px;
+		position: relative;
+	}
+	@include breakpoint(phonePortrait){
+		right: -80%;
 	}
 		}
 	}
