@@ -315,9 +315,9 @@
 				height: 23%;
 				background: $turquoise;
 				@include transform (translateY(-35px) skewY(-4deg));
-				@include breakpoint(phonePortrait){
+				@include breakpoint(tabletLandscape){
 					// height: 22%;
-					@include transform (translateY(-15px) skewY(-4deg));
+					display: none;
 				}
 			}
 			.modal-image {
