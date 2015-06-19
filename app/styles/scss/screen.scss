@@ -7,19 +7,27 @@ MASTER PARTIAL SCSS IMPORT FILE
 
 ***/
 
-// Reset styles
-@import "_base/normalize";
 
 
+
+// Boostrap variables
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+
+
+// Custom variables and Bootstrap variable overrides
 @import "_variables/_variables";
-
-
-// Bootstrap and Twitter
-@import "_vendor/_vendor";
 
 
 // Custom mixins
 @import "_mixins/_mixins";
+
+
+// Bootstrap Components and Twitter styling
+@import "_vendor/_vendor";
+
+
+// Reset styles
+@import "_base/normalize";
 
 
 // Helper Classes
@@ -46,5 +54,5 @@ MASTER PARTIAL SCSS IMPORT FILE
 @import "03_modules/_modules";
 
 
-// Pages
+// Page specific styling (NOT GOOD BUT KEPT TO THE PREVIOUS IMPLEMENTATION)
 @import "04_pages/_pages";
