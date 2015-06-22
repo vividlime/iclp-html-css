@@ -189,6 +189,9 @@
 						}
 						tbody tr:nth-child(odd) {
 							  background: $rodeo-dust-lighter;
+							  &:hover{
+							  	background: $rodeo-dust;
+							  }
 							}
 						th{
 							font-size: 17px;
@@ -233,10 +236,14 @@
 							padding: 0 20px;
 							vertical-align: middle;
 							height: 50px;
+							cursor: pointer;
 							@include breakpoint(phonePortrait){
 								&:first-of-type{
 									display: none;
 								}
+							}
+							&:hover{
+								background: $rodeo-dust;
 							}
 							a{
 								font-weight: bold;
