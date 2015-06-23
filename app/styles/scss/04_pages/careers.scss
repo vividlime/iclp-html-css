@@ -241,7 +241,7 @@
 							cursor: pointer;
 							@include transition(all 0.3s ease-out);
 							@include breakpoint(phonePortrait){
-								&:first-of-type{
+								&.table-heading{
 									display: none;
 								}
 							}
