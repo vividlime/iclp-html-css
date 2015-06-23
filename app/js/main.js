@@ -19,19 +19,18 @@ var $isotopeContainer,
   };
 
 
-// Module pattern
 var main = {
 
     init: function () {
         this.carousels();
         this.twitter();
-        this.playvideos();
-        // this.playnewvideos();
+        // this.playvideos();
+        this.playnewvideos();
         this.setupIsotope();
         this.setupLazyLoad();
         this.setupContentFilters();
-        this.populateAjaxData(true);
         this.setupViewMoreButtons();
+        this.populateAjaxData(true);
     },
 
 
@@ -486,7 +485,7 @@ var main = {
                       urlParams.filterid = filterIDs.toString();
                     };
 
-                    // Update hte url hash and call populate page with ajax data
+                    // Update the url hash and call populate page with ajax data
                     main.updateLocationHash($.param(urlParams));
                     main.populateAjaxData(false);
 
