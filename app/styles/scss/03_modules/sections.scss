@@ -31,6 +31,10 @@
 		&.head{
 			.head-container{
 				.head-theme{
+					.head-img {
+						position: absolute;
+					}
+
 					.headings{
 						position: relative;
 						min-height: 368px;
