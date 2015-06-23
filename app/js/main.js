@@ -86,7 +86,6 @@ var main = {
        function changeVideoSrc(vidObj,vidEl){
            vidEl.html("");
            vidObj.media.forEach(function(obj){
-               //console.log(obj);
                vidEl.append($("<source>").attr("src",obj.src).attr("type",obj.format));
            });
        }
@@ -410,10 +409,8 @@ var main = {
 
           main.updateLocationHash($.param(urlParams));
 
-          // console.log('Data length is ' + data.trim().length);
           // If no data is returned, then hide the view more button
           if(data.trim().length) {
-            // console.log(data);
             main.toggleViewMore();
           }
           else {
@@ -529,6 +526,8 @@ var main = {
             .isotope('appended', ajaxData )
             .isotope('layout');
 
+        // $blazy.revalidate();
+
         // Once all the items have been appended and laid out, make a call to a callback function
         // to finish. Currently it's to lazy load the images for these new isotope items.
         callback();
@@ -576,7 +575,7 @@ var main = {
         $isotopeContainer.isotope('layout');
 
         // Lazy load new images
-        $blazy.revalidate
+        $blazy.revalidate()
 
         // Tell Sharethis to activate and show any new ShareThis buttons
         if (window.stButtons){stButtons.locateElements();}
