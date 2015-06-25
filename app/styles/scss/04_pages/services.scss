@@ -50,6 +50,7 @@
 
 					}
 				}
+
 			}
 
 			&.copy-content{
@@ -322,6 +323,26 @@
 					margin-top: 20px;
 					padding:110px 0 20px 0;
 				}
+			}
+
+			.container{
+				.text-center{
+					h2{
+						visibility: hidden;
+						@include breakpoint(tabletPortrait){
+							display: none;
+						}
+					}
+				}
+			}
+
+			.content-grid{
+				h2{
+					span{
+						font-size: 19.5px;
+					}
+				}
+
 			}
 		}
 	}

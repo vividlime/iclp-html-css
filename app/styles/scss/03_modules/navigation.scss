@@ -131,6 +131,12 @@ body{
                 }
               }
 
+               &.industries{
+                &:before{
+                  content: "\e025";
+                }
+              }
+
               &.resources{
                 &:before{
                   content: "\e06a";

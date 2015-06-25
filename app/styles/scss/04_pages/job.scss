@@ -42,6 +42,9 @@
 								h1,h2,h3,blockquote{
 									color: $grey;
 								}
+								h1 {
+									top: 60px;
+								}
 								h2{
 									text-transform: inherit;
 								}
@@ -84,7 +87,7 @@
 						.copy{
 							padding-top:178px;
 							@include breakpoint(phonePortrait) {
-								padding-top: 80px;
+								// padding-top: 80px;
 							}
 							ul{
 								padding: 0;
@@ -97,7 +100,7 @@
 							color: $grey;
 						}
 						p {
-							padding-right: 50%;
+							padding-right: 0%;
 							@include breakpoint(tabletPortrait) {
 								padding-right: 0px;
 							}
