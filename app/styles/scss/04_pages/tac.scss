@@ -9,6 +9,7 @@
 							&.imagery{
 								background:#47aac7;
 								padding: 0 0 20px 0;
+								min-height: 254px;
 								.ring{
 									&:before{
 										background-image: url(../assets/images/svg/Banner-SimpleTextPage-JourneyCurve-L2.svg);
@@ -44,6 +45,11 @@
 
 						@include breakpoint(tabletPortrait) {
 							padding-top: 38px;
+						}
+					}
+					.button{
+						a {
+							color: $white;
 						}
 					}
 					&:nth-child(odd){
