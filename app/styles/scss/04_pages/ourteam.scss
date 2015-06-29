@@ -132,14 +132,14 @@
 									content: "";
 									position: absolute;
 									width: 100%;
-									height: 30%;
+									height: 33%;
 									background: $turquoise; 
 									left: 0;
 									@include transition(all 0.3s ease-out);
 									@include transform (translateY(25px) skewY(-4deg));
 									z-index: -2;
 									@include breakpoint(tabletPortrait){
-										@include transform (translateY(20px) skewY(-4deg));
+										@include transform (translateY(25px) skewY(-4deg));
 									}
 								}
 								h2 {
@@ -312,9 +312,9 @@
 				content: "";
 				position: absolute;
 				width: 100%;
-				height: 23%;
+				height: 13%;
 				background: $turquoise;
-				@include transform (translateY(-35px) skewY(-4deg));
+				@include transform (translateY(60px) skewY(-4deg));
 				@include breakpoint(tabletLandscape){
 					// height: 22%;
 					display: none;
