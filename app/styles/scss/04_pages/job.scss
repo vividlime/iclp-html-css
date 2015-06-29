@@ -68,8 +68,23 @@
 			}
 
 			&.apply {
+				.form{
+					@include breakpoint(tabletPortrait){
+						display: none !important;
+					}
+				}
 				@include breakpoint(tabletPortrait){
+					// display: none;
+				}
+
+				.mobile-message {
 					display: none;
+					@include breakpoint(tabletPortrait){
+						display: block;
+						width: 100%;
+						text-align: center;
+						font-weight: bold;
+					}
 				}
 			}
 
