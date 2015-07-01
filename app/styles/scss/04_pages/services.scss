@@ -342,6 +342,34 @@
 						font-size: 19.5px;
 					}
 				}
+				.block-nav-grid__item{
+					height: 270px;
+					@include breakpoint(tabletPortrait){
+						height: auto;
+					}
+				}
+				span.view{
+								border: 1px solid $white;
+								@include border-radius(3px);
+								padding: 10px 45px;
+								margin:0px auto;
+								text-align: center;
+								line-height: 1;
+								position: absolute;
+								z-index: 2;
+								bottom: 30px;
+								left: 50%;
+								margin-left: -63px;
+								color: $white;
+								@include transition((all 0.35s ease-out));
+
+								&:hover{
+		             background: rgba(255,255,255,0.2);
+		            }
+		            @include breakpoint(tabletPortrait){
+		            	display: none;
+		            }
+							}
 
 			}
 		}

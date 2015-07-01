@@ -266,6 +266,7 @@
 					height: 415px;
 					width: 100%;
 					padding:0;
+					overflow: hidden;
 					@include transition((all 0.3s ease-out));
 					@include breakpoint(tabletPortrait) {
 						padding: 0;
@@ -291,7 +292,7 @@
 						position: absolute;
 						top:0;
 						left:0;
-						// max-width: none;
+						max-width: none;
 						width: auto;
 						height:100%;
 					}
@@ -354,7 +355,5 @@
 	}
 
 
-
-
-
 }
+iframe[id^='twitter-widget-']{ width:100% !important;}

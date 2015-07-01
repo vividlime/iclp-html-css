@@ -179,7 +179,7 @@
 								}
 
 								img{
-						            max-width: 100%;
+						            width: 100%;
 						            height: auto;
 						            display: block;
 						            position: relative;
@@ -354,9 +354,12 @@
 			background: $white;
 
 			p{
+				&:first-of-type{
+					padding: 50px 20px 0 20px;
+				}
 				color: $grey;
 				text-align: left;
-				padding: 50px 20px 0 20px;
+				padding: 10px 20px 0 20px;
 			}
 		}
 

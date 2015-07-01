@@ -36,36 +36,6 @@
 				}
 			}
 		}
-		// @include breakpoint(tabletPortrait){
-		// 	li {
-		// 		position: relative;
-
-		// 		&:first-child {
-		// 			&:after{
-		// 				display: none;
-		// 			}
-		// 			a{
-		// 				left: -5px;
-		// 				top: -20px;
-		// 				width: 31px;
-		// 				height: 30px;
-		// 				position: absolute;
-		// 				text-indent: -9em;
-		// 				z-index: 2;
-		// 			}
-
-		// 		}
-
-		// 		&:last-child {
-		// 			display: inline-block;
-		// 			&:before {
-		// 				padding-right: 10px;
-		// 				content: '←';
-		// 				color: $grey;
-		// 			}
-		// 		}
-
-		// 	}
-		// }
+		
 	}
 }
