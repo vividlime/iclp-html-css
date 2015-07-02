@@ -342,6 +342,10 @@
 
 	.social-container{
 		background: $white;
+		margin-left: 34%;
+		@include breakpoint(tabletPortrait){
+			margin-left: 0;
+		}
 		.twitter{
 			position: relative;
 			padding:0 0 15px 0;
@@ -354,6 +358,4 @@
 		}
 	}
 
-
 }
-iframe[id^='twitter-widget-']{ width:100% !important;}

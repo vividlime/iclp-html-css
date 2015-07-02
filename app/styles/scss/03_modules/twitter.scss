@@ -4,15 +4,14 @@ iframe#twitter-widget-0 {
   display: block!important;
   margin: auto!important;
   max-height: 300px !important;
-  min-height: 200px !important;
+  min-height: 250px !important;
   
   @include breakpoint(tabletPortrait) {
   	max-width:800px!important;
   	min-width:100%!important;
   }
   @include breakpoint(tabletPortrait) {
-  	max-width:3200px!important;
+  	max-width:320px!important;
   	min-width:320px!important;
   }
-
 }
