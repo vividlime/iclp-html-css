@@ -355,7 +355,16 @@
 
 			p{
 				&:first-of-type{
+					@include breakpoint(tentwentyfour){
+						padding: 50px 20px 0 20px !important;
+					}
 					padding: 50px 20px 0 20px;
+				}
+				&:last-of-type{
+					@include breakpoint(tentwentyfour){
+						padding: 0;
+					}
+					padding-bottom: 450px;
 				}
 				color: $grey;
 				text-align: left;
