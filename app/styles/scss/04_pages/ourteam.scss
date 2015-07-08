@@ -362,7 +362,7 @@
 				}
 				&:last-of-type{
 					@include breakpoint(tentwentyfour){
-						padding: 0;
+						padding: 20px;
 					}
 					padding-bottom: 450px;
 				}
