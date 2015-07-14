@@ -103,4 +103,7 @@
     &:hover {
         background-color: darken($turquoise, 20%);
     }
+    &.hold{
+        background-color: darken($turquoise, 20%);
+    }
 }
